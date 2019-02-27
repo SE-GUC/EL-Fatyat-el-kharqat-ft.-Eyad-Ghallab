@@ -31,7 +31,7 @@ const lawyers = [
 
 {fullname: 'Farah Hossam',
  email: 'Foffa@yahoo.com',
- phoneNumber: '0115670300',
+ phonenumber: '0115670300',
  legaltype: 'Legal',
  birthdate: '1/1/1967', 
  noOfPreviousCases: 50,
