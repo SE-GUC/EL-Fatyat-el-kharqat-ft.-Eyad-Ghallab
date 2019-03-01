@@ -1,4 +1,5 @@
 const express = require('express')
+
 const app = express()
 const bodeyParser=require('body-parser')
 const Joi = require('joi');
@@ -18,7 +19,7 @@ console.log('accpted')
 
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the reviewers
-    Eyad welcomes you</h1>
+    Eyad and Menna welcome you</h1>
     <a href="/api/reviewers">reviewers</a>
     `);
 })
@@ -120,45 +121,7 @@ app.put('/api/reviewers/:id', (req, res) => {
     
    
  })
-// app.post('/joi', (req, res) => {
-   
-    
-//     const username = req.body.username
-// 	const password = req.body.password
-// 	const fullname = req.body.fullname
-// 	const bithdate = req.body.bithdate
-// 	const email = req.body.email
-// 	const phonenumber = req.body.phonenumber
-//     const legaltype = req.body.legaltype
-//     const gender = req.body.gender
-// 	const noOfPrevCases = req.body.noOfPrevCases
 
-
-	
-
-// 	const schema = {
-//         //id: joi.integer().unique().required(),
-//         username: joi.string().min(5).required(),
-//         password: joi.string().min(4).required(),
-//         fullname: joi.string().min(9).required(),
-//         bithdate: joi.date().min(1990).max(1997).required(),
-//         email: joi.string().email().required(),
-//         phonenumber:joi.integer().phonenumber().required(),
-//         legaltype: joi.string().alphanum().required(),
-//         gender: joi.string().alphanum().required(),
-//         noOfPrevCases: joi.integer().required(),
-
-		
-	
-// 	}
-
-// 	const result = Joi.validate(req.body, schema);
-
-// 	if (result.error) return res.status(400).send({ error: result.error.details[0].message });
-
-
-// 	return res.json({ data: lawyers });
-// });
 
 
 // Delete a reviewer
@@ -170,15 +133,30 @@ app.delete('/api/reviewers/:id', (req, res) => {
     books.splice(index,1)
     res.send(reviewers)
 })
+=======
+
+const reviewers = require('./routes/api/reviewers')
+
+const app = express()
+app.use(express.json())
+
+app.get('/', (req, res) => {
+    res.send(`<h1>Welcome to Reviewer page</h1>
+    <a href="/api/reviewers"> View Reviewers </a>
+    `);
+})
+
+
 
 // Direct routes to appropriate files 
-app.use('/api/reviewers', reviewers)
 
+app.use('/api/reviewers', reviewers)
+//app.use('/api/create', reviewers)
 
 // Handling 404
 app.use((req, res) => {
     res.status(404).send({err: 'We can not find what you are looking for'});
  })
 
-const port = 3000
+const port = 5353
 app.listen(port, () => console.log(`Server up and running on port ${port}`))
