@@ -1,5 +1,5 @@
-{
 
+{
   "name": "server",
   "version": "0.0.1",
   "description": "Introduction to node",
@@ -18,5 +18,3 @@
     "uuid": "^3.3.2"
   }
 }
-
-    
