@@ -14,15 +14,36 @@ app.get('/', (req, res) => {
 
 
 
-// Direct routes to appropriate files 
+
 
 app.use('/api/reviewer', reviewer)
-//app.use('/api/create', reviewers)
 
-// Handling 404
+
+
+const Lawyer= require('./routes/api/Lawyer')
+
+app.use('/api/Lawyer', Lawyer)
+
 app.use((req, res) => {
     res.status(404).send({err: 'We can not find what you are looking for'});
  })
 
-const port = 5353
+
+const port = 3000
 app.listen(port, () => console.log(`Server up and running on port ${port}`))
+
+const investor = require('./routes/api/investor')
+
+app.get('/', (req, res) => {
+    res.send(`<h1>Welcome to Sumerge</h1>
+    <a href="/api/investor">investors</a>
+    
+    `);
+})
+app.use('/api/investor', investor)
+
+
+const port = 3000
+app.listen(port, () => console.log(`Server up and running on port ${port}`))
+
+
