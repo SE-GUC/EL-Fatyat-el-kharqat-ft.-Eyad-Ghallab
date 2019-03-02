@@ -1,8 +1,26 @@
-
 const express = require('express')
-const Lawyer= require('./routes/api/Lawyer')
+
+const reviewer = require('./routes/api/reviewer')
+
 const app = express()
 app.use(express.json())
+
+app.get('/', (req, res) => {
+    res.send(`<h1>Welcome to Reviewer page</h1>
+    <a href="/api/reviewer"> View Reviewers </a>
+    `);
+})
+
+
+
+
+
+
+app.use('/api/reviewer', reviewer)
+
+
+
+const Lawyer= require('./routes/api/Lawyer')
 
 app.use('/api/Lawyer', Lawyer)
 
@@ -27,4 +45,5 @@ app.use('/api/investor', investor)
 
 const port = 3000
 app.listen(port, () => console.log(`Server up and running on port ${port}`))
+
 
