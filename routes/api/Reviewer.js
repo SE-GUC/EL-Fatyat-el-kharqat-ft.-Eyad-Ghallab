@@ -82,6 +82,86 @@ router.post('/', (req, res) => {
     res.send(reviewers) 
 
 });
+router.put('/:id', (req, res) => {
+    const reviewerid = req.params.id 
+    const reviewer = reviewers.find(reviewer => reviewer.id === reviewerid)
+
+    if(req.body.Username){
+       const updatedusername=req.body.Username
+       reviewer.Username=updatedusername 
+       const schema ={
+        Username : Joi.string().alphanum().min(3).max(20).required()
+       }
+       const result = Joi.validate(req.body, schema);
+       if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+    }
+    if(req.body.Password){
+      const updatedpassword= req.body.Password
+      reviewer.Password=updatedpassword
+      const schema ={
+        Password : Joi.string().alphanum().min(4).required()
+    }
+    const result = Joi.validate(req.body, schema);
+    if (result.error)return res.status(400).send({error:result.error.details[0].massage});
+    
+
+    if(req.body.Email){
+        const updatedemail = req.body.Email
+        reviewer.Email=updatedemail
+        const schema ={
+            Email : Joi.string().alphanum().min(6).max(20).required()
+        }
+        const result = Joi.validate(req.body, schema);
+        if (result.error)return res.status(400).send({error:result.error.details[0].massage});
+        
+    }
+
+    }
+    if(req.body.Name){
+        
+        const updatedname = req.body.Name
+        reviewer.Name=updatedname
+        const schema ={
+            Name : Joi.string().alphanum().min(4).max(20).required()
+        }
+        const result = Joi.validate(req.body, schema);
+        if (result.error)return res.status(400).send({error:result.error.details[0].massage});
+        
+        
+        
+    }
+    if(req.body.Gender){
+        
+        const updatedgender = req.body.Gender
+        reviewer.Gender = updatedgender
+        const schema ={
+            Gender : Joi.string().alphanum().min(4).max(5).required()
+        }
+        const result = Joi.validate(req.body, schema);
+        if (result.error)return res.status(400).send({error:result.error.details[0].massage});
+        
+    }
+    
+    if(req.body.YearsOfExprerience){
+        const updatedyearsofexp = req.body.YearsOfExprerience
+        reviewer.YearsOfExprerience = updatedyearsofexp 
+        const schema ={
+            YearsOfExprerience : Joi.number().alphanum().required()
+        }
+        const result = Joi.validate(req.body, schema);
+        if (result.error)return res.status(400).send({error:result.error.details[0].massage});
+        
+        
+    }
+    res.send(reviewers)
+})
+router.delete('/:id', (req, res) => {
+    const reviewerId = req.params.id 
+    const reviewer = reviewers.find(reviewer => reviewer.id === reviewerId)
+    const index = reviewers.indexOf(reviewer)
+    reviewers.splice(index,1)
+    res.send(reviewers)
+})
 
 
 module.exports = router;
