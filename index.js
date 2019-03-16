@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //
 
 const express = require('express')
@@ -8,13 +9,23 @@ const Reviewer = require('./routes/api/reviewer')
 
 
 const SSC = require('./routes/api/SSC')
+=======
+const express = require('express')
+
+const admin = require('./routes/api/Admin')
+>>>>>>> Admin
 
 const app = express()
 app.use(express.json())
 
 app.get('/', (req, res) => {
+<<<<<<< HEAD
     res.send(`<h1>Welcome to Sumerge page</h1>
     <a href="/api/reviewer"> View Reviewer </a>
+=======
+    res.send(`<h1>Welcome to Admin page</h1>
+    <a href="/api/Admin"> View Admin </a>
+>>>>>>> Admin
     `);
 })
 
@@ -23,6 +34,7 @@ app.get('/', (req, res) => {
 
 // Direct routes to appropriate files 
 
+<<<<<<< HEAD
 app.use('/api/reviewer', Reviewer)
 
 
@@ -40,6 +52,9 @@ app.use('/api/Lawyer', Lawyer)
 //app.use('/api/books', books)
 
 app.use('/api/SSC', SSC)
+=======
+app.use('/api/Admin', admin)
+>>>>>>> Admin
 
 // Handling 404
 app.use((req, res) => {
@@ -47,4 +62,8 @@ app.use((req, res) => {
  })
 
 const port = 4000
+<<<<<<< HEAD
 app.listen(port, () => console.log(`Server up and running on port ${port}`))
+=======
+app.listen(port, () => console.log(`Server up and running on port ${port}`))
+>>>>>>> Admin
