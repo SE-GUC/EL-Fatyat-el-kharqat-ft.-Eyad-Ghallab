@@ -87,7 +87,98 @@ router.post('/', (req, res) => {
     Admins.push(Admin)
 	return res.json({ data: Admins });
 });
+router.put('/:id', (req, res) => {
+    const Adminid = req.params.id 
+    const Admin = Admins.find(Admin => Admin.id === Adminid)
+  
+  
+  if (req.body.name ){
+    const updatedName = req.body.name
+    Admin.name = updatedName
+    const schema = {
+        name: Joi.string().alphanum().min(3).max(30).required()
+    }
+	const result = Joi.validate(req.body, schema);
+	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
+}
 
+if (req.body.email){
+    const updatedemail = req.body.email
+    Admin.email = updatedemail
+
+    const schema = {
+        email: Joi.string().email().regex(/example.com/)
+    }
+
+	const result = Joi.validate(req.body, schema);
+
+
+	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
+
+
+}
+
+if (req.body.address){
+    const updatedaddress = req.body.address
+    Admin.address = updatedaddress
+    const schema = {
+        address:Joi.string().required()
+    }
+
+	const result = Joi.validate(req.body, schema);
+
+
+	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
+
+
+
+}
+   
+    if(req.body.username){
+    const updatedusername = req.body.username
+    Admin.username = updatedusername
+
+
+    const schema = {
+        username: Joi.string().required()
+    }
+
+	const result = Joi.validate(req.body, schema);
+
+
+	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
+}
+    if(req.body.password){
+    const updatedpassword = req.body.password
+    Admin.password = updatedpassword
+
+
+
+    const schema = {
+        password: Joi.string().required()
+    }
+
+	const result = Joi.validate(req.body, schema);
+
+
+	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
+}
+return res.json({ data: Admins });
+
+
+})
+
+
+
+
+router.delete('/:id', (req, res) => {
+
+    const Adminid = req.params.id 
+    const Admin = Admins.find(Admin => Admin.id === Adminid)
+    const index = Admins.indexOf(Admin)
+    Admins.splice(index,1)
+    return res.json({ data: Admins })
+})
 // router.get('/:id', (req, res) => {
 //     const AdminId = req.params.id
 //     const Admin = Admin.find(Admin => Admin.id === AdminId)
