@@ -104,7 +104,131 @@ router.post('/joi', (req, res) => {
        ;
        //res.send(lawyers)
 
-      
+       router.put('/:id', (req, res) => {
+        
+        const lawyerid = req.params.id 
+        const lawyer = lawyers.find(lawyer => lawyer.id === lawyerid)
+
+        
+    
+    
+        if(req.body.username){
+            
+            const updatedusername = req.body.username
+            lawyer.username = updatedusername
+            const schema = {
+                username: Joi.string().min(5).required(),
+            }
+            const result = Joi.validate(req.body, schema);
+            if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+        }
+        if(req.body.password){
+           
+            const updatedpassword = req.body.password
+             lawyer.password = updatedpassword
+             const schema = {
+                password: Joi.string().min(8).required(),
+             }
+             const result = Joi.validate(req.body, schema);
+             if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+        }
+        if(req.body.fullname){
+           
+            const updatedfullname = req.body.fullname
+           
+            lawyer.fullname = updatedfullname
+            const schema = {
+                fullname: Joi.string().min(9).required(),
+       
+            }
+            const result = Joi.validate(req.body, schema);
+            if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+            
+        }
+        if(req.body.birthdate){
+            
+            const updatedbirthdate = req.body.birthdate
+            
+            lawyer.birthdate = updatedbirthdate
+            const schema = {
+                birthdate: Joi.date().max(1980).required(),
+            }
+            const result = Joi.validate(req.body, schema);
+            if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+        }
+        if(req.body.email){
+            
+            const updatedemail = req.body.email
+            
+            lawyer.email = updatedemail
+            const schema = {
+                email: Joi.string().email().required(),
+    
+            }
+            const result = Joi.validate(req.body, schema);
+            if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+            
+        }
+        if(req.body.phonenumber){
+            
+            const updatedphonenumber = req.body.phonenumber
+            
+            lawyer.phonenumber = updatedphonenumber
+            const schema = {
+                phonenumber:Joi.string().trim().regex(/^[0-9]{11,11}$/).required(),
+        
+            }
+            const result = Joi.validate(req.body, schema);
+            if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+            
+        }
+        if(req.body.legaltype!=null){
+            
+            const updatedlegaltype = req.body.legaltype
+            
+            lawyer.legaltype = updatedlegaltype
+            const schema = {
+                legaltype: Joi.string().alphanum().required(),
+       
+            }
+            const result = Joi.validate(req.body, schema);
+            if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+            
+        }
+        if(req.body.gender!=null){
+            
+            const updatedgender = req.body.gender
+            
+            lawyer.gender = updatedgender
+            const schema = {
+                gender: Joi.string().alphanum().required(),
+            }
+            const result = Joi.validate(req.body, schema);
+            if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+        }
+        if(req.body.noOfPreviousCases!=null){
+            
+            const updatednoOfPrevCases = req.body.noOfPreviousCases
+            
+            lawyer.noOfPreviousCases = updatednoOfPrevCases
+            const schema = {
+                noOfPreviousCases: Joi.number().required(),
+            }
+            const result = Joi.validate(req.body, schema);
+            if (result.error) return res.status(400).send({ error: result.error.details[0].message });
+        }
+        
+        res.send(lawyers)
+    })
+    router.delete('/:id', (req, res) => {
+        const lawyerid = req.params.id 
+        const lawyer = lawyers.find(lawyer => lawyer.id === lawyerid)
+        const index = lawyers.indexOf(lawyer)
+        lawyers.splice(index,1)
+        res.send(lawyers)
+    })
+    router.get('/', (req, res) => res.json({ data: lawyers}))
+
 
 module.exports = router
     
