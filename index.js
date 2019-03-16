@@ -8,7 +8,7 @@ app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome</h1>
-    <a href="/api/investor">Investors</a>
+    <a href="/api/Investor">Investors</a>
     `);
 })
 
