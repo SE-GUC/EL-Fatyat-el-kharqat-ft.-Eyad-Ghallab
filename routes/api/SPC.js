@@ -1,6 +1,5 @@
 const express = require("express");
 const Joi = require("Joi");
-const uuid = require("uuid");
 const router = express.Router();
 
 //Array of temporary data
