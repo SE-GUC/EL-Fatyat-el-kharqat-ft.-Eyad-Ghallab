@@ -70,7 +70,7 @@ const Investors = [
 
 ];
 
-router.get('/', (req, res) => res.json({ data: investors }));
+router.get('/', (req, res) => res.json({ data: Investors }));
 
 // Create a new user
 // router.post('/', (req, res) => {
@@ -155,18 +155,18 @@ router.post('/joi', (req, res) => {
         mobilenumber:mobilenumber,
         username:username,
         password:password,
-        id: investors.length + 1
+        id: Investors.length + 1
 
     }
 
-    investors.push(investor)
+    Investors.push(investor)
     //res.send(investors)
-	return res.json({ data: investor });
+	return res.json({ data: Investors });
 });
 
 router.get('/:id', (req, res) => {
     const investorId = req.params.id
-    const investor = investors.find(investor => investor.id === investorId)
+    const investor = Investors.find(investor => investor.id === investorId)
     return res.json({ data: investor });
     //res.send(investor)
 })
