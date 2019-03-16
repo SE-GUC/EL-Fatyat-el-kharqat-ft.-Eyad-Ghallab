@@ -13,6 +13,10 @@ app.use(express.json())
 
 
 
+const Investors = require('./routes/api/investor')
+
+
+
 const Reviewer = require('./routes/api/reviewer')
 
 const SSC = require('./routes/api/SSC')
@@ -60,12 +64,15 @@ app.use('/api/Admin', admin)
 app.use('/api/SPC', Form)
 
 
+// Direct routes to appropriate files 
+
+app.use('/api/investor', Investors)
+
 // Handling 404
 app.use((req, res) => {
     res.status(404).send({err: 'We can not find what you are looking for'});
  })
 
 const port = 4000
-
 app.listen(port, () => console.log(`Server up and running on port ${port}`))
 
