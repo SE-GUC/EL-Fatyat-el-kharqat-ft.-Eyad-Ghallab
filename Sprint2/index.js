@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express')
 const mongoose = require('mongoose')
 
@@ -33,3 +34,6 @@ app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking 
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Server on ${port}`))
+=======
+// hello 
+>>>>>>> efe3b0747a34ce5c6c566c8545b4d944056a06d9
