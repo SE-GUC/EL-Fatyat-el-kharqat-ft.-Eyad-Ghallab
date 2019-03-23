@@ -5,7 +5,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 
 const Form = require('../../models/SSC')
-const validator = require('../../validations/SSCFormValidations')
+const validator = require('../../validations/SSCvalid')
 
 router.get('/', async (req,res) => {
     const forms = await SSC.find()
