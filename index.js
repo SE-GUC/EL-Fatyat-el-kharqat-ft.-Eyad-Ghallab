@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-const reviewers = require("./routes/api/reviewers");
+
 const notificatioins = require("./routes/api/notifications");
 
 // Bodyparser Middleware
@@ -32,7 +32,7 @@ app.get('/test',(req,res)=> res.send('<h1>Deployed on Herouko</h1>'))
 
 
 // Use routes
-app.use("/api/reviewers", reviewers);
+
 app.use("/api/notifications", notificatioins);
 
 app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
