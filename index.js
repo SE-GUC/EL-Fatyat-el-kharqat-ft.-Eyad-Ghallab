@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 
-const investor = require('./routes/api/investors')
+const investor = require('./routes/api/investor')
 
 
 const app = express()
