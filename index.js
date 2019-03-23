@@ -1,6 +1,27 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
+const updateSSC = require('./routes/api/SSC')
+
+const app = express()
+
+const db = require('./config/keys').mongoURI
+
+
+mongoose
+    .connect(db)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.log(err))
+
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+
+
+
+app.use('/api/SSC', updateSSC)
+
+
+
 
 
 // Require Router Handlers
@@ -13,14 +34,6 @@ const Lawyer= require('./routes/api/Lawyer')
 //const books = require('./routes/api/books')
 const app = express()
 
-const db = require('./config/keys').mongoURI
-mongoose
-    .connect(db)
-    .then(() => console.log('Connected to MongoDB '))
-    .catch(err => console.log(err))
-
-app.use(express.json())
-app.use(express.urlencoded({extended: false})) 
 
 
 
@@ -52,7 +65,9 @@ app.use('/api/investors',investor )
 
 
 
+
 app.use('/api/Lawyer', Lawyer)
+
 
 
 
