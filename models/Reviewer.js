@@ -32,4 +32,4 @@ const ReviewerSchema = new Schema({
 
 })
 
-module.exports = Reviewer = mongoose.model('reviewers', ReviewerSchema)
+module.exports = Reviewer = mongoose.model('Reviewer', ReviewerSchema)

@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 // Require Router Handlers
-const Reviewer = require('./routes/api/reviewers')
+const Reviewer = require('./routes/api/Reviewer')
 
 
 const app = express()
@@ -28,7 +28,7 @@ app.get('/', (req,res) => res.send(`<h1>Reviewers </h1>`))
 app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
 
 // Direct to Route Handlers
-app.use('/api/reviewers', Reviewer)
+app.use('/api/Reviewer', Reviewer)
 
 
 
