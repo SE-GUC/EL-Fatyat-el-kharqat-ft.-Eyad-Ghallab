@@ -85,4 +85,4 @@ const SpcFormSchema = new Schema({
     }
 })
 
-module.exports = SpcForm = mongoose.model('spcforms', SpcFormSchema)
+module.exports = SpcForm = mongoose.model('SPC', SpcFormSchema)

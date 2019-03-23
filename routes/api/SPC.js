@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 
-const SpcForm = require('../../models/Spc')
+const SpcForm = require('../../models/SPC')
 const validator = require('../../validations/SPCvalid')
 
 router.get('/', async (req,res) => {
