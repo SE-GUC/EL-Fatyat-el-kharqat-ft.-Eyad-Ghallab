@@ -2,7 +2,10 @@
 
 const mongoose = require('mongoose')
 const express = require('express')
+const mongoose = require('mongoose')
 
+
+const spcforms = require('./routes/api/SPC')
 
 const Admin = require("./routes/api/Admin");
 const updateSSC = require('./routes/api/SSC')
@@ -12,7 +15,6 @@ const Lawyer= require('./routes/api/Lawyer')
 const Comment = require("./routes/api/Comment");
 
 const app = express()
-
 
 
 
@@ -49,6 +51,7 @@ app.use("/api/Comment", Comment);
 
 
 
+app.use('/api/SPC', spcforms)
 
 
 app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
