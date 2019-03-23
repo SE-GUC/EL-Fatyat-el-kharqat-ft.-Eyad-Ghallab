@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
@@ -19,7 +20,38 @@ const investorSchema = new Schema({
       password: {
         type: [String],
         required: true
+    },
+    nationality: {
+    type: String,
+    required: true
     }
+    , 
+    gender: {
+        type: String,
+        required: true
+    }
+    ,
+    birthdate: {
+        type: Date,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    jobtitle: {
+        type: String,
+        required: true
+    },
+    mobilenumber: {
+        type: String,
+        required: true
+    }
+
 })
 
 module.exports = investor = mongoose.model('investors', investorSchema)
