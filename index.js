@@ -1,5 +1,5 @@
 const express = require('express')
-const admin = require('./routes/api/Admin')
+//const Admin = require('./routes/api/Admin')
 const app = express()
 const mongoose = require('mongoose')
 

@@ -11,7 +11,7 @@ const AdminSchema = new Schema({
         required: true
     },
     
-    emial: {
+    email: {
         type: String,
         required: true
     },
