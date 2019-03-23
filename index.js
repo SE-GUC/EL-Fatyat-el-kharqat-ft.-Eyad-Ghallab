@@ -1,78 +1,41 @@
 
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
+const app = express();
 
-const express = require('express')
-const app = express()
+const reviewers = require("./routes/api/reviewers");
+const notificatioins = require("./routes/api/notifications");
+
+// Bodyparser Middleware
+app.use(bodyParser.json());
+
+// DB Config
+const db = require("./config/keys").mongoURI;
+
+// Connect to Mongo
+mongoose
+  .connect(db, { useNewUrlParser: true }) // Adding new mongo url parser
+  .then(() => console.log("MongoDB Connected..."))
+  .catch(err => console.log(err));
+mongoose.set("useCreateIndex", true);
+
+// Init middleware
 app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+
+//entry point
+app.get('/',(req,res)=> res.send('<h1>welcome</h1>'))
+app.get('/test',(req,res)=> res.send('<h1>Deployed on Herouko</h1>'))
 
 
 
+// Use routes
+app.use("/api/reviewers", reviewers);
+app.use("/api/notifications", notificatioins);
 
+app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
+const port = process.env.PORT || 3000;
 
-
-
-
-
-const Investors = require('./routes/api/investor')
-
-
-
-const Reviewer = require('./routes/api/reviewer')
-
-const SSC = require('./routes/api/SSC')
-
-
-
-const admin = require('./routes/api/Admin')
-
-
-
-const Form = require('./routes/api/SPC')
-
-
-const Lawyer= require('./routes/api/Lawyer')
-
-app.get('/', (req, res) => {
-
-    res.send(`<h1>Welcome to Sumerge page</h1>
-    <a href="/api/reviewer"> View Reviewer </a>
-
-    `);
-})
-
-
-
-
-// Direct routes to appropriate files 
-
-app.use('/api/reviewer', Reviewer)
-
-
-
-
-
-// Direct routes to appropriate files 
-app.use('/api/Lawyer', Lawyer)
-
-//app.use('/api/books', books)
-
-app.use('/api/SSC', SSC)
-app.use('/api/Admin', admin)
-
-
-// Direct routes to appropriate files 
-app.use('/api/SPC', Form)
-
-
-// Direct routes to appropriate files 
-
-app.use('/api/investor', Investors)
-
-// Handling 404
-app.use((req, res) => {
-    res.status(404).send({err: 'We can not find what you are looking for'});
- })
-
-const port = 4000
-app.listen(port, () => console.log(`Server up and running on port ${port}`))
-
+app.listen(port, () => console.log(`Server started on port ${port}`));
