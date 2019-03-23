@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+
 const mongoose = require('mongoose')
 var bodyParser= require('body-parser')
 var schema = require('../../models/Reviewer')
@@ -9,6 +10,8 @@ const mongoURL = 'mongodb+srv://sama123:sama.1998@se-q3mun.mongodb.net/test?retr
 mongoose.set('useCreateIndex',true);
 mongoose.set('useNewUrlParser',true);
 router.use(bodyParser.urlencoded({extended:false}))
+
+
 
 router.get('/', async (req,res) => {
     const Reviewer = await Rev.find()
