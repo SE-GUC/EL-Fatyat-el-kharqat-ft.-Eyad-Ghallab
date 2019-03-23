@@ -1,4 +1,11 @@
+
 const express = require('express')
+
+
+// Create the app
+
+// Use it with post
+
 const router = express.Router()
 //router.use(express.json());
 //const Joi = require('joi');
