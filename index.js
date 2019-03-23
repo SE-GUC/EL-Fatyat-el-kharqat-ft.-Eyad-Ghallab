@@ -3,7 +3,7 @@ const admin = require('./routes/api/Admin')
 const app = express()
 const mongoose = require('mongoose')
 
-
+const Admin = require("./routes/api/Admin");
 // DB Config
 const db = require('./config/keys').mongoURI
 
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
 // Direct routes to appropriate files 
 
-app.use('/api/Admins', Admin)
+app.use('/api/Admin', Admin)
 
 // Handling 404
 app.use((req, res) => {

@@ -12,6 +12,18 @@ module.exports = {
 
         return Joi.validate(request, createSchema)
     },
+    updateValidation: request => {
+        const updateSchema = {
+            id: Joi.number().min(50).max(3000),
+            name: Joi.string().alphanum().min(3).max(30),
+            email: Joi.string().email(),
+            address: Joi.string(),
+            username: Joi.string(),
+            password :Joi.string(),
+            
+        }
 
+        return Joi.validate(request, updateSchema)
+    }, 
 
 }
