@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 
-const notificatioins = require("./routes/api/notifications");
+const Notification = require("./routes/api/Notification");
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
@@ -33,7 +33,7 @@ app.get('/test',(req,res)=> res.send('<h1>Deployed on Herouko</h1>'))
 
 // Use routes
 
-app.use("/api/notifications", notificatioins);
+app.use("/api/Notification", Notification);
 
 app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
 const port = process.env.PORT || 3000;

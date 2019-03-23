@@ -26,4 +26,4 @@ const notificationSchema = new Schema({
     
 })
 
-module.exports = Notification = mongoose.model('notifications', notificationSchema)
+module.exports = Notification = mongoose.model('Notification', notificationSchema)
