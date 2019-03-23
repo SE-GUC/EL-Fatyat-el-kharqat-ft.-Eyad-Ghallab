@@ -1,15 +1,15 @@
 
 
-
 const mongoose = require('mongoose')
 const express = require('express')
+
 
 const Admin = require("./routes/api/Admin");
 const updateSSC = require('./routes/api/SSC')
 const Reviewer = require('./routes/api/Reviewer')
 const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
-
+const Comment = require("./routes/api/Comment");
 
 const app = express()
 
@@ -35,7 +35,7 @@ mongoose
 
 app.get('/', (req,res) => res.send(`<h1>Sumerge </h1>`))
 app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
-
+app.use(bodyParser.json());
 
 app.use('/api/SSC', updateSSC)
 app.use('/api/Reviewer', Reviewer)
@@ -43,7 +43,7 @@ app.use('/api/investors',investor )
 app.use('/api/Lawyer', Lawyer)
 app.use('/api/Admin', Admin)
 
-
+app.use("/api/Comment", Comment);
 
 
 
