@@ -49,10 +49,10 @@ const validator = require('../../validations/Lawyervalid')
 
 
   //  router.get('/', (req, res) => res.json({ data: lawyers}))
-router.get('/', async (req,res) => {
-    const lawyers = await Lawyer.find()
-    res.json({data: lawyers})
-})
+//router.get('/', async (req,res) => {
+    //const lawyers = await Lawyer.find()
+    //res.json({data: lawyers})
+//})
 
 router.put('/:id', async (req,res) => {
     console.log('hiiiii')
@@ -81,6 +81,27 @@ router.delete('/:id', async (req,res) => {
         console.log(error)
     }  
  })
+ //Get all lawyers
+
+router.get('/getlawyers', async (req,res) => {
+    const lawyers = await Lawyer.find()
+    res.json({data: lawyers})
+})
+
+// Create a Lawyer
+
+router.post('/createlawyer', async (req,res) => {
+   try {
+    const isValidated = validator.createValidation(req.body)
+    if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+    const newLawyer = await Lawyer.create(req.body)
+    res.json({msg:'Lawyer was created successfully', data: newLawyer})
+   }
+   catch(error) {
+       // We will be handling the error later
+       console.log(error)
+   }  
+})
 
 module.exports = router
     

@@ -2,7 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 //const investor = require('./routes/api/investor')
-const Lawyer= require('./routes/api/Lawyers')
+const Lawyer= require('./routes/api/Lawyer')
 
 //const books = require('./routes/api/books')
 const app = express()
@@ -20,7 +20,8 @@ app.use(express.urlencoded({extended: false}))
 
 
 
-app.use('/api/Lawyers', Lawyer)
+app.use('/api/Lawyer', Lawyer)
+app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
 
 
 // Handling 404
