@@ -1,78 +1,65 @@
 
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
+const spcforms = require('./routes/api/SPC')
 
-const express = require('express')
-const app = express()
-app.use(express.json())
-
-
-
-
-
-
-
-
-
-const Investors = require('./routes/api/investor')
-
-
-
-const Reviewer = require('./routes/api/reviewer')
-
-const SSC = require('./routes/api/SSC')
-
-
-
-const admin = require('./routes/api/Admin')
-
-
-
-const Form = require('./routes/api/SPC')
-
-
+const Admin = require("./routes/api/Admin");
+const updateSSC = require('./routes/api/SSC')
+const Reviewer = require('./routes/api/Reviewer')
+const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
+const Comment = require("./routes/api/Comment");
 
-app.get('/', (req, res) => {
+const Notification = require("./routes/api/Notification");
 
-    res.send(`<h1>Welcome to Sumerge page</h1>
-    <a href="/api/reviewer"> View Reviewer </a>
+const app = express()
+const db = require('./config/keys').mongoURI
 
-    `);
-})
-
-
-
-
-// Direct routes to appropriate files 
-
-app.use('/api/reviewer', Reviewer)
+mongoose
+  .connect(db, { useNewUrlParser: true }) 
+  .then(() => console.log("MongoDB Connected..."))
+  .catch(err => console.log(err));
+mongoose.set("useCreateIndex", true);
 
 
 
 
 
-// Direct routes to appropriate files 
+    app.use(express.json())
+    app.use(express.urlencoded({extended: false}))
+
+
+
+
+app.get('/', (req,res) => res.send(`<h1>Sumerge </h1>`))
+app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
+app.use(bodyParser.json());
+
+app.use('/api/SSC', updateSSC)
+app.use('/api/Reviewer', Reviewer)
+app.use('/api/investors',investor )
 app.use('/api/Lawyer', Lawyer)
+app.use('/api/Admin', Admin)
 
-//app.use('/api/books', books)
-
-app.use('/api/SSC', SSC)
-app.use('/api/Admin', admin)
+app.use("/api/Comment", Comment);
 
 
-// Direct routes to appropriate files 
-app.use('/api/SPC', Form)
 
 
-// Direct routes to appropriate files 
+app.use("/api/Notification", Notification);
+app.use('/api/SPC', spcforms)
 
-app.use('/api/investor', Investors)
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 
-// Handling 404
-app.use((req, res) => {
-    res.status(404).send({err: 'We can not find what you are looking for'});
- })
 
-const port = 4000
-app.listen(port, () => console.log(`Server up and running on port ${port}`))
 
+
+
+app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
+const port = process.env.PORT || 3000;
+
+
+app.listen(port, () => console.log(`Server started on port ${port}`));

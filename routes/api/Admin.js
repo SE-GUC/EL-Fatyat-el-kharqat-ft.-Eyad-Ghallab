@@ -1,189 +1,59 @@
-const express = require('express');
-const Joi = require('joi');
-const router = express.Router();
-router.use(express.json())
+const express = require('express')
+const router = express.Router()
+const mongoose = require('mongoose')
 
-const Admins = [
-    {
-    id:'1',
-    name: 'Zefta', 
-    email: 'sama@gmail.com',
-    address: 'tagmo3',
-    username:'sama.zidan',
-     password: 'toty1998'},
+const Admin= require('../../models/Admin')
+const validator = require('../../validations/Adminvalid')
 
-    {
-     id: '2',
-    name: 'rawan',
-     email: 'rawan@gmail.com',
-     address: '7elwan',
-      username:'rawraw',
-       password: 'csen604'},
-
-
-    { 
-    id: '3',
-    name: 'hana', 
-    email: 'hana@gmail.com',
-    address: 'madinaty',
-    username:'hanoun', 
-    password: 'csen602'},
-
-
-    {
-     id: '4',
-    name: 'sarah', 
-    email: 'saraseif@gmail.com',
-    address: 'tagmoo3',
-    username:'elcinderalla', 
-    password: 'csen607'}  
-
-
-];
-
-
-
-router.get('/', (req, res) => res.json({ data: Admins }));
-
-
-
-router.post('/', (req, res) => {
-    const name= req.body.name
-    const email= req.body.email
-    const address= req.body.address
-    const username=req.body.username
-    const password=req.body.password
-       
-
-	
-    const schema = {
-		name: Joi.string().alphanum().min(3).max(30).required(),
-        email: Joi.string(),
-        address:Joi.string().required(),
-        username: Joi.string().required(),
-        password: Joi.string().required(),
-
-	}
-
-
-	const result = Joi.validate(req.body, schema);
-
-	if (result.error) return res.status(400).send({ error: result.error.details[0].message });
-
-	
-    
-    const Admin = {
-        
-        name:name,
-        email:email,
-        address:address,
-        username:username,
-        password:password,
-        id: Admins.length + 1
-        
-
-    }
-
-    Admins.push(Admin)
-	return res.json({ data: Admins });
-});
-router.put('/:id', (req, res) => {
-    const Adminid = req.params.id 
-    const Admin = Admins.find(Admin => Admin.id === Adminid)
-  
-  
-  if (req.body.name ){
-    const updatedName = req.body.name
-    Admin.name = updatedName
-    const schema = {
-        name: Joi.string().alphanum().min(3).max(30).required()
-    }
-	const result = Joi.validate(req.body, schema);
-	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
-}
-
-if (req.body.email){
-    const updatedemail = req.body.email
-    Admin.email = updatedemail
-
-    const schema = {
-        email: Joi.string().email().regex(/example.com/)
-    }
-
-	const result = Joi.validate(req.body, schema);
-
-
-	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
-
-
-}
-
-if (req.body.address){
-    const updatedaddress = req.body.address
-    Admin.address = updatedaddress
-    const schema = {
-        address:Joi.string().required()
-    }
-
-	const result = Joi.validate(req.body, schema);
-
-
-	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
-
-
-
-}
-   
-    if(req.body.username){
-    const updatedusername = req.body.username
-    Admin.username = updatedusername
-
-
-    const schema = {
-        username: Joi.string().required()
-    }
-
-	const result = Joi.validate(req.body, schema);
-
-
-	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
-}
-    if(req.body.password){
-    const updatedpassword = req.body.password
-    Admin.password = updatedpassword
-
-
-
-    const schema = {
-        password: Joi.string().required()
-    }
-
-	const result = Joi.validate(req.body, schema);
-
-
-	if (result.error) return res.status(400).send({ error: result.error.details[0].message });  
-}
-return res.json({ data: Admins });
-
-
+router.get('/', async (req,res) => {
+    const admins = await Admin.find()
+    res.json({data: admins})
 })
 
 
-
-
+// Create a Admin
+router.post('/', async (req,res) => {
+   try {
+    const isValidated = validator.createValidation(req.body)
+    if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+    const newAdmin = await Admin.create(req.body)
+    res.json({msg:'Admin was created successfully', data: newAdmin})
+   }
+   catch(error) {
+       // We will be handling the error later
+       console.log(error)
+   }  
+})
+// @route   DELETE api/Admins/:id
+// @desc    Delete A Admin
+// @access  Public
 router.delete('/:id', (req, res) => {
+    Admin.findById(req.params.id)
+    .then(Admin => Admin.remove().then(() => res.json({ success: true })))
+    .catch(err => res.status(404).json({ success: false }));
+});
 
-    const Adminid = req.params.id 
-    const Admin = Admins.find(Admin => Admin.id === Adminid)
-    const index = Admins.indexOf(Admin)
-    Admins.splice(index,1)
-    return res.json({ data: Admins })
-})
-// router.get('/:id', (req, res) => {
-//     const AdminId = req.params.id
-//     const Admin = Admin.find(Admin => Admin.id === AdminId)
-//     return res.json({ data: Admin });
-   
-// })
 
-module.exports = router;
+router.put('/:id',async (req,res) => {
+    try {
+     const id = req.params.id
+     const forma = await Admin.findOne({id})
+     if(!Admin) return res.status(404).send({error: 'Admin does not exist'})
+     const isValidated = validator.updateValidation(req.body)
+     if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+     const updatedAdmin = await Admin.updateOne(req.body)
+     res.json({msg: 'Admin updated successfully'})
+    }
+    catch(error) {
+        // We will be handling the error later
+        console.log(error)
+    }
+      
+ })
+
+ router.get('/', (req, res) => res.json({ data: Admins }));
+  
+
+
+
+module.exports = router
