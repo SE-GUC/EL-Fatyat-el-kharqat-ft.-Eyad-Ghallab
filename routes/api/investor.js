@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+
 const mongoose = require('mongoose')
 
 const inv = require('../../models/investor')
@@ -8,6 +9,7 @@ const validator = require('../../validations/investorvalid')
 router.get('/', async (req,res) => {
     const investors = await inv.find()
     res.json({data: investors})
+
 
 })
 

@@ -1,3 +1,4 @@
+
 const express = require('express')
 const mongoose = require('mongoose')
 
@@ -5,6 +6,8 @@ const mongoose = require('mongoose')
 const investor = require('./routes/api/investor')
 
 
+
+// const express = require('express')
 const app = express()
 
 // DB Config
@@ -27,11 +30,15 @@ app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
 
 // Direct to Route Handlers
 
-app.use('/api/investors', investor)
+
+
+
 
 
 
 app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
 
+
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Server on ${port}`))
+
