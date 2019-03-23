@@ -15,10 +15,10 @@ const Comment = require("./routes/api/Comment");
 const Notification = require("./routes/api/Notification");
 
 const app = express()
+const db = require('./config/keys').mongoURI
 
-// Connect to Mongo
 mongoose
-  .connect(db, { useNewUrlParser: true }) // Adding new mongo url parser
+  .connect(db, { useNewUrlParser: true }) 
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
 mongoose.set("useCreateIndex", true);
