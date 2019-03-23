@@ -29,7 +29,7 @@ router.post('/', async (req,res) => {
 // Update a book
 router.put('/:id', async (req,res) => {
     try {
-     const id = req.params.id
+     //const id = req.params.id
      //const spcform = await SpcForm.findOne({id})
      //if(!spcform) return res.status(404).send({error: 'Form does not exist'})
      //const isValidated = validator.updateValidation(req.body)
