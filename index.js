@@ -32,7 +32,7 @@ const Reviewer = require('./routes/api/Reviewer')
 const Lawyer= require('./routes/api/Lawyer')
 
 //const books = require('./routes/api/books')
-const app = express()
+
 
 
 
