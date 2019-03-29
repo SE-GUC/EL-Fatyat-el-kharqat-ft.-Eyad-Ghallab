@@ -108,7 +108,7 @@ router.put('/:id', async (req,res) => {
       console.log(`There is a match`);
       
      
-return res.send([spcform[0].id,spcform[0].Facility_name,spcform[0].Governorate,spcform[0].City,spcform[0].Facility_Address,spcform[0].Facility_Phone_Number,spcform[0].Fax,spcform[0].Capital_Currency,spcform[0].capital,spcform[0].investorname,spcform[0].Gender,spcform[0].Nationality,spcform[0].TypeOf_IdentityProof,spcform[0].investor_nationalid,spcform[0].BirthDate,spcform[0].Phone_Number,spcform[0].Investor_Fax,spcform[0].email,spcform[0].Investor_Address,spcform[0].Status]);
+return res.send([spcform[0].id,spcform[0].Facility_name,spcform[0].Governorate,spcform[0].City,spcform[0].Facility_Address,spcform[0].Facility_Phone_Number,spcform[0].Fax,spcform[0].Capital_Currency,spcform[0].capital,spcform[0].investorname,spcform[0].Gender,spcform[0].Nationality,spcform[0].TypeOf_IdentityProof,spcform[0].investor_nationalid,spcform[0].BirthDate,spcform[0].Phone_Number,spcform[0].Investor_Fax,spcform[0].email,spcform[0].Investor_Address, spcform[0].Form_Date, spcform[0].Locked, spcform[0].Status, spcform[0].is_the_external_entities_notified]);
    
   })
 })
