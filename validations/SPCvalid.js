@@ -1717,8 +1717,8 @@ module.exports = {
           email: Joi.string(),
           Investor_Address: Joi.string().min(3).required(),
           Form_Date: Joi.string(),
-          Status: Joi.string()
-
+          Status: Joi.string(),
+          is_the_external_entities_notified: Joi.boolean(),
   
       
   

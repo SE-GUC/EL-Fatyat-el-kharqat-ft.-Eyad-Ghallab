@@ -82,6 +82,10 @@ const SpcFormSchema = new Schema({
     Status: {
         type: String, 
     
+    },
+    is_the_external_entities_notified: {
+        type: Boolean, 
+    
     }
 })
 
