@@ -9,11 +9,40 @@ router.get('/', async (req,res) => {
     const spcforms = await SpcForm.find()
     res.json({data: spcforms})
 })
+
 router.get('/:id', async (req,res) => {
     const spcforms = await SpcForm.findById(req.params.id)
    res.json({data : spcforms})
+
 })
-// Create a book
+
+
+
+router.get('/:id/find', async (req,res) => {
+    const spcforms = await SpcForm.findById(req.params.id)
+    const estimatedprice =spcforms.get('capital')
+    console.log(estimatedprice)
+    if (estimatedprice <= 100000){
+       // const price = 100+
+        res.json({data : "your estimated price to be paid to gafi is EGP 100"})
+    }
+    else if (estimatedprice > 100000 && estimatedprice < 1000000){
+        const price = estimatedprice / 1000
+        
+        res.json({data : "your estimated price to be paid to gafi is EGP ",price})
+    }
+
+    
+    else if (estimatedprice >= 1000000){
+
+  res.json({data : "your estimated price to be paid to gafi is EGP 1000"})
+    }
+
+ // res.json({data : estimatedprice})
+
+})
+
+
 router.post('/', async (req,res) => {
     try {
      const isValidated = validator.createValidation(req.body)
@@ -26,7 +55,7 @@ router.post('/', async (req,res) => {
         console.log(error)
     }  
  })
-// Update a book
+
 router.put('/:id', async (req,res) => {
     try {
      //const id = req.params.id
