@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const SpcForm = require('../../models/SPC')
 const validator = require('../../validations/SPCvalid')
 
-router.get('/', async (req,res) => {
+router.get('/all', async (req,res) => {
     const spcforms = await SpcForm.find()
     res.json({data: spcforms})
 })
@@ -87,6 +87,30 @@ router.put('/:id', async (req,res) => {
     }  
  })
  
-
+ router.get ('/',(req,res) =>{ 
+    SpcForm.find({Status:"accepted", is_the_external_entities_notified:"true"})
+  .then((Hana) => {
+            var data= "";
+            Hana.forEach((spcform)=> {
+              const id = spcform.id;
+              const Facility_name = spcform.Facility_name;
+            data += `<a href="/api/SPC/${id}">${Facility_name}</a><br>`;
+            });
+           res.send(data);
+            })
+          });
+ 
+  router.get('/:id',(req,res)=>{
+    const query = schema.find({})
+    .where('_id').equals(req.params.id)
+      query.exec()
+    .then((spcform) => {
+      console.log(`There is a match`);
+      
+     
+return res.send([spcform[0].id,spcform[0].Facility_name,spcform[0].Governorate,spcform[0].City,spcform[0].Facility_Address,spcform[0].Facility_Phone_Number,spcform[0].Fax,spcform[0].Capital_Currency,spcform[0].capital,spcform[0].investorname,spcform[0].Gender,spcform[0].Nationality,spcform[0].TypeOf_IdentityProof,spcform[0].investor_nationalid,spcform[0].BirthDate,spcform[0].Phone_Number,spcform[0].Investor_Fax,spcform[0].email,spcform[0].Investor_Address,spcform[0].Status]);
+   
+  })
+})
 
 module.exports = router

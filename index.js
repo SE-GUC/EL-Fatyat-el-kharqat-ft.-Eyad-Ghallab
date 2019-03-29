@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 
 
 const spcforms = require('./routes/api/SPC')
-//const userstory = require('./routes/api/investor')
 
 
 const app = express()
@@ -24,13 +23,12 @@ app.use(express.urlencoded({extended: false}))
 
 // Entry point
 app.get('/', (req,res) => res.send(`<h1>Welcome To Your Companies</h1>
-<a href="/api/investor"> Your Companies</a>`))
+<a href="/api/SPC"> My Companies</a>`))
 
 app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
 
 
 app.use('/api/SPC', spcforms)
-//app.use('/api/investor', userstory)
 
 
 
