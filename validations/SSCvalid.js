@@ -680,7 +680,7 @@ module.exports = {
       "At-Large","Webmaster").required(),
       Formdate:Joi.date(),
 Locked:Joi.boolean(),
-Status: Joi.boolean(),
+Status: Joi.string(),
 is_the_external_entities_notified: Joi.boolean(),
     };
 
@@ -1373,7 +1373,7 @@ PositionInBOD: Joi.string().valid("Chair","Vice President","Secretary",
 "Industry, Legislation, Conservation Director","At-Large","Webmaster"),
 Formdate:Joi.date(),
 Lock:Joi.boolean(),
-Status: Joi.boolean(),
+Status: Joi.string(),
 is_the_external_entities_notified: Joi.boolean(),
 
         }

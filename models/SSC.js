@@ -123,7 +123,7 @@ const SSCSchema = new Schema({
       
    },
    Status:{
-    type:Boolean,
+    type:String,
    
 },
    is_the_external_entities_notified:{

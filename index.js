@@ -54,7 +54,8 @@ const investor = require('./routes/api/investor')
 
 
 // Entry point
-app.get('/', (req,res) => res.send(`<h1>Sumerge </h1>`))
+app.get('/', (req,res) => res.send(`<h1>Welcome </h1>
+<a href="/api/SSC"> Your Companies</a>`))
 app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
 
 
