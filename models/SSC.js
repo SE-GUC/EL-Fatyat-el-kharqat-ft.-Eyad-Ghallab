@@ -116,12 +116,20 @@ const SSCSchema = new Schema({
     },
    Formdate:{
        type:String,
-       required: true
+       
    },
-   Lock:{
+   Locked:{
        type:Boolean,
-       required:true
-   }
+      
+   },
+   Status:{
+    type:Boolean,
+   
+},
+   is_the_external_entities_notified:{
+    type:Boolean,
+   
+}
 
 
 })

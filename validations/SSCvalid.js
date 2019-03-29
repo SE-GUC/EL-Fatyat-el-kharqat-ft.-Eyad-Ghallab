@@ -679,7 +679,9 @@ module.exports = {
       "Public Relations (PR) Director","Membership Director","Industry, Legislation, Conservation Director",
       "At-Large","Webmaster").required(),
       Formdate:Joi.date(),
-Lock:Joi.boolean()
+Locked:Joi.boolean(),
+Status: Joi.boolean(),
+is_the_external_entities_notified: Joi.boolean(),
     };
 
         return Joi.validate(request, createSchema)
@@ -1371,7 +1373,8 @@ PositionInBOD: Joi.string().valid("Chair","Vice President","Secretary",
 "Industry, Legislation, Conservation Director","At-Large","Webmaster"),
 Formdate:Joi.date(),
 Lock:Joi.boolean(),
-
+Status: Joi.boolean(),
+is_the_external_entities_notified: Joi.boolean(),
 
         }
 
