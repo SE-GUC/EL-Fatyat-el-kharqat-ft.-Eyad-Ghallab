@@ -79,6 +79,9 @@ const SpcFormSchema = new Schema({
     Form_Date: {
         type: String,
     },
+    Locked: {
+       type: Boolean,
+    },
     Status: {
         type: String, 
     

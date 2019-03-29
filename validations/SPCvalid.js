@@ -582,7 +582,10 @@ module.exports = {
     email: Joi.string(),
     Investor_Fax: Joi.string(),
     Form_Date: Joi.string(),
-    Status: Joi.string()
+    Locked: Joi.boolean(),
+          Status: Joi.string(),
+          is_the_external_entities_notified: Joi.boolean(),
+  
 
     }
 
@@ -1717,6 +1720,7 @@ module.exports = {
           email: Joi.string(),
           Investor_Address: Joi.string().min(3).required(),
           Form_Date: Joi.string(),
+          Locked: Joi.boolean(),
           Status: Joi.string(),
           is_the_external_entities_notified: Joi.boolean(),
   
