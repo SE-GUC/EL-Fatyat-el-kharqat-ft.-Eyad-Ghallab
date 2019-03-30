@@ -47,6 +47,9 @@ router.post('/', async (req,res) => {
     try {
      const isValidated = validator.createValidation(req.body)
      if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+    const { Facility_name} = req.body;
+		const form = await SpcForm.findOne({ Facility_name });
+		if (form) return res.status(400).json({ Facility_name: 'Facility name already exists' });
      const newSpcForm = await SpcForm.create(req.body)
      res.json({msg:'Form was created successfully', data: newSpcForm})
     }
