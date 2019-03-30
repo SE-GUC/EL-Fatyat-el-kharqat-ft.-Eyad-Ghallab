@@ -3,20 +3,20 @@ const Joi = require('joi')
 module.exports = {
     createValidation: request => {
         const createSchema = {
-            Card_type: Joi.string().alphanum().min(4).max(20).required(),
-            Card_no:Joi.number().required(),
-            Firstname: Joi.string().alphanum().min(4).max(15).required(),
-            Lastname: Joi.string().alphanum().min(4).max(15).required(),
-            Amount: Joi.number().required(),
+            Card_type: Joi.string().min(4).max(20).required(),
+            Card_no:Joi.number().min(11111111111111).max(99999999999999).required(),
+            Firstname: Joi.string().min(4).max(15).required(),
+            Lastname: Joi.string().min(4).max(15).required(),
+            Amount: Joi.number().min(10).max(9999999).required(), 
             Email: Joi.string().min(7).max(500).required(),
-            Phone_number: Joi.number().required(),
-            Street_Address: Joi.string().alphanum().min(4).max(20).required(),
-            City: Joi.string().alphanum().min(3).max(10).required(),
-            State_Region: Joi.string().alphanum().min(3).max(10).required(),
+            Phone_number: Joi.string().trim().regex(/^[0-9]{11,11}$/).required(),
+            Street_Address: Joi.string().min(4).max(20).required(),
+            City: Joi.string().min(3).max(10).required(),
+            State_Region: Joi.string().min(3).max(10).required(),
             Expire_date: Joi.string().required(),
-            CVC:Joi.number().required(),
-            Country:Joi.string().alphanum().min(3).max(15).required(),
-            Postal_Zipcode:Joi.string().alphanum().min(3).max(15).required(),
+            CVC:Joi.number().min(000).max(999).required(),
+            Country:Joi.string().min(3).max(15).required(),
+            Postal_Zipcode:Joi.string().min(3).max(15).required()
         }
 
         return Joi.validate(request, createSchema)

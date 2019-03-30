@@ -19,7 +19,7 @@ router.post('/', async (req,res) => {
    try {
     const isValidated = validator.createValidation(req.body)
     if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
-    const payment = await Pay.create(req.body)
+    const payment = await pay.create(req.body)
     res.json({msg:'Payment was created successfully', data: payment})
    }
    catch(error) {
