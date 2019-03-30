@@ -33,10 +33,10 @@ router.post('/', async (req,res) => {
 router.put('/:id', async (req,res) => {
     try {
      const id = req.params.id
-    //  const investor = await inv.findOne({id})
-    //  if(!investor) return res.status(404).send({error: 'investor does not exist'})
-    //  const isValidated = validator.updateValidation(req.body)
-    //  if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+     // const investor = await inv.findOne({id})
+     // if(!investor) return res.status(404).send({error: 'investor does not exist'})
+     //const isValidated = validator.updateValidation(req.body)
+    // if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
      const updatedinv = await inv.updateOne(req.body)
      res.json({msg: 'investor updated successfully', data: updatedinv})
     }

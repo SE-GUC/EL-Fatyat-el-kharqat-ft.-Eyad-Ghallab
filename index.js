@@ -5,14 +5,15 @@ const bodyParser = require("body-parser");
 
 const spcforms = require('./routes/api/SPC')
 
-const Admin = require("./routes/api/Admin");
+const Admin = require("./routes/api/Admin")
 const updateSSC = require('./routes/api/SSC')
 const Reviewer = require('./routes/api/Reviewer')
 const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
-const Comment = require("./routes/api/Comment");
+const Comment = require("./routes/api/Comment")
 
 const Notification = require("./routes/api/Notification");
+const Contract=require("./routes/api/Contract")
 
 const app = express()
 const db = require('./config/keys').mongoURI
@@ -45,7 +46,7 @@ app.use('/api/Admin', Admin)
 
 app.use("/api/Comment", Comment);
 
-
+app.use("/api/Contract", Contract);
 
 
 app.use("/api/Notification", Notification);
