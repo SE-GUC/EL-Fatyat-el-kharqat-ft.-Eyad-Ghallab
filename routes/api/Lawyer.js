@@ -75,13 +75,7 @@ router.get('/find/SSC',(req,res)=>{
         PositionInBOD:${SSC.PositionInBOD}
         is_the_external_entities_notified:${SSC.is_the_external_entities_notified}
         Status:${SSC.Status}
-        BOD_BirthDate:${SSC.BOD_BirthDate}
-        BOD_BirthDate:${SSC.BOD_BirthDate}
-        BOD_BirthDate:${SSC.BOD_BirthDate}
-        BOD_BirthDate:${SSC.BOD_BirthDate}
-        BOD_BirthDate:${SSC.BOD_BirthDate}
-
-
+       
 
         </p></br> `;
     });
