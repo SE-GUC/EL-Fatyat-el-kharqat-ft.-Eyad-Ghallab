@@ -18,6 +18,30 @@ router.get('/:id', async (req,res) => {
 
 
 
+router.get('/:id/find', async (req,res) => {
+  const spcforms = await SpcForm.findById(req.params.id)
+  const estimatedprice =spcforms.get('capital')
+  console.log(estimatedprice)
+  if (estimatedprice <= 100000){
+     // const price = 100+
+      res.json({data : "your estimated price to be paid to gafi is EGP 100"})
+  }
+  else if (estimatedprice > 100000 && estimatedprice < 1000000){
+      const price = estimatedprice / 1000
+      
+      res.json({data : "your estimated price to be paid to gafi is EGP ",price})
+  }
+
+  
+  else if (estimatedprice >= 1000000){
+
+res.json({data : "your estimated price to be paid to gafi is EGP 1000"})
+  }
+
+// res.json({data : estimatedprice})
+
+})
+
 
 router.post('/', async (req,res) => {
     try {
