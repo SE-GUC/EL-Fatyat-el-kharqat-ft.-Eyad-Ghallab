@@ -594,7 +594,7 @@ module.exports = {
     updateValidation: request => {
       
         const updateSchema = {
-            Facility_name: Joi.string().required(),
+            Facility_name: Joi.string(),
             Governorate: Joi
   
           .string()
@@ -655,7 +655,7 @@ module.exports = {
   
           )
   
-          .required(),
+          ,
           City: Joi
   
           .string()
@@ -1110,8 +1110,8 @@ module.exports = {
   
           )
   
-          .required(),
-          Facility_Address: Joi.string().required(),
+          ,
+          Facility_Address: Joi.string(),
           Facility_Phone_Number: Joi.string(),
           Fax: Joi.string(),
           Capital_Currency: Joi
@@ -1478,9 +1478,9 @@ module.exports = {
   
           )
   
-          .required(),
+          ,
           capital: Joi.number(),
-          investorname: Joi.string().required(),
+          investorname: Joi.string(),
           Gender: Joi.valid("Female", "Male"),
           Nationality: Joi
   
@@ -1710,14 +1710,14 @@ module.exports = {
   
           )
   
-          .required(),
-          TypeOf_IdentityProof: Joi.valid("National_ID", "passport").required(),
-          investor_nationalid: Joi.string().min(14).max(14).required(),
-          BirthDate: Joi.date().required(),
+          ,
+          TypeOf_IdentityProof: Joi.valid("National_ID", "passport"),
+          investor_nationalid: Joi.string().min(14).max(14),
+          BirthDate: Joi.date(),
           Phone_Number: Joi.string().max(13),
           Investor_Fax: Joi.string(),
           email: Joi.string(),
-          Investor_Address: Joi.string().min(3).required(),
+          Investor_Address: Joi.string().min(3),
           Locked: Joi.boolean(),
           Status: Joi.string(),
           is_the_external_entities_notified: Joi.boolean(),
