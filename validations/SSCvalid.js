@@ -678,7 +678,7 @@ module.exports = {
       PositionInBOD: Joi.string().valid("Chair","Vice President","Secretary","Treasurer","Past President","Director",
       "Public Relations (PR) Director","Membership Director","Industry, Legislation, Conservation Director",
       "At-Large","Webmaster").required(),
-      Formdate:Joi.date(),
+      
 Locked:Joi.boolean(),
 Status: Joi.string(),
 is_the_external_entities_notified: Joi.boolean(),
@@ -1371,7 +1371,7 @@ BOD_Address: Joi.string(),
 PositionInBOD: Joi.string().valid("Chair","Vice President","Secretary",
 "Treasurer","Past President","Director","ublic Relations (PR) Director","Membership Director",
 "Industry, Legislation, Conservation Director","At-Large","Webmaster"),
-Formdate:Joi.date(),
+
 Lock:Joi.boolean(),
 Status: Joi.string(),
 is_the_external_entities_notified: Joi.boolean(),

@@ -115,7 +115,8 @@ const SSCSchema = new Schema({
         required: true
     },
    Formdate:{
-       type:String,
+       type:Date,
+       default: Date.now,
        
    },
    Locked:{

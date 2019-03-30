@@ -28,6 +28,12 @@ router.post('/', async (req,res) => {
   try {
    const isValidated = validator.createValidation(req.body)
    if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+   const { investorname} = req.body;
+		const form = await Form.findOne({ investorname });
+    if (form) return res.status(400).json({ investorname: 'You can not create 2 SSC companies' });
+    const { Company_name} = req.body;
+		const ssc = await Form.findOne({ Company_name });
+    if (ssc) return res.status(400).json({ Company_name: 'Company name already exists' });
    const NewForm = await SSC.create(req.body)
    res.json({msg:'Form was created successfully', data: NewForm})
   }
