@@ -2,7 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
-
+const cors = require('cors');
 const investor = require('./routes/api/investor')
 
 
@@ -22,7 +22,7 @@ mongoose
 // Init middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-
+app.use(cors());
 
 // Entry point
 app.get('/', (req,res) => res.send(`<h1>investors</h1>`))
