@@ -43,7 +43,7 @@ router.post('/', async (req,res) => {
 // Update a notification
 router.put('/:id', async (req,res) => {
     try {
-     //const id = req.params.id
+     const id = req.params.id
      //const notification = await notification.findOne({id})
      //if(!notification) return res.status(404).send({error: 'notification does not exist'})
      //const isValidated = validator.updateValidation(req.body)
