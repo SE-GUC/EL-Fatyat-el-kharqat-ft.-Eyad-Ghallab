@@ -1129,7 +1129,7 @@ is_the_external_entities_notified: Joi.boolean(),
       "Zimbabwean Bond"
     ),
     capital: Joi.number().integer().min(50000).max(999999999999),
-    investorname: joi.string(),
+    investorname: Joi.string(),
     Investor_type: Joi.valid("Person"),
     Gender: Joi.valid("Female","Male"),
     Nationality: Joi.valid("  Afghan ",
