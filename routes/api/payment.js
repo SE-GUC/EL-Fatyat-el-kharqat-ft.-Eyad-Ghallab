@@ -27,6 +27,35 @@ router.post('/', async (req,res) => {
        console.log(error)
    }  
 })
+//update a reviewer
+router.put('/:id', async (req,res) => {
+    try {
+     const id = req.params.id
+     const payment = await pay.findOne({id})
+     if(!pay) return res.status(404).send({error: 'payment does not exist'})
+     const isValidated = validator.updateValidation(req.body)
+     if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+     const updatedPayment = await pay.updateOne(req.body)
+    res.json({msg: 'payment updated successfully', data:updatedPayment})
+    }
+    catch(error) {
+        // We will be handling the error later
+        console.log(error)
+    }  
+ })
+
+ //delete a paymnet
+ router.delete('/:id', async (req,res) => {
+    try {
+     const id = req.params.id
+     const deletedPayment = await pay.findByIdAndRemove(id)
+     res.json({msg:'payment was deleted successfully', data: deletedPayment})
+    }
+    catch(error) {
+        // We will be handling the error later
+        console.log(error)
+    }  
+ })
 
 
 

@@ -20,6 +20,26 @@ module.exports = {
         }
 
         return Joi.validate(request, createSchema)
-    }
+    },
+    updateValidation: request => {
+        const updateSchema = {
+            Card_type: Joi.string().min(4).max(20),
+            Card_no:Joi.number().min(11111111111111).max(99999999999999),
+            Firstname: Joi.string().min(4).max(15),
+            Lastname: Joi.string().min(4).max(15),
+            Amount: Joi.number().min(10).max(9999999), 
+            Email: Joi.string().min(7).max(500),
+            Phone_number: Joi.string().trim().regex(/^[0-9]{11,11}$/),
+            Street_Address: Joi.string().min(4).max(20),
+            City: Joi.string().min(3).max(10),
+            State_Region: Joi.string().min(3).max(10),
+            Expire_date: Joi.string(),
+            CVC:Joi.number().min(000).max(999),
+            Country:Joi.string().min(3).max(15),
+            Postal_Zipcode:Joi.string().min(3).max(15)
+        }
+
+        return Joi.validate(request, updateSchema)
+    }, 
 }
 
