@@ -1,7 +1,9 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+//const passport = require('passport');
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 const spcforms = require('./routes/api/SPC')
 
@@ -30,7 +32,7 @@ mongoose.set("useCreateIndex", true);
 
     app.use(express.json())
     app.use(express.urlencoded({extended: false}))
-
+app.use(cors());
 
 
 
@@ -47,6 +49,7 @@ app.use('/api/Admin', Admin)
 app.use("/api/Comment", Comment);
 
 app.use("/api/Contract", Contract);
+
 
 
 app.use("/api/Notification", Notification);
