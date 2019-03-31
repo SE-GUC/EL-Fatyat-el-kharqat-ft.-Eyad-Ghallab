@@ -28,13 +28,13 @@ module.exports = {
   
             username: Joi.string(),
             password: Joi.string().min(3).max(100),
-            nationality: Joi.string().required(),
+            nationality: Joi.string(),
             gender:Joi.string().allow('').optional(),
-            birthdate:Joi.date().required(),
-            city: Joi.string().required(),
-            country: Joi.string().required(),
+            birthdate:Joi.date(),
+            city: Joi.string(),
+            country: Joi.string(),
             jobtitle:Joi.string().allow('').optional(),
-            mobilenumber: Joi.string().trim().regex(/^[0-9]{11,11}$/).required(),
+            mobilenumber: Joi.string().trim().regex(/^[0-9]{11,11}$/),
 
 
         }

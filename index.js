@@ -32,7 +32,7 @@ app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
 
 
 
-
+app.use('/api/investors',investor )
 
 
 
