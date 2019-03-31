@@ -7,7 +7,7 @@ const lawyer_funcs={
         
         return lawyers;
     },
-    createLawyer: async() => {
+    CReateLawyer: async() => {
         const schema = {
         "fullname": "Hania gamel",
         "email": "Hania@yahoo.com",
@@ -22,6 +22,35 @@ const lawyer_funcs={
         const lawyer= await axios.post("http://localhost:3000/api/Lawyer/", schema );
         return lawyer;
     },
+    createLawyer: async requestBody => {
+        const lawyer = await axios.post('http://localhost:3000/api/Lawyer/createlawyer', requestBody)
+        return lawyer
+        },
+        getLawyer: async () => {
+            const lawyer = await axios.get('http://localhost:3000/api/Lawyer/')
+            return lawyer
+            },
+        updateLawyer: async (id) => {
+            const lawyer = await axios.put('http://localhost:3000/api/Lawyer/id'+id)
+            return lawyer
+            },
+        deleteLawyer: async (id) => {
+            const lawyer = await axios.delete('http://localhost:3000/api/Lawyer/'+id)
+            return lawyer
+            }, 
+        getSSC: async () => {
+            const ssc = await axios.get('http://localhost:3000/api/Lawyer/find/SSC')
+            return ssc
+             }, 
+        getSPC: async () => {
+            const spc = await axios.get('http://localhost:3000/api/Lawyer/find/SPC')
+            return spc
+             },  
+             getlawyerbyid: async(id) => {
+                const lawyer = await axios.get('http://localhost:3000/api/Lawyer/'+id)
+                return lawyer;
+                }, 
+              
     
 };
 module.exports= lawyer_funcs;
