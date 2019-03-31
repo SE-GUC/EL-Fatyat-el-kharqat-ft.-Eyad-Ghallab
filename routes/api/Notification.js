@@ -5,6 +5,12 @@ const mongoose = require('mongoose')
 const notification = require('../../models/Notification')
 const validator = require('../../validations/Notificationvalid')
 
+const SpcForm = require('../../models/SPC')
+const Form = require('../../models/SSC')
+//const funcs = require('../Functions/Funcs');
+const Validator = require('../../validations/SSCvalid')
+
+
 router.get('/', async (req,res) => {
     const Notifications = await notification.find()
     res.json({msg:'this is the notifications', data: Notifications})
@@ -64,5 +70,73 @@ router.put('/:id', async (req,res) => {
  })
 
  
+
+ router.post('/ssc', async (req,res) => {
+     
+    const Forms = Form.find({status:'rejected'})
+    
+    
+  if( Forms)
+  try {
+   
+   const isValidated = validator.createValidation( {
+   
+   "investor_Email": "test@gmail.com" ,
+   "MSG": "abos edak update el form wenabyyyyy",
+   "reviewer_Name":"aliaa",
+   "notify_number": "2",
+   "User_id": "1"
+ })
+   if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+   const newnotification = await notification.create({
+                "investor_Email": "test@gmail.com" ,
+                "MSG": "abos edak update el form wenabyyyyy",
+                "reviewer_Name":"aliaa",
+                "notify_number": "2",
+                "User_id": "1"
+              })
+   res.json({msg:'A Notification', data: newnotification})
+  }
+  catch(error) {
+     
+      console.log(error)
+  }  
+
+})
+
+router.post('/spc', async (req,res) => {
+  
+   const Forms = SpcForm.find({status:'rejected'})
+   
+   
+ if( Forms)
+ try {
+  
+  const isValidated = validator.createValidation( {
+  
+  "investor_Email": "test@gmail.com" ,
+  "MSG": "abos edak update el form wenabyyyyy",
+  "reviewer_Name":"aliaa",
+  "notify_number": "2",
+  "User_id": "1"
+})
+  if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+  const newnotification = await notification.create({
+               "investor_Email": "test@gmail.com" ,
+               "MSG": "abos edak update el form wenabyyyyy",
+               "reviewer_Name":"aliaa",
+               "notify_number": "2",
+               "User_id": "1"
+             })
+  res.json({msg:'A Notification', data: newnotification})
+ }
+ catch(error) {
+    
+     console.log(error)
+ }  
+
+})
+
+
 
 module.exports = router
