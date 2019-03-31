@@ -7,13 +7,14 @@ const validator = require('../../validations/Notificationvalid')
 
 router.get('/', async (req,res) => {
     const Notifications = await notification.find()
-    res.json({data: Notifications})
+    res.json({msg:'this is the notifications', data: Notifications})
 })
+
 
 router.get('/:User_id', async (req,res) => {
     const User_id = req.params.User_id
     const Notifications = await notification.find({User_id})
-    res.json({data: Notifications})
+    res.json({msg : "Notification was recieved", data: Notifications})
 })
 
 
@@ -25,7 +26,7 @@ router.post('/', async (req,res) => {
      res.json({msg:'notification was created successfully', data: newnotification})
     }
     catch(error) {
-        // We will be handling the error later
+  
         console.log(error)
     }  
  })
