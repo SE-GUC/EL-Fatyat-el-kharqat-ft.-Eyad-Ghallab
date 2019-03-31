@@ -3,10 +3,7 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const commentSchema = new Schema({
- // id: {
-   // type: String,
-   // required:true
-  //},
+
   name: {
     type: String,
     required: true
