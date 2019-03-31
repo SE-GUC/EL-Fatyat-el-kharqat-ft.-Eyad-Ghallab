@@ -3,18 +3,23 @@ const cors = require('cors')
 
 const express = require("express");
 const mongoose = require("mongoose");
+//const passport = require('passport');
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 const spcforms = require('./routes/api/SPC')
 
+
+const Admin = require("./routes/api/Admin")
+
 const Payment = require("./routes/api/payment");
-const Admin = require("./routes/api/Admin");
+
 const updateSSC = require('./routes/api/SSC')
 const Reviewer = require('./routes/api/Reviewer')
 const cors = require('cors');
 const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
-const Comment = require("./routes/api/Comment");
+const Comment = require("./routes/api/Comment")
 
 
 
@@ -28,7 +33,11 @@ const Comment = require("./routes/api/Comment");
 const investor = require('./routes/api/investor')
 
 const Notification = require("./routes/api/Notification");
+
+const Contract=require("./routes/api/Contract")
+
 const ExternalEntities = require('./routes/api/ExternalEntities')
+
 
 
 const app = express()
@@ -58,7 +67,7 @@ app.use(cors());
 
     app.use(express.json())
     app.use(express.urlencoded({extended: false}))
-
+app.use(cors());
 
 
 
@@ -78,6 +87,7 @@ app.use('/api/Admin', Admin)
 
 app.use("/api/Comment", Comment);
 
+app.use("/api/Contract", Contract);
 
 app.use("/api/Payment", Payment);
 app.use('/api/ExternalEntities', ExternalEntities)
