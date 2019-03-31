@@ -1,4 +1,4 @@
-const funcs = require('./functions.js');
+const funcs = require('./fn.js');
 
 test('get External Entity', async () => {
   const Entity =  await funcs.GetEntity();
