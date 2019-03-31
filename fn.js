@@ -1,6 +1,17 @@
 const axios = require("axios");
-axios.defaults.adapter = require("axios/lib/adapters/http");
+axios.defaults.adapter = require("axios/lib/adapters/http")
+
 const functions= {
+      
+	getpayment: async () => {
+    const payment = await axios.get('http://localhost:3000/api/payment/')
+    return payment
+    },
+    createpayment: async requestBody => {
+            const payment = await axios.post('http://localhost:3000/api/payment/',requestBody);
+                return payment;
+                },
+    
 
        
     UpdatePayment: async ()=>{
@@ -20,3 +31,4 @@ const functions= {
         return payment;
     }
 }
+module.exports = functions;
