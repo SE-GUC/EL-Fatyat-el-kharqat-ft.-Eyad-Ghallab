@@ -39,6 +39,22 @@ const functions = {
     );
     return Notification;
   },
+  UpdateNotifications: async ()=>{
+    const schema={
+        Name:"SABA7O"
+    };
+    const Notification = await axios.put(
+      "http://localhost:3000/api/notifications/",
+      schema
+    );
+    return Notification;
+},
+DeleteNotification: async ()=>{
+    const Notification = await axios.delete(
+      "http://localhost:3000/api/notifications/"
+    );
+    return Notification;
+}
 
   
 

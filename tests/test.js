@@ -18,6 +18,16 @@ test("get Notification", async () => {
     const response = await funcs.getNotificationByID();
     expect(response.data.msg).toEqual("Notification was recieved");
   });
+  test("update notification", async()=>{
+    expect.assertions(1);
+    const response = await functions.UpdateNotifications();
+    expect(response.data.msg).toEqual("notification updated successfully");
+});
+test("Delete notification",async()=>{
+    expect.assertions(1);
+    const response = await functions.DeleteNotification();
+    expect(response.data.msg).toEqual("notification was deleted successfully");
+});
 
 
 
