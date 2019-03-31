@@ -103,13 +103,13 @@ router.post('/', async (req,res) => {
 router.put('/:id', async (req,res) => {
   try {
     
-  /* const id = req.params.id
-   const form = await SSC.findOne({id})
+  // const id = req.params.id
+   const form = await SSC.findOne(req.params.id)
    if(!form) return res.status(404).send({error: 'form does not exist'})
    const isValidated = validator.updateValidation(req.body)
-   if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })*/
-   const updatedform = await SSC.updateOne(req.body)
-   res.json({msg: 'Form updated successfully'})
+   if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+   const updatedform = await form.updateOne(req.body)
+   res.json({msg: 'Form updated successfully'},updatedform)
   }
   catch(error) {
       // We will be handling the error later
