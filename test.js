@@ -1,5 +1,5 @@
 
-const Contract_funcs = require('./Contract_funcs');
+const Contract_funcs = require('./fn');
 
 test("Getting all contracts", async () => {
     expect.assertions(1);
