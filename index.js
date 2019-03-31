@@ -19,13 +19,19 @@ const Reviewer = require('./routes/api/Reviewer')
 const cors = require('cors');
 const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
-const Comment = require("./routes/api/Comment")
+
+
+const Comment = require("./routes/api/Comment");
+
 
 
 
 //const books = require('./routes/api/books')
 
 
+
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 
 
 
@@ -42,6 +48,7 @@ const ExternalEntities = require('./routes/api/ExternalEntities')
 
 const app = express()
 const db = require('./config/keys').mongoURI
+
 
 mongoose
   .connect(db, { useNewUrlParser: true }) 
@@ -93,20 +100,24 @@ app.use("/api/Payment", Payment);
 app.use('/api/ExternalEntities', ExternalEntities)
 
 
+//app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
+
+
+//const port = process.env.PORT || 3000
+//app.listen(port, () => console.log(`Server on ${port}`))
+
 
 app.use("/api/Notification", Notification);
 app.use('/api/SPC', spcforms)
 
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
 
-app.use('/api/investors',investor )
 
 
 
 
 app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
 const port = process.env.PORT || 3000;
+
 
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
