@@ -8,11 +8,24 @@ const Payment = require("./routes/api/payment");
 const Admin = require("./routes/api/Admin");
 const updateSSC = require('./routes/api/SSC')
 const Reviewer = require('./routes/api/Reviewer')
+const cors = require('cors');
 const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
 const Comment = require("./routes/api/Comment");
 
+
+//const books = require('./routes/api/books')
+
+
+
+
+
+
+const investor = require('./routes/api/investor')
+
 const Notification = require("./routes/api/Notification");
+const ExternalEntities = require('./routes/api/ExternalEntities')
+
 
 const app = express()
 const db = require('./config/keys').mongoURI
@@ -24,6 +37,9 @@ mongoose
 mongoose.set("useCreateIndex", true);
 
 
+// Init middleware
+
+app.use(cors());
 
 
 
@@ -33,7 +49,11 @@ mongoose.set("useCreateIndex", true);
 
 
 
+app.get('/', (req,res) => res.send(`<h1>Welcome </h1>
+<a href="/api/SSC"> Your Companies</a>`))
+
 app.get('/', (req,res) => res.send(`<h1>Sumerge </h1>`))
+Developer
 app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
 app.use(bodyParser.json());
 
@@ -45,7 +65,10 @@ app.use('/api/Admin', Admin)
 
 app.use("/api/Comment", Comment);
 
+
 app.use("/api/Payment", Payment);
+app.use('/api/ExternalEntities', ExternalEntities)
+
 
 
 app.use("/api/Notification", Notification);
@@ -54,6 +77,7 @@ app.use('/api/SPC', spcforms)
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
+app.use('/api/investors',investor )
 
 
 
