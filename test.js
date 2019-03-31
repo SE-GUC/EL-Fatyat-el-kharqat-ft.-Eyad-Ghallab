@@ -1,18 +1,51 @@
 
-const functions = require("./fn");
+const funcs = require('./fn');
+
+
+test("get Notification", async () => {
+  expect.assertions(1);
+  const response = await funcs.getNotification();
+  expect(response.data.msg).toEqual("this is the notifications");
+});
+
+test("Create Notification", async () => {
+  expect.assertions(2);
+  const response = await funcs.getNotification();
+  const oldlength = response.data.data.length;
+  const response1 = await funcs.CreateNotification();
+  const response2 = await funcs.getNotification();
+  expect(response1.data.msg).toEqual("notification was created successfully");
+  expect(response2.data.data.length).toEqual(oldlength + 1 )
+});
+test("get Notification By ID", async () => {
+  expect.assertions(1);
+  const response = await funcs.getNotificationByID();
+  expect(response.data.msg).toEqual("Notification was recieved");
+});
+
+  test("update notification", async()=>{
+    expect.assertions(1);
+    const response = await funcs.UpdateNotifications();
+    expect(response.data.msg).toEqual("notification updated successfully");
+});
+test("Delete notification",async()=>{
+    expect.assertions(1);
+    const response = await funcs.DeleteNotification();
+    expect(response.data.msg).toEqual("notification was deleted successfully");
+});
 
 
 test('getting Payments', async () => {
   
-  const allpayments =  await functions.getpayment();
+  const allpayments =  await funcs.getpayment();
   expect(allpayments.data.data.length).toBeGreaterThan(0);
 
 });
 test ("creating Payments",async () => {
   expect.assertions(2)
-  const response= await functions.getpayment();
+  const response= await funcs.getpayment();
   const oldLength = response.data.data.length;  
-  const response1 = await functions.createpayment({
+  const response1 = await funcs.createpayment({
           
         "Card_type": "debit",
         "Card_no": [57874312345],
@@ -31,11 +64,11 @@ test ("creating Payments",async () => {
         
     });
     expect(response1.data.msg).toEqual('Payment was created successfully')
-      const response2 = await functions.getpayment();
+      const response2 = await funcs.getpayment();
 
 test("Getting all reviewers", async () => {
     expect.assertions(1);
-    const allReviewers = await functions.getReviewer();
+    const allReviewers = await funcs.getReviewer();
     expect(allReviewers.data.msg).toEqual("these are the reviewers");
     
 });
@@ -56,9 +89,9 @@ test("Getting all forms", async () => {
 
 
   test ("creating Reviewers",async () => {
-    const response= await functions.getReviewer();
+    const response= await funcs.getReviewer();
     const oldLength = response.data.data.length;  
-    const response1 = await functions.createReviewer({
+    const response1 = await funcs.createReviewer({
         "Name":"MennaHossam",
         "Email":"MennaHossam127@gmail.com",
         "Username":"Menna",
@@ -68,7 +101,7 @@ test("Getting all forms", async () => {
 
       })
       expect(response1.data.msg).toEqual('Reviewer was created successfully')
-      const response2 = await functions.getReviewer();
+      const response2 = await funcs.getReviewer();
 
     
       expect(response2.data.data.length).toEqual(oldLength + 1);
@@ -78,12 +111,12 @@ test("Getting all forms", async () => {
 
 test("update payment", async()=>{
     expect.assertions(1);
-    const response = await functions.UpdatePayment();
+    const response = await funcs.UpdatePayment();
     expect(response.data.msg).toEqual("payment updated successfully");
 });
 test("Delete payment",async()=>{
     expect.assertions(1);
-    const response = await functions.Deletepayment();
+    const response = await funcs.Deletepayment();
     expect(response.data.msg).toEqual("payment was deleted successfully");
 });
 
@@ -91,12 +124,12 @@ test("Delete payment",async()=>{
 
 test("update Reviewer", async()=>{
     expect.assertions(1);
-    const response = await functions.UpdateReviewer();
+    const response = await funcs.UpdateReviewer();
     expect(response.data.msg).toEqual("reviewer updated successfully");
 });
 test("Delete reviwer",async()=>{
     expect.assertions(1);
-    const response = await functions.DeleteReviewer();
+    const response = await funcs.DeleteReviewer();
     expect(response.data.msg).toEqual("reviewer was deleted successfully");
 });
 
@@ -428,6 +461,7 @@ Lock:"true"
     
     
     
+
 
 
 
