@@ -1,3 +1,4 @@
+
 const funcs = require('./fn.js');
 
 test('get External Entity', async () => {
@@ -61,3 +62,24 @@ test("get admin", async () => {
       const response = await funcs.DeleteAdmins();
       expect(response.data.msg).toEqual("Admin was deleted successfully");
     });
+
+test("get comment", async () => {
+  expect.assertions(1);
+  const response = await funcs.getComments();
+  expect(response.data.msg).toEqual("comment was recieved");
+});
+test("Create comment", async () => {
+  expect.assertions(1);
+  const response = await funcs.CreateComments();
+  expect(response.data.msg).toEqual("Comment was created successfully");
+});
+test("Update comment", async () => {
+    expect.assertions(1);
+    const response = await funcs.UpdateComments();
+    expect(response.data.msg).toEqual("Comment updated successfully");
+  });
+  test("Delete comment", async () => {
+    expect.assertions(1);
+    const response = await funcs.DeleteComments();
+    expect(response.data.msg).toEqual("Comment was deleted successfully");
+  });

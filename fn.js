@@ -2,44 +2,48 @@ const axios = require("axios");
 axios.defaults.adapter = require("axios/lib/adapters/http");
 
 const functions = {
-       
-	GetEntity: async () => {
+  getComments: async () => {
+    const schema = {
+      name: "adasd"
+    }; // to add schema if post or put
+    const comment = await axios.get(
+      "http://localhost:3000/api/Comment/5c9e38939113afcd6f20ec5e" //get the comment
+    );
+    return comment;
+  },
 
-        const Entity = await axios.get('http://localhost:5353/api/ExternalEntities')
-        return Entity
-        },
-        
-        PostEntity: async () => {
-                const schema ={  
-                        name:"Mary",
-                        username:"ammar_ah",
-                        password:"ahumkcnsjkabjhbssnaknsdk"
-                };
-                const Entity= await axios.post('http://localhost:5353/api/ExternalEntities/' , schema)
-                return Entity
-                },
+  CreateComments: async () => {
+    const schema = {
+      name: "Ghallab",
+      comment: "newnew"
+    };
+    const comment = await axios.post(
+      "http://localhost:3000/api/Comment/",
+      schema
+    );
+    return comment;
+  },
+  UpdateComments: async () => {
+    const schema = {
+      name: "omar"
+    };
+    const comment = await axios.put(
+      "http://localhost:3000/api/Comment/5c9e32e48155cecd3ff121a9",
+      schema
+    );
+    return comment;
+  },
+  DeleteComments: async () => {
+    const comment = await axios.delete(
+      "http://localhost:3000/api/Comment/5c9e32e48155cecd3ff121a9"
+    );
+    return comment;
 
-                PutEntity: async () => {
-                        const schema ={  
-                                name: "ghallab",
-                                username: "mariam-amer",
-                                password: "2324355"
-        
-                        };
-                        const Entity = await axios.put('http://localhost:5353/api/ExternalEntities/5c9ffc9f364a8b2010aef4cc' , schema)
-                        return Entity
-                        },
-
-                        DeleteEntity: async () => {
-                        
-                                const Entity = await axios.delete('http://localhost:5353/api/ExternalEntities/5c9ffc9f364a8b2010aef4cc')
-                                return Entity
-                                },
-
+}
+  
 
 
-
-  getAdmins: async () => {
+ getAdmins: async () => {
     const schema = {
       name: "adasd"
     }; // to add schema if post or put
@@ -80,7 +84,44 @@ const functions = {
     );
     return comment;
 
-}};
+}
 
+
+GetEntity: async () => {
+
+        const Entity = await axios.get('http://localhost:5353/api/ExternalEntities')
+        return Entity
+        },
+        
+        PostEntity: async () => {
+                const schema ={  
+                        name:"Mary",
+                        username:"ammar_ah",
+                        password:"ahumkcnsjkabjhbssnaknsdk"
+                };
+                const Entity= await axios.post('http://localhost:5353/api/ExternalEntities/' , schema)
+                return Entity
+                },
+
+                PutEntity: async () => {
+                        const schema ={  
+                                name: "ghallab",
+                                username: "mariam-amer",
+                                password: "2324355"
+        
+                        };
+                        const Entity = await axios.put('http://localhost:5353/api/ExternalEntities/5c9ffc9f364a8b2010aef4cc' , schema)
+                        return Entity
+                        },
+
+                        DeleteEntity: async () => {
+                        
+                                const Entity = await axios.delete('http://localhost:5353/api/ExternalEntities/5c9ffc9f364a8b2010aef4cc')
+                                return Entity
+                                },
+
+
+}
 
 module.exports = functions
+
