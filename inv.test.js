@@ -33,39 +33,41 @@ test("Creating an investor", async ()=>{
     },100000);
 
 
+    test("Creating a investor then updating it", async ()=>{
+        //   expect.assertions(2);
+           //const response= await Inv_funcs.getInvestors();
+          // const oldLength = response.data.data.length;  
+           const created = await Inv_funcs.createInvestor({
+            name: "Farah Hossam",
+            email: "farah@gmail.com",
+            username: "FarahRashed",
+            password:"1258",
+            nationality:"Egyptain",
+            gender:"Female",
+            birthdate:"1/1/2002",   
+            city:"Cairo",
+            country:"Egypt",
+            jobtitle:"Doctor",
+            mobilenumber:"01235698748"
+              })
+           const updated =  {name: "a3tmad"}
+           const response1= await Inv_funcs.updateInvestor(created.data.data._id,updated)
+   
+                const allContracts = await Inv_funcs.getInvestorbyid(created.data.data._id)
+               //const response3= await Inv_funcs.getInvestors();
+              // response3= await Inv_funcs.getInvestors();
+             expect(allContracts.data.data.name).toEqual("a3tmad");
+              expect(allContracts.data.data.gender).toEqual(created.data.data.gender);
+   
+           // });
+           
+           },100000);
+   
+   
 
-    // test("Creating an investor then updating it", async ()=>{
-    //     expect.assertions(2);
-    //     //const response= await Inv_funcs.getInvestors();
-    //    // const oldLength = response.data.data.length;  
-    //     const created = await Inv_funcs.createInvestor({
-    //         "name" : "AAAA Hossam",
-    //         "email": "farah@gmail.com",
-    //         "username": "FarahRashed",
-    //         "password":"1258",
-    //         "nationality":"Egyptain",
-    //         "gender":"Female",
-    //         "birthdate":"1/1/2002",   
-    //         "city":"Cairo",
-    //         "country":"Egypt",
-    //         "jobtitle":"Doctor",
-    //         "mobilenumber":"01235698748"});
-        
-    //     //expect(response1.data.msg).toEqual('investor was created successfully');
-    //     //const response2 = await Inv_funcs.getInvestors();
-    //     //expect(response2.data.data.length).toEqual(oldLength + 1);
-        
 
-    //     const response1= await Inv_funcs.updateInvestor(created.data.data._id, {"name" : "Hana Hossam"})
-            
-    //         //const response3= await Inv_funcs.getInvestors();
-    //        // response3= await Inv_funcs.getInvestors();
-    //         expect(response1.data.data.name).toEqual("Hana Hossam");
-    //         expect(response1.data.data.email).toEqual(response1.data.data.email);
 
-    //     // });
-        
-    //     },100000);
+
 
 
 

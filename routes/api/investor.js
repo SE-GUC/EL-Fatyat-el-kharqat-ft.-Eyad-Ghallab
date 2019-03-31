@@ -10,11 +10,19 @@ const validator = require('../../validations/investorvalid')
 
 // const tokenKey = require('../../config/keys').secretOrKey
 
+
+
+
 router.get('/', async (req,res) => {
     const investors = await inv.find()
     res.json({data: investors})
 
 
+})
+
+router.get('/:id', async (req,res) => {
+    const Investor = await inv.findById(req.params.id)
+   res.json({data : Investor})
 })
 
 
