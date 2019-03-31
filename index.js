@@ -27,10 +27,10 @@ const investor = require('./routes/api/investor')
 
 
 // const express = require('express')
-const app = express()
+//const app = express()
 
 // DB Config
-const db = require('./config/keys').mongoURI
+//const db = require('./config/keys').mongoURI
 
 // Connect to mongo
 mongoose
@@ -66,13 +66,13 @@ app.use((req, res) => {
  })
 
 
-const port = 3000
+const port = 4000
 app.listen(port, () => console.log(`Server up and running on port ${port}`))
 //=======
-app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
+//app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
 
 
-const port = process.env.PORT || 3000
-app.listen(port, () => console.log(`Server on ${port}`))
+//const port = process.env.PORT || 3000
+//app.listen(port, () => console.log(`Server on ${port}`))
 
 
