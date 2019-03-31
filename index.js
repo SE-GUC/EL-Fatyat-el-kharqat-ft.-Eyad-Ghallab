@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const spcforms = require('./routes/api/SPC')
-
+const Payment = require("./routes/api/payment");
 const Admin = require("./routes/api/Admin");
 const updateSSC = require('./routes/api/SSC')
 const Reviewer = require('./routes/api/Reviewer')
@@ -65,7 +65,10 @@ app.use('/api/Admin', Admin)
 
 app.use("/api/Comment", Comment);
 
+
+app.use("/api/Payment", Payment);
 app.use('/api/ExternalEntities', ExternalEntities)
+
 
 
 app.use("/api/Notification", Notification);
