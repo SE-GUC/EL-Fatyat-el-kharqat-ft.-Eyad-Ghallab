@@ -10,7 +10,6 @@ const functions = {
     );
     return comment;
   },
-
   CreateAdmins: async () => {
     const schema = {
       "id":"22",
