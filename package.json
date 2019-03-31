@@ -1,11 +1,16 @@
 {
+
+  "name": "el-fatyat-el-kharqat-ft.-eyad-ghallab",
+
   "name": "express-test",
+
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
 
 //    "test": "jest"
+
 
 
 
@@ -25,6 +30,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "i": "^0.3.6",
+    "install": "^0.12.2",
+    "jest": "^24.1.0",
+    "joi": "^14.3.1",
+    "mongoose": "^5.4.19",
+    "nodemon": "^1.18.10"
+  
+
+
 
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
@@ -103,6 +122,7 @@
 
 
   "description": ""
+
 
 
 }

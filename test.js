@@ -1,5 +1,6 @@
 
 
+
 const funcs = require ('./fn');
 
 
@@ -63,6 +64,52 @@ test("Creating an lawyer then deleting it", async ()=>{
         response1.data.data._id);
         response3= await funcs.getLawyer();
         expect(response3.data.data.length).toEqual(oldLength);
+
+test("Getting all contracts", async () => {
+    expect.assertions(1);
+    const allContracts = await funcs.getContracts()
+    expect(allContracts.data.data.length).toBeGreaterThan(0)
+    
+},100000)
+
+test("Creating a contract", async ()=>{
+    expect.assertions(2);
+    const response= await funcs.getContracts();
+    const oldLength = response.data.data.length;  
+    const response1 = await funcs.createContract({
+        "First_party_name": "zefta",
+        "Second_party_name": "bbb",
+        "First_party_address": "aaa",
+        "Second_party_address": "sssss",
+        "Day": "7",
+        "Month": "12",
+        "Year": "12",
+        "Time": "1/2/2002",
+        "Corporate_name": "Aaaa",
+        "Corporate_governorate": "Domiat",
+        "Corporate_city": "Abnūb",
+        "Corporate_address": "aaaa",
+        "Corporate_Phone_Number": "aaa",
+        "Investor_name": "aaa",
+        "Investor_address": "aann",
+        "Investor_ID": "ss",
+        "Investor_nationality": "Albanian",
+        "Investor_DOB": "2/2/1992",
+        "Investor_phone_number": "Aaa",
+        "Investor_Fax": "Aaaa",
+        "Investor_email": "aaaaaa",
+        "Main_business_activity": "aaa",
+        "Other_activities": "aaaa",
+        "Duration_of_the_company": "111",
+        "Initial_capital": "500000",
+        "Capital_Currency": "Malagasy ariary",
+        "Status": "Sent",
+        "Type_of_form": "SPC"});
+    
+    expect(response1.data.msg).toEqual('Contract was created successfully');
+    const response2 = await funcs.getContracts();
+
+
 
 
 test ('Getting all forms' , async () => {
@@ -475,10 +522,142 @@ test("Creating an investor", async ()=>{
     expect(response1.data.msg).toEqual('investor was created successfully');
     const response2 = await funcs.getInvestors();
 
+
     expect(response2.data.data.length).toEqual(oldLength + 1);
     
     },100000);
 
+
+
+    // test("Updating contract", async () => {
+    //     expect.assertions(1);
+    //     const contract = await Contract_funcs.updateContract();
+    //     expect(response.data.msg).toEqual("Contract was created successfully")
+    // }
+    // )
+
+
+
+    // test("Creating a contract then updating it", async ()=>{
+    //    //expect.assertions(2);
+        
+    //    // const oldLength = response.data.data.length;  
+    //     const created = await Contract_funcs.createContract({
+    //         First_party_name: "zefta",
+    //             Second_party_name: "bbb",
+    //             First_party_address: "aaa",
+    //             Second_party_address: "sssss",
+    //          Day: "7",
+    //             Month: "12",
+    //             Year: "12",
+    //             Time: "1/2/2002",
+    //             Corporate_name: "Aaaa",
+    //             Corporate_governorate: "Domiat",
+    //             Corporate_city: "Abnūb",
+    //             Corporate_address: "aaaa",
+    //             Corporate_Phone_Number: "aaa",
+    //             Investor_name: "aaa",
+    //             Investor_address: "aann",
+    //             Investor_ID: "ss",
+    //             Investor_nationality: "Albanian",
+    //             Investor_DOB: "2/2/1992",
+    //             Investor_phone_number: "Aaa",
+    //             Investor_Fax: "Aaaa",
+    //             Investor_email: "aaaaaa",
+    //             Main_business_activity: "aaa",
+    //         Other_activities: "aaaa",
+    //             Duration_of_the_company: "111",
+    //             Initial_capital: "600000",
+    //             Capital_Currency: "Malagasy ariary",
+    //             Status: "Sent",
+    //             Type_of_form: "SPC"});
+    //   //  const response= await Contract_funcs.getContracts();
+
+    //     const response1= await Contract_funcs.updateContract(
+    //         {
+        //         First_party_name: "Hossam",
+        //         Second_party_name: "bbb",
+        //         First_party_address: "aaa",
+        //         Second_party_address: "sssss",
+        //      Day: "7",
+        //         Month: "12",
+        //         Year: "12",
+        //         Time: "1/2/2002",
+        //         Corporate_name: "Aaaa",
+        //         Corporate_governorate: "Domiat",
+        //         Corporate_city: "Abnūb",
+        //         Corporate_address: "aaaa",
+        //         Corporate_Phone_Number: "aaa",
+        //         Investor_name: "aaa",
+        //         Investor_address: "aann",
+        //         Investor_ID: "ss",
+        //         Investor_nationality: "Albanian",
+        //         Investor_DOB: "2/2/1992",
+        //         Investor_phone_number: "Aaa",
+        //         Investor_Fax: "Aaaa",
+        //         Investor_email: "aaaaaa",
+        //         Main_business_activity: "aaa",
+        //     Other_activities: "aaaa",
+        //         Duration_of_the_company: "111",
+        //         Initial_capital: "600000",
+        //         Capital_Currency: "Malagasy ariary",
+        //         Status: "Sent",
+        //         Type_of_form: "SPC"},
+        //         created.data.data._id
+        // );
+        
+            
+    //         //const response3= await Inv_funcs.getInvestors();
+    //        // response3= await Inv_funcs.getInvestors();
+    //         expect(response1.data.data.First_party_name).toEqual("Hossam");
+    //         expect(response1.data.data.Status).toEqual(created.data.data.Status);
+
+    //     // });
+        
+    //     },100000);
+test("Creating a contract then updating it", async ()=>{
+     //   expect.assertions(2);
+        //const response= await Inv_funcs.getInvestors();
+       // const oldLength = response.data.data.length;  
+        const created = await Contract_funcs.createContract({
+            First_party_name: "Hossam",
+            Second_party_name: "bbb",
+            First_party_address: "aaa",
+            Second_party_address: "sssss",
+         Day: "7",
+            Month: "12",
+            Year: "12",
+            Time: "1/2/2002",
+            Corporate_name: "Aaaa",
+            Corporate_governorate: "Domiat",
+            Corporate_city: "Abnūb",
+            Corporate_address: "aaaa",
+            Corporate_Phone_Number: "aaa",
+            Investor_name: "aaa",
+            Investor_address: "aann",
+            Investor_ID: "ss",
+            Investor_nationality: "Albanian",
+            Investor_DOB: "2/2/1992",
+            Investor_phone_number: "Aaa",
+            Investor_Fax: "Aaaa",
+            Investor_email: "aaaaaa",
+            Main_business_activity: "aaa",
+        Other_activities: "aaaa",
+            Duration_of_the_company: "111",
+            Initial_capital: "600000",
+            Capital_Currency: "Malagasy ariary",
+            Status: "Sent",
+            Type_of_form: "SPC"})
+        const updated =  {First_party_name: "Hossam"}
+        const response1= await Contract_funcs.updateContract(created.data.data._id,updated)
+
+             const allContracts = await Contract_funcs.getContractsbyid(created.data.data._id)
+            //const response3= await Inv_funcs.getInvestors();
+           // response3= await Inv_funcs.getInvestors();
+          expect(allContracts.data.data.First_party_name).toEqual("Hossam");
+           expect(allContracts.data.data.Status).toEqual(created.data.data.Status);
+
+        // });
 
 
     test("Creating a investor then updating it", async ()=>{
@@ -557,9 +736,53 @@ test("Creating an investor", async ()=>{
             response1.data.data._id);
             response3= await funcs.getForms();
             expect(response3.data.data.length).toEqual(oldLength);
+
         },100000);
 
 
+
+
+
+
+
+
+    test("Creating a contract then deleting it", async ()=>{
+        expect.assertions(1);
+        const response= await funcs.getContracts();
+        const oldLength = response.data.data.length;  
+        const response1 = await funcs.createContract({
+            "First_party_name": "zefta",
+            "Second_party_name": "bbb",
+            "First_party_address": "aaa",
+            "Second_party_address": "sssss",
+            "Day": "7",
+            "Month": "12",
+            "Year": "12",
+            "Time": "1/2/2002",
+            "Corporate_name": "Aaaa",
+            "Corporate_governorate": "Domiat",
+            "Corporate_city": "Abnūb",
+            "Corporate_address": "aaaa",
+            "Corporate_Phone_Number": "aaa",
+            "Investor_name": "aaa",
+            "Investor_address": "aann",
+            "Investor_ID": "ss",
+            "Investor_nationality": "Albanian",
+            "Investor_DOB": "2/2/1992",
+            "Investor_phone_number": "Aaa",
+            "Investor_Fax": "Aaaa",
+            "Investor_email": "aaaaaa",
+            "Main_business_activity": "aaa",
+            "Other_activities": "aaaa",
+            "Duration_of_the_company": "111",
+            "Initial_capital": "500000",
+            "Capital_Currency": "Malagasy ariary",
+            "Status": "Sent",
+            "Type_of_form": "SPC"});
+
+        const response2= await funcs.DeleteContract(
+            response1.data.data._id);
+            response3= await funcs.getContracts();
 
 test("Creating a form then updating it", async ()=>{
            
@@ -631,6 +854,7 @@ Lock:"true"
         const response2= await funcs.DeleteInvestor(
             response1.data.data._id);
             response3= await funcs.getInvestors();
+
             expect(response3.data.data.length).toEqual(oldLength);
         
         },100000);
