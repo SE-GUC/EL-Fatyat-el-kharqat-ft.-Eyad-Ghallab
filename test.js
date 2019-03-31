@@ -21,7 +21,7 @@ test("Getting all lawyers", async () => {
     const allLawyers = await funcs.getLawyers()
     expect(allLawyers.data.data.length).toBeGreaterThan(0)
     
-})
+});
 test("Getting unloced ssc", async () => {
     expect.assertions(1);
     const allssc = await funcs.getSSC()
@@ -29,7 +29,7 @@ test("Getting unloced ssc", async () => {
 
     //expect(allssc.data.data.Loceked).toEqual(false)
     
-})
+});
 test("Getting unloced spc", async () => {
     expect.assertions(1);
     const allspc = await funcs.getSPC()
@@ -37,7 +37,7 @@ test("Getting unloced spc", async () => {
     expect(allspc.data.data.length).toBeGreaterThan(0)
 
     
-})
+});
 
    
 test("Creating an lawyer then deleting it", async ()=>{
@@ -63,14 +63,14 @@ test("Creating an lawyer then deleting it", async ()=>{
     const response2= await funcs.deleteLawyer(
         response1.data.data._id);
         response3= await funcs.getLawyer();
-        expect(response3.data.data.length).toEqual(oldLength);
+        expect(response3.data.data.length).toEqual(oldLength);});
 
 test("Getting all contracts", async () => {
     expect.assertions(1);
     const allContracts = await funcs.getContracts()
     expect(allContracts.data.data.length).toBeGreaterThan(0)
     
-},100000)
+},100000);
 
 test("Creating a contract", async ()=>{
     expect.assertions(2);
@@ -107,7 +107,7 @@ test("Creating a contract", async ()=>{
         "Type_of_form": "SPC"});
     
     expect(response1.data.msg).toEqual('Contract was created successfully');
-    const response2 = await funcs.getContracts();
+    const response2 = await funcs.getContracts();});
 
 
 
@@ -117,7 +117,7 @@ test ('Getting all forms' , async () => {
   const form =  await funcs.getSpcForms()
   expect(form.data.data.length).toBeGreaterThan(0)
 
-})
+});
 test('User Story', async () => {
     expect.assertions(1)
     const form1 =  await funcs.getUserStory()
@@ -129,7 +129,7 @@ test('User Story', async () => {
     const response= await funcs.getSpcForms();
     const oldLength = response.data.data.length;  
     const response1 = await funcs.createForm({
-      "Facility_name": "araf7",
+      "Facility_name": "nawal",
       "Governorate": "cairo",
       "City": "Abnūb",
       "Facility_Address": "8 st hassanen abdel kader,Nasr city",
@@ -164,7 +164,7 @@ test('User Story', async () => {
     const response = await funcs.getSpcForms();
     const oldLength = response.data.data.length;
     const response1 = await funcs.createForm({
-           "Facility_name": "kzz17",
+           "Facility_name": "madeehehhe",
             "Governorate": "cairo",
             "City": "Abnūb",
             "Facility_Address": "8 st hassanen abdel kader,Nasr city",
@@ -193,43 +193,7 @@ test('User Story', async () => {
      response3 = await funcs.getSpcForms();
     expect(response3.data.data.length).toEqual(oldLength);
   });
-  // test("Creating a form then updating it", async ()=>{
-  //   expect.assertions(2)
-  //      const created = await funcs.createForm({
-  //       "Facility_name": "lala",
-  //       "Governorate": "cairo",
-  //       "City": "Abnūb",
-  //       "Facility_Address": "8 st hassanen abdel kader,Nasr city",
-  //       "Facility_Phone_Number": "01289502264",
-  //       "Fax": "2347859",
-  //       "Capital_Currency": "Euro",
-  //       "capital": 60000,
-  //       "investorname": "Ashraf",
-  //       "Gender": "Female",
-  //       "Nationality": "Egyptian",
-  //       "TypeOf_IdentityProof": "NationalID",
-  //       "investor_nationalid": "29712310101728",
-  //       "BirthDate": "1997-03-21T22:00:00.000Z",
-  //       "Phone_Number": "01093654354",
-  //       "Investor_Fax": "247852",
-  //       "email": "hana@hotmail.com",
-  //       "Investor_Address": "Madinaty B1",
-  //       "Locked": "false",
-  //       "Status": "accepted",
-  //       "is_the_external_entities_notified": "true",})
-  //      const updated =  {"Facility_name": "lala"}
-  //      const response1= await funcs.updateForm(created.data.data._id,updated)
-
-  //           const allForms = await funcs.getFormbyid(created.data.data._id)
-    
-  //        expect(allForms.data.data.Facility_name).toEqual("lala");
-  //         expect(allForms.data.data.Status).toEqual(created.data.data.Status);
-
-       
-       
-  //      });
-
-
+  
 test("get Notification", async () => {
   expect.assertions(1);
   const response = await funcs.getNotification();
@@ -292,23 +256,23 @@ test ("creating Payments",async () => {
         
     });
     expect(response1.data.msg).toEqual('Payment was created successfully')
-      const response2 = await funcs.getpayment();
+      const response2 = await funcs.getpayment();});
 
 test("Getting all reviewers", async () => {
     expect.assertions(1);
     const allReviewers = await funcs.getReviewer();
-    expect(allReviewers.data.msg).toEqual("these are the reviewers");
+    expect(allReviewers.data.data.length).toBeGreaterThan(0)
     
 });
 
 
-const funcs = require('./fn');
+
 test("Getting all forms", async () => {
     expect.assertions(1);
     const allforms = await funcs.getForms()
     expect(allforms.data.data.length).toBeGreaterThan(0)
     
-})
+});
 
 
 
@@ -500,7 +464,7 @@ test("Getting all investors", async () => {
     const allInvestors = await funcs.getInvestors()
     expect(allInvestors.data.data.length).toBeGreaterThan(0)
     
-},100000)
+},100000);
 
 test("Creating an investor", async ()=>{
     expect.assertions(2);
@@ -527,100 +491,12 @@ test("Creating an investor", async ()=>{
     
     },100000);
 
-
-
-    // test("Updating contract", async () => {
-    //     expect.assertions(1);
-    //     const contract = await Contract_funcs.updateContract();
-    //     expect(response.data.msg).toEqual("Contract was created successfully")
-    // }
-    // )
-
-
-
-    // test("Creating a contract then updating it", async ()=>{
-    //    //expect.assertions(2);
-        
-    //    // const oldLength = response.data.data.length;  
-    //     const created = await Contract_funcs.createContract({
-    //         First_party_name: "zefta",
-    //             Second_party_name: "bbb",
-    //             First_party_address: "aaa",
-    //             Second_party_address: "sssss",
-    //          Day: "7",
-    //             Month: "12",
-    //             Year: "12",
-    //             Time: "1/2/2002",
-    //             Corporate_name: "Aaaa",
-    //             Corporate_governorate: "Domiat",
-    //             Corporate_city: "Abnūb",
-    //             Corporate_address: "aaaa",
-    //             Corporate_Phone_Number: "aaa",
-    //             Investor_name: "aaa",
-    //             Investor_address: "aann",
-    //             Investor_ID: "ss",
-    //             Investor_nationality: "Albanian",
-    //             Investor_DOB: "2/2/1992",
-    //             Investor_phone_number: "Aaa",
-    //             Investor_Fax: "Aaaa",
-    //             Investor_email: "aaaaaa",
-    //             Main_business_activity: "aaa",
-    //         Other_activities: "aaaa",
-    //             Duration_of_the_company: "111",
-    //             Initial_capital: "600000",
-    //             Capital_Currency: "Malagasy ariary",
-    //             Status: "Sent",
-    //             Type_of_form: "SPC"});
-    //   //  const response= await Contract_funcs.getContracts();
-
-    //     const response1= await Contract_funcs.updateContract(
-    //         {
-        //         First_party_name: "Hossam",
-        //         Second_party_name: "bbb",
-        //         First_party_address: "aaa",
-        //         Second_party_address: "sssss",
-        //      Day: "7",
-        //         Month: "12",
-        //         Year: "12",
-        //         Time: "1/2/2002",
-        //         Corporate_name: "Aaaa",
-        //         Corporate_governorate: "Domiat",
-        //         Corporate_city: "Abnūb",
-        //         Corporate_address: "aaaa",
-        //         Corporate_Phone_Number: "aaa",
-        //         Investor_name: "aaa",
-        //         Investor_address: "aann",
-        //         Investor_ID: "ss",
-        //         Investor_nationality: "Albanian",
-        //         Investor_DOB: "2/2/1992",
-        //         Investor_phone_number: "Aaa",
-        //         Investor_Fax: "Aaaa",
-        //         Investor_email: "aaaaaa",
-        //         Main_business_activity: "aaa",
-        //     Other_activities: "aaaa",
-        //         Duration_of_the_company: "111",
-        //         Initial_capital: "600000",
-        //         Capital_Currency: "Malagasy ariary",
-        //         Status: "Sent",
-        //         Type_of_form: "SPC"},
-        //         created.data.data._id
-        // );
-        
-            
-    //         //const response3= await Inv_funcs.getInvestors();
-    //        // response3= await Inv_funcs.getInvestors();
-    //         expect(response1.data.data.First_party_name).toEqual("Hossam");
-    //         expect(response1.data.data.Status).toEqual(created.data.data.Status);
-
-    //     // });
-        
-    //     },100000);
 test("Creating a contract then updating it", async ()=>{
      //   expect.assertions(2);
         //const response= await Inv_funcs.getInvestors();
        // const oldLength = response.data.data.length;  
         const created = await Contract_funcs.createContract({
-            First_party_name: "Hossam",
+            First_party_name: "walaa",
             Second_party_name: "bbb",
             First_party_address: "aaa",
             Second_party_address: "sssss",
@@ -657,7 +533,7 @@ test("Creating a contract then updating it", async ()=>{
           expect(allContracts.data.data.First_party_name).toEqual("Hossam");
            expect(allContracts.data.data.Status).toEqual(created.data.data.Status);
 
-        // });
+        });
 
 
     test("Creating a investor then updating it", async ()=>{
@@ -782,7 +658,7 @@ test("Creating a contract then updating it", async ()=>{
 
         const response2= await funcs.DeleteContract(
             response1.data.data._id);
-            response3= await funcs.getContracts();
+            response3= await funcs.getContracts();});
 
 test("Creating a form then updating it", async ()=>{
            

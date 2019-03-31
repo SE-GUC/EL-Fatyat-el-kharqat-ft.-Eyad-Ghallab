@@ -1,7 +1,7 @@
 
 const axios = require("axios");
 //naxios.defaults.adapter= require("axios/lib/adapters/https");
-const lawyer_funcs={
+const functions={
     getLawyers: async () =>{
         const lawyers = await axios.get("http://localhost:3000/api/Lawyer/");
         
@@ -51,9 +51,6 @@ const lawyer_funcs={
                 return lawyer;
                 }, 
               
-=======
-const axios = require('axios');
-const Contractfunctions = {
 
     getContractsbyid: async(id) => {
         const contracts = await axios.get('http://localhost:3000/api/Contract/'+id)
@@ -176,7 +173,7 @@ DeleteNotification: async ()=>{
     );
     return Notification;
 }
-
+,
       
 	getpayment: async () => {
     const payment = await axios.get('http://localhost:3000/api/payment/')
@@ -204,7 +201,7 @@ DeleteNotification: async ()=>{
           "http://localhost:3000/api/payment/5c9fccab48b9a15f5c33f0ac"
         );
         return payment;
-    }
+    },
 
   getReviewer: async () => {
         const Reviewer = await axios.get('http://localhost:3000/api/Reviewer/');
@@ -232,7 +229,7 @@ DeleteNotification: async ()=>{
           "http://localhost:3000/api/Reviewer/5c95fb2833d0a715c880fae8"
         );
         return Reviewer;
-    }
+    },
 
   getComments: async () => {
     const schema = {
@@ -321,7 +318,7 @@ DeleteNotification: async ()=>{
 
 GetEntity: async () => {
 
-        const Entity = await axios.get('http://localhost:5353/api/ExternalEntities')
+        const Entity = await axios.get('http://localhost:3000/api/ExternalEntities')
         return Entity
         },
         
@@ -331,7 +328,7 @@ GetEntity: async () => {
                         username:"ammar_ah",
                         password:"ahumkcnsjkabjhbssnaknsdk"
                 };
-                const Entity= await axios.post('http://localhost:5353/api/ExternalEntities/' , schema)
+                const Entity= await axios.post('http://localhost:3000/api/ExternalEntities/' , schema)
                 return Entity
                 },
 
@@ -342,13 +339,13 @@ GetEntity: async () => {
                                 password: "2324355"
         
                         };
-                        const Entity = await axios.put('http://localhost:5353/api/ExternalEntities/5c9ffc9f364a8b2010aef4cc' , schema)
+                        const Entity = await axios.put('http://localhost:3000/api/ExternalEntities/5c9ffc9f364a8b2010aef4cc' , schema)
                         return Entity
                         },
 
                         DeleteEntity: async () => {
                         
-                                const Entity = await axios.delete('http://localhost:5353/api/ExternalEntities/5c9ffc9f364a8b2010aef4cc')
+                                const Entity = await axios.delete('http://localhost:3000/api/ExternalEntities/5c9ffc9f364a8b2010aef4cc')
                                 return Entity
                                 },
 
