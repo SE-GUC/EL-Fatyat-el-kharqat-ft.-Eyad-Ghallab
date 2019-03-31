@@ -66,7 +66,7 @@ app.use((req, res) => {
  })
 
 
-const port = 4000
+const port = 3000
 app.listen(port, () => console.log(`Server up and running on port ${port}`))
 //=======
 //app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
