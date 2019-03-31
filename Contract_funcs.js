@@ -1,7 +1,11 @@
 const axios = require('axios');
 const Contractfunctions = {
 
-     
+    getContractsbyid: async(id) => {
+        const contracts = await axios.get('http://localhost:3000/api/Contract/'+id)
+        return contracts;
+        },
+
 	getContracts: async () => {
         const contracts = await axios.get('http://localhost:3000/api/Contract/')
         return contracts;
@@ -13,9 +17,10 @@ const Contractfunctions = {
         return contract;
         },
 
-    // updateContract: async (id,requestBody) => {
-    //                 return axios.put(`http://localhost:3000/api/Contract/${id}`,requestBody+id)
-    //                 },
+    updateContract: async (id,requestBody) => {
+                    const contract = await axios.put(`http://localhost:3000/api/Contract/${id}`,requestBody)
+             return contract
+                    },
 
     // updateContract: async () => {
     //     const schema = {
