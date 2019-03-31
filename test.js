@@ -1,4 +1,4 @@
-const functions = require("../functions/Admin.functions");
+const functions = require("./fn");
 test("get admin", async () => {
   expect.assertions(1);
   const response = await functions.getAdmins();
