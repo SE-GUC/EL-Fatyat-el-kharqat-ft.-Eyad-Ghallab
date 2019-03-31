@@ -5,10 +5,10 @@ const mongoose = require('mongoose')
 const Admin= require('../../models/Admin')
 const validator = require('../../validations/Adminvalid')
 
-router.get('/', async (req,res) => {
-    const admins = await Admin.find()
-    res.json({data: admins})
-})
+router.get("/", async (req, res) => {
+  const admins = await Admin.find();
+  res.json({msg:"Admin was recieved" ,data: admins });
+});
 // get admin by id
 
 router.get('/:id', function(req, res, next) {
