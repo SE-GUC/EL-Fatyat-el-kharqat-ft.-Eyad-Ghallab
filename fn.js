@@ -23,8 +23,8 @@ const functions = {
             },
     
         
-    updateForm: async (id)  => {
-        const form = await axios.put('http://localhost:3000/api/SPC/'+ id);
+    updateForm: async (id, requestBody)  => {
+        const form = await axios.put('http://localhost:3000/api/SPC/${id}', requestBody);
         return form
         },
 };
