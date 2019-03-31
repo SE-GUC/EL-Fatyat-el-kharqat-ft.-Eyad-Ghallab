@@ -13,8 +13,19 @@ const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
 const Comment = require("./routes/api/Comment");
 
+
+//const books = require('./routes/api/books')
+
+
+
+
+
+
+const investor = require('./routes/api/investor')
+
 const Notification = require("./routes/api/Notification");
 const ExternalEntities = require('./routes/api/ExternalEntities')
+
 
 const app = express()
 const db = require('./config/keys').mongoURI
@@ -38,7 +49,11 @@ app.use(cors());
 
 
 
+app.get('/', (req,res) => res.send(`<h1>Welcome </h1>
+<a href="/api/SSC"> Your Companies</a>`))
+
 app.get('/', (req,res) => res.send(`<h1>Sumerge </h1>`))
+Developer
 app.get('/test', (req,res) => res.send(`<h1>Deployed on Heroku</h1>`))
 app.use(bodyParser.json());
 
