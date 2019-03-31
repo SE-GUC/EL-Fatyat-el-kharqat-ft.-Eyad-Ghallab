@@ -3,15 +3,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
-<<<<<<< HEAD
 const spcforms = require('./routes/api/SPC')
 
 const Admin = require("./routes/api/Admin");
 const updateSSC = require('./routes/api/SSC')
 const Reviewer = require('./routes/api/Reviewer')
-=======
 const cors = require('cors');
->>>>>>> Investor
 const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
 const Comment = require("./routes/api/Comment");
@@ -28,14 +25,10 @@ mongoose
   .catch(err => console.log(err));
 mongoose.set("useCreateIndex", true);
 
-<<<<<<< HEAD
 
-=======
 // Init middleware
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+
 app.use(cors());
->>>>>>> Investor
 
 
 
