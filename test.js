@@ -1,5 +1,5 @@
 
-const Inv_funcs = require('./Inv_funcs');
+const Inv_funcs = require('./fn');
 
 test("Getting all investors", async () => {
     expect.assertions(1);
