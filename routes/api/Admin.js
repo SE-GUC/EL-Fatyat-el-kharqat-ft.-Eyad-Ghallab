@@ -5,11 +5,18 @@ const mongoose = require('mongoose')
 const Admin= require('../../models/Admin')
 const validator = require('../../validations/Adminvalid')
 
-router.get('/', async (req,res) => {
-    const admins = await Admin.find()
-    res.json({data: admins})
-})
+router.get("/", async (req, res) => {
+  const admins = await Admin.find();
+  res.json({msg:"Admin was recieved" ,data: admins });
+});
+// get admin by id
 
+router.get('/:id', function(req, res, next) {
+    Admin.findById(req.params.id, function (err, post) {
+      if (err) return next(err);
+      res.json({msg : "Admin was recieved"},post);
+    });
+  });
 
 // Create a Admin
 router.post('/', async (req,res) => {
@@ -27,12 +34,16 @@ router.post('/', async (req,res) => {
 // @route   DELETE api/Admins/:id
 // @desc    Delete A Admin
 // @access  Public
-router.delete('/:id', (req, res) => {
-    Admin.findById(req.params.id)
-    .then(Admin => Admin.remove().then(() => res.json({ success: true })))
-    .catch(err => res.status(404).json({ success: false }));
-});
-
+router.delete("/:id", async (req, res) => {
+    try {
+      const id = req.params.id;
+      const deletedAdmin = await Admin.findByIdAndRemove(id);
+      res.json({ msg: "Admin was deleted successfully", data: deletedAdmin });
+    } catch (error) {
+      // We will be handling the error later
+      console.log(error);
+    }
+  });
 
 router.put('/:id',async (req,res) => {
     try {

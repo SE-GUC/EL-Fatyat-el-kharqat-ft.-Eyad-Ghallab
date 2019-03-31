@@ -27,3 +27,37 @@ test(' Delete External Entity', async () => {
   const EntityDeleted = await funcs.DeleteEntity();
   expect(EntityDeleted.data.msg).toEqual("Entity Deleted successfully")
 });
+
+test("get admin", async () => {
+  expect.assertions(1);
+  const response = await funcs.getAdmins();
+  expect(response.data.data.length).toBeGreaterThan(0);
+});
+  test("Create Admin", async () => {
+    expect.assertions(2);
+    const response = await funcs.getAdmins();
+    const oldlength = response.data.data.length;
+    const response1 = await funcs.CreateAdmins(
+     { "id":"23",
+      "name":"sarahhh"  ,
+      "email":"ayhaga@hotmail.com",
+      "address":"asdasda",
+      "username":"sarashh",
+      "password":"56789"
+    }
+    );
+    expect(response1.data.msg).toEqual("Admin was created successfully");
+    const response2 = await funcs.getAdmins();
+    expect(response2.data.data.length).toEqual(oldlength +1);
+  });
+  
+  test("Update Admin", async () => {
+      expect.assertions(1);
+      const response = await funcs.UpdateAdmins();
+      expect(response.data.msg).toEqual("Admin updated successfully");
+    });
+    test("Delete Admin", async () => {
+      expect.assertions(1);
+      const response = await funcs.DeleteAdmins();
+      expect(response.data.msg).toEqual("Admin was deleted successfully");
+    });
