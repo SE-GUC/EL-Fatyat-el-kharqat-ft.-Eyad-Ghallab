@@ -13,6 +13,7 @@ const Lawyer= require('./routes/api/Lawyer')
 const Comment = require("./routes/api/Comment");
 
 const Notification = require("./routes/api/Notification");
+const ExternalEntities = require('./routes/api/ExternalEntities')
 
 const app = express()
 const db = require('./config/keys').mongoURI
@@ -45,7 +46,7 @@ app.use('/api/Admin', Admin)
 
 app.use("/api/Comment", Comment);
 
-
+app.use('/api/ExternalEntities', ExternalEntities)
 
 
 app.use("/api/Notification", Notification);
