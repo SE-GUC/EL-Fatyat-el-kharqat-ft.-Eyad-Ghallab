@@ -1,4 +1,4 @@
-const funcs = require('./spcfn');
+const funcs = require('./fn');
 
 
 test ('Getting all forms' , async () => {
@@ -18,7 +18,7 @@ test('User Story', async () => {
     const response= await funcs.getSpcForms();
     const oldLength = response.data.data.length;  
     const response1 = await funcs.createForm({
-      "Facility_name": "aa",
+      "Facility_name": "araf",
       "Governorate": "cairo",
       "City": "Abnūb",
       "Facility_Address": "8 st hassanen abdel kader,Nasr city",
@@ -45,7 +45,7 @@ test('User Story', async () => {
 
     expect(response2.data.data.length).toEqual(oldLength + 1);
     
-    },100000);
+    });
 
   
   test("Creating then Deleting SPC Form", async () => {
@@ -53,7 +53,7 @@ test('User Story', async () => {
     const response = await funcs.getSpcForms();
     const oldLength = response.data.data.length;
     const response1 = await funcs.createForm({
-           "Facility_name": "kk7",
+           "Facility_name": "kzz",
             "Governorate": "cairo",
             "City": "Abnūb",
             "Facility_Address": "8 st hassanen abdel kader,Nasr city",
@@ -82,37 +82,40 @@ test('User Story', async () => {
      response3 = await funcs.getSpcForms();
     expect(response3.data.data.length).toEqual(oldLength);
   });
-  // test("Creating then Updating SPC Form", async () => {
-  //   expect.assertions(2);
-  
-  //   const created = await funcs.createForm({
-  //          "Facility_name": "mama mia 5",
-  //           "Governorate": "cairo",
-  //           "City": "Abnūb",
-  //           "Facility_Address": "8 st hassanen abdel kader,Nasr city",
-  //           "Facility_Phone_Number": "01289502264",
-  //           "Fax": "2347859",
-  //           "Capital_Currency": "Euro",
-  //           "capital": 60000,
-  //           "investorname": "Ashraf",
-  //           "Gender": "Female",
-  //           "Nationality": "Egyptian",
-  //           "TypeOf_IdentityProof": "NationalID",
-  //           "investor_nationalid": "29712310101728",
-  //           "BirthDate": "1997-03-21T22:00:00.000Z",
-  //           "Phone_Number": "01093654354",
-  //           "Investor_Fax": "247852",
-  //           "email": "hana@hotmail.com",
-  //           "Investor_Address": "Madinaty B1",
-  //           "Locked": "false",
-  //           "Status": "accepted",
-  //           "is_the_external_entities_notified": "true",
-  //   });
-  //   console.log("hi 2");
-  //   console.log(created.data.data._id);
-  //   const response1 = await funcs.updateForm(
-  //     created.data.data._id);
-  //     response3 = await funcs.getSpcForms(); 
-  //   expect(response1.data.data.email).toEqual("Ashraf@hotmail.com");
-  //   expect(response1.data.data.Facility_name).toEqual(created.data.data.Facility_name);
-  // });
+  test("Creating a form then updating it", async ()=>{
+    
+       const created = await funcs.createForm({
+        "Facility_name": "lala",
+        "Governorate": "cairo",
+        "City": "Abnūb",
+        "Facility_Address": "8 st hassanen abdel kader,Nasr city",
+        "Facility_Phone_Number": "01289502264",
+        "Fax": "2347859",
+        "Capital_Currency": "Euro",
+        "capital": 60000,
+        "investorname": "Ashraf",
+        "Gender": "Female",
+        "Nationality": "Egyptian",
+        "TypeOf_IdentityProof": "NationalID",
+        "investor_nationalid": "29712310101728",
+        "BirthDate": "1997-03-21T22:00:00.000Z",
+        "Phone_Number": "01093654354",
+        "Investor_Fax": "247852",
+        "email": "hana@hotmail.com",
+        "Investor_Address": "Madinaty B1",
+        "Locked": "false",
+        "Status": "accepted",
+        "is_the_external_entities_notified": "true",})
+       const updated =  {Facility_name: "Farah Hossam"}
+       const response1= await funcs.updateForm(created.data.data._id,updated)
+
+            const allForms = await funcs.getFormbyid(created.data.data._id)
+    
+         expect(allForms.data.data.Facility_name).toEqual("Farah Hossam");
+          expect(allForms.data.data.Status).toEqual(created.data.data.Status);
+
+       
+       
+       });
+
+

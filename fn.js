@@ -9,6 +9,10 @@ const functions = {
         const spcforms = await axios.get('http://localhost:3000/api/SPC/all')
         return spcforms
         },
+    getFormbyid: async(id) => {
+            const Forms = await axios.get('http://localhost:3000/api/SPC/'+id)
+            return Forms;
+            },
 	getUserStory: async ()  => {
         const form = await axios.get('http://localhost:3000/api/SPC');
         return form
