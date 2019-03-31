@@ -50,12 +50,12 @@ test("Creating a contract", async ()=>{
     },100000);
 
 
-    test("Updating contract", async () => {
-        expect.assertions(1);
-        const contract = await Contract_funcs.updateContract();
-        expect(response.data.msg).toEqual("Contract was created successfully")
-    }
-    )
+    // test("Updating contract", async () => {
+    //     expect.assertions(1);
+    //     const contract = await Contract_funcs.updateContract();
+    //     expect(response.data.msg).toEqual("Contract was created successfully")
+    // }
+    // )
 
 
 

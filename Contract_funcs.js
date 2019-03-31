@@ -17,14 +17,14 @@ const Contractfunctions = {
     //                 return axios.put(`http://localhost:3000/api/Contract/${id}`,requestBody+id)
     //                 },
 
-    updateContract: async () => {
-        const schema = {
-            First_party_name: "dalia"
-        };
-            const contract = await axios.put("http://localhost:3000/api/Contract/5c9f942a7eb72fe1a8df1467",schema);
-        return contract;
+    // updateContract: async () => {
+    //     const schema = {
+    //         First_party_name: "dalia"
+    //     };
+    //         const contract = await axios.put("http://localhost:3000/api/Contract/5c9f942a7eb72fe1a8df1467",schema);
+    //     return contract;
 
-        },
+    //     },
 
     
 
