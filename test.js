@@ -1,14 +1,14 @@
 
 
-const lawyer_funcs = require ('./fn');
+const funcs = require ('./fn');
 
 
 test("Creating a lawyer", async()=>{
     expect.assertions(2);
-    const response= await lawyer_funcs.getLawyers();
+    const response= await funcs.getLawyers();
     const oldLength = response.data.data.length;
-    const response1= await lawyer_funcs.CReateLawyer();
-    const response2 = await lawyer_funcs.getLawyers();
+    const response1= await funcs.CReateLawyer();
+    const response2 = await funcs.getLawyers();
     expect(response1.data.msg).toEqual('Lawyer was created successfully');
     expect(response2.data.data.length).toEqual(oldLength + 1);
 
@@ -17,13 +17,13 @@ test("Creating a lawyer", async()=>{
  
 test("Getting all lawyers", async () => {
     expect.assertions(1);
-    const allLawyers = await lawyer_funcs.getLawyers()
+    const allLawyers = await funcs.getLawyers()
     expect(allLawyers.data.data.length).toBeGreaterThan(0)
     
 })
 test("Getting unloced ssc", async () => {
     expect.assertions(1);
-    const allssc = await lawyer_funcs.getSSC()
+    const allssc = await funcs.getSSC()
     expect(allssc.data.data.length).toBeGreaterThan(0)
 
     //expect(allssc.data.data.Loceked).toEqual(false)
@@ -31,7 +31,7 @@ test("Getting unloced ssc", async () => {
 })
 test("Getting unloced spc", async () => {
     expect.assertions(1);
-    const allspc = await lawyer_funcs.getSPC()
+    const allspc = await funcs.getSPC()
     //expect(allspc.data.data.Loceked).toEqual(false)
     expect(allspc.data.data.length).toBeGreaterThan(0)
 
@@ -41,9 +41,9 @@ test("Getting unloced spc", async () => {
    
 test("Creating an lawyer then deleting it", async ()=>{
     expect.assertions(1);
-    const response= await lawyer_funcs.getLawyer();
+    const response= await funcs.getLawyer();
     const oldLength = response.data.data.length;  
-    const response1 = await lawyer_funcs.createLawyer({
+    const response1 = await funcs.createLawyer({
         "username": "Hana",
         "password": "rawan222222",
         "fullname": "rawan essily",
@@ -59,9 +59,9 @@ test("Creating an lawyer then deleting it", async ()=>{
     //expect(response2.data.data.length).toEqual(oldLength + 1);
     
 
-    const response2= await lawyer_funcs.deleteLawyer(
+    const response2= await funcs.deleteLawyer(
         response1.data.data._id);
-        response3= await lawyer_funcs.getLawyer();
+        response3= await funcs.getLawyer();
         expect(response3.data.data.length).toEqual(oldLength);
 
     // });
