@@ -136,6 +136,71 @@ router.post('/spc', async (req,res) => {
  }  
 
 })
+router.post('/SSC', async (req,res) => {
+  console.log('hi')
+  const Forms = Form.find({status:'accepted'})
+  
+  
+  
+if( Forms)
+try {
+ 
+ const isValidated = validator.createValidation( {
+ 
+ "investor_Email": "test@gmail.com" ,
+ "MSG": "abos edak update el form wenabyyyyy",
+ "reviewer_Name":"aliaa",
+ "notify_number": "2",
+ "User_id": "1"
+})
+
+ if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+ const newnotification = await notification.create({
+              "investor_Email": "test@gmail.com" ,
+              "MSG": "abos edak update el form wenabyyyyy",
+              "reviewer_Name":"aliaa",
+              "notify_number": "2",
+              "User_id": "1"
+            })
+ res.json({msg:'Please pay the fees', data: newnotification})
+}
+catch(error) {
+}
+})
+
+router.post('/SPC', async (req,res) => {
+  console.log('hi')
+  const SpcForm = SpcForm.find({status:'accepted'})
+  
+  
+  
+if( SpcForm)
+try {
+ 
+ const isValidated = validator.createValidation( {
+ 
+ "investor_Email": "test@gmail.com" ,
+ "MSG": "abos edak update el form wenabyyyyy",
+ "reviewer_Name":"aliaa",
+ "notify_number": "2",
+ "User_id": "1"
+})
+
+ if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+ const newnotification = await notification.create({
+              "investor_Email": "test@gmail.com" ,
+              "MSG": "abos edak update el form wenabyyyyy",
+              "reviewer_Name":"aliaa",
+              "notify_number": "2",
+              "User_id": "1"
+            })
+ res.json({msg:'Please pay the fees', data: newnotification})
+}
+catch(error) {
+}
+})
+
+
 
 
 
