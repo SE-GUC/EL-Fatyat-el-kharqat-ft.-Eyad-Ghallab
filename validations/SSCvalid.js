@@ -678,8 +678,10 @@ module.exports = {
       PositionInBOD: Joi.string().valid("Chair","Vice President","Secretary","Treasurer","Past President","Director",
       "Public Relations (PR) Director","Membership Director","Industry, Legislation, Conservation Director",
       "At-Large","Webmaster").required(),
-      Formdate:Joi.date(),
-Lock:Joi.boolean()
+      
+Locked:Joi.boolean(),
+Status: Joi.string(),
+is_the_external_entities_notified: Joi.boolean(),
     };
 
         return Joi.validate(request, createSchema)
@@ -1127,7 +1129,7 @@ Lock:Joi.boolean()
       "Zimbabwean Bond"
     ),
     capital: Joi.number().integer().min(50000).max(999999999999),
-    investorname: joi.string(),
+    investorname: Joi.string(),
     Investor_type: Joi.valid("Person"),
     Gender: Joi.valid("Female","Male"),
     Nationality: Joi.valid("  Afghan ",
@@ -1369,9 +1371,10 @@ BOD_Address: Joi.string(),
 PositionInBOD: Joi.string().valid("Chair","Vice President","Secretary",
 "Treasurer","Past President","Director","ublic Relations (PR) Director","Membership Director",
 "Industry, Legislation, Conservation Director","At-Large","Webmaster"),
-Formdate:Joi.date(),
-Lock:Joi.boolean(),
 
+Lock:Joi.boolean(),
+Status: Joi.string(),
+is_the_external_entities_notified: Joi.boolean(),
 
         }
 
