@@ -38,7 +38,7 @@ router.put('/:id', async (req,res) => {
     const isValidated = validator.updateValidation(req.body);
     if(isValidated.error)
         return res.status(400).send({ error : isValidated.error.details[0].message})
-    const updatedContract= await Contract.updateOne(req.body);
+    const updatedContract= await contract.updateOne(req.body);
     res.json({msg:'Contract was created successfully', data: updatedContract})
     } catch(error) {
         console.log(error);

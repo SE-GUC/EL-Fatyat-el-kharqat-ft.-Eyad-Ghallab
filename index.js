@@ -1,4 +1,5 @@
 var dotenv = require('dotenv');
+
 const cors = require('cors')
 
 const express = require("express");
@@ -50,7 +51,7 @@ var url = process.env.MONGOLAB_URI;
 // const db = require('./config/keys').mongoURI
 
 mongoose
-  .connect(url, { useNewUrlParser: true }) 
+ .connect(url, { useNewUrlParser: true }) 
   .then(() => console.log("MongoDB Connected..."))
   .catch(err => console.log(err));
 mongoose.set("useCreateIndex", true);
