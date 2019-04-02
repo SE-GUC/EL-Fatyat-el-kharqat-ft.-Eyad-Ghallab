@@ -113,12 +113,6 @@ test("Creating a lawyer then deleting it", async ()=>{
 
 
 
-test("Getting all contracts", async () => {
-    expect.assertions(1);
-    const allContracts = await funcs.getContracts()
-    expect(allContracts.data.data.length).toBeGreaterThan(0)
-    
-},100000);
 
 test("Creating a contract", async ()=>{
     expect.assertions(2);
@@ -690,6 +684,14 @@ test("Creating a contract then updating it", async ()=>{
             expect(response3.data.data.length).toEqual(oldLength);
         
         },100000);
+
+        test("Getting all contracts", async () => {
+          expect.assertions(1);
+          const allContracts = await funcs.getContracts()
+          expect(allContracts.data.data.length).toBeGreaterThan(0)
+          
+      },100000);
+      
 
 
 

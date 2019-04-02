@@ -52,17 +52,7 @@ const functions = {
     return lawyer;
   },
 
-  getContractsbyid: async id => {
-    const contracts = await axios.get(
-      "http://localhost:3000/api/Contract/" + id
-    );
-    return contracts;
-  },
-
-  getContracts: async () => {
-    const contracts = await axios.get("http://localhost:3000/api/Contract/");
-    return contracts;
-  },
+ 
 
   // CreateNotification: async requestBody => {
   //   const Notification = await axios.post("http://localhost:3000/api/Notification/",requestBody);
@@ -434,6 +424,18 @@ const functions = {
       requestBody
     );
     return SSCforms;
-  }
+  },
+
+  getContractsbyid: async id => {
+    const contracts = await axios.get(
+      "http://localhost:3000/api/Contract/" + id
+    );
+    return contracts;
+  },
+
+  getContracts: async () => {
+    const contracts = await axios.get("http://localhost:3000/api/Contract/");
+    return contracts;
+  },
 };
 module.exports = functions;
