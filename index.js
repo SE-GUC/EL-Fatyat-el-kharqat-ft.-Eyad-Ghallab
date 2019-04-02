@@ -1,32 +1,24 @@
 var dotenv = require('dotenv');
-const cors = require('cors')
 
+const cors = require('cors')
 const express = require("express");
 const mongoose = require("mongoose");
-//const passport = require('passport');
 const bodyParser = require("body-parser");
-
 const app = express()
 const spcforms = require('./routes/api/SPC')
-
-
 const Admin = require("./routes/api/Admin")
-
 const Payment = require("./routes/api/payment");
-
 const updateSSC = require('./routes/api/SSC')
 const Reviewer = require('./routes/api/Reviewer')
-
 const investor = require('./routes/api/investor')
 const Lawyer= require('./routes/api/Lawyer')
-
-
 const Comment = require("./routes/api/Comment");
+const Notification = require("./routes/api/Notification");
+const Contract=require("./routes/api/Contract")
+const ExternalEntities = require('./routes/api/ExternalEntities')
 
 dotenv.config();
 
-
-//const books = require('./routes/api/books')
 
 
 
@@ -36,24 +28,32 @@ app.use(express.urlencoded({extended: false}))
 
 
 
+const db = require('./config/keys').mongoURI
 
-
-const Notification = require("./routes/api/Notification");
-
-const Contract=require("./routes/api/Contract")
-
-const ExternalEntities = require('./routes/api/ExternalEntities')
-
-
-
-var url = process.env.MONGOLAB_URI;
-// const db = require('./config/keys').mongoURI
-
+// Connect to mongo
 mongoose
-  .connect(url, { useNewUrlParser: true }) 
-  .then(() => console.log("MongoDB Connected..."))
-  .catch(err => console.log(err));
-mongoose.set("useCreateIndex", true);
+    .connect(db)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.log(err))
+
+
+
+
+
+
+// var url = process.env.MONGOLAB_URI;
+// //const db = require('./config/keys').mongoURI
+
+// mongoose
+//   .connect(url, { useNewUrlParser: true }) 
+//   .then(() => console.log("MongoDB Connected..."))
+//   .catch(err => console.log(err));
+// mongoose.set("useCreateIndex", true);
+
+// mongoose
+//     .connect(db)
+//     .then(() => console.log('Connected to MongoDB'))
+//     .catch(err => console.log(err))
 
 
 
@@ -74,7 +74,9 @@ app.use(cors());
 
     app.use(express.json())
     app.use(express.urlencoded({extended: false}))
-app.use(cors());
+    
+//FARAH:Deleted this
+// app.use(cors());
 
 
 
@@ -91,33 +93,13 @@ app.use('/api/Reviewer', Reviewer)
 app.use('/api/investors',investor )
 app.use('/api/Lawyer', Lawyer)
 app.use('/api/Admin', Admin)
-
 app.use("/api/Comment", Comment);
-
 app.use("/api/Contract", Contract);
-
 app.use("/api/Payment", Payment);
 app.use('/api/ExternalEntities', ExternalEntities)
-
-
-//app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
-
-
-//const port = process.env.PORT || 3000
-//app.listen(port, () => console.log(`Server on ${port}`))
-
-
 app.use("/api/Notification", Notification);
 app.use('/api/SPC', spcforms)
-
-
-
-
-
-
 app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
+
 const port = process.env.PORT || 3000;
-
-
-
 app.listen(port, () => console.log(`Server started on port ${port}`));

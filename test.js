@@ -2,18 +2,62 @@
 
 
 const funcs = require ('./fn');
+//const id;
+
+test("Creating an investor", async ()=>{
+  expect.assertions(2);
+  const response= await funcs.getInvestors();
+  const oldLength = response.data.data.length;  
+  const response1 = await funcs.createInvestor({
+      "name" : "Farah Hossam",
+      "email": "farah@gmail.com",
+      "username": "FarahRashed",
+      "password":"1258",
+      "nationality":"Egyptain",
+      "gender":"Female",
+      "birthdate":"1/1/2002",   
+      "city":"Cairo",
+      "country":"Egypt",
+      "jobtitle":"Doctor",
+      "mobilenumber":"01235698748"});
+  
+  expect(response1.data.msg).toEqual('investor was created successfully');
+  const response2 = await funcs.getInvestors();
 
 
-test("Creating a lawyer", async()=>{
+  expect(response2.data.data.length).toEqual(oldLength + 1);
+  
+  },100000);
+
+  test("Creating a lawyer", async ()=>{
     expect.assertions(2);
     const response= await funcs.getLawyers();
-    const oldLength = response.data.data.length;
-    const response1= await funcs.CReateLawyer();
-    const response2 = await funcs.getLawyers();
+    const oldLength = response.data.data.length;  
+    const response1 = await funcs.createLawyer({
+      "fullname": "Hania gamel",
+      "email": "Hania@yahoo.com",
+      "phonenumber": "01111111111",
+      "legaltype": "Legal",
+      "birthdate": "1966-12-31T22:00:00.000Z",
+      "noOfPreviousCases": 50,
+      "gender": "female",
+      "username": "Hania1998",
+      "password": "Hania1998"});
+    
     expect(response1.data.msg).toEqual('Lawyer was created successfully');
+    const response2 = await funcs.getLawyers();
     expect(response2.data.data.length).toEqual(oldLength + 1);
+    
+    },100000);
 
-});
+
+
+test("Getting all investors", async () => {
+  expect.assertions(1);
+  const allInvestors = await funcs.getInvestors()
+  expect(allInvestors.data.data.length).toBeGreaterThan(0)
+  
+},100000);
 
  
 test("Getting all lawyers", async () => {
@@ -21,28 +65,30 @@ test("Getting all lawyers", async () => {
     const allLawyers = await funcs.getLawyers()
     expect(allLawyers.data.data.length).toBeGreaterThan(0)
     
-});
-test("Getting unloced ssc", async () => {
+},100000);
+test("Getting unlocked ssc", async () => {
     expect.assertions(1);
     const allssc = await funcs.getSSC()
-    expect(allssc.data.data.length).toBeGreaterThan(0)
+
+    expect(allssc.data.length).toBeGreaterThan(0)
 
     //expect(allssc.data.data.Loceked).toEqual(false)
     
 });
-test("Getting unloced spc", async () => {
+test("Getting unlocked spc", async () => {
     expect.assertions(1);
     const allspc = await funcs.getSPC()
     //expect(allspc.data.data.Loceked).toEqual(false)
-    expect(allspc.data.data.length).toBeGreaterThan(0)
+    expect(allspc.data.length).toBeGreaterThan(0)
 
     
 });
 
    
-test("Creating an lawyer then deleting it", async ()=>{
+test("Creating a lawyer then deleting it", async ()=>{
     expect.assertions(1);
-    const response= await funcs.getLawyer();
+    const response= await funcs.getLawyers();
+    //console.log(response)
     const oldLength = response.data.data.length;  
     const response1 = await funcs.createLawyer({
         "username": "Hana",
@@ -62,8 +108,10 @@ test("Creating an lawyer then deleting it", async ()=>{
 
     const response2= await funcs.deleteLawyer(
         response1.data.data._id);
-        response3= await funcs.getLawyer();
-        expect(response3.data.data.length).toEqual(oldLength);});
+        response3= await funcs.getLawyers();
+        expect(response3.data.data.length).toEqual(oldLength);},100000);
+
+
 
 test("Getting all contracts", async () => {
     expect.assertions(1);
@@ -107,7 +155,10 @@ test("Creating a contract", async ()=>{
         "Type_of_form": "SPC"});
     
     expect(response1.data.msg).toEqual('Contract was created successfully');
-    const response2 = await funcs.getContracts();});
+    const response2 = await funcs.getContracts();
+    expect(response2.data.data.length).toEqual(oldLength + 1);
+  }
+    ,100000);
 
 
 
@@ -125,46 +176,48 @@ test('User Story', async () => {
   });
 
   test("Creating a Form", async ()=>{
-    expect.assertions(2);
+    expect.assertions(1);
     const response= await funcs.getSpcForms();
+    console.log(response.data.data.length)
     const oldLength = response.data.data.length;  
     const response1 = await funcs.createForm({
-      "Facility_name": "nawal",
-      "Governorate": "cairo",
-      "City": "Abnūb",
-      "Facility_Address": "8 st hassanen abdel kader,Nasr city",
-      "Facility_Phone_Number": "01289502264",
-      "Fax": "2347859",
-      "Capital_Currency": "Euro",
-      "capital": 50000,
-      "investorname": "Ashraf",
-      "Gender": "Female",
-      "Nationality": "Egyptian",
-      "TypeOf_IdentityProof": "NationalID",
-      "investor_nationalid": "29712310101728",
-      "BirthDate": "1997-03-21T22:00:00.000Z",
-      "Phone_Number": "01093654354",
-      "Investor_Fax": "247852",
-      "email": "hana@hotmail.com",
-      "Investor_Address": "Madinaty B1",
-      "Locked": "false",
-      "Status": "accepted",
-      "is_the_external_entities_notified": "true",});
+      "Facility_name": "paa",
+        "Governorate": "cairo",
+        "City": "New Cairo",
+        "Facility_Address": "Tagamo3",
+        "Facility_Phone_Number": "01147896523",
+        "Fax": "2347827",
+        "Capital_Currency": "Kuwaiti dinar",
+        "capital": 60000,
+        "investorname": "Hana Hicham",
+        "Gender": "Female",
+        "Nationality": "Egyptian",
+        "TypeOf_IdentityProof": "NationalID",
+        "investor_nationalid": "29712310101728",
+        "BirthDate": "1997-12-30T22:00:00.000Z",
+        "Phone_Number": "01093654354",
+        "Investor_Fax": "274589",
+        "email": "hana@hotmail.com",
+        "Investor_Address": "Madinaty",
+        "Locked": true,
+        "Status": "accepted",
+        "is_the_external_entities_notified": true});
     
-    expect(response1.data.msg).toEqual('Form was created successfully');
+    //expect(response1.data.msg).toEqual('Form was created successfully');
     const response2 = await funcs.getSpcForms();
-
+    //id=response1.data.data._id;
+    console.log(response2.data.data.length)
     expect(response2.data.data.length).toEqual(oldLength + 1);
     
-    });
+    },100000);
 
-  
+
   test("Creating then Deleting SPC Form", async () => {
     expect.assertions(1);
     const response = await funcs.getSpcForms();
     const oldLength = response.data.data.length;
     const response1 = await funcs.createForm({
-           "Facility_name": "madeehehhe",
+           "Facility_name": "mmmadeehehhe",
             "Governorate": "cairo",
             "City": "Abnūb",
             "Facility_Address": "8 st hassanen abdel kader,Nasr city",
@@ -216,15 +269,19 @@ test("get Notification By ID", async () => {
 });
 
   test("update notification", async()=>{
+    const schema = {
+      Name: "SABA7O"
+    };
     expect.assertions(1);
-    const response = await funcs.UpdateNotifications();
+    const response = await funcs.UpdateNotifications("5c9632d904ff513a94cc4b73",schema);
     expect(response.data.msg).toEqual("notification updated successfully");
 });
-test("Delete notification",async()=>{
-    expect.assertions(1);
-    const response = await funcs.DeleteNotification();
-    expect(response.data.msg).toEqual("notification was deleted successfully");
-});
+
+// test("Delete notification",async()=>{
+//     expect.assertions(1);
+//     const response = await funcs.DeleteNotification();
+//     expect(response.data.msg).toEqual("notification was deleted successfully");
+// });
 
 
 test('getting Payments', async () => {
@@ -373,7 +430,8 @@ test("Creating a form", async ()=>{
     
     expect(response1.data.msg).toEqual('Form was created successfully');
     const response2 = await funcs.getForms();
-});
+    expect(response2.data.data.length).toEqual(oldLength + 1);
+},100000);
 
 test('get External Entity', async () => {
   const Entity =  await funcs.GetEntity();
@@ -459,44 +517,16 @@ test("Update comment", async () => {
   });
 
 
-test("Getting all investors", async () => {
-    expect.assertions(1);
-    const allInvestors = await funcs.getInvestors()
-    expect(allInvestors.data.data.length).toBeGreaterThan(0)
-    
-},100000);
-
-test("Creating an investor", async ()=>{
-    expect.assertions(2);
-    const response= await funcs.getInvestors();
-    const oldLength = response.data.data.length;  
-    const response1 = await funcs.createInvestor({
-        "name" : "Farah Hossam",
-        "email": "farah@gmail.com",
-        "username": "FarahRashed",
-        "password":"1258",
-        "nationality":"Egyptain",
-        "gender":"Female",
-        "birthdate":"1/1/2002",   
-        "city":"Cairo",
-        "country":"Egypt",
-        "jobtitle":"Doctor",
-        "mobilenumber":"01235698748"});
-    
-    expect(response1.data.msg).toEqual('investor was created successfully');
-    const response2 = await funcs.getInvestors();
 
 
-    expect(response2.data.data.length).toEqual(oldLength + 1);
-    
-    },100000);
+
 
 test("Creating a contract then updating it", async ()=>{
      //   expect.assertions(2);
         //const response= await Inv_funcs.getInvestors();
        // const oldLength = response.data.data.length;  
-        const created = await Contract_funcs.createContract({
-            First_party_name: "walaa",
+        const created = await funcs.createContract({
+            First_party_name: "Samya",
             Second_party_name: "bbb",
             First_party_address: "aaa",
             Second_party_address: "sssss",
@@ -525,9 +555,9 @@ test("Creating a contract then updating it", async ()=>{
             Status: "Sent",
             Type_of_form: "SPC"})
         const updated =  {First_party_name: "Hossam"}
-        const response1= await Contract_funcs.updateContract(created.data.data._id,updated)
+        const response1= await funcs.updateContract(created.data.data._id,updated)
 
-             const allContracts = await Contract_funcs.getContractsbyid(created.data.data._id)
+             const allContracts = await funcs.getContractsbyid(created.data.data._id)
             //const response3= await Inv_funcs.getInvestors();
            // response3= await Inv_funcs.getInvestors();
           expect(allContracts.data.data.First_party_name).toEqual("Hossam");
@@ -656,9 +686,11 @@ test("Creating a contract then updating it", async ()=>{
             "Status": "Sent",
             "Type_of_form": "SPC"});
 
-        const response2= await funcs.DeleteContract(
-            response1.data.data._id);
-            response3= await funcs.getContracts();});
+        const response2= await funcs.DeleteContract(response1.data.data._id);
+           response3= await funcs.getContracts();
+            //expect(allforms.data.data.Company_name).toEqual("Hossam Inc");
+            expect(response3.data.data.length).toEqual(oldLength);
+          });
 
 test("Creating a form then updating it", async ()=>{
            
@@ -707,6 +739,32 @@ Lock:"true"
     
     },100000);
 
+    test("Delete notification",async()=>{
+      expect.assertions(1);
+      const response = await funcs.DeleteNotification();
+      expect(response.data.msg).toEqual("notification was deleted successfully");
+  });
+
+  // test("Delete notification",async()=>{
+  //   expect.assertions(1);
+  //       const response= await funcs.getNotification();
+  //       const oldLength = response.data.data.length;  
+  //       const response1 = await funcs.CreateNotification({
+  //         "reviewer_Name": "loloooo",
+
+  
+  //         "investor_Email": "ayhaga@hotmail.com",
+  //         "notify_number": 12,
+  //         "MSG": "zefta"});
+
+  //       const response2= await funcs.DeleteNotification(
+  //           response1.data.data._id);
+  //           response3= await funcs.getNotification();
+
+  //           expect(response3.data.data.length).toEqual(oldLength);
+        
+  //       },100000);
+   
 
 
 
