@@ -13,9 +13,9 @@ class Lawyer extends Component {
       this.handlelegaltypeChange=  this.handlelegaltypeChange.bind(this);
       this.handlegenderChange=  this.handlegenderChange.bind(this);
       this.handlenoOfPreviousCasesChange=  this.handlenoOfPreviousCasesChange.bind(this);
-      
       this.handleSubmit= this.handleSubmit.bind(this);
       this.delete=this.delete.bind(this);
+      this.update=this.update.bind(this);
       this.state={
          Lawyer: [],
       username: "",
@@ -106,6 +106,42 @@ class Lawyer extends Component {
     .then(res => res.json())
     .then(data => console.log(data)); 
 }
+update(id){
+  // e.preventDefault();
+  console.log(this.state.fullname)
+   let databody 
+if (this.state.username !== ""){
+ databody = {"username":this.state.username}}
+if(this.state.password !== ""){
+ databody = {"password":this.state.password}}
+ if(this.state.birthdate !== ""){
+   databody = {"birthdate":this.state.birthdate}}
+   if(this.state.email !== ""){
+     databody = {"email":this.state.email}}
+     if(this.state.phonenumber !== ""){
+       databody = {"phonenumber":this.state.phonenumber}}
+       if(this.state.legaltype !== ""){
+         databody = {"legaltype":this.state.legaltype}}
+         if(this.state.gender !== ""){
+           databody = {"gender":this.state.gender}}
+           if(this.state.noOfPreviousCases!== ""){
+             databody = {"noOfPreviousCases":this.state.noOfPreviousCases}}
+             
+                 console.log(this.state.username)
+   return fetch('http://localhost:5000/api/Lawyer/'+id, {
+       method: 'PUT',
+       body: JSON.stringify(databody),
+       headers: {
+           'Content-Type': 'application/json'
+       },
+   })
+   .then(res => res.json())
+   .then(data => console.log(data)); 
+}
+
+
+
+
 
 
 
@@ -124,52 +160,109 @@ class Lawyer extends Component {
                 <label>
                 username
                     <input type="text" name=" username" value={this.username} onChange={this.handleusernameChange}/>
+                    <br/>
                 </label>
                 <label>
                  password
                     <input type="text" name="password" value={this.password} onChange={this.handlepasswordChange}/>
+                    <br/>
                 </label>
                 <label>
                 fullname
                     <input type="text" name="fullname" value={this.fullname} onChange={this.handlefullnameChange}/>
+                    <br/>
                 </label>
                 <label>
                 birthdate
                     <input type="text" name="birthdate" value={this.birthdate} onChange={this.handlebirthdateChange}/>
+                    <br/>
                 </label>
                 <label>
                 phonenumber
                     <input type="text" name="phonenumber" value={this.phonenumber} onChange={this.handlephonenumberChange}/>
+                    <br/>
                 </label>
                 <label>
                 legaltype
                     <input type="text" name="legaltype" value={this.legaltype} onChange={this.handlelegaltypeChange}/>
+                    <br/>
                 </label>
                 <label>
                 gender
                     <input type="text" name="gender" value={this.gender} onChange={this.handlegenderChange}/>
+                    <br/>
                 </label>
                 <label>
                 noOfPreviousCases
                     <input type="text" name="noOfPreviousCases" value={this.noOfPreviousCases} onChange={this.handlenoOfPreviousCasesChange}/>
+                    <br/>
                 </label>
                 <label>
                 email
                     <input type="text" name="email" value={this.email} onChange={this.handleemailChange}/>
+                    <br/>
                 </label>
-                <input type="submit" value="Add to DB" />
+                <input type="submit" value="Create Lawyer" />
             </form> 
 
 {
   
           <ul>
       {
-     this.state.Lawyer.map( Lawyer => <li key = {Lawyer._id}> Name: {Lawyer.fullname} Number of previous cases: {Lawyer.noOfPreviousCases}<button onClick= {() => {this.delete(Lawyer._id)}}> Delete </button></li>)}
+     this.state.Lawyer.map( Lawyer => <li key = {Lawyer._id}> Name: {Lawyer.fullname} Number of previous cases: {Lawyer.noOfPreviousCases}<button onClick= {() => {this.delete(Lawyer._id)}}> Delete </button>   <form onClick={() => {this.update(Lawyer._id)}}> 
+     <label>
+                username
+                    <input type="text" name=" username" value={this.username} onChange={this.handleusernameChange}/>
+                    <br/>
+                </label>
+                <label>
+                 password
+                    <input type="text" name="password" value={this.password} onChange={this.handlepasswordChange}/>
+                    <br/>
+                </label>
+                <label>
+                fullname
+                    <input type="text" name="fullname" value={this.fullname} onChange={this.handlefullnameChange}/>
+                    <br/>
+                </label>
+                <label>
+                birthdate
+                    <input type="text" name="birthdate" value={this.birthdate} onChange={this.handlebirthdateChange}/>
+                    <br/>
+                </label>
+                <label>
+                phonenumber
+                    <input type="text" name="phonenumber" value={this.phonenumber} onChange={this.handlephonenumberChange}/>
+                    <br/>
+                </label>
+                <label>
+                legaltype
+                    <input type="text" name="legaltype" value={this.legaltype} onChange={this.handlelegaltypeChange}/>
+                    <br/>
+                </label>
+                <label>
+                gender
+                    <input type="text" name="gender" value={this.gender} onChange={this.handlegenderChange}/>
+                    <br/>
+                </label>
+                <label>
+                noOfPreviousCases
+                    <input type="text" name="noOfPreviousCases" value={this.noOfPreviousCases} onChange={this.handlenoOfPreviousCasesChange}/>
+                    <br/>
+                </label>
+                <label>
+                email
+                    <input type="text" name="email" value={this.email} onChange={this.handleemailChange}/>
+                    <br/>
+                </label>    
+ <input type="submit" value="update Lawyer" />
+            </form>  
+            </li>)}
      </ul> 
+  
  }
       </div>
     );
   }
 }
-
 export default Lawyer;

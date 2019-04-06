@@ -17,9 +17,7 @@ import Payment from './components/Payment/Payment';
 
 import SPC from './components/SPC/SPC';
 import Investor from './components/Investor/Investor';
-
-
-
+import Comment from './components/Comment/Comment';
 class App extends Component {
 
   render() {
@@ -27,6 +25,23 @@ class App extends Component {
       <div className="App">
 
         <Contract/>
+
+
+        <header className="App-header">
+          {/* <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a> */}
+        </header>
+        <Comment/>
         <Investor/>
         <SSC/>
 
@@ -35,11 +50,10 @@ class App extends Component {
 
         <ExternalEntities/>
 
-    <Payment/>
+        <Payment/>
 
       
         <SPC/>
-
 
 
 
