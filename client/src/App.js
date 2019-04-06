@@ -11,7 +11,7 @@ import Lawyer from './components/Lawyer/Lawyer';
 
 import ExternalEntities from './components/ExternalEntities/ExternalEntities';
 
-
+import Contract from './components/Contract/Contract';
 
 import Payment from './components/Payment/Payment';
 
@@ -26,7 +26,7 @@ class App extends Component {
    return (
       <div className="App">
 
-   
+        <Contract/>
         <Investor/>
         <SSC/>
 
