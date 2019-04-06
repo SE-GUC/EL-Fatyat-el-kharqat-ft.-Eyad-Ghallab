@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import ExternalEntities from './components/ExternalEntities/ExternalEntities';
 
+
+import './App.css';
+import Payment from './components/Payment/Payment';
+
+import SPC from './components/SPC/SPC';
+import Investor from './components/Investor/Investor';
+
 class App extends Component {
+
   render() {
-    return (
+   return (
       <div className="App">
+
+
+
+
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -21,7 +34,16 @@ class App extends Component {
             Learn React
           </a>
         </header>
+
         <ExternalEntities/>
+
+    <Payment/>
+
+      
+        <SPC/>
+     <Investor/>
+
+
       </div>
     );
   }
