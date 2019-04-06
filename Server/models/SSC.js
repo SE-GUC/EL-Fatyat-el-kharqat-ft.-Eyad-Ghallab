@@ -9,7 +9,7 @@ const SSCSchema = new Schema({
     },
     Governorate: {
         type: String,
-        required: true
+       // required: true
     },
     City: {
         type: String, 

@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+//import logo from './logo.svg';
+import './App.css';
+import SSC from './components/SSC/SSC';
+
+
 import './App.css';
 
 import Lawyer from './components/Lawyer/Lawyer';
@@ -37,6 +42,7 @@ class App extends Component {
         </header>
         <Comment/>
         <Investor/>
+        <SSC/>
 
         <Lawyer />
       

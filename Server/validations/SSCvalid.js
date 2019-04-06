@@ -7,7 +7,7 @@ module.exports = {
             Company_name: Joi.string().min(2).required(),
             Governorate: Joi.string().valid("cairo","Alex","Ismalia","aswan","luxor","Domiat","Elbahr elahmar","asiut","Damnhor",
             "Bne sweif","Bor saed","Giza","ganob sina","suez","faioum","qena","banha","kafr elsheikh","monofia","aswan",
-            "elmenia","elwadi elgedid","Qlioubia","Gharbia","aswan","Sharaaia" ).required(),
+            "elmenia","elwadi elgedid","Qlioubia","Gharbia","aswan","Sharaaia" ),
             City: Joi.string().valid(
         "Abnūb",
         "Abū al-Maṭāmīr",
@@ -551,8 +551,7 @@ module.exports = {
         .required(),
       BOD_Investor_Type: Joi.string().valid("Person").required(),
       BOD_Gender: Joi.string()
-        .valid("Female","Male")
-        .required(),
+        .valid("Female","Male"),
       BOD_Nationality: Joi.string().valid(" Afghan ",
       "Albanian ",
       " Algerian ",
