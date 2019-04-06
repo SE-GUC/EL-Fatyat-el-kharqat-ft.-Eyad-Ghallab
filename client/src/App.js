@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
+import ReactDom from 'react-dom';
+import logo from './logo.svg';
 import './App.css';
-import Investor from './components/Investor/Investor';
+//import Investor from './components/Investor/Investor';
+import Admin  from './components/Admin/Admin';
 
 class App extends Component {
 //   constructor(){
@@ -18,10 +20,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-     <Investor/>
+      <header className="App-header">
+      <img scr={logo}className="App-logo" alt="logo"/>
+      <p>
+        Edit <code> src/App.js</code> and save to reload.
+      </p>
+      <a 
+      className="App-link"
+      href ="https://reactjs.org"
+      target="_blank"
+      rel="noopener noreferrer">
+      learn React
+
+      </a>
+
+
+      </header>
+   
+     <Admin/>
       </div>
     );
   }
+  
 }
 
 export default App;
