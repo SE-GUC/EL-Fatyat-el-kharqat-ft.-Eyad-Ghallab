@@ -15,6 +15,7 @@ class Lawyer extends Component {
       this.handlenoOfPreviousCasesChange=  this.handlenoOfPreviousCasesChange.bind(this);
       
       this.handleSubmit= this.handleSubmit.bind(this);
+      this.delete=this.delete.bind(this);
       this.state={
          Lawyer: [],
       username: "",
@@ -65,11 +66,23 @@ class Lawyer extends Component {
     this.setState({noOfPreviousCases: e.target.value })
 
   }
-  
+  delete(id){
+    return fetch('/api/Lawyer/'+id, {
+      method: 'DELETE',
+     // body: JSON.stringify(databody),
+      headers: {
+          'Content-Type': 'application/json'
+      },
+  })
+  .then(res => res.json())
+  .then(data => console.log(data));
+  }  
   
 
-  handleSubmit(e){
+  handleSubmit(e){ 
     e.preventDefault();
+
+    
     let databody = {
  "username":this.state.username,	
 "password":this.state.password,	
@@ -93,6 +106,7 @@ class Lawyer extends Component {
     .then(res => res.json())
     .then(data => console.log(data)); 
 }
+
 
 
 
@@ -150,7 +164,7 @@ class Lawyer extends Component {
   
           <ul>
       {
-     this.state.Lawyer.map( Lawyer => <li key = {Lawyer._id}> Name: {Lawyer.fullname} Number of previous cases: {Lawyer.noOfPreviousCases}</li>)}
+     this.state.Lawyer.map( Lawyer => <li key = {Lawyer._id}> Name: {Lawyer.fullname} Number of previous cases: {Lawyer.noOfPreviousCases}<button onClick= {() => {this.delete(Lawyer._id)}}> Delete </button></li>)}
      </ul> 
  }
       </div>
