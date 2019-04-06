@@ -23,9 +23,10 @@ class payment extends Component {
       this.handleCountryChange=  this.handleCountryChange.bind(this);
       this.handlePostal_ZipcodeChange=  this.handlePostal_ZipcodeChange.bind(this);
 
-
-
       this.handleSubmit= this.handleSubmit.bind(this);
+
+      this.delete=this.delete.bind(this);
+
       this.state ={
           payment:[],
           Card_type : "",
@@ -106,6 +107,17 @@ class payment extends Component {
     this.setState({Postal_Zipcode: e.target.value })
 
   }
+  delete(id){
+    return fetch('/api/payment/'+id, {
+      method: 'DELETE',
+     // body: JSON.stringify(databody),
+      headers: {
+          'Content-Type': 'application/json'
+      },
+  })
+  .then(res => res.json())
+  .then(data => console.log(data));
+  }
   
 
 
@@ -158,73 +170,80 @@ class payment extends Component {
                 <label>
                 Card_type
                     <input type="text" name="Card_type" value={this.Card_type} onChange={this.handleCard_typeChange}/>
+                    <br/>
                 </label>
                 <label>
                 Card_no
                     <input type="text" name="Card_no" value={this.Card_no} onChange={this.handleCard_noChange}/>
+                    <br/>
                 </label>
                 <label>
                 Amount
                     <input type="text" name="Amount" value={this.Amount} onChange={this.handleAmountChange}/>
+                    <br/>
                 </label>
                 <label>
                 Firstname
                     <input type="text" name="Firstname" value={this.Firstname} onChange={this.handleFirstnameChange}/>
+                    <br/>
                 </label>
                 <label>
                 Lastname
                     <input type="text" name="Lastname" value={this.Lastname} onChange={this.handleLastnameChange}/>
+                    <br/>
                 </label>
                 <label>
                 Email
                     <input type="text" name="Email" value={this.Email} onChange={this.handleEmailChange}/>
+                    <br/>
                 </label>
                 <label>
                 Phone_number
                     <input type="text" name="Phone_number" value={this.Phone_number} onChange={this.handlePhone_numberChange}/>
+                    <br/>
                 </label>
                 <label>
                 city
                     <input type="text" name="City" value={this.City} onChange={this.handleCityChange}/>
+                    <br/>
                 </label>
                 <label>
                 Street_Address
                     <input type="text" name="Street_Address" value={this.Street_Address} onChange={this.handleStreet_AddressChange}/>
+                    <br/>
                 </label>
                 <label>
                 State_Region
                     <input type="text" name="State_Region" value={this.State_Region} onChange={this.handleState_RegionChange}/>
+                    <br/>
                 </label>
                 <label>
                 Expire_date
                     <input type="text" name="Expire_date" value={this.Expire_date} onChange={this.handleExpire_dateChange}/>
+                    <br/>
                 </label>
-                
                 <label>
                 CVC
                     <input type="text" name="CVC" value={this.CVC} onChange={this.handleCVCChange}/>
+                    <br/>
                 </label>
                 <label>
                 Country
                     <input type="text" name="Country" value={this.Country} onChange={this.handleCountryChange}/>
+                    <br/>
                 </label>
                 <label>
                 Postal_Zipcode
                     <input type="text" name="Postal_Zipcode" value={this.Postal_Zipcode} onChange={this.handlePostal_ZipcodeChange}/>
                 </label>
-                
-
-
-
-
-
-                <input type="submit" value="Add to DB" />
+                <br/>
+                <input type="submit" value="create payment" />
             </form> 
 
 
           {
  <ul>
-     {this.state.payment.map( payment  => <li key = {payment._id}> Name: {payment.Firstname}</li>)}
+     {this.state.payment.map( payment  => <li key = {payment._id}> Firstname: {payment.Firstname} ,Lastname: {payment.Lastname} ,CVC: {payment.CVC} <button onClick= {() => {this.delete(payment._id)}}> Delete </button> </li>)}
     </ul> 
 
 
