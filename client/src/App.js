@@ -12,14 +12,12 @@ import Payment from './components/Payment/Payment';
 
 import SPC from './components/SPC/SPC';
 import Investor from './components/Investor/Investor';
-
-
+import Comment from './components/Comment/Comment';
 class App extends Component {
 
   render() {
    return (
       <div className="App">
-
 
 
 
@@ -37,6 +35,7 @@ class App extends Component {
             Learn React
           </a> */}
         </header>
+        <Comment/>
         <Investor/>
 
         <Lawyer />
@@ -44,11 +43,10 @@ class App extends Component {
 
         <ExternalEntities/>
 
-    <Payment/>
+        <Payment/>
 
       
         <SPC/>
-
 
 
 
