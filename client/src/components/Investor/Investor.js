@@ -127,23 +127,30 @@ mobilenumber:""
   }
   update(id){
    // e.preventDefault();
-    let databody = {
+   console.log(this.state.username)
+    let databody 
+if (this.state.name !== ""){
+  databody = {"name":this.state.name}}
+if(this.state.password !== ""){
+  databody = {"password":this.state.password}}
 
-"name":this.state.name,
-"password":this.state.password,	
-"email":this.state.email,	
-"username":	this.state.username,	
-"nationality":	this.state.nationality,	
-"gender":	this.state.gender,	
-"birthdate":	this.state.birthdate,	
-"city":this.state.city,	
-
-"country":	this.state.country,	
-"jobtitle":	this.state.jobtitle,	
-
-"mobilenumber": 	this.state.mobilenumber,	
-    }
-
+  if(this.state.email !== ""){
+    databody = {"email":this.state.email}}
+    if(this.state.username !== ""){
+      databody = {"username":this.state.username}}
+      if(this.state.nationality !== ""){
+        databody = {"nationality":this.state.nationality}}
+        if(this.state.gender !== ""){
+          databody = {"gender":this.state.gender}}
+          if(this.state.birthdate !== ""){
+            databody = {"birthdate":this.state.birthdate}}
+            if(this.state.country !== ""){
+              databody = {"country":this.state.country}}
+              if(this.state.jobtitle !== ""){
+                databody = {"jobtitle":this.state.jobtitle}}
+                if(this.state.mobilenumber !== ""){
+                  databody = {"mobilenumber":this.state.mobilenumber}}
+                  console.log(this.state.username)
     return fetch('http://localhost:5000/api/Investors/'+id, {
         method: 'PUT',
         body: JSON.stringify(databody),
@@ -234,7 +241,7 @@ mobilenumber:""
   <ul>
       {
      this.state.Investors.map( investor  => <li key = {investor._id}> Name: {investor.name} <button onClick= {() => {this.delete(investor._id)}}> Delete </button>   
-     <form onClick={() => {this.update(investor._id)}}>
+     <form onClick={() => {this.update(investor._id)}}> 
      <label>
      Name
      <input type="text" name="name" value={this.name} onChange={this.handlenameChange}/>
@@ -290,7 +297,7 @@ mobilenumber:""
      <input type="text" name="mobilenumber" value={this.mobilenumber} onChange={this.handlemobilenumberChange}/>
      <br/>
  </label>    
-  <input type="submit" value="update Investor" />
+ <input type="submit" value="update Investor" />
             </form>  
             </li>)}
      </ul> 
