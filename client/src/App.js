@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+//import logo from './logo.svg';
+import './App.css';
+import SSC from './components/SSC/SSC';
+
 
 import './App.css';
 
@@ -15,6 +19,7 @@ import SPC from './components/SPC/SPC';
 import Investor from './components/Investor/Investor';
 
 
+
 class App extends Component {
 
   render() {
@@ -23,6 +28,7 @@ class App extends Component {
 
    
         <Investor/>
+        <SSC/>
 
         <Lawyer />
       
