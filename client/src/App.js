@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 
 import logo from './logo.svg';
 import './App.css';
+
+import Lawyer from './components/Lawyer/Lawyer';
+
 import ExternalEntities from './components/ExternalEntities/ExternalEntities';
 
 
-import './App.css';
+
 import Payment from './components/Payment/Payment';
 
 import SPC from './components/SPC/SPC';
 import Investor from './components/Investor/Investor';
+
 
 class App extends Component {
 
@@ -35,12 +39,17 @@ class App extends Component {
           </a> */}
         </header>
         <Investor/>
+
+        <Lawyer />
+      
+
         <ExternalEntities/>
 
     <Payment/>
 
       
         <SPC/>
+
 
 
 
