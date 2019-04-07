@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
+
+
+
+
+
+
+
+
+
+
+
+
 import './App.css';
-
-import logo from './logo.svg';
-
 import Admin from './components/Admin/Admin';
 
+
+import Notification from './components/Notification/Notification';
 
 import SSC from './components/SSC/SSC';
 import Reviewer from './components/Reviewer/Reviewer';
@@ -22,8 +33,9 @@ class App extends Component {
    return (
       <div className="App">
 
+
      
-      <img scr={logo}className="App-logo" alt="logo"/>
+     
       <p>
         Edit <code> src/App.js</code> and save to reload.
       </p>
@@ -36,15 +48,20 @@ class App extends Component {
 
       </a>
       <Admin/>
-      <Reviewer />
+      
+
+    
+       
+        <Notification />
+        <Contract/>
+        <Reviewer /> 
+
         <Comment/>
         <Investor/>
         <SSC/>
-
         <Lawyer />
-      
-
         <ExternalEntities/>
+
 
         <Payment/>
 
@@ -54,15 +71,6 @@ class App extends Component {
        
 
 
-        <Contract/>
-
-
-
-      
-   
-     
-
-       
 
 
       </div>
