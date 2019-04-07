@@ -17,11 +17,11 @@ const notificationSchema = new Schema({
     },
     notify_number:{
         type: Number,
-        required: true
+        required: false
     },
     User_id:{
         type :Number,
-        required:true
+        required:false
     }
     
 })
