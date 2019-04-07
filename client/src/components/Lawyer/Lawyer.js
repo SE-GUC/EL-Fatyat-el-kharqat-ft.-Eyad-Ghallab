@@ -108,10 +108,12 @@ class Lawyer extends Component {
 }
 update(id){
   // e.preventDefault();
-  console.log(this.state.fullname)
+  //console.log(this.state.fullname)
    let databody 
 if (this.state.username !== ""){
  databody = {"username":this.state.username}}
+ if (this.state.fullname !== ""){
+  databody = {"fullname":this.state.fullname}}
 if(this.state.password !== ""){
  databody = {"password":this.state.password}}
  if(this.state.birthdate !== ""){
@@ -138,11 +140,6 @@ if(this.state.password !== ""){
    .then(res => res.json())
    .then(data => console.log(data)); 
 }
-
-
-
-
-
 
 
 

@@ -125,42 +125,42 @@ mobilenumber:""
       .then(res => res.json())
       .then(data => console.log(data)); 
   }
-  update(id){
-   // e.preventDefault();
-   console.log(this.state.username)
-    let databody 
-if (this.state.name !== ""){
-  databody = {"name":this.state.name}}
-if(this.state.password !== ""){
-  databody = {"password":this.state.password}}
-
-  if(this.state.email !== ""){
-    databody = {"email":this.state.email}}
-    if(this.state.username !== ""){
-      databody = {"username":this.state.username}}
-      if(this.state.nationality !== ""){
-        databody = {"nationality":this.state.nationality}}
-        if(this.state.gender !== ""){
-          databody = {"gender":this.state.gender}}
-          if(this.state.birthdate !== ""){
-            databody = {"birthdate":this.state.birthdate}}
-            if(this.state.country !== ""){
-              databody = {"country":this.state.country}}
-              if(this.state.jobtitle !== ""){
-                databody = {"jobtitle":this.state.jobtitle}}
-                if(this.state.mobilenumber !== ""){
-                  databody = {"mobilenumber":this.state.mobilenumber}}
-                  console.log(this.state.username)
-    return fetch('http://localhost:5000/api/Investors/'+id, {
-        method: 'PUT',
-        body: JSON.stringify(databody),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-    .then(res => res.json())
-    .then(data => console.log(data)); 
-}
+   update(id){
+        // e.preventDefault();
+        console.log(this.state.username)
+         let databody 
+     if (this.state.name !== ""){
+       databody = {"name":this.state.name}}
+     if(this.state.password !== ""){
+       databody = {"password":this.state.password}}
+     
+       if(this.state.email !== ""){
+         databody = {"email":this.state.email}}
+         if(this.state.username !== ""){
+           databody = {"username":this.state.username}}
+           if(this.state.nationality !== ""){
+             databody = {"nationality":this.state.nationality}}
+             if(this.state.gender !== ""){
+               databody = {"gender":this.state.gender}}
+               if(this.state.birthdate !== ""){
+                 databody = {"birthdate":this.state.birthdate}}
+                 if(this.state.country !== ""){
+                   databody = {"country":this.state.country}}
+                   if(this.state.jobtitle !== ""){
+                     databody = {"jobtitle":this.state.jobtitle}}
+                     if(this.state.mobilenumber !== ""){
+                       databody = {"mobilenumber":this.state.mobilenumber}}
+                       console.log(this.state.username)
+         return fetch('http://localhost:5000/api/Investors/'+id, {
+             method: 'PUT',
+             body: JSON.stringify(databody),
+             headers: {
+                 'Content-Type': 'application/json'
+             },
+         })
+         .then(res => res.json())
+         .then(data => console.log(data)); 
+     }
     componentDidMount(){
   
         fetch('/api/investors/')

@@ -7,7 +7,7 @@ const SpcForm = require('../../models/SPC')
 const validator = require('../../validations/SPCvalid')
 
 //Create Form
-router.post('/create', async (req,res) => {
+router.post('/', async (req,res) => {
   try {
    const isValidated = validator.createValidation(req.body)
    if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
@@ -24,9 +24,11 @@ router.post('/create', async (req,res) => {
 })
 
 //Read Form
-router.get('/all', async (req,res) => {
+router.get('/', async (req,res) => {
     const spcforms = await SpcForm.find()
-    res.json({data: spcforms})
+    //res.json({data: spcforms})
+    res.json({msg: 'Here are the SPC Forms',data: spcforms})
+
 })
 
 router.get('/:id', async (req,res) => {
@@ -104,7 +106,7 @@ finalprice += 660
 
 })
 // user story Hana
- router.get ('/',(req,res) =>{ 
+ router.get ('/accepted',(req,res) =>{ 
     SpcForm.find({Status:"accepted", is_the_external_entities_notified:"true"})
   .then((Hana) => {
             // var data= "";

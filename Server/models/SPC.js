@@ -9,11 +9,11 @@ const SpcFormSchema = new Schema({
         required: true
     },
     Governorate: {
-        type: String,
+        type: Object,
         required: true
     },
     City: {
-        type: String, 
+        type: Object, 
         required: true
     },
     Facility_Address: {
@@ -29,7 +29,7 @@ const SpcFormSchema = new Schema({
         
     },
     Capital_Currency: {
-        type: String,
+        type: Object,
         required: true
     },
     capital: {
@@ -42,14 +42,13 @@ const SpcFormSchema = new Schema({
     },
     Gender: {
         type: String,
-        required: true
     },
     Nationality: {
-        type: String,
+        type: Object,
         required: true
     },
     TypeOf_IdentityProof: {
-        type: String,
+        type: Object,
         required: true
     },
     investor_nationalid: {

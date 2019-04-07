@@ -6,447 +6,447 @@ module.exports = {
       Facility_name: Joi.string()
       .min(2)
       .required(),
-    Governorate: Joi.string()
-      .valid(
-        "cairo",
-        "Alex",
-        "Ismalia",
-        "aswan",
-        "luxor",
-        "Domiat",
-        "Elbahr elahmar",
-        "asiut",
-        "Damnhor",
-        "Bne sweif",
-        "Bor saed",
-        "Giza",
-        "ganob sina",
-        "suez",
-        "faioum",
-        "qena",
-        "banha",
-        "kafr elsheikh",
-        "monofia",
-        "aswan",
-        "elmenia",
-        "elwadi elgedid",
-        "Qlioubia",
-        "Gharbia",
-        "aswan",
-        "Sharaaia"
-      )
+    Governorate: Joi
+      // .valid(
+      //   "cairo",
+      //   "Alex",
+      //   "Ismalia",
+      //   "aswan",
+      //   "luxor",
+      //   "Domiat",
+      //   "Elbahr elahmar",
+      //   "asiut",
+      //   "Damnhor",
+      //   "Bne sweif",
+      //   "Bor saed",
+      //   "Giza",
+      //   "ganob sina",
+      //   "suez",
+      //   "faioum",
+      //   "qena",
+      //   "banha",
+      //   "kafr elsheikh",
+      //   "monofia",
+      //   "aswan",
+      //   "elmenia",
+      //   "elwadi elgedid",
+      //   "Qlioubia",
+      //   "Gharbia",
+      //   "aswan",
+      //   "Sharaaia"
+      // )
       .required(),
-    City: Joi.string()
-      .valid(
-        "Abnūb",
-        "Abū al-Maṭāmīr",
-        "Abū an-Numrus",
-        "Abū Ḥammād",
-        "Abū Ḥummuṣ",
-        "Abū Kabīr",
-        "Abū Qurqās",
-        "Abū Ṣuwayr",
-        "Abū Tīj",
-        "Abū Tisht",
-        "Aḍ-Ḍabah",
-        "Ad-Dilinjāt",
-        "Ajā",
-        "Akhmīm",
-        "Al-Arīsh",
-        "Al-Ayyāṭ",
-        "Al-Badārī",
-        "Al-Badrashayn",
-        "Al-Bājūr",
-        "Al-Balyanā",
-        "Al-Baṣaliyah Baḥri",
-        "Al-Bāwīṭī",
-        "Al-Bāyaḍiyah",
-        "Al-Fashn",
-        "Al-Fatḥ-An-Nāṣiriyah",
-        "Al-Fayyūm",
-        "Al-Ghanāyim ",
-        "Al-Ghurdaqah",
-        "Al-Ḥammām",
-        "Al-Ḥāmūl",
-        "Al-Ḥawāmidiyah",
-        "Al-Ḥusayniyah",
-        "Al-Ibrāhīmiyah",
-        "Al-Idwah",
-        "Al-Iskandariyah",
-        "Al-Ismāīliyah",
-        "Al-Jamāliyah",
-        "Al-Jīzah ",
-        "Al-Khānkah",
-        "Al-Khārijah",
-        "Al-Khuṣūṣ",
-        "Al-Kurdy",
-        "Al-Maḥallah al-Kubrā",
-        "Al-Maḥmūdiyah",
-        "Al-Manshāh",
-        "Al-Manṣūrah",
-        "Al-Manzilah",
-        "Al-Marāghah",
-        "Al-Maṭariyah",
-        "Al-Minyā",
-        "Al-Minyā al-Jadīdah",
-        "Al-Qāhirah",
-        "New Cairo",
-        "Al-Qanāṭir al-Khayriyah",
-        "Al-Qanāyāt",
-        "Al-Qantarah",
-        "Al-Qanṭarah Sharq",
-        "Al-Qarnuh al-Jadīdah",
-        "Al-Qaṣāṣīn al-Jadīdah",
-        "Al-Qurayn",
-        "Al-Quṣayr",
-        "Al-Qūṣiyah",
-        "Al-Ubūr",
-        "Luxor",
-        "Al-Waqf ",
-        "Al-Wāsiṭā",
-        "El Negaila",
-        "An-New Nubariya",
-        "Armant",
-        "Ar-Radīsiyah Qiblī",
-        "Ar-Rahmaniya",
-        "Ar-Rawḍah",
-        "Ar-Riyāḍ",
-        "Ashmoun",
-        "Ash-Shalātīn",
-        "Sheikh Zayed City",
-        "Sheikh Zuweid",
-        "Ash-Shuhadā",
-        "Ash-Shurūq",
-        "Aṣ-Ṣaff",
-        "New Salhia",
-        "As-Sallūm",
-        "As-Sanṭah",
-        "As-Sarw",
-        "As-Sibāiyah Gharb",
-        "El Senbellawein",
-        "Suez",
-        "Aswān",
-        "Asyut",
-        "Aṭfīḥ",
-        "At-Tall al-Kabīr",
-        "Aṭ-Ṭūd",
-        "El Tor",
-        "Awlād Ṣaqr",
-        "Awsīm",
-        "Zagazig",
-        "Az-Zarqā",
-        "Az-Zayniyah Qiblī",
-        "Badr",
-        "Balṭīm",
-        "Banhā",
-        "Beni Mazar",
-        "Beni Suef",
-        "New Beni Suef",
-        "Banī Ubayd",
-        "Basyoun",
-        "Bibā",
-        "Bilbays",
-        "Belqas",
-        "Bīr al-Abd",
-        "Birket el-Sab",
-        "Biyalā",
-        "Burj al-Arab",
-        "Burj al-Barlus",
-        "Port Said",
-        "Damanhour",
-        "Dar as-Salām",
-        "Daraw",
-        "Dayr Mawās",
-        "Dairut",
-        "Dikirnis",
-        "Dishnā",
-        "Desouk",
-        "Diyarb Najm",
-        "Dumyāṭ ",
-        "Fayid ",
-        "Faqous",
-        "Fāraskūr  ",
-        "Farshūṭ ",
-        "Fuwah ",
-        "Ḥawsh-Īsā",
-        "Hihyā",
-        "Ibsheway",
-        "Edfu",
-        "Idkū",
-        "Ihnāsiyā",
-        "Isnā",
-        "Iṭsā",
-        "Ityāy al-Bārūd",
-        "Izbat al-Burj",
-        "Girga",
-        "Juhaynah",
-        "Kafr ad-Dawwār",
-        "Kafr al-Baṭṭīkh",
-        "Kafr el-Sheikh",
-        "Kafr az-Zayyāt",
-        "Kafr Saad",
-        "Kafr Ṣaqr",
-        "Kafr Shukr",
-        "Kawm Ḥamādah",
-        "Kawm Umbū",
-        "Kirdāsah",
-        "10th of Ramadan City",
-        "Madīnat as-Sādāt",
-        "Madīnat Badr",
-        "Madīnat Burj al-Arab al-Jadīdah",
-        "Madīnat Dumyāṭ al-Jadīdah",
-        "Madīnat Sittah Uktūbar",
-        "Maghāghah ",
-        "Maḥallah Damanah",
-        "Mallawī ",
-        "Manfalūṭ    ",
-        "Manshat al-Qanāṭir",
-        "Marsā Maṭrūḥ ",
-        "Mashtūl as-Sūq ",
-        "Maṭāy",
-        "Minūf   ",
-        "Minyā al-Qamḥ   ",
-        "Minyat an-Naṣr  ",
-        "Mīt Abū Ghālb ",
-        "Mīt Ghamr   ",
-        "Mīt Salsīl",
-        "Munshāh Abū-Umar ",
-        "Dakhla",
-        "Muṭūbis",
-        "Nabarūh ",
-        "Naj-Ḥammādī",
-        "Naqādah ",
-        "Nāṣir Būsh",
-        "Qahā   ",
-        "Qallīn ",
-        "Qalyūb",
-        "Qifṭ",
-        "Qinā",
-        "Qūṣ",
-        "Quṭūr",
-        "Quwaysinā",
-        "Rafaḥ",
-        "Rās al-Bar",
-        "Ras Ghārib ",
-        "Rashīd",
-        "Safājā",
-        "Sāḥīl Salim",
-        "Samālūṭ",
-        "Samannūd",
-        "Ṣān al-Ḥajar",
-        "Sāqultah",
-        "Sawhāj",
-        "Sharm ash-Shaykh",
-        "Shibīn al-Kawm",
-        "Shibīn al-Qanāṭir",
-        "Shirbīn",
-        "Shubrā al-Khaymah",
-        "Shubrākhīt",
-        "Ṣidfā",
-        "Sīdī Barrānī",
-        "Sīdī Ghāzī",
-        "Sīdī Sālim",
-        "Sinnūris",
-        "Sirs al-Layyānah",
-        "Sīwa",
-        "Sumusṭā al-Waqf",
-        "Ṭahṭā",
-        "Talā",
-        "Ṭalkhā",
-        "Tama al-Āmdīd",
-        "Ṭāmiyah",
-        "Ṭanṭā",
-        "Ṭimā",
-        "Ṭūkh",
-        "Natron Valley",
-        "Yūsuf aṣ-Ṣiddīq",
-        "Ziftā"
-      )
+    City: Joi
+      // .valid(
+      //   "Abnūb",
+      //   "Abū al-Maṭāmīr",
+      //   "Abū an-Numrus",
+      //   "Abū Ḥammād",
+      //   "Abū Ḥummuṣ",
+      //   "Abū Kabīr",
+      //   "Abū Qurqās",
+      //   "Abū Ṣuwayr",
+      //   "Abū Tīj",
+      //   "Abū Tisht",
+      //   "Aḍ-Ḍabah",
+      //   "Ad-Dilinjāt",
+      //   "Ajā",
+      //   "Akhmīm",
+      //   "Al-Arīsh",
+      //   "Al-Ayyāṭ",
+      //   "Al-Badārī",
+      //   "Al-Badrashayn",
+      //   "Al-Bājūr",
+      //   "Al-Balyanā",
+      //   "Al-Baṣaliyah Baḥri",
+      //   "Al-Bāwīṭī",
+      //   "Al-Bāyaḍiyah",
+      //   "Al-Fashn",
+      //   "Al-Fatḥ-An-Nāṣiriyah",
+      //   "Al-Fayyūm",
+      //   "Al-Ghanāyim ",
+      //   "Al-Ghurdaqah",
+      //   "Al-Ḥammām",
+      //   "Al-Ḥāmūl",
+      //   "Al-Ḥawāmidiyah",
+      //   "Al-Ḥusayniyah",
+      //   "Al-Ibrāhīmiyah",
+      //   "Al-Idwah",
+      //   "Al-Iskandariyah",
+      //   "Al-Ismāīliyah",
+      //   "Al-Jamāliyah",
+      //   "Al-Jīzah ",
+      //   "Al-Khānkah",
+      //   "Al-Khārijah",
+      //   "Al-Khuṣūṣ",
+      //   "Al-Kurdy",
+      //   "Al-Maḥallah al-Kubrā",
+      //   "Al-Maḥmūdiyah",
+      //   "Al-Manshāh",
+      //   "Al-Manṣūrah",
+      //   "Al-Manzilah",
+      //   "Al-Marāghah",
+      //   "Al-Maṭariyah",
+      //   "Al-Minyā",
+      //   "Al-Minyā al-Jadīdah",
+      //   "Al-Qāhirah",
+      //   "New Cairo",
+      //   "Al-Qanāṭir al-Khayriyah",
+      //   "Al-Qanāyāt",
+      //   "Al-Qantarah",
+      //   "Al-Qanṭarah Sharq",
+      //   "Al-Qarnuh al-Jadīdah",
+      //   "Al-Qaṣāṣīn al-Jadīdah",
+      //   "Al-Qurayn",
+      //   "Al-Quṣayr",
+      //   "Al-Qūṣiyah",
+      //   "Al-Ubūr",
+      //   "Luxor",
+      //   "Al-Waqf ",
+      //   "Al-Wāsiṭā",
+      //   "El Negaila",
+      //   "An-New Nubariya",
+      //   "Armant",
+      //   "Ar-Radīsiyah Qiblī",
+      //   "Ar-Rahmaniya",
+      //   "Ar-Rawḍah",
+      //   "Ar-Riyāḍ",
+      //   "Ashmoun",
+      //   "Ash-Shalātīn",
+      //   "Sheikh Zayed City",
+      //   "Sheikh Zuweid",
+      //   "Ash-Shuhadā",
+      //   "Ash-Shurūq",
+      //   "Aṣ-Ṣaff",
+      //   "New Salhia",
+      //   "As-Sallūm",
+      //   "As-Sanṭah",
+      //   "As-Sarw",
+      //   "As-Sibāiyah Gharb",
+      //   "El Senbellawein",
+      //   "Suez",
+      //   "Aswān",
+      //   "Asyut",
+      //   "Aṭfīḥ",
+      //   "At-Tall al-Kabīr",
+      //   "Aṭ-Ṭūd",
+      //   "El Tor",
+      //   "Awlād Ṣaqr",
+      //   "Awsīm",
+      //   "Zagazig",
+      //   "Az-Zarqā",
+      //   "Az-Zayniyah Qiblī",
+      //   "Badr",
+      //   "Balṭīm",
+      //   "Banhā",
+      //   "Beni Mazar",
+      //   "Beni Suef",
+      //   "New Beni Suef",
+      //   "Banī Ubayd",
+      //   "Basyoun",
+      //   "Bibā",
+      //   "Bilbays",
+      //   "Belqas",
+      //   "Bīr al-Abd",
+      //   "Birket el-Sab",
+      //   "Biyalā",
+      //   "Burj al-Arab",
+      //   "Burj al-Barlus",
+      //   "Port Said",
+      //   "Damanhour",
+      //   "Dar as-Salām",
+      //   "Daraw",
+      //   "Dayr Mawās",
+      //   "Dairut",
+      //   "Dikirnis",
+      //   "Dishnā",
+      //   "Desouk",
+      //   "Diyarb Najm",
+      //   "Dumyāṭ ",
+      //   "Fayid ",
+      //   "Faqous",
+      //   "Fāraskūr  ",
+      //   "Farshūṭ ",
+      //   "Fuwah ",
+      //   "Ḥawsh-Īsā",
+      //   "Hihyā",
+      //   "Ibsheway",
+      //   "Edfu",
+      //   "Idkū",
+      //   "Ihnāsiyā",
+      //   "Isnā",
+      //   "Iṭsā",
+      //   "Ityāy al-Bārūd",
+      //   "Izbat al-Burj",
+      //   "Girga",
+      //   "Juhaynah",
+      //   "Kafr ad-Dawwār",
+      //   "Kafr al-Baṭṭīkh",
+      //   "Kafr el-Sheikh",
+      //   "Kafr az-Zayyāt",
+      //   "Kafr Saad",
+      //   "Kafr Ṣaqr",
+      //   "Kafr Shukr",
+      //   "Kawm Ḥamādah",
+      //   "Kawm Umbū",
+      //   "Kirdāsah",
+      //   "10th of Ramadan City",
+      //   "Madīnat as-Sādāt",
+      //   "Madīnat Badr",
+      //   "Madīnat Burj al-Arab al-Jadīdah",
+      //   "Madīnat Dumyāṭ al-Jadīdah",
+      //   "Madīnat Sittah Uktūbar",
+      //   "Maghāghah ",
+      //   "Maḥallah Damanah",
+      //   "Mallawī ",
+      //   "Manfalūṭ    ",
+      //   "Manshat al-Qanāṭir",
+      //   "Marsā Maṭrūḥ ",
+      //   "Mashtūl as-Sūq ",
+      //   "Maṭāy",
+      //   "Minūf   ",
+      //   "Minyā al-Qamḥ   ",
+      //   "Minyat an-Naṣr  ",
+      //   "Mīt Abū Ghālb ",
+      //   "Mīt Ghamr   ",
+      //   "Mīt Salsīl",
+      //   "Munshāh Abū-Umar ",
+      //   "Dakhla",
+      //   "Muṭūbis",
+      //   "Nabarūh ",
+      //   "Naj-Ḥammādī",
+      //   "Naqādah ",
+      //   "Nāṣir Būsh",
+      //   "Qahā   ",
+      //   "Qallīn ",
+      //   "Qalyūb",
+      //   "Qifṭ",
+      //   "Qinā",
+      //   "Qūṣ",
+      //   "Quṭūr",
+      //   "Quwaysinā",
+      //   "Rafaḥ",
+      //   "Rās al-Bar",
+      //   "Ras Ghārib ",
+      //   "Rashīd",
+      //   "Safājā",
+      //   "Sāḥīl Salim",
+      //   "Samālūṭ",
+      //   "Samannūd",
+      //   "Ṣān al-Ḥajar",
+      //   "Sāqultah",
+      //   "Sawhāj",
+      //   "Sharm ash-Shaykh",
+      //   "Shibīn al-Kawm",
+      //   "Shibīn al-Qanāṭir",
+      //   "Shirbīn",
+      //   "Shubrā al-Khaymah",
+      //   "Shubrākhīt",
+      //   "Ṣidfā",
+      //   "Sīdī Barrānī",
+      //   "Sīdī Ghāzī",
+      //   "Sīdī Sālim",
+      //   "Sinnūris",
+      //   "Sirs al-Layyānah",
+      //   "Sīwa",
+      //   "Sumusṭā al-Waqf",
+      //   "Ṭahṭā",
+      //   "Talā",
+      //   "Ṭalkhā",
+      //   "Tama al-Āmdīd",
+      //   "Ṭāmiyah",
+      //   "Ṭanṭā",
+      //   "Ṭimā",
+      //   "Ṭūkh",
+      //   "Natron Valley",
+      //   "Yūsuf aṣ-Ṣiddīq",
+      //   "Ziftā"
+      // )
       .required(),
     Facility_Address: Joi.string().required(),
     Facility_Phone_Number: Joi.string(),
     Fax: Joi.string(),
-    Capital_Currency: Joi.string()
-      .valid(
-        "Abkhazian apsar",
-        "Russian ruble",
-        "Afghan afghani",
-        "Albanian lek",
-        "Alderney pound",
-        "British pound",
-        "Guernsey pound",
-        "Algerian dinar",
-        "Euro",
-        "Angolan kwanza",
-        "East Caribbean dollar",
-        "Argentine peso",
-        "Armenian dram",
-        "Aruban florin",
-        "Ascension pound",
-        "Saint Helena pound",
-        "Australian dollar",
-        "Azerbaijani manat",
-        "Bahamian dollar",
-        "Bahraini dinar",
-        "Bangladeshi taka",
-        "Barbadian dollar",
-        "Belarusian ruble",
-        "Belize dollar",
-        "West African CFA franc",
-        "Bermudian dollar",
-        "Bhutanese ngultrum",
-        "Indian rupee",
-        "Bolivian boliviano",
-        "Bosnia and Herzegovina convertible mark",
-        "Botswana pula",
-        "Brazilian real",
-        "British Virgin Islands dollar",
-        "Brunei dollar",
-        "Singapore dollar",
-        "Bulgarian lev",
-        "Burundian franc",
-        "Cambodian riel",
-        "Central African CFA franc",
-        "Canadian dollar",
-        "Cape Verdean escudo",
-        "Cayman Islands dollar",
-        "Chilean peso",
-        "Chinese yuan",
-        "Colombian peso",
-        "Comorian franc",
-        "Congolese franc",
-        "New Zealand dollar",
-        "Cook Islands dollar",
-        "Costa Rican colón",
-        "Croatian kuna",
-        "Cuban convertible peso",
-        "Cuban peso",
-        "Netherlands Antillean guilder",
-        "Czech koruna",
-        "Danish krone",
-        "Djiboutian franc",
-        "Dominican peso",
-        "Egyptian pound",
-        "Eritrean nakfa",
-        "Ethiopian birr",
-        "Falkland Islands pound",
-        "Faroese króna",
-        "Fijian dollar",
-        "CFP franc",
-        "Gambian dalasi",
-        "Georgian lari",
-        "Ghana cedi",
-        "Gibraltar pound",
-        "Guatemalan quetzal",
-        "Guinean franc",
-        "Guyanese dollar",
-        "Haitian gourde",
-        "Honduran lempira",
-        "Hong Kong dollar",
-        "Hungarian forint",
-        "Icelandic króna",
-        "Indonesian rupiah",
-        "Iranian rial",
-        "Iraqi dinar",
-        "Manx pound",
-        "Israeli new shekel",
-        "Jamaican dollar",
-        "Japanese yen",
-        "Jersey pound",
-        "Jordanian dinar",
-        "Kazakhstani tenge",
-        "Kenyan shilling",
-        "Kiribati dollar",
-        "North Korean won",
-        "South Korean won",
-        "Kuwaiti dinar",
-        "Kyrgyzstani som",
-        "Lao kip",
-        "Lebanese pound",
-        "Lesotho loti",
-        "South African rand",
-        "Liberian dollar",
-        "Libyan dinar",
-        "Swiss franc",
-        "Macanese pataca",
-        "Macedonian denar",
-        "Malagasy ariary",
-        "Malawian kwacha",
-        "Malaysian ringgit",
-        "Maldivian rufiyaa",
-        "Mauritanian ouguiya",
-        "Mauritian rupee",
-        "Mexican peso",
-        "Micronesian dollar",
-        "Moldovan leu",
-        "Mongolian tögrög",
-        "Moroccan dirham",
-        "Mozambican metical",
-        "Burmese kyat",
-        "Nagorno-Karabakh dram",
-        "Namibian dollar",
-        "Nauruan dollar",
-        "Nepalese rupee",
-        "Nicaraguan córdoba",
-        "Nigerian naira",
-        "Niue dollar",
-        "Turkish lira",
-        "Norwegian krone",
-        "Omani rial",
-        "Pakistani rupee",
-        "Palauan dollar",
-        "Panamanian balboa",
-        "Papua New Guinean kina",
-        "Paraguayan guaraní",
-        "Peruvian nuevo sol",
-        "Philippine peso",
-        "Pitcairn Islands dollar",
-        "Polish złoty",
-        "Qatari riyal",
-        "Romanian leu",
-        "Rwandan franc",
-        "Sahrawi peseta",
-        "Samoan tālā",
-        "São Tomé and Príncipe dobra",
-        "Saudi riyal",
-        "Serbian dinar",
-        "Seychellois rupee",
-        "Sierra Leonean leone",
-        "Solomon Islands dollar",
-        "Somali shilling",
-        "Somaliland shilling",
-        "South Georgia and the South Sandwich Islands pound",
-        "South Sudanese pound",
-        "Sri Lankan rupee",
-        "Sudanese pound",
-        "Surinamese dollar",
-        "Swazi lilangeni",
-        "Swedish krona",
-        "Syrian pound",
-        "New Taiwan dollar",
-        "Tajikistani somoni",
-        "Tanzanian shilling",
-        "Thai baht",
-        "Tongan paʻanga",
-        "Transnistrian ruble",
-        "Trinidad and Tobago dollar",
-        "Tristan da Cunha pound",
-        "Tunisian dinar",
-        "Turkmenistan manat",
-        "Tuvaluan dollar",
-        "Ugandan shilling",
-        "Ukrainian hryvnia",
-        "United Arab Emirates dirham",
-        "Uruguayan peso",
-        "Uzbekistani som",
-        "Vanuatu vatu",
-        "Venezuelan bolívar",
-        "Vietnamese đồng",
-        "Yemeni rial",
-        "Zambian kwacha",
-        "United States dollar",
-        "Zimbabwean Bond"
-      )
+    Capital_Currency: Joi
+      // .valid(
+      //   "Abkhazian apsar",
+      //   "Russian ruble",
+      //   "Afghan afghani",
+      //   "Albanian lek",
+      //   "Alderney pound",
+      //   "British pound",
+      //   "Guernsey pound",
+      //   "Algerian dinar",
+      //   "Euro",
+      //   "Angolan kwanza",
+      //   "East Caribbean dollar",
+      //   "Argentine peso",
+      //   "Armenian dram",
+      //   "Aruban florin",
+      //   "Ascension pound",
+      //   "Saint Helena pound",
+      //   "Australian dollar",
+      //   "Azerbaijani manat",
+      //   "Bahamian dollar",
+      //   "Bahraini dinar",
+      //   "Bangladeshi taka",
+      //   "Barbadian dollar",
+      //   "Belarusian ruble",
+      //   "Belize dollar",
+      //   "West African CFA franc",
+      //   "Bermudian dollar",
+      //   "Bhutanese ngultrum",
+      //   "Indian rupee",
+      //   "Bolivian boliviano",
+      //   "Bosnia and Herzegovina convertible mark",
+      //   "Botswana pula",
+      //   "Brazilian real",
+      //   "British Virgin Islands dollar",
+      //   "Brunei dollar",
+      //   "Singapore dollar",
+      //   "Bulgarian lev",
+      //   "Burundian franc",
+      //   "Cambodian riel",
+      //   "Central African CFA franc",
+      //   "Canadian dollar",
+      //   "Cape Verdean escudo",
+      //   "Cayman Islands dollar",
+      //   "Chilean peso",
+      //   "Chinese yuan",
+      //   "Colombian peso",
+      //   "Comorian franc",
+      //   "Congolese franc",
+      //   "New Zealand dollar",
+      //   "Cook Islands dollar",
+      //   "Costa Rican colón",
+      //   "Croatian kuna",
+      //   "Cuban convertible peso",
+      //   "Cuban peso",
+      //   "Netherlands Antillean guilder",
+      //   "Czech koruna",
+      //   "Danish krone",
+      //   "Djiboutian franc",
+      //   "Dominican peso",
+      //   "Egyptian pound",
+      //   "Eritrean nakfa",
+      //   "Ethiopian birr",
+      //   "Falkland Islands pound",
+      //   "Faroese króna",
+      //   "Fijian dollar",
+      //   "CFP franc",
+      //   "Gambian dalasi",
+      //   "Georgian lari",
+      //   "Ghana cedi",
+      //   "Gibraltar pound",
+      //   "Guatemalan quetzal",
+      //   "Guinean franc",
+      //   "Guyanese dollar",
+      //   "Haitian gourde",
+      //   "Honduran lempira",
+      //   "Hong Kong dollar",
+      //   "Hungarian forint",
+      //   "Icelandic króna",
+      //   "Indonesian rupiah",
+      //   "Iranian rial",
+      //   "Iraqi dinar",
+      //   "Manx pound",
+      //   "Israeli new shekel",
+      //   "Jamaican dollar",
+      //   "Japanese yen",
+      //   "Jersey pound",
+      //   "Jordanian dinar",
+      //   "Kazakhstani tenge",
+      //   "Kenyan shilling",
+      //   "Kiribati dollar",
+      //   "North Korean won",
+      //   "South Korean won",
+      //   "Kuwaiti dinar",
+      //   "Kyrgyzstani som",
+      //   "Lao kip",
+      //   "Lebanese pound",
+      //   "Lesotho loti",
+      //   "South African rand",
+      //   "Liberian dollar",
+      //   "Libyan dinar",
+      //   "Swiss franc",
+      //   "Macanese pataca",
+      //   "Macedonian denar",
+      //   "Malagasy ariary",
+      //   "Malawian kwacha",
+      //   "Malaysian ringgit",
+      //   "Maldivian rufiyaa",
+      //   "Mauritanian ouguiya",
+      //   "Mauritian rupee",
+      //   "Mexican peso",
+      //   "Micronesian dollar",
+      //   "Moldovan leu",
+      //   "Mongolian tögrög",
+      //   "Moroccan dirham",
+      //   "Mozambican metical",
+      //   "Burmese kyat",
+      //   "Nagorno-Karabakh dram",
+      //   "Namibian dollar",
+      //   "Nauruan dollar",
+      //   "Nepalese rupee",
+      //   "Nicaraguan córdoba",
+      //   "Nigerian naira",
+      //   "Niue dollar",
+      //   "Turkish lira",
+      //   "Norwegian krone",
+      //   "Omani rial",
+      //   "Pakistani rupee",
+      //   "Palauan dollar",
+      //   "Panamanian balboa",
+      //   "Papua New Guinean kina",
+      //   "Paraguayan guaraní",
+      //   "Peruvian nuevo sol",
+      //   "Philippine peso",
+      //   "Pitcairn Islands dollar",
+      //   "Polish złoty",
+      //   "Qatari riyal",
+      //   "Romanian leu",
+      //   "Rwandan franc",
+      //   "Sahrawi peseta",
+      //   "Samoan tālā",
+      //   "São Tomé and Príncipe dobra",
+      //   "Saudi riyal",
+      //   "Serbian dinar",
+      //   "Seychellois rupee",
+      //   "Sierra Leonean leone",
+      //   "Solomon Islands dollar",
+      //   "Somali shilling",
+      //   "Somaliland shilling",
+      //   "South Georgia and the South Sandwich Islands pound",
+      //   "South Sudanese pound",
+      //   "Sri Lankan rupee",
+      //   "Sudanese pound",
+      //   "Surinamese dollar",
+      //   "Swazi lilangeni",
+      //   "Swedish krona",
+      //   "Syrian pound",
+      //   "New Taiwan dollar",
+      //   "Tajikistani somoni",
+      //   "Tanzanian shilling",
+      //   "Thai baht",
+      //   "Tongan paʻanga",
+      //   "Transnistrian ruble",
+      //   "Trinidad and Tobago dollar",
+      //   "Tristan da Cunha pound",
+      //   "Tunisian dinar",
+      //   "Turkmenistan manat",
+      //   "Tuvaluan dollar",
+      //   "Ugandan shilling",
+      //   "Ukrainian hryvnia",
+      //   "United Arab Emirates dirham",
+      //   "Uruguayan peso",
+      //   "Uzbekistani som",
+      //   "Vanuatu vatu",
+      //   "Venezuelan bolívar",
+      //   "Vietnamese đồng",
+      //   "Yemeni rial",
+      //   "Zambian kwacha",
+      //   "United States dollar",
+      //   "Zimbabwean Bond"
+      // )
       .required(),
     capital: Joi.number()
       .integer()
@@ -457,128 +457,132 @@ module.exports = {
       .min(3)
       .required(),
 
-    Gender: Joi.valid("Female", "Male"),
-    Nationality: Joi.valid(
-      "Afghan",
-      "Albanian",
-      "Algerian",
-      "Argentinian",
-      "Australian",
-      "Austrian",
-      "Bangladeshi",
-      "Belgian",
-      "Bolivian",
-      "Batswana",
-      "Brazilian",
-      "Bulgarian",
-      "Cambodian",
-      "Cameroonian",
-      "Canadian",
-      "Chilean",
-      "Chinese",
-      "Colombian",
-      "Costa Rican",
-      "Croatian",
-      "Cuban",
-      "Czech",
-      "Danish",
-      "Dominican",
-      "Ecuadorian",
-      "Egyptian",
-      "Salvadorian",
-      "English",
-      "Estonian",
-      "Ethiopian",
-      "Fijian",
-      "Finnish",
-      "French",
-      "German",
-      "Ghanaian",
-      "Greek",
-      "Guatemalan",
-      "Haitian",
-      "Honduran",
-      "Hungarian",
-      "Icelandic",
-      "Indian",
-      "Indonesian",
-      "Iranian",
-      "Iraqi",
-      "Irish",
-      "Israeli",
-      "Italian",
-      "Jamaican",
-      "Japanese",
-      "Jordanian",
-      "Kenyan",
-      "Kuwaiti",
-      "Lao",
-      "Latvian",
-      "Lebanese",
-      "Libyan",
-      "Lithuanian",
-      "Malaysian",
-      "Malian",
-      "Maltese",
-      "Mexican",
-      "Mongolian",
-      "Moroccan",
-      "Mozambican",
-      "Namibian",
-      "Nepalese",
-      "Dutch",
-      "New Zealand",
-      "Nicaraguan",
-      "Nigerian",
-      "Norwegian",
-      "Pakistani",
-      "Panamanian",
-      "Paraguayan",
-      "Peruvian",
-      "Philippine",
-      "Polish",
-      "Portuguese",
-      "Romanian",
-      "Russian",
-      "Saudi",
-      "Scottish",
-      "Senegalese",
-      "Serbian",
-      "Singaporean",
-      "Slovak",
-      "South African",
-      "Korean",
-      "Spanish",
-      "Sri Lankan",
-      "Sudanese",
-      "Swedish",
-      "Swiss",
-      "Syrian",
-      "Taiwanese",
-      "Tajikistani",
-      "Thai",
-      "Tongan",
-      "Tunisian",
-      "Turkish",
-      "Ukrainian",
-      "Emirati",
-      "British",
-      "American",
-      "Uruguayan",
-      "Venezuelan",
-      "Vietnamese",
-      "Welsh",
-      "Zambian",
-      "Zimbabwean"
-    ).required(),
-    TypeOf_IdentityProof: Joi.valid("Passport", "NationalID").required(),
+    Gender: Joi.optional(),
+    Nationality: Joi
+    //.valid(
+    //   "Afghan",
+    //   "Albanian",
+    //   "Algerian",
+    //   "Argentinian",
+    //   "Australian",
+    //   "Austrian",
+    //   "Bangladeshi",
+    //   "Belgian",
+    //   "Bolivian",
+    //   "Batswana",
+    //   "Brazilian",
+    //   "Bulgarian",
+    //   "Cambodian",
+    //   "Cameroonian",
+    //   "Canadian",
+    //   "Chilean",
+    //   "Chinese",
+    //   "Colombian",
+    //   "Costa Rican",
+    //   "Croatian",
+    //   "Cuban",
+    //   "Czech",
+    //   "Danish",
+    //   "Dominican",
+    //   "Ecuadorian",
+    //   "Egyptian",
+    //   "Salvadorian",
+    //   "English",
+    //   "Estonian",
+    //   "Ethiopian",
+    //   "Fijian",
+    //   "Finnish",
+    //   "French",
+    //   "German",
+    //   "Ghanaian",
+    //   "Greek",
+    //   "Guatemalan",
+    //   "Haitian",
+    //   "Honduran",
+    //   "Hungarian",
+    //   "Icelandic",
+    //   "Indian",
+    //   "Indonesian",
+    //   "Iranian",
+    //   "Iraqi",
+    //   "Irish",
+    //   "Israeli",
+    //   "Italian",
+    //   "Jamaican",
+    //   "Japanese",
+    //   "Jordanian",
+    //   "Kenyan",
+    //   "Kuwaiti",
+    //   "Lao",
+    //   "Latvian",
+    //   "Lebanese",
+    //   "Libyan",
+    //   "Lithuanian",
+    //   "Malaysian",
+    //   "Malian",
+    //   "Maltese",
+    //   "Mexican",
+    //   "Mongolian",
+    //   "Moroccan",
+    //   "Mozambican",
+    //   "Namibian",
+    //   "Nepalese",
+    //   "Dutch",
+    //   "New Zealand",
+    //   "Nicaraguan",
+    //   "Nigerian",
+    //   "Norwegian",
+    //   "Pakistani",
+    //   "Panamanian",
+    //   "Paraguayan",
+    //   "Peruvian",
+    //   "Philippine",
+    //   "Polish",
+    //   "Portuguese",
+    //   "Romanian",
+    //   "Russian",
+    //   "Saudi",
+    //   "Scottish",
+    //   "Senegalese",
+    //   "Serbian",
+    //   "Singaporean",
+    //   "Slovak",
+    //   "South African",
+    //   "Korean",
+    //   "Spanish",
+    //   "Sri Lankan",
+    //   "Sudanese",
+    //   "Swedish",
+    //   "Swiss",
+    //   "Syrian",
+    //   "Taiwanese",
+    //   "Tajikistani",
+    //   "Thai",
+    //   "Tongan",
+    //   "Tunisian",
+    //   "Turkish",
+    //   "Ukrainian",
+    //   "Emirati",
+    //   "British",
+    //   "American",
+    //   "Uruguayan",
+    //   "Venezuelan",
+    //   "Vietnamese",
+    //   "Welsh",
+    //   "Zambian",
+    //   "Zimbabwean"
+    // )
+    .required(),
+    TypeOf_IdentityProof: Joi
+    // .valid("Passport", "National ID")
+    .required(),
     investor_nationalid: Joi.string()
       .min(14)
       .max(14)
       .required(),
     BirthDate: Joi.date().required(),
     Investor_Address: Joi.string().required(),
-    Phone_Number: Joi.string().max(11),
+    Phone_Number: Joi.string(),
     email: Joi.string(),
     Investor_Fax: Joi.string(),
     Locked: Joi.boolean(),
@@ -595,1126 +599,1126 @@ module.exports = {
       
         const updateSchema = {
             Facility_name: Joi.string(),
-            Governorate: Joi
+          //   Governorate: Joi
   
-          .string()
+          
   
-          .valid(
+          // .valid(
   
-            "cairo",
+          //   "cairo",
   
-            "Alex",
+          //   "Alex",
   
-            "Ismalia",
+          //   "Ismalia",
   
-            "aswan",
+          //   "aswan",
   
-            "luxor",
+          //   "luxor",
   
-            "Domiat",
+          //   "Domiat",
   
-            "Elbahr elahmar",
+          //   "Elbahr elahmar",
   
-            "asiut",
+          //   "asiut",
   
-            "Damnhor",
+          //   "Damnhor",
   
-            "Bne sweif",
+          //   "Bne sweif",
   
-            "Bor saed",
+          //   "Bor saed",
   
-            "Giza",
+          //   "Giza",
   
-            "ganob sina",
+          //   "ganob sina",
   
-            "suez",
+          //   "suez",
   
-            "faioum",
+          //   "faioum",
   
-            "qena",
+          //   "qena",
   
-            "banha",
+          //   "banha",
   
-            "kafr elsheikh",
+          //   "kafr elsheikh",
   
-            "monofia",
+          //   "monofia",
   
-            "aswan",
+          //   "aswan",
   
-            "elmenia",
+          //   "elmenia",
   
-            "elwadi elgedid",
+          //   "elwadi elgedid",
   
-            "Qlioubia",
+          //   "Qlioubia",
   
-            "Gharbia",
+          //   "Gharbia",
   
-            "aswan",
+          //   "aswan",
   
-            "Sharaaia"
+          //   "Sharaaia"
   
-          )
+          // )
   
-          ,
-          City: Joi
+          // ,
+          // City: Joi
   
-          .string()
+          
   
-          .valid(
+          // .valid(
   
-            "Abnūb",
+          //   "Abnūb",
   
-            "Abū al-Maṭāmīr",
+          //   "Abū al-Maṭāmīr",
   
-            "Abū an-Numrus",
+          //   "Abū an-Numrus",
   
-            "Abū Ḥammād",
+          //   "Abū Ḥammād",
   
-            "Abū Ḥummuṣ",
+          //   "Abū Ḥummuṣ",
   
-            "Abū Kabīr",
+          //   "Abū Kabīr",
   
-            "Abū Qurqās",
+          //   "Abū Qurqās",
   
-            "Abū Ṣuwayr",
+          //   "Abū Ṣuwayr",
   
-            "Abū Tīj",
+          //   "Abū Tīj",
   
-            "Abū Tisht",
+          //   "Abū Tisht",
   
-            "Aḍ-Ḍabah",
+          //   "Aḍ-Ḍabah",
   
-            "Ad-Dilinjāt",
+          //   "Ad-Dilinjāt",
   
-            "Ajā",
+          //   "Ajā",
   
-            "Akhmīm",
+          //   "Akhmīm",
   
-            "Al-Arīsh",
+          //   "Al-Arīsh",
   
-            "Al-Ayyāṭ",
+          //   "Al-Ayyāṭ",
   
-            "Al-Badārī",
+          //   "Al-Badārī",
   
-            "Al-Badrashayn",
+          //   "Al-Badrashayn",
   
-            "Al-Bājūr",
+          //   "Al-Bājūr",
   
-            "Al-Balyanā",
+          //   "Al-Balyanā",
   
-            "Al-Baṣaliyah Baḥri",
+          //   "Al-Baṣaliyah Baḥri",
   
-            "Al-Bāwīṭī",
+          //   "Al-Bāwīṭī",
   
-            "Al-Bāyaḍiyah",
+          //   "Al-Bāyaḍiyah",
   
-            "Al-Fashn",
+          //   "Al-Fashn",
   
-            "Al-Fatḥ-An-Nāṣiriyah",
+          //   "Al-Fatḥ-An-Nāṣiriyah",
   
-            "Al-Fayyūm",
+          //   "Al-Fayyūm",
   
-            "Al-Ghanāyim ",
+          //   "Al-Ghanāyim ",
   
-            "Al-Ghurdaqah",
+          //   "Al-Ghurdaqah",
   
-            "Al-Ḥammām",
+          //   "Al-Ḥammām",
   
-            "Al-Ḥāmūl",
+          //   "Al-Ḥāmūl",
   
-            "Al-Ḥawāmidiyah",
+          //   "Al-Ḥawāmidiyah",
   
-            "Al-Ḥusayniyah",
+          //   "Al-Ḥusayniyah",
   
-            "Al-Ibrāhīmiyah",
+          //   "Al-Ibrāhīmiyah",
   
-            "Al-Idwah",
+          //   "Al-Idwah",
   
-            "Al-Iskandariyah",
+          //   "Al-Iskandariyah",
   
-            "Al-Ismāīliyah",
+          //   "Al-Ismāīliyah",
   
-            "Al-Jamāliyah",
+          //   "Al-Jamāliyah",
   
-            "Al-Jīzah ",
+          //   "Al-Jīzah ",
   
-            "Al-Khānkah",
+          //   "Al-Khānkah",
   
-            "Al-Khārijah",
+          //   "Al-Khārijah",
   
-            "Al-Khuṣūṣ",
+          //   "Al-Khuṣūṣ",
   
-            "Al-Kurdy",
+          //   "Al-Kurdy",
   
-            "Al-Maḥallah al-Kubrā",
+          //   "Al-Maḥallah al-Kubrā",
   
-            "Al-Maḥmūdiyah",
+          //   "Al-Maḥmūdiyah",
   
-            "Al-Manshāh",
+          //   "Al-Manshāh",
   
-            "Al-Manṣūrah",
+          //   "Al-Manṣūrah",
   
-            "Al-Manzilah",
+          //   "Al-Manzilah",
   
-            "Al-Marāghah",
+          //   "Al-Marāghah",
   
-            "Al-Maṭariyah",
+          //   "Al-Maṭariyah",
   
-            "Al-Minyā",
+          //   "Al-Minyā",
   
-            "Al-Minyā al-Jadīdah",
+          //   "Al-Minyā al-Jadīdah",
   
-            "Al-Qāhirah",
+          //   "Al-Qāhirah",
   
-            "New Cairo",
+          //   "New Cairo",
   
-            "Al-Qanāṭir al-Khayriyah",
+          //   "Al-Qanāṭir al-Khayriyah",
   
-            "Al-Qanāyāt",
+          //   "Al-Qanāyāt",
   
-            "Al-Qantarah",
+          //   "Al-Qantarah",
   
-            "Al-Qanṭarah Sharq",
+          //   "Al-Qanṭarah Sharq",
   
-            "Al-Qarnuh al-Jadīdah",
+          //   "Al-Qarnuh al-Jadīdah",
   
-            "Al-Qaṣāṣīn al-Jadīdah",
+          //   "Al-Qaṣāṣīn al-Jadīdah",
   
-            "Al-Qurayn",
+          //   "Al-Qurayn",
   
-            "Al-Quṣayr",
+          //   "Al-Quṣayr",
   
-            "Al-Qūṣiyah",
+          //   "Al-Qūṣiyah",
   
-            "Al-Ubūr",
+          //   "Al-Ubūr",
   
-            "Luxor",
+          //   "Luxor",
   
-            "Al-Waqf ",
+          //   "Al-Waqf ",
   
-            "Al-Wāsiṭā",
+          //   "Al-Wāsiṭā",
   
-            "El Negaila",
+          //   "El Negaila",
   
-            "An-New Nubariya",
+          //   "An-New Nubariya",
   
-            "Armant",
+          //   "Armant",
   
-            "Ar-Radīsiyah Qiblī",
+          //   "Ar-Radīsiyah Qiblī",
   
-            "Ar-Rahmaniya",
+          //   "Ar-Rahmaniya",
   
-            "Ar-Rawḍah",
+          //   "Ar-Rawḍah",
   
-            "Ar-Riyāḍ",
+          //   "Ar-Riyāḍ",
   
-            "Ashmoun",
+          //   "Ashmoun",
   
-            "Ash-Shalātīn",
+          //   "Ash-Shalātīn",
   
-            "Sheikh Zayed City",
+          //   "Sheikh Zayed City",
   
-            "Sheikh Zuweid",
+          //   "Sheikh Zuweid",
   
-            "Ash-Shuhadā",
+          //   "Ash-Shuhadā",
   
-            "Ash-Shurūq",
+          //   "Ash-Shurūq",
   
-            "Aṣ-Ṣaff",
+          //   "Aṣ-Ṣaff",
   
-            "New Salhia",
+          //   "New Salhia",
   
-            "As-Sallūm",
+          //   "As-Sallūm",
   
-            "As-Sanṭah",
+          //   "As-Sanṭah",
   
-            "As-Sarw",
+          //   "As-Sarw",
   
-            "As-Sibāiyah Gharb",
+          //   "As-Sibāiyah Gharb",
   
-            "El Senbellawein",
+          //   "El Senbellawein",
   
-            "Suez",
+          //   "Suez",
   
-            "Aswān",
+          //   "Aswān",
   
-            "Asyut",
+          //   "Asyut",
   
-            "Aṭfīḥ",
+          //   "Aṭfīḥ",
   
-            "At-Tall al-Kabīr",
+          //   "At-Tall al-Kabīr",
   
-            "Aṭ-Ṭūd",
+          //   "Aṭ-Ṭūd",
   
-            "El Tor",
+          //   "El Tor",
   
-            "Awlād Ṣaqr",
+          //   "Awlād Ṣaqr",
   
-            "Awsīm",
+          //   "Awsīm",
   
-            "Zagazig",
+          //   "Zagazig",
   
-            "Az-Zarqā",
+          //   "Az-Zarqā",
   
-            "Az-Zayniyah Qiblī",
+          //   "Az-Zayniyah Qiblī",
   
-            "Badr",
+          //   "Badr",
   
-            "Balṭīm",
+          //   "Balṭīm",
   
-            "Banhā",
+          //   "Banhā",
   
-            "Beni Mazar",
+          //   "Beni Mazar",
   
-            "Beni Suef",
+          //   "Beni Suef",
   
-            "New Beni Suef",
+          //   "New Beni Suef",
   
-            "Banī Ubayd",
+          //   "Banī Ubayd",
   
-            "Basyoun",
+          //   "Basyoun",
   
-            "Bibā",
+          //   "Bibā",
   
-            "Bilbays",
+          //   "Bilbays",
   
-            "Belqas",
+          //   "Belqas",
   
-            "Bīr al-Abd",
+          //   "Bīr al-Abd",
   
-            "Birket el-Sab",
+          //   "Birket el-Sab",
   
-            "Biyalā",
+          //   "Biyalā",
   
-            "Burj al-Arab",
+          //   "Burj al-Arab",
   
-            "Burj al-Barlus",
+          //   "Burj al-Barlus",
   
-            "Port Said",
+          //   "Port Said",
   
-            "Damanhour",
+          //   "Damanhour",
   
-            "Dar as-Salām",
+          //   "Dar as-Salām",
   
-            "Daraw",
+          //   "Daraw",
   
-            "Dayr Mawās",
+          //   "Dayr Mawās",
   
-            "Dairut",
+          //   "Dairut",
   
-            "Dikirnis",
+          //   "Dikirnis",
   
-            "Dishnā",
+          //   "Dishnā",
   
-            "Desouk",
+          //   "Desouk",
   
-            "Diyarb Najm",
+          //   "Diyarb Najm",
   
-            "Dumyāṭ ",
+          //   "Dumyāṭ ",
   
-            "Fayid ",
+          //   "Fayid ",
   
-            "Faqous",
+          //   "Faqous",
   
-            "Fāraskūr ",
+          //   "Fāraskūr ",
   
-            "Farshūṭ ",
+          //   "Farshūṭ ",
   
-            "Fuwah ",
+          //   "Fuwah ",
   
-            "Ḥawsh-Īsā",
+          //   "Ḥawsh-Īsā",
   
-            "Hihyā",
+          //   "Hihyā",
   
-            "Ibsheway",
+          //   "Ibsheway",
   
-            "Edfu",
+          //   "Edfu",
   
-            "Idkū",
+          //   "Idkū",
   
-            "Ihnāsiyā",
+          //   "Ihnāsiyā",
   
-            "Isnā",
+          //   "Isnā",
   
-            "Iṭsā",
+          //   "Iṭsā",
   
-            "Ityāy al-Bārūd",
+          //   "Ityāy al-Bārūd",
   
-            "Izbat al-Burj",
+          //   "Izbat al-Burj",
   
-            "Girga",
+          //   "Girga",
   
-            "Juhaynah",
+          //   "Juhaynah",
   
-            "Kafr ad-Dawwār",
+          //   "Kafr ad-Dawwār",
   
-            "Kafr al-Baṭṭīkh",
+          //   "Kafr al-Baṭṭīkh",
   
-            "Kafr el-Sheikh",
+          //   "Kafr el-Sheikh",
   
-            "Kafr az-Zayyāt",
+          //   "Kafr az-Zayyāt",
   
-            "Kafr Saad",
+          //   "Kafr Saad",
   
-            "Kafr Ṣaqr",
+          //   "Kafr Ṣaqr",
   
-            "Kafr Shukr",
+          //   "Kafr Shukr",
   
-            "Kawm Ḥamādah",
+          //   "Kawm Ḥamādah",
   
-            "Kawm Umbū",
+          //   "Kawm Umbū",
   
-            "Kirdāsah",
+          //   "Kirdāsah",
   
-            "10th of Ramadan City",
+          //   "10th of Ramadan City",
   
-            "Madīnat as-Sādāt",
+          //   "Madīnat as-Sādāt",
   
-            "Madīnat Badr",
+          //   "Madīnat Badr",
   
-            "Madīnat Burj al-Arab al-Jadīdah",
+          //   "Madīnat Burj al-Arab al-Jadīdah",
   
-            "Madīnat Dumyāṭ al-Jadīdah",
+          //   "Madīnat Dumyāṭ al-Jadīdah",
   
-            "Madīnat Sittah Uktūbar",
+          //   "Madīnat Sittah Uktūbar",
   
-            "Maghāghah ",
+          //   "Maghāghah ",
   
-            "Maḥallah Damanah",
+          //   "Maḥallah Damanah",
   
-            "Mallawī ",
+          //   "Mallawī ",
   
-            "Manfalūṭ ",
+          //   "Manfalūṭ ",
   
-            "Manshat al-Qanāṭir",
+          //   "Manshat al-Qanāṭir",
   
-            "Marsā Maṭrūḥ ",
+          //   "Marsā Maṭrūḥ ",
   
-            "Mashtūl as-Sūq ",
+          //   "Mashtūl as-Sūq ",
   
-            "Maṭāy",
+          //   "Maṭāy",
   
-            "Minūf ",
+          //   "Minūf ",
   
-            "Minyā al-Qamḥ ",
+          //   "Minyā al-Qamḥ ",
   
-            "Minyat an-Naṣr ",
+          //   "Minyat an-Naṣr ",
   
-            "Mīt Abū Ghālb ",
+          //   "Mīt Abū Ghālb ",
   
-            "Mīt Ghamr ",
+          //   "Mīt Ghamr ",
   
-            "Mīt Salsīl",
+          //   "Mīt Salsīl",
   
-            "Munshāh Abū-Umar ",
+          //   "Munshāh Abū-Umar ",
   
-            "Dakhla",
+          //   "Dakhla",
   
-            "Muṭūbis",
+          //   "Muṭūbis",
   
-            "Nabarūh ",
+          //   "Nabarūh ",
   
-            "Naj-Ḥammādī",
+          //   "Naj-Ḥammādī",
   
-            "Naqādah ",
+          //   "Naqādah ",
   
-            "Nāṣir Būsh",
+          //   "Nāṣir Būsh",
   
-            "Qahā ",
+          //   "Qahā ",
   
-            "Qallīn ",
+          //   "Qallīn ",
   
-            "Qalyūb",
+          //   "Qalyūb",
   
-            "Qifṭ",
+          //   "Qifṭ",
   
-            "Qinā",
+          //   "Qinā",
   
-            "Qūṣ",
+          //   "Qūṣ",
   
-            "Quṭūr",
+          //   "Quṭūr",
   
-            "Quwaysinā",
+          //   "Quwaysinā",
   
-            "Rafaḥ",
+          //   "Rafaḥ",
   
-            "Rās al-Bar",
+          //   "Rās al-Bar",
   
-            "Ras Ghārib ",
+          //   "Ras Ghārib ",
   
-            "Rashīd",
+          //   "Rashīd",
   
-            "Safājā",
+          //   "Safājā",
   
-            "Sāḥīl Salim",
+          //   "Sāḥīl Salim",
   
-            "Samālūṭ",
+          //   "Samālūṭ",
   
-            "Samannūd",
+          //   "Samannūd",
   
-            "Ṣān al-Ḥajar",
+          //   "Ṣān al-Ḥajar",
   
-            "Sāqultah",
+          //   "Sāqultah",
   
-            "Sawhāj",
+          //   "Sawhāj",
   
-            "Sharm ash-Shaykh",
+          //   "Sharm ash-Shaykh",
   
-            "Shibīn al-Kawm",
+          //   "Shibīn al-Kawm",
   
-            "Shibīn al-Qanāṭir",
+          //   "Shibīn al-Qanāṭir",
   
-            "Shirbīn",
+          //   "Shirbīn",
   
-            "Shubrā al-Khaymah",
+          //   "Shubrā al-Khaymah",
   
-            "Shubrākhīt",
+          //   "Shubrākhīt",
   
-            "Ṣidfā",
+          //   "Ṣidfā",
   
-            "Sīdī Barrānī",
+          //   "Sīdī Barrānī",
   
-            "Sīdī Ghāzī",
+          //   "Sīdī Ghāzī",
   
-            "Sīdī Sālim",
+          //   "Sīdī Sālim",
   
-            "Sinnūris",
+          //   "Sinnūris",
   
-            "Sirs al-Layyānah",
+          //   "Sirs al-Layyānah",
   
-            "Sīwa",
+          //   "Sīwa",
   
-            "Sumusṭā al-Waqf",
+          //   "Sumusṭā al-Waqf",
   
-            "Ṭahṭā",
+          //   "Ṭahṭā",
   
-            "Talā",
+          //   "Talā",
   
-            "Ṭalkhā",
+          //   "Ṭalkhā",
   
-            "Tama al-Āmdīd",
+          //   "Tama al-Āmdīd",
   
-            "Ṭāmiyah",
+          //   "Ṭāmiyah",
   
-            "Ṭanṭā",
+          //   "Ṭanṭā",
   
-            "Ṭimā",
+          //   "Ṭimā",
   
-            "Ṭūkh",
+          //   "Ṭūkh",
   
-            "Natron Valley",
+          //   "Natron Valley",
   
-            "Yūsuf aṣ-Ṣiddīq",
+          //   "Yūsuf aṣ-Ṣiddīq",
   
-            "Ziftā"
+          //   "Ziftā"
   
-          )
+          // )
   
-          ,
+          // ,
           Facility_Address: Joi.string(),
           Facility_Phone_Number: Joi.string(),
           Fax: Joi.string(),
-          Capital_Currency: Joi
+          // Capital_Currency: Joi
   
-          .string()
+          
   
-          .valid(
+          // .valid(
   
-            "Abkhazian apsar",
+          //   "Abkhazian apsar",
   
-            "Russian ruble",
+          //   "Russian ruble",
   
-            "Afghan afghani",
+          //   "Afghan afghani",
   
-            "Albanian lek",
+          //   "Albanian lek",
   
-            "Alderney pound",
+          //   "Alderney pound",
   
-            "British pound",
+          //   "British pound",
   
-            "Guernsey pound",
+          //   "Guernsey pound",
   
-            "Algerian dinar",
+          //   "Algerian dinar",
   
-            "Euro",
+          //   "Euro",
   
-            "Angolan kwanza",
+          //   "Angolan kwanza",
   
-            "East Caribbean dollar",
+          //   "East Caribbean dollar",
   
-            "Argentine peso",
+          //   "Argentine peso",
   
-            "Armenian dram",
+          //   "Armenian dram",
   
-            "Aruban florin",
+          //   "Aruban florin",
   
-            "Ascension pound",
+          //   "Ascension pound",
   
-            "Saint Helena pound",
+          //   "Saint Helena pound",
   
-            "Australian dollar",
+          //   "Australian dollar",
   
-            "Azerbaijani manat",
+          //   "Azerbaijani manat",
   
-            "Bahamian dollar",
+          //   "Bahamian dollar",
   
-            "Bahraini dinar",
+          //   "Bahraini dinar",
   
-            "Bangladeshi taka",
+          //   "Bangladeshi taka",
   
-            "Barbadian dollar",
+          //   "Barbadian dollar",
   
-            "Belarusian ruble",
+          //   "Belarusian ruble",
   
-            "Belize dollar",
+          //   "Belize dollar",
   
-            "West African CFA franc",
+          //   "West African CFA franc",
   
-            "Bermudian dollar",
+          //   "Bermudian dollar",
   
-            "Bhutanese ngultrum",
+          //   "Bhutanese ngultrum",
   
-            "Indian rupee",
+          //   "Indian rupee",
   
-            "Bolivian boliviano",
+          //   "Bolivian boliviano",
   
-            "Bosnia and Herzegovina convertible mark",
+          //   "Bosnia and Herzegovina convertible mark",
   
-            "Botswana pula",
+          //   "Botswana pula",
   
-            "Brazilian real",
+          //   "Brazilian real",
   
-            "British Virgin Islands dollar",
+          //   "British Virgin Islands dollar",
   
-            "Brunei dollar",
+          //   "Brunei dollar",
   
-            "Singapore dollar",
+          //   "Singapore dollar",
   
-            "Bulgarian lev",
+          //   "Bulgarian lev",
   
-            "Burundian franc",
+          //   "Burundian franc",
   
-            "Cambodian riel",
+          //   "Cambodian riel",
   
-            "Central African CFA franc",
+          //   "Central African CFA franc",
   
-            "Canadian dollar",
+          //   "Canadian dollar",
   
-            "Cape Verdean escudo",
+          //   "Cape Verdean escudo",
   
-            "Cayman Islands dollar",
+          //   "Cayman Islands dollar",
   
-            "Chilean peso",
+          //   "Chilean peso",
   
-            "Chinese yuan",
+          //   "Chinese yuan",
   
-            "Colombian peso",
+          //   "Colombian peso",
   
-            "Comorian franc",
+          //   "Comorian franc",
   
-            "Congolese franc",
+          //   "Congolese franc",
   
-            "New Zealand dollar",
+          //   "New Zealand dollar",
   
-            "Cook Islands dollar",
+          //   "Cook Islands dollar",
   
-            "Costa Rican colón",
+          //   "Costa Rican colón",
   
-            "Croatian kuna",
+          //   "Croatian kuna",
   
-            "Cuban convertible peso",
+          //   "Cuban convertible peso",
   
-            "Cuban peso",
+          //   "Cuban peso",
   
-            "Netherlands Antillean guilder",
+          //   "Netherlands Antillean guilder",
   
-            "Czech koruna",
+          //   "Czech koruna",
   
-            "Danish krone",
+          //   "Danish krone",
   
-            "Djiboutian franc",
+          //   "Djiboutian franc",
   
-            "Dominican peso",
+          //   "Dominican peso",
   
-            "Egyptian pound",
+          //   "Egyptian pound",
   
-            "Eritrean nakfa",
+          //   "Eritrean nakfa",
   
-            "Ethiopian birr",
+          //   "Ethiopian birr",
   
-            "Falkland Islands pound",
+          //   "Falkland Islands pound",
   
-            "Faroese króna",
+          //   "Faroese króna",
   
-            "Fijian dollar",
+          //   "Fijian dollar",
   
-            "CFP franc",
+          //   "CFP franc",
   
-            "Gambian dalasi",
+          //   "Gambian dalasi",
   
-            "Georgian lari",
+          //   "Georgian lari",
   
-            "Ghana cedi",
+          //   "Ghana cedi",
   
-            "Gibraltar pound",
+          //   "Gibraltar pound",
   
-            "Guatemalan quetzal",
+          //   "Guatemalan quetzal",
   
-            "Guinean franc",
+          //   "Guinean franc",
   
-            "Guyanese dollar",
+          //   "Guyanese dollar",
   
-            "Haitian gourde",
+          //   "Haitian gourde",
   
-            "Honduran lempira",
+          //   "Honduran lempira",
   
-            "Hong Kong dollar",
+          //   "Hong Kong dollar",
   
-            "Hungarian forint",
+          //   "Hungarian forint",
   
-            "Icelandic króna",
+          //   "Icelandic króna",
   
-            "Indonesian rupiah",
+          //   "Indonesian rupiah",
   
-            "Iranian rial",
+          //   "Iranian rial",
   
-            "Iraqi dinar",
+          //   "Iraqi dinar",
   
-            "Manx pound",
+          //   "Manx pound",
   
-            "Israeli new shekel",
+          //   "Israeli new shekel",
   
-            "Jamaican dollar",
+          //   "Jamaican dollar",
   
-            "Japanese yen",
+          //   "Japanese yen",
   
-            "Jersey pound",
+          //   "Jersey pound",
   
-            "Jordanian dinar",
+          //   "Jordanian dinar",
   
-            "Kazakhstani tenge",
+          //   "Kazakhstani tenge",
   
-            "Kenyan shilling",
+          //   "Kenyan shilling",
   
-            "Kiribati dollar",
+          //   "Kiribati dollar",
   
-            "North Korean won",
+          //   "North Korean won",
   
-            "South Korean won",
+          //   "South Korean won",
   
-            "Kuwaiti dinar",
+          //   "Kuwaiti dinar",
   
-            "Kyrgyzstani som",
+          //   "Kyrgyzstani som",
   
-            "Lao kip",
+          //   "Lao kip",
   
-            "Lebanese pound",
+          //   "Lebanese pound",
   
-            "Lesotho loti",
+          //   "Lesotho loti",
   
-            "South African rand",
+          //   "South African rand",
   
-            "Liberian dollar",
+          //   "Liberian dollar",
   
-            "Libyan dinar",
+          //   "Libyan dinar",
   
-            "Swiss franc",
+          //   "Swiss franc",
   
-            "Macanese pataca",
+          //   "Macanese pataca",
   
-            "Macedonian denar",
+          //   "Macedonian denar",
   
-            "Malagasy ariary",
+          //   "Malagasy ariary",
   
-            "Malawian kwacha",
+          //   "Malawian kwacha",
   
-            "Malaysian ringgit",
+          //   "Malaysian ringgit",
   
-            "Maldivian rufiyaa",
+          //   "Maldivian rufiyaa",
   
-            "Mauritanian ouguiya",
+          //   "Mauritanian ouguiya",
   
-            "Mauritian rupee",
+          //   "Mauritian rupee",
   
-            "Mexican peso",
+          //   "Mexican peso",
   
-            "Micronesian dollar",
+          //   "Micronesian dollar",
   
-            "Moldovan leu",
+          //   "Moldovan leu",
   
-            "Mongolian tögrög",
+          //   "Mongolian tögrög",
   
-            "Moroccan dirham",
+          //   "Moroccan dirham",
   
-            "Mozambican metical",
+          //   "Mozambican metical",
   
-            "Burmese kyat",
+          //   "Burmese kyat",
   
-            "Nagorno-Karabakh dram",
+          //   "Nagorno-Karabakh dram",
   
-            "Namibian dollar",
+          //   "Namibian dollar",
   
-            "Nauruan dollar",
+          //   "Nauruan dollar",
   
-            "Nepalese rupee",
+          //   "Nepalese rupee",
   
-            "Nicaraguan córdoba",
+          //   "Nicaraguan córdoba",
   
-            "Nigerian naira",
+          //   "Nigerian naira",
   
-            "Niue dollar",
+          //   "Niue dollar",
   
-            "Turkish lira",
+          //   "Turkish lira",
   
-            "Norwegian krone",
+          //   "Norwegian krone",
   
-            "Omani rial",
+          //   "Omani rial",
   
-            "Pakistani rupee",
+          //   "Pakistani rupee",
   
-            "Palauan dollar",
+          //   "Palauan dollar",
   
-            "Panamanian balboa",
+          //   "Panamanian balboa",
   
-            "Papua New Guinean kina",
+          //   "Papua New Guinean kina",
   
-            "Paraguayan guaraní",
+          //   "Paraguayan guaraní",
   
-            "Peruvian nuevo sol",
+          //   "Peruvian nuevo sol",
   
-            "Philippine peso",
+          //   "Philippine peso",
   
-            "Pitcairn Islands dollar",
+          //   "Pitcairn Islands dollar",
   
-            "Polish złoty",
+          //   "Polish złoty",
   
-            "Qatari riyal",
+          //   "Qatari riyal",
   
-            "Romanian leu",
+          //   "Romanian leu",
   
-            "Rwandan franc",
+          //   "Rwandan franc",
   
-            "Sahrawi peseta",
+          //   "Sahrawi peseta",
   
-            "Samoan tālā",
+          //   "Samoan tālā",
   
-            "São Tomé and Príncipe dobra",
+          //   "São Tomé and Príncipe dobra",
   
-            "Saudi riyal",
+          //   "Saudi riyal",
   
-            "Serbian dinar",
+          //   "Serbian dinar",
   
-            "Seychellois rupee",
+          //   "Seychellois rupee",
   
-            "Sierra Leonean leone",
+          //   "Sierra Leonean leone",
   
-            "Solomon Islands dollar",
+          //   "Solomon Islands dollar",
   
-            "Somali shilling",
+          //   "Somali shilling",
   
-            "Somaliland shilling",
+          //   "Somaliland shilling",
   
-            "South Georgia and the South Sandwich Islands pound",
+          //   "South Georgia and the South Sandwich Islands pound",
   
-            "South Sudanese pound",
+          //   "South Sudanese pound",
   
-            "Sri Lankan rupee",
+          //   "Sri Lankan rupee",
   
-            "Sudanese pound",
+          //   "Sudanese pound",
   
-            "Surinamese dollar",
+          //   "Surinamese dollar",
   
-            "Swazi lilangeni",
+          //   "Swazi lilangeni",
   
-            "Swedish krona",
+          //   "Swedish krona",
   
-            "Syrian pound",
+          //   "Syrian pound",
   
-            "New Taiwan dollar",
+          //   "New Taiwan dollar",
   
-            "Tajikistani somoni",
+          //   "Tajikistani somoni",
   
-            "Tanzanian shilling",
+          //   "Tanzanian shilling",
   
-            "Thai baht",
+          //   "Thai baht",
   
-            "Tongan paʻanga",
+          //   "Tongan paʻanga",
   
-            "Transnistrian ruble",
+          //   "Transnistrian ruble",
   
-            "Trinidad and Tobago dollar",
+          //   "Trinidad and Tobago dollar",
   
-            "Tristan da Cunha pound",
+          //   "Tristan da Cunha pound",
   
-            "Tunisian dinar",
+          //   "Tunisian dinar",
   
-            "Turkmenistan manat",
+          //   "Turkmenistan manat",
   
-            "Tuvaluan dollar",
+          //   "Tuvaluan dollar",
   
-            "Ugandan shilling",
+          //   "Ugandan shilling",
   
-            "Ukrainian hryvnia",
+          //   "Ukrainian hryvnia",
   
-            "United Arab Emirates dirham",
+          //   "United Arab Emirates dirham",
   
-            "Uruguayan peso",
+          //   "Uruguayan peso",
   
-            "Uzbekistani som",
+          //   "Uzbekistani som",
   
-            "Vanuatu vatu",
+          //   "Vanuatu vatu",
   
-            "Venezuelan bolívar",
+          //   "Venezuelan bolívar",
   
-            "Vietnamese đồng",
+          //   "Vietnamese đồng",
   
-            "Yemeni rial",
+          //   "Yemeni rial",
   
-            "Zambian kwacha",
+          //   "Zambian kwacha",
   
-            "United States dollar",
+          //   "United States dollar",
   
-            "Zimbabwean Bond"
+          //   "Zimbabwean Bond"
   
-          )
+          // )
   
-          ,
+          // ,
           capital: Joi.number(),
           investorname: Joi.string(),
-          Gender: Joi.valid("Female", "Male"),
-          Nationality: Joi
+         Gender: Joi.optional(),
+          // Nationality: Joi
   
-          .valid(
+          // .valid(
   
-            " Afghan ",
+          //   " Afghan ",
   
-            "Albanian ",
+          //   "Albanian ",
   
-            " Algerian ",
+          //   " Algerian ",
   
-            "Argentinian",
+          //   "Argentinian",
   
-            "Australian ",
+          //   "Australian ",
   
-            " Austrian ",
+          //   " Austrian ",
   
-            "Bangladeshi",
+          //   "Bangladeshi",
   
-            "Belgian",
+          //   "Belgian",
   
-            " Bolivian ",
+          //   " Bolivian ",
   
-            "Batswana ",
+          //   "Batswana ",
   
-            " Brazilian ",
+          //   " Brazilian ",
   
-            " Bulgarian ",
+          //   " Bulgarian ",
   
-            " Cambodian ",
+          //   " Cambodian ",
   
-            " Cameroonian ",
+          //   " Cameroonian ",
   
-            "Canadian",
+          //   "Canadian",
   
-            "Chilean",
+          //   "Chilean",
   
-            " Chinese ",
+          //   " Chinese ",
   
-            " Colombian ",
+          //   " Colombian ",
   
-            " Costa Rican ",
+          //   " Costa Rican ",
   
-            " Croatian ",
+          //   " Croatian ",
   
-            " Cuban ",
+          //   " Cuban ",
   
-            " Czech ",
+          //   " Czech ",
   
-            " Danish ",
+          //   " Danish ",
   
-            " Dominican ",
+          //   " Dominican ",
   
-            " Ecuadorian ",
+          //   " Ecuadorian ",
   
-            " Egyptian ",
+          //   " Egyptian ",
   
-            " Salvadorian ",
+          //   " Salvadorian ",
   
-            " English ",
+          //   " English ",
   
-            " Estonian ",
+          //   " Estonian ",
   
-            " Ethiopian ",
+          //   " Ethiopian ",
   
-            " Fijian ",
+          //   " Fijian ",
   
-            " Finnish ",
+          //   " Finnish ",
   
-            " French ",
+          //   " French ",
   
-            " German ",
+          //   " German ",
   
-            " Ghanaian ",
+          //   " Ghanaian ",
   
-            " Greek ",
+          //   " Greek ",
   
-            " Guatemalan ",
+          //   " Guatemalan ",
   
-            " Haitian ",
+          //   " Haitian ",
   
-            " Honduran ",
+          //   " Honduran ",
   
-            " Hungarian ",
+          //   " Hungarian ",
   
-            " Icelandic ",
+          //   " Icelandic ",
   
-            " Indian ",
+          //   " Indian ",
   
-            "Indonesian",
+          //   "Indonesian",
   
-            "Iranian",
+          //   "Iranian",
   
-            " Iraqi ",
+          //   " Iraqi ",
   
-            " Irish ",
+          //   " Irish ",
   
-            " Israeli ",
+          //   " Israeli ",
   
-            " Italian ",
+          //   " Italian ",
   
-            " Jamaican ",
+          //   " Jamaican ",
   
-            " Japanese ",
+          //   " Japanese ",
   
-            " Jordanian ",
+          //   " Jordanian ",
   
-            " Kenyan ",
+          //   " Kenyan ",
   
-            " Kuwaiti ",
+          //   " Kuwaiti ",
   
-            " Lao ",
+          //   " Lao ",
   
-            " Latvian ",
+          //   " Latvian ",
   
-            " Lebanese ",
+          //   " Lebanese ",
   
-            " Libyan ",
+          //   " Libyan ",
   
-            " Lithuanian ",
+          //   " Lithuanian ",
   
-            " Malaysian ",
+          //   " Malaysian ",
   
-            " Malian ",
+          //   " Malian ",
   
-            " Maltese ",
+          //   " Maltese ",
   
-            " Mexican ",
+          //   " Mexican ",
   
-            " Mongolian ",
+          //   " Mongolian ",
   
-            "Moroccan ",
+          //   "Moroccan ",
   
-            "Mozambican",
+          //   "Mozambican",
   
-            " Namibian ",
+          //   " Namibian ",
   
-            " Nepalese ",
+          //   " Nepalese ",
   
-            " Dutch ",
+          //   " Dutch ",
   
-            " New Zealand ",
+          //   " New Zealand ",
   
-            " Nicaraguan ",
+          //   " Nicaraguan ",
   
-            " Nigerian ",
+          //   " Nigerian ",
   
-            " Norwegian ",
+          //   " Norwegian ",
   
-            " Pakistani ",
+          //   " Pakistani ",
   
-            " Panamanian ",
+          //   " Panamanian ",
   
-            " Paraguayan ",
+          //   " Paraguayan ",
   
-            " Peruvian ",
+          //   " Peruvian ",
   
-            "Philippine ",
+          //   "Philippine ",
   
-            "Polish",
+          //   "Polish",
   
-            " Portuguese ",
+          //   " Portuguese ",
   
-            " Romanian ",
+          //   " Romanian ",
   
-            " Russian ",
+          //   " Russian ",
   
-            " Saudi ",
+          //   " Saudi ",
   
-            "Scottish",
+          //   "Scottish",
   
-            " Senegalese ",
+          //   " Senegalese ",
   
-            " Serbian ",
+          //   " Serbian ",
   
-            " Singaporean ",
+          //   " Singaporean ",
   
-            " Slovak ",
+          //   " Slovak ",
   
-            " South African ",
+          //   " South African ",
   
-            " Korean ",
+          //   " Korean ",
   
-            " Spanish ",
+          //   " Spanish ",
   
-            " Sri Lankan ",
+          //   " Sri Lankan ",
   
-            " Sudanese ",
+          //   " Sudanese ",
   
-            " Swedish ",
+          //   " Swedish ",
   
-            "Swiss",
+          //   "Swiss",
   
-            " Syrian ",
+          //   " Syrian ",
   
-            " Taiwanese ",
+          //   " Taiwanese ",
   
-            "Tajikistani ",
+          //   "Tajikistani ",
   
-            " Thai ",
+          //   " Thai ",
   
-            " Tongan ",
+          //   " Tongan ",
   
-            " Tunisian ",
+          //   " Tunisian ",
   
-            " Turkish ",
+          //   " Turkish ",
   
-            " Ukrainian ",
+          //   " Ukrainian ",
   
-            " Emirati ",
+          //   " Emirati ",
   
-            " British ",
+          //   " British ",
   
-            " American ",
+          //   " American ",
   
-            " Uruguayan ",
+          //   " Uruguayan ",
   
-            "Venezuelan",
+          //   "Venezuelan",
   
-            " Vietnamese ",
+          //   " Vietnamese ",
   
-            " Welsh ",
+          //   " Welsh ",
   
-            " Zambian ",
+          //   " Zambian ",
   
-            " Zimbabwean "
+          //   " Zimbabwean "
   
-          )
+          // )
   
-          ,
-          TypeOf_IdentityProof: Joi.valid("National_ID", "passport"),
+          // ,
+          TypeOf_IdentityProof: Joi.optional(),
           investor_nationalid: Joi.string().min(14).max(14),
           BirthDate: Joi.date(),
-          Phone_Number: Joi.string().max(13),
+          Phone_Number: Joi.string(),
           Investor_Fax: Joi.string(),
           email: Joi.string(),
           Investor_Address: Joi.string().min(3),
