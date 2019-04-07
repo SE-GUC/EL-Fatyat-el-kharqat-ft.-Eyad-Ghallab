@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SSC from './components/SSC/SSC';
 
-
+import Reviewer from './components/Reviewer/Reviewer';
 import './App.css';
 
 import Lawyer from './components/Lawyer/Lawyer';
@@ -39,7 +39,9 @@ class App extends Component {
             rel="noopener noreferrer"
           >
             Learn React
-          </a> */}
+          </a> */
+          <Reviewer />
+          }
         </header>
         <Comment/>
         <Investor/>
