@@ -561,7 +561,7 @@ class SSC extends Component {
                 
                     <br/></label>
 
-                <input type="submit" value="Add to DB" />
+                <input type="submit" value="update form" />
             </form> 
             </li>)}
      </ul> 
