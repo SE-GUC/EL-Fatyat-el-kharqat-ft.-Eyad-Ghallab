@@ -35,6 +35,8 @@ class SSC extends Component {
        
      
         this.handleSubmit=this.handleSubmit.bind(this);
+        this.delete=this.delete.bind(this);
+        this.update=this.update.bind(this);
         this.state ={
             SSC:[],
             Company_name:"",
@@ -163,39 +165,50 @@ class SSC extends Component {
 
 
 
-    handleSubmit(e){
-      e.preventDefault();
-      let databody = {
-        "Company_name":this.state.Company_name,
-        "Governorate":this.state.Governorate, 
-        "City": this.state.City,
-        "Company_Address":this.state.Company_Address,
-        "Company_Phone_Number":this.state.Company_Phone_Number,
-        "Fax":this.state.Fax ,
-        "Capital_Currency":this.state.Capital_Currency, 
-        "capital":this.state.capital, 
-        "investorname":this.state.investorname,
-        "Investor_type":this.state.Investor_type, 
-        "Gender":this.state.Gender ,
-        "Nationality":this.state.Nationality, 
-        "TypeOf_IdentityProof":this.state.TypeOf_IdentityProof,
-        "investor_nationalid":this.state.investor_nationalid ,
-        "BirthDate":this.state.BirthDate,
-        "Address":this.state.Address, 
-        "Phone_Number": this.state.Phone_Number,
-        "email":this.state.email, 
-        "BOD_Name":this.state.BOD_Name, 
-        "BOD_Investor_Type":this.state.BOD_Investor_Type ,
-        "BOD_Gender": this.state.BOD_Gender,
-        "BOD_Nationality":this.state.BOD_Nationality, 
-        "BOD_TypeOfIdentityProof":this.state.BOD_TypeOfIdentityProof,
-        "BOD_NationalID":this.state.BOD_NationalID,
-        "BOD_BirthDate": this.state.BirthDate,
-        "BOD_Address":this.state.BOD_Address, 
-        "PositionInBOD": this.state.PositionInBOD
     
+      delete(Company_Name){
+        return fetch('/api/SSC/'+Company_Name, {
+          method: 'DELETE',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+      })
+      .then(res => res.json())
+      .then(data => console.log(data));
       }
   
+      handleSubmit(e){
+        e.preventDefault();
+        let databody = {
+          "Company_name":this.state.Company_name,
+          "Governorate":this.state.Governorate, 
+          "City": this.state.City,
+          "Company_Address":this.state.Company_Address,
+          "Company_Phone_Number":this.state.Company_Phone_Number,
+          "Fax":this.state.Fax ,
+          "Capital_Currency":this.state.Capital_Currency, 
+          "capital":this.state.capital, 
+          "investorname":this.state.investorname,
+          "Investor_type":this.state.Investor_type, 
+          "Gender":this.state.Gender ,
+          "Nationality":this.state.Nationality, 
+          "TypeOf_IdentityProof":this.state.TypeOf_IdentityProof,
+          "investor_nationalid":this.state.investor_nationalid ,
+          "BirthDate":this.state.BirthDate,
+          "Address":this.state.Address, 
+          "Phone_Number": this.state.Phone_Number,
+          "email":this.state.email, 
+          "BOD_Name":this.state.BOD_Name, 
+          "BOD_Investor_Type":this.state.BOD_Investor_Type ,
+          "BOD_Gender": this.state.BOD_Gender,
+          "BOD_Nationality":this.state.BOD_Nationality, 
+          "BOD_TypeOfIdentityProof":this.state.BOD_TypeOfIdentityProof,
+          "BOD_NationalID":this.state.BOD_NationalID,
+          "BOD_BirthDate": this.state.BirthDate,
+          "BOD_Address":this.state.BOD_Address, 
+          "PositionInBOD": this.state.PositionInBOD
+      
+        }
       return fetch('/api/SSC/', {
           method: 'POST',
           body: JSON.stringify(databody),
@@ -206,9 +219,82 @@ class SSC extends Component {
       .then(res => res.json())
       .then(data => console.log(data)); 
   }
-  
-    
-    
+  update(id){
+    console.log(this.state.Company_name)
+     let databody 
+ if (this.state.Company_name !== ""){
+   databody = {"Company_name":this.state.Company_name}}
+ if(this.state.Governorate !== ""){
+   databody = {"Governorate":this.state.Governorate}}
+   if(this.state.City !== ""){
+     databody = {"City":this.state.City}}
+     if(this.state.Company_Address !== ""){
+       databody = {"Company_Address":this.state.Company_Address}}
+       if(this.state.Company_Phone_Number !== ""){
+         databody = {"Company_Phone_Number":this.state.Company_Phone_Number}}
+         if(this.state.Fax !== ""){
+           databody = {"Fax":this.state.Fax}}
+           if(this.state.Capital_Currency !== ""){
+             databody = {"Capital_Currency":this.state.Capital_Currency}}
+             if(this.state.capital !== ""){
+               databody = {"capital":this.state.capital}}
+               if(this.state.investorname !== ""){
+                 databody = {"investorname":this.state.investorname}}
+                 if(this.state.Investor_type !== ""){
+                   databody = {"Investor_type":this.state.Investor_type}}
+                   if(this.state.Gender !== ""){
+                    databody = {"Gender":this.state.Gender}}
+                    if(this.state.Nationality !== ""){
+                        databody = {"Nationality":this.state.Nationality}}
+                        if(this.state.TypeOf_IdentityProof !== ""){
+                            databody = {"TypeOf_IdentityProof":this.state.TypeOf_IdentityProof}}
+                            if(this.state.investor_nationalid !== ""){
+                                databody = {"investor_nationalid":this.state.investor_nationalid}}
+                                if(this.state.BirthDate !== ""){
+                                    databody = {"BirthDate":this.state.BirthDate}}
+                                    if(this.state.Address !== ""){
+                                        databody = {"Address":this.state.Address}}
+
+                                        if(this.state.Phone_Number !== ""){
+                                            databody = {"Phone_Number":this.state.Phone_Number}}
+                                            if(this.state.email !== ""){
+                                                databody = {"email":this.state.email}}
+                                                if(this.state.BOD_Name !== ""){
+                                                    databody = {"BOD_Name":this.state.BOD_Name}}
+                                                    if(this.state.BOD_Investor_Type !== ""){
+                                                        databody = {"BOD_Investor_Type":this.state.BOD_Investor_Type}}
+                                                        if(this.state.BOD_Gender !== ""){
+                                                            databody = {"BOD_Gender":this.state.BOD_Gender}}
+
+                                                            if(this.state.BOD_Nationality !== ""){
+                                                                databody = {"BOD_Nationality":this.state.BOD_Nationality}}
+                                                                if(this.state.BOD_TypeOfIdentityProof !== ""){
+                                                                    databody = {"BOD_TypeOfIdentityProof":this.state.BOD_TypeOfIdentityProof}}
+                                                                    if(this.state.BOD_NationalID !== ""){
+                                                                        databody = {"BOD_NationalID":this.state.BOD_NationalID}}
+                                                                        if(this.state.BOD_BirthDate !== ""){
+                                                                            databody = {"BOD_BirthDate":this.state.BOD_BirthDate}}
+                                                                            if(this.state.BOD_Address !== ""){
+                                                                                databody = {"BOD_Address":this.state.BOD_Address}}
+                                                                                if(this.state.PositionInBOD !== ""){
+                                                                                    databody = {"PositionInBOD":this.state.PositionInBOD}}
+                                                                                   
+
+
+
+
+                   console.log(this.state.Company_name)
+     return fetch('http://localhost:5000/api/SSC/'+id, {
+         method: 'PUT',
+         body: JSON.stringify(databody),
+         headers: {
+             'Content-Type': 'application/json'
+         },
+     })
+     .then(res => res.json())
+     .then(data => console.log(data)); 
+ }
+ 
     componentDidMount(){
   
         fetch('/api/SSC/all')
@@ -335,16 +421,158 @@ class SSC extends Component {
             </form> 
 {
  <ul>
-     {this.state.SSC.map( ssc  => <li key = {ssc._id}> Name: {ssc.Company_name}</li>)}
-    </ul> 
-}
+     {this.state.SSC.map( ssc  => <li key = {ssc._id}> Name: {ssc.Company_name}<button onClick= {() => {this.delete(ssc._id)}}>
+      Delete </button>
+      <form onClick={() => {this.update(ssc._id)}}> 
+     <label>
+     Company_name
+     <input type="text" name="Company_name" value={this.name} onChange={this.handleCompany_nameChange}/>
+     <br/>
+ </label>
+ <label>
+      Governorate
+                    <input type="text" name="Governorate" value={this.Governorate} onChange={this.handleGovernorateChange}/>
+                    <br/>
+                </label>
+                <label>
+                    City
+                    <input type="text" name="City" value={this.City} onChange={this.handleCityChange}/>
+                    <br/>
+                </label>
+              
+                <label>
+                    Company_Address
+                    <input type="text" name="Company_Address" value={this.Company_Address} onChange={this.handleCompany_AddressChange}/>
+                    <br/>
+                </label>
+                <label>
+                    Company_Phone_Number
+                    <input type="text" name="Company_Phone_Number" value={this.Company_Phone_Number} onChange={this.handleCompany_Phone_NumberChange}/>
+                    <br/>
+                </label>
+                <label>
+                   Fax
+                    <input type="text" name="Fax" value={this.Fax} onChange={this.handleFaxChange}/>
+                    <br/>
+                </label>
+                <label>
+                    Capital_Currency
+                    <input type="text" name=" Capital_Currency" value={this. Capital_Currency} onChange={this.handleCapital_CurrencyChange}/>
+                    <br/>
+                </label>
+                <label>
+                capital
+                    <input type="text" name="capital" value={this.capital} onChange={this.handlecapitalChange}/>
+                    <br/>
+                </label>
+                <label>
+                investorname
+                    <input type="text" name="investorname" value={this.investorname} onChange={this.handleinvestornameChange}/>
+                    <br/>
+                </label>
+                <label>
+                Investor_type
+                    <input type="text" name="Investor_type" value={this.Investor_type} onChange={this.handleInvestor_typeChange}/>
+                    <br/>
+                </label>
+                <label>
+                Gender
+                    <input type="text" name="Gender" value={this.Gender} onChange={this.handleGenderChange}/>
+                    <br/>
+                </label>
+                <label>
+                Nationality
+                    <input type="text" name="Nationality" value={this.Nationality} onChange={this.handleNationalityChange}/>
+                    <br/>
+                </label>
+                <label>
+                TypeOf_IdentityProof
+                    <input type="text" name="TypeOf_IdentityProof" value={this.TypeOf_IdentityProof} onChange={this.handleTypeOf_IdentityProofChange}/>
+                    <br/>
+                </label>
+                <label>
+                investor_nationalid
+                    <input type="text" name="investor_nationalid" value={this.investor_nationalid} onChange={this.handleinvestor_nationalidChange}/>
+                    <br/>
+                </label>
+                <label>
+                BirthDate
+                    <input type="text" name="BirthDate" value={this.BirthDate} onChange={this.handleBirthDateChange}/>
+                    <br/>
+                </label>
+                <label>
+                Address
+                    <input type="text" name="Address" value={this.Address} onChange={this.handleAddressChange}/>
+                    <br/>
+                </label>
+                <label>
+                Phone_Number
+                    <input type="text" name="Phone_Number" value={this.Phone_Number} onChange={this.handlePhone_NumberChange}/>
+                    <br/>
+                </label>
+                <label>
+                email
+                    <input type="text" name="email" value={this.email} onChange={this.handleemailChange}/>
+                    <br/>
+                </label>
+                <label>
+                BOD_Name
+                    <input type="text" name="BOD_Name" value={this.BOD_Name} onChange={this.handleBOD_NameChange}/>
+                    <br/>
+                </label>
+                <label>
+                BOD_Investor_Type
+                    <input type="text" name="BOD_Investor_Type" value={this.BOD_Investor_Type} onChange={this.handleBOD_Investor_TypeChange}/>
+                    <br/>
+                </label>
+                <label>
+                BOD_Gender
+                    <input type="text" name="BOD_Gender" value={this.BOD_Gender} onChange={this.handleBOD_GenderChange}/>
+                    <br/>
+                </label>
+                <label>
+                BOD_Nationality
+                    <input type="text" name="BOD_Nationality" value={this.BOD_Nationality} onChange={this.handleBOD_NationalityChange}/>
+                    <br/>
+                </label>
+                <label>
+                BOD_TypeOfIdentityProof
+                    <input type="text" name="BOD_TypeOfIdentityProof" value={this.BOD_TypeOfIdentityProof} onChange={this.handleBOD_TypeOfIdentityProofChange}/>
+                    <br/>
+                </label>
+                <label>
+                BOD_NationalID
+                    <input type="text" name="BOD_NationalID" value={this.BOD_NationalID} onChange={this.handleBOD_NationalIDChange}/>
+                    <br/>
+                </label>
+                <label>
+                BOD_BirthDate
+                    <input type="text" name="BOD_BirthDate" value={this.BOD_BirthDate} onChange={this.handleBOD_BirthDateChange}/>
+                    <br/>
+                </label>
+                <label>
+                BOD_Address
+                    <input type="text" name="BOD_Address" value={this.BOD_Address} onChange={this.handleBOD_AddressChange}/>
+                    <br/>
+                </label>
+                <label>
+                PositionInBOD
+                    <input type="text" name="PositionInBOD" value={this.PositionInBOD} onChange={this.handlePositionInBODChange}/>
+                
+                    <br/></label>
+
+                <input type="submit" value="update form" />
+            </form> 
+            </li>)}
+     </ul> 
+  
+ }
       </div>
     );
   }
 }
 
 export default SSC;
-
         
 
  
