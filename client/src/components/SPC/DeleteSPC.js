@@ -1,0 +1,46 @@
+import React, { Component } from 'react';
+import './DeleteSPC.css'
+
+
+class DeleteSPC extends Component {
+
+  constructor() {
+        super();
+        this.delete = this.delete.bind(this);
+ this.state={
+      spcs: []
+    }
+    }
+   delete(id){
+        return fetch('/api/SPC/'+id, {
+          method: 'DELETE',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+      })
+      .then(res => res.json())
+      .then(data => console.log(data));
+      }
+      componentDidMount(){
+        fetch('/api/SPC')
+        .then(res => res.json())
+        .then(SPC => this.setState({spcs: SPC.data}, () => console.log('SPC fetched',this.state.spcs)));
+      }
+      render() {
+        return (
+          <div >
+    <h2>SPC Forms</h2> 
+    <ul>
+          {this.state.spcs.map(spc =>
+            <li key = {spc._id}
+            > {spc.Facility_name} <br/><button onClick = {() => {this.delete(spc._id)}}> Delete</button> 
+            </li>
+            )}
+        </ul>
+    
+          </div>
+        );
+        }
+    }
+
+export default DeleteSPC;
