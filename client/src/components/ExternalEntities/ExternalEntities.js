@@ -11,15 +11,14 @@ class ExternalEntities extends Component {
         this.handleusernameChange=  this.handleusernameChange.bind(this);
         this.handlepasswordChange=  this.handlepasswordChange.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
+        this.handleSubmit= this.handleSubmit.bind(this);
+        this.handleSubmit= this.handleSubmit.bind(this);
+
         this.state ={
             ExternalEntities:[],
-            
             name:"",
-	
 username:	"",	
-password : ""
-	
-           
+password : ""  
         }
     
     }
@@ -37,10 +36,16 @@ password : ""
 
     }
 
-  
-
-    
-
+    delete(id){
+      return fetch('/api/ExternalEntities/'+id, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(res => res.json())
+    .then(data => console.log(data));
+    }
 
     handleSubmit(e){
       e.preventDefault();
@@ -61,9 +66,27 @@ password : ""
       .then(res => res.json())
       .then(data => console.log(data)); 
   }
-  
-  
-    
+
+  update(id){
+    console.log(this.state.username)
+     let databody 
+ if (this.state.name !== ""){
+   databody = {"name":this.state.name}}
+ if(this.state.password !== ""){
+   databody = {"password":this.state.password}}
+     if(this.state.username !== ""){
+       databody = {"username":this.state.username}}
+                   console.log(this.state.username)
+     return fetch('http://localhost:5000/api/ExternalEntities/'+id, {
+         method: 'PUT',
+         body: JSON.stringify(databody),
+         headers: {
+             'Content-Type': 'application/json'
+         },
+     })
+     .then(res => res.json())
+     .then(data => console.log(data)); 
+ }
     componentDidMount(){
   
         fetch('/api/ExternalEntities/')
@@ -96,8 +119,28 @@ password : ""
 {
   <ul>
       {
-     this.state.ExternalEntities.map( ExternalEntities  => <li key = {ExternalEntities._id}> Name: {ExternalEntities.name}</li>)}
+   this.state.ExternalEntities.map( ExternalEntities => <li key = {ExternalEntities._id}> Name: {ExternalEntities.name} <button onClick= {() => {this.delete(ExternalEntities._id)}}> Delete </button>   
+     <form onClick={() => {this.update(ExternalEntities._id)}}> 
+     <label>   
+   Name
+     <input type="text" name="name" value={this.name} onChange={this.handlenameChange}/>
+     <br/>
+ </label>
+ <label>
+     username
+     <input type="text" name="username" value={this.username} onChange={this.handleusernameChange}/>
+     <br/>
+ </label>
+ <label>
+     password
+     <input type="text" name="password" value={this.password} onChange={this.handlepasswordChange}/>
+     <br/>
+ </label>
+ <input type="submit" value="update ExternalEntities" />
+ </form>  
+            </li>)}
      </ul> 
+  
  }
       </div>
     );
