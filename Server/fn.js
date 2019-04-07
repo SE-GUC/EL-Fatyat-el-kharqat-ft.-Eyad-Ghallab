@@ -3,7 +3,7 @@ const axios = require("axios");
 const functions = {
   getLawyers: async () => {
     const lawyers = await axios.get(
-      "http://localhost:3000/api/Lawyer/getlawyers"
+      "http://localhost:3000/api/Lawyer/"
     );
 
     return lawyers;

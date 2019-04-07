@@ -145,9 +145,9 @@ router.delete('/:id', async (req,res) => {
  })
  //Get all lawyers
 
-router.get('/getlawyers', async (req,res) => {
+router.get('/', async (req,res) => {
     const lawyers = await Lawyer.find()
-    res.json({data: lawyers})
+    res.json({msg: 'Lawyers are here',data: lawyers})
 })
 
 // Create a Lawyer
