@@ -3,7 +3,7 @@ const Joi = require("joi");
 module.exports = {
   createValidation: request => {
     const createSchema = {
-      id: Joi.number(),
+     
       name: Joi.string()
         .min(3)
         .max(500),
@@ -17,7 +17,7 @@ module.exports = {
   },
   updateValidation: request => {
     const updateSchema = {
-      id: Joi.number(),
+      
       name: Joi.string()
         .alphanum()
         .min(3)

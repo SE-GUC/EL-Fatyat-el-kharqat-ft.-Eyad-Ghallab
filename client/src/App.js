@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import logo from './logo.svg';
-import SPC from './components/SPC/SPC';
-import Investor from './components/Investor/Investor';
+
 import Admin from './components/Admin/Admin';
 
 
@@ -23,7 +22,7 @@ class App extends Component {
    return (
       <div className="App">
 
-      <header className="App-header">
+     
       <img scr={logo}className="App-logo" alt="logo"/>
       <p>
         Edit <code> src/App.js</code> and save to reload.
@@ -36,6 +35,7 @@ class App extends Component {
       learn React
 
       </a>
+      <Admin/>
       <Reviewer />
         <Comment/>
         <Investor/>
@@ -51,14 +51,14 @@ class App extends Component {
 
       
         <SPC/>
-        <Admin/>
+       
 
 
         <Contract/>
 
 
 
-      </header>
+      
    
      
 

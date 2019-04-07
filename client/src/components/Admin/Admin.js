@@ -100,7 +100,7 @@ password : "",
      .then(data => console.log(data)); 
  }
  delete(id){
-    return fetch('/api/investors/'+id, {
+    return fetch('/api/Admin/'+id, {
       method: 'DELETE',
      // body: JSON.stringify(databody),
       headers: {
@@ -150,17 +150,17 @@ password : "",
                     <input type="text" name="password" value={this.password} onChange={this.handlepasswordChange}/>
                 </label>
                 
-                <input type="submit" value="Create new lawyer" />
+                <input type="submit" value="Create new Admin" />
             </form> 
             
 {
 
     <ul>
         {
-       this.state.Investors.map( investor  => <li key = {investor._id}> Name: {investor.name} <button onClick= {() => {this.delete(investor._id)}}> Delete </button>   
-       <form onClick={() => {this.update(investor._id)}}> 
+       this.state.Admin.map( Admin  => <li key = {Admin._id}> Name: {Admin.name} <button onClick= {() => {this.delete(Admin._id)}}> Delete </button>   
+       <form onClick={() => {this.update(Admin._id)}}> 
        <label>
-       Name
+       name
        <input type="text" name="name" value={this.name} onChange={this.handlenameChange}/>
        <br/>
    </label>
