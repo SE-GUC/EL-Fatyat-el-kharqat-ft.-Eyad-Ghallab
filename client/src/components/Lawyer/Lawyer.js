@@ -144,7 +144,7 @@ if(this.state.password !== ""){
 
 
   componentDidMount(){
-      fetch('/api/Lawyer/')
+      fetch('http://localhost:5000/api/Lawyer/')
       .then(res => res.json())
       .then(Lawyer=> this.setState({Lawyer:Lawyer.data}, ()=>console.log('Lawyers fetched..',
      this.state.Lawyer)));

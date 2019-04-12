@@ -101,7 +101,7 @@ if (price2 >= 10 && price2 <= 1000){
 finalprice += 660
 
 
-      res.json({data : "your estimated price to be paid is EGP ",finalprice})
+      res.json({data :finalprice})
 
 
 })
