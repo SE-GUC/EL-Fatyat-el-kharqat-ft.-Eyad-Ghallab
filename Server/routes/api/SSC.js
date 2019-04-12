@@ -71,7 +71,7 @@ router.get('/:id/find', async (req,res) => {
   var price = estimatedprice/1000
  var price2 = 0.0025*estimatedprice
 var finalprice=0
-  console.log(estimatedprice)
+ // console.log(estimatedprice)
   if (price < 100 ){
      finalprice += 100
   }
@@ -93,7 +93,7 @@ if (price2 >= 10 && price2 <= 1000){
 finalprice += 660
 
 
-      res.json({data : "your estimated price to be paid is EGP ",finalprice})
+     res.json({data : finalprice})
 
 
 })
