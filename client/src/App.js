@@ -74,28 +74,9 @@ class App extends Component {
               <Route exact path='/Payment' component={ Payment } /> 
               <Route exact path='/Reviewer' component={ Reviewer } />
               <Route exact path='/SSC' component={ SSC} />
-              
+              <Route exact path='/Contract' component={Contract} />
+
           </Switch>
-          {/* <Admin/>
-      
-
-    
-       
-      <Notification />
-      <Contract/>
-      <Reviewer /> 
-
-      <Comment/>
-      <Investor/>
-      <SSC/>
-      <Lawyer />
-      <ExternalEntities/> */}
-
-
-      {/* <Payment/> */}
-
-
-
 
 
         </div>
