@@ -12,7 +12,6 @@ class Contract extends Component {
         this.handleDayChange =  this.handleDayChange.bind(this);
         this.handleMonthChange =  this.handleMonthChange.bind(this);
         this.handleYeareChange =  this.handleYeareChange.bind(this);
-        this.handleTimeChange =  this.handleTimeChange.bind(this);
         this.handleCorporate_nameChange =  this.handleCorporate_nameChange.bind(this);
         this.handleCorporate_governorateChange =  this.handleCorporate_governorateChange.bind(this);
         this.handleCorporate_cityChange =  this.handleCorporate_cityChange.bind(this);
@@ -38,35 +37,34 @@ class Contract extends Component {
         
         this.handleSubmit= this.handleSubmit.bind(this);
         this.delete=this.delete.bind(this);
+        this.update=this.update.bind(this);
         this.state ={
             Contracts:[],
-
-        First_party_name: "",
+        First_party_name:"",
         Second_party_name:"",   
         First_party_address:"",  
         Second_party_address:"",
         Day:"",   
         Month:"",   
         Year:"", 
-        Time:"",  
         Corporate_name:"",  
         Corporate_governorate:"",
-        Corporate_city: "",
-        Corporate_address: "",
-        Corporate_Phone_Number: "",
+        Corporate_city:"",
+        Corporate_address:"",
+        Corporate_Phone_Number:"",
         Investor_name:"",  
         Investor_address:"",  
         Investor_ID:"",
         Investor_nationality:"", 
         Investor_DOB:"", 
         Investor_phone_number:"",
-        Investor_Fax: "",
-        Investor_email: "",
-        Main_business_activity: "",
-        Other_activities: "",
-        Duration_of_the_company: "",
-        Initial_capital: "",
-        Capital_Currency: "",
+        Investor_Fax:"",
+        Investor_email:"",
+        Main_business_activity:"",
+        Other_activities:"",
+        Duration_of_the_company:"",
+        Initial_capital: 50000,
+        Capital_Currency:"",
         Status:"",
         Type_of_form:""
            
@@ -102,10 +100,8 @@ class Contract extends Component {
       this.setState({Year: e.target.value })
 
     }
-    handleTimeChange(e){
-      this.setState({Time: e.target.value })
-
-    }
+   
+    
     handleCorporate_nameChange(e){
       this.setState({Corporate_name: e.target.value })
 
@@ -207,7 +203,6 @@ class Contract extends Component {
             "Day": this.state.Day,
             "Month": this.state.Month,
             "Year": this.state.Year,
-            "Time": this.state.Time,
             "Corporate_name": this.state.Corporate_name,
             "Corporate_governorate": this.state.Corporate_governorate,
             "Corporate_city": this.state.Corporate_city,
@@ -244,11 +239,8 @@ class Contract extends Component {
 
 
   update(id){
-    console.log(this.state.First_party_name)
-     let databody 
-     
-    
-
+   // console.log(this.state.First_party_name)
+     let databody ;
  if (this.state.First_party_name !== ""){
    databody = {"First_party_name":this.state.First_party_name}}
  if(this.state.Second_party_name !== ""){
@@ -263,8 +255,6 @@ class Contract extends Component {
            databody = {"Month":this.state.Month}}
            if(this.state.Year !== ""){
              databody = {"Year":this.state.Year}}
-             if(this.state.Time !== ""){
-               databody = {"Time":this.state.Time}}
                if(this.state.Corporate_name !== ""){
                  databody = {"Corporate_name":this.state.Corporate_name}}
                  if(this.state.Corporate_governorate !== ""){
@@ -297,8 +287,8 @@ class Contract extends Component {
                     databody = {"Other_activities":this.state.Other_activities}}
                  if(this.state.Duration_of_the_company !== ""){
                     databody = {"Duration_of_the_company":this.state.Duration_of_the_company}}
-                 if(this.state.Initial_capital !== ""){
-                    databody = {"Initial_capital":this.state.Initial_capital}}
+                //  if(this.state.Initial_capital !== ""){
+                //     databody = {"Initial_capital":this.state.Initial_capital}}
                  if(this.state.Capital_Currency !== ""){
                     databody = {"Capital_Currency":this.state.Capital_Currency}}
                  if(this.state.Status !== ""){
@@ -306,7 +296,7 @@ class Contract extends Component {
                  if(this.state.Type_of_form !== ""){
                     databody = {"Type_of_form":this.state.Type_of_form}}
 
-                   console.log(this.state.username)
+                  // console.log(this.state.username)
      return fetch('http://localhost:5000/api/Contract/'+id, {
          method: 'PUT',
          body: JSON.stringify(databody),
@@ -327,33 +317,6 @@ class Contract extends Component {
         .then(Contract => this.setState({Contracts: Contract.data},()=> console.log('the contratcs',this.state.Contracts)));
      
     }
-//   render() {
-//     return (
-//       <div>
-        
-//     <h2> My Contracts</h2>
-
-//  <form onSubmit={this.handleSubmit}>
-               
-//                 <input type="submit" value="Create Contract" />
-//             </form> 
-
-// {
-
-//   <ul>
-//       {
-//       this.state.Contracts.map( Contracts  => <li key = {Contracts._id}> First party name: {Contracts.First_party_name} Second party name: {Contracts.Second_party_name}<button onClick= {() => {this.delete(Contracts._id)}}> Delete </button> </li>)}
-//       <form onClick={() => {this.update(Contract._id)}}> 
-      
-//                 <input type="submit" value="Update Contract" />
-//             </form> 
-//      </ul> 
-  
-//  }
-//       </div>
-//     );
-//   }
-// }
 
 render() {
     //  var {Investors} =  this.state;
@@ -365,148 +328,144 @@ render() {
     <form onSubmit={this.handleSubmit}>
     <label>
                 First_party_name
-                    <input type="text" name="First_party_name" value={this.First_party_name} onChange={this.handlenameChange}/>
+                    <input type="text" name="First_party_name" value={this.First_party_name} onChange={this.handleFirst_party_nameChange}/>
                     <br/>
                 </label>
                 <label>
                 Second_party_name
-                    <input type="text" name="Second_party_name" value={this.Second_party_name} onChange={this.handlepasswordChange}/>
+                    <input type="text" name="Second_party_name" value={this.Second_party_name} onChange={this.handleSecond_party_nameChange}/>
                     <br/>
                 </label>
                 <label>
                 First_party_address
-                    <input type="text" name="First_party_address" value={this.First_party_address} onChange={this.handleemailChange}/>
+                    <input type="text" name="First_party_address" value={this.First_party_address} onChange={this.handleFirst_party_addressChange}/>
                     <br/>
                 </label>
                 <label>
                 Second_party_address
-                    <input type="text" name="Second_party_address" value={this.Second_party_address} onChange={this.handleusernameChange}/>
+                    <input type="text" name="Second_party_address" value={this.Second_party_address} onChange={this.handleSecond_party_addressChange}/>
                     <br/>
                 </label>
                 <label>
                 Day
-                    <input type="text" name="Day" value={this.Day} onChange={this.handlenationalityChange}/>
+                    <input type="text" name="Day" value={this.Day} onChange={this.handleDayChange}/>
                     <br/>
                 </label>
                 <label>
                 Month
-                    <input type="text" name="Month" value={this.Month} onChange={this.handlegenderChange}/>
+                    <input type="text" name="Month" value={this.Month} onChange={this.handleMonthChange}/>
                     <br/>
                 </label>
                 <label>
                 Year
-                    <input type="text" name="Year" value={this.Year} onChange={this.handlebithdateChange}/>
+                    <input type="text" name="Year" value={this.Year} onChange={this.handleYeareChange}/>
                     <br/>
                 </label>
                 <label>
                 Corporate_name
-                    <input type="text" name="Corporate_name" value={this.Corporate_name} onChange={this.handlecityChange}/>
+                    <input type="text" name="Corporate_name" value={this.Corporate_name} onChange={this.handleCorporate_nameChange}/>
                     <br/>
                 </label>
                 <label>
                 Corporate_governorate
-                    <input type="text" name="Corporate_governorate" value={this.Corporate_governorate} onChange={this.handlecountryChange}/>
+                    <input type="text" name="Corporate_governorate" value={this.Corporate_governorate} onChange={this.handleCorporate_governorateChange}/>
                     <br/>
                 </label>
                 <label>
                 Corporate_city
-                    <input type="text" name="Corporate_city" value={this.Corporate_city} onChange={this.handlejobtitleChange}/>
+                    <input type="text" name="Corporate_city" value={this.Corporate_city} onChange={this.handleCorporate_cityChange}/>
                     <br/>
                 </label>
                 <label>
                 Corporate_address
-                    <input type="text" name="Corporate_address" value={this.Corporate_address} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Corporate_address" value={this.Corporate_address} onChange={this.handleCorporate_addressChange}/>
                     <br/>
                 </label>
                 <label>
                 Corporate_Phone_Number
-                    <input type="text" name="Corporate_Phone_Number" value={this.Corporate_Phone_Number} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Corporate_Phone_Number" value={this.Corporate_Phone_Number} onChange={this.handleCorporate_Phone_NumberChange}/>
                     <br/>
                 </label>
-                 <label>
-                 Corporate_address
-                    <input type="text" name="Corporate_address" value={this.Corporate_address} onChange={this.handlemobilenumberChange}/>
-                    <br/>
-                </label>
+                
                 <label>
                 Investor_name
-                    <input type="text" name="Investor_name" value={this.Corporate_Phone_Number} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Investor_name" value={this.Investor_name} onChange={this.handleInvestor_nameChange}/>
                     <br/>
                 </label>
                 <label>
                 Investor_address
-                    <input type="text" name="Investor_address" value={this.Investor_address} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Investor_address" value={this.Investor_address} onChange={this.handleInvestor_addressChange}/>
                     <br/>
                 </label>
             <label>
             Investor_ID
-                    <input type="text" name="Investor_ID" value={this.Investor_ID} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Investor_ID" value={this.Investor_ID} onChange={this.handleInvestor_IDChange}/>
                     <br/>
                 </label>
                 <label>
                 Investor_nationality
-                    <input type="text" name="Investor_nationality" value={this.Investor_nationality} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Investor_nationality" value={this.Investor_nationality} onChange={this.handleInvestor_nationalityChange}/>
                     <br/>
                 </label>
                 <label>
                 Investor_DOB
-                    <input type="text" name="Investor_DOB" value={this.Investor_DOB} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Investor_DOB" value={this.Investor_DOB} onChange={this.handleInvestor_DOBChange}/>
                     <br/>
                 </label>
                 <label>
                 Investor_phone_number
-                    <input type="text" name="Investor_phone_number" value={this.Investor_phone_number} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Investor_phone_number" value={this.Investor_phone_number} onChange={this.handleInvestor_phone_numberChange}/>
                     <br/>
                 </label>
                 <label>
                 Investor_Fax
-                    <input type="text" name="Investor_Fax" value={this.Investor_Fax} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Investor_Fax" value={this.Investor_Fax} onChange={this.handleInvestor_FaxChange}/>
                     <br/>
                 </label>
                 <label>
                 Investor_email
-                    <input type="text" name="Investor_email" value={this.Investor_email} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Investor_email" value={this.Investor_email} onChange={this.handleInvestor_emailChange}/>
                     <br/>
                 </label>
             
             <label>
             Main_business_activity
-                    <input type="text" name="Main_business_activity" value={this.Main_business_activity} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Main_business_activity" value={this.Main_business_activity} onChange={this.handleMain_business_activityChange}/>
                     <br/>
                 </label>
            
             <label>
             Other_activities
-                    <input type="text" name="Other_activities" value={this.Other_activities} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Other_activities" value={this.Other_activities} onChange={this.handleOther_activitiesChange}/>
                     <br/>
                 </label>
             <label>
             Duration_of_the_company
-                    <input type="text" name="Duration_of_the_company" value={this.Duration_of_the_company} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Duration_of_the_company" value={this.Duration_of_the_company} onChange={this.handleDuration_of_the_companyChange}/>
                     <br/>
                 </label>
           
             <label>
             Initial_capital
-                    <input type="text" name="Initial_capital" value={this.Initial_capital} onChange={this.handlemobilenumberChange}/>
+                    <input type="number" name="Initial_capital" value={this.Initial_capital} onChange={this.handleInitial_capitalChange}/>
                     <br/>
                 </label>
            
             <label>
             Capital_Currency
-                    <input type="text" name="Capital_Currency" value={this.Capital_Currency} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Capital_Currency" value={this.Capital_Currency} onChange={this.handleCapital_CurrencyChange}/>
                     <br/>
                 </label>
           
             <label>
             Status
-                    <input type="text" name="Status" value={this.Status} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Status" value={this.Status} onChange={this.handleStatusChange}/>
                     <br/>
                 </label>
         
             <label>
             Type_of_form
-                    <input type="text" name="Type_of_form" value={this.Type_of_form} onChange={this.handlemobilenumberChange}/>
+                    <input type="text" name="Type_of_form" value={this.Type_of_form} onChange={this.handleType_of_formChange}/>
                     <br/>
                 </label>
                    <input type="submit" value="Create Contract" />
@@ -643,7 +602,7 @@ render() {
           
             <label>
             Initial_capital
-                    <input type="text" name="Initial_capital" value={this.Initial_capital} onChange={this.handleInitial_capitalChange}/>
+                    <input type="number" name="Initial_capital" value={this.Initial_capital} onChange={this.handleInitial_capitalChange}/>
                     <br/>
                 </label>
            

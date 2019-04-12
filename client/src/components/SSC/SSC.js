@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
 import './SSC.css';
-
-class SSC extends Component {
+import 'bootstrap/dist/css/bootstrap.min.css';
+export default class SSC extends Component {
     constructor(){
         super();
         this.handleCompany_nameChange= this.handleCompany_nameChange.bind(this);
@@ -40,7 +39,7 @@ class SSC extends Component {
         this.state ={
             SSC:[],
             Company_name:"",
-            Governorate:"", 
+            Governorate:"",
             City: "",
             Company_Address:"",
             Company_Phone_Number:"" ,
@@ -49,7 +48,7 @@ class SSC extends Component {
             capital:"", 
             investorname:"",
             Investor_type:"", 
-            Gender:"" ,
+            Gender:"",
             Nationality:"", 
             TypeOf_IdentityProof:"" ,
             investor_nationalid:"" ,
@@ -219,8 +218,11 @@ class SSC extends Component {
       .then(res => res.json())
       .then(data => console.log(data)); 
   }
+  
+     
+       
   update(id){
-    console.log(this.state.Company_name)
+   // console.log(this.state.Company_name)
      let databody 
  if (this.state.Company_name !== ""){
    databody = {"Company_name":this.state.Company_name}}
@@ -283,7 +285,7 @@ class SSC extends Component {
 
 
 
-                   console.log(this.state.Company_name)
+                  // console.log(this.state.Company_name)
      return fetch('http://localhost:5000/api/SSC/'+id, {
          method: 'PUT',
          body: JSON.stringify(databody),
@@ -294,7 +296,7 @@ class SSC extends Component {
      .then(res => res.json())
      .then(data => console.log(data)); 
  }
- 
+
     componentDidMount(){
   
         fetch('/api/SSC/all')
@@ -426,7 +428,7 @@ class SSC extends Component {
       <form onClick={() => {this.update(ssc._id)}}> 
      <label>
      Company_name
-     <input type="text" name="Company_name" value={this.name} onChange={this.handleCompany_nameChange}/>
+     <input type="text" name="Company_name" value={this.Company_name} onChange={this.handleCompany_nameChange}/>
      <br/>
  </label>
  <label>
@@ -572,7 +574,7 @@ class SSC extends Component {
   }
 }
 
-export default SSC;
+
         
 
  

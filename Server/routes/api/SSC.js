@@ -1,23 +1,69 @@
 
 const express = require('express')
-
-
-// Create the app
-
-// Use it with post
-
 const router = express.Router()
-//router.use(express.json());
-//const Joi = require('Joi');
 const mongoose = require('mongoose')
-
 const Form = require('../../models/SSC')
 const validator = require('../../validations/SSCvalid')
 
+//get all the  forms
 router.get('/all', async (req,res) => {
     const forms = await SSC.find()
     res.json({data: forms})
 })
+
+
+// Create a form
+router.post('/', async (req,res) => {
+  try {
+   const isValidated = validator.createValidation(req.body)
+   if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+   const { investorname} = req.body;
+		const form = await Form.findOne({ investorname });
+    if (form) return res.status(400).json({ investorname: 'You can not create 2 SSC companies' });
+    const { Company_name} = req.body;
+		const ssc = await Form.findOne({ Company_name });
+    if (ssc) return res.status(400).json({ Company_name: 'Company name already exists' });
+   const NewForm = await SSC.create(req.body)
+   res.json({msg:'Form was created successfully', data: NewForm})
+  }
+  catch(error) {
+      console.log(error)
+  }  
+})
+
+
+// Update a form
+router.put('/:id', async (req,res) => {
+  try {
+   const form = await SSC.findById(req.params.id)
+   if(!form) return res.status(404).send({error: 'form does not exist'})
+   const isValidated = validator.updateValidation(req.body)
+   if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+   const updatedform = await form.updateOne(req.body)
+   res.json({msg: 'Form updated successfully',updatedform})
+  }
+  catch(error) {
+      console.log(error)
+  }  
+})
+
+//delete a form
+
+router.delete('/:id', async (req,res) => {
+  try {
+   const id = req.params.id
+   const deletedForm = await SSC.findByIdAndRemove(id)
+   res.json({msg:'Book was deleted successfully', data: deletedForm})
+  }
+  catch(error) {
+      // We will be handling the error later
+      console.log(error)
+  }  
+})
+
+
+//user stories
+
 
 router.get('/:id/find', async (req,res) => {
   const sscforms = await SSC.findById(req.params.id)
@@ -65,6 +111,7 @@ router.get ('/',(req,res) =>{
           })
         });
 
+        
 router.get('/:id',(req,res)=>{
   const query = Form.find({})
   .where('_id').equals(req.params.id)
@@ -79,58 +126,12 @@ return res.send([sscform[0].id,sscform[0].Company_name,sscform[0].Governorate,ss
 })
 
 
-// Create a form
-router.post('/', async (req,res) => {
-  try {
-   const isValidated = validator.createValidation(req.body)
-   if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
-   const { investorname} = req.body;
-		const form = await Form.findOne({ investorname });
-    if (form) return res.status(400).json({ investorname: 'You can not create 2 SSC companies' });
-    const { Company_name} = req.body;
-		const ssc = await Form.findOne({ Company_name });
-    if (ssc) return res.status(400).json({ Company_name: 'Company name already exists' });
-   const NewForm = await SSC.create(req.body)
-   res.json({msg:'Form was created successfully', data: NewForm})
-  }
-  catch(error) {
-      // We will be handling the error later
-      console.log(error)
-  }  
-})
-
-// Update a book
-router.put('/:id', async (req,res) => {
-  try {
-    
-  // const id = req.params.id
-   const form = await SSC.findById(req.params.id)
-   if(!form) return res.status(404).send({error: 'form does not exist'})
-   const isValidated = validator.updateValidation(req.body)
-   if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
-   const updatedform = await form.updateOne(req.body)
-   res.json({msg: 'Form updated successfully',updatedform})
-  }
-  catch(error) {
-      // We will be handling the error later
-      console.log(error)
-  }  
-})
 
 
 
 
-router.delete('/:id', async (req,res) => {
-  try {
-   const id = req.params.id
-   const deletedForm = await SSC.findByIdAndRemove(id)
-   res.json({msg:'Book was deleted successfully', data: deletedForm})
-  }
-  catch(error) {
-      // We will be handling the error later
-      console.log(error)
-  }  
-})
+
+
 
 
 

@@ -9,12 +9,12 @@ module.exports = {
     Second_party_name: Joi.string()
       .min(3)
       .required(),
-    First_party_address: Joi.string().min(3).required(),
+    First_party_address: Joi.string().min(3),
     Second_party_address: Joi.string().min(3).required(),
     Day: Joi.string().min(1).max(31).required(),
     Month: Joi.string().required(),
     Year: Joi.string().required(),
-    Time: Joi.string().required(),
+  
     Corporate_name: Joi.string().required(),
     Corporate_governorate: Joi.string()
       .valid(
@@ -604,7 +604,7 @@ module.exports = {
     Day: Joi.string().min(1).max(31),
     Month: Joi.string(),
     Year: Joi.string(),
-    Time: Joi.string(),
+ 
     Corporate_name: Joi.string(),
     Corporate_governorate: Joi.string()
       .valid(

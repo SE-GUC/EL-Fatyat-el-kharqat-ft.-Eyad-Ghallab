@@ -31,10 +31,7 @@ const ContractSchema = new Schema({
         type: String,
         required: true
     },
-    Time:{
-        type: String,
-        required: true
-    },
+    
     Corporate_name:{
         type: String,
         required: true
