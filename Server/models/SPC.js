@@ -89,6 +89,10 @@ const SpcFormSchema = new Schema({
     is_the_external_entities_notified: {
         type: Boolean, 
     
+    },
+    Lawyer_review:{
+        type: String, 
+    
     }
 })
 
