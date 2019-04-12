@@ -77,26 +77,6 @@ class App extends Component {
               <Route exact path='/Contract' component={Contract} />
 
           </Switch>
-          {/* <Admin/>
-      
-
-    
-       
-      <Notification />
-      <Contract/>
-      <Reviewer /> 
-
-      <Comment/>
-      <Investor/>
-      <SSC/>
-      <Lawyer />
-      <ExternalEntities/> */}
-
-
-      {/* <Payment/> */}
-
-
-
 
 
         </div>
