@@ -33,6 +33,9 @@ export default class SSC extends Component {
         this.handlePositionInBODChange= this.handlePositionInBODChange.bind(this);
         this.handleLawyer_reviewChange=this.handleLawyer_reviewChange.bind(this);
        
+
+       this.handlepayement=this.handlepayement.bind(this);
+
      
         this.handleSubmit=this.handleSubmit.bind(this);
         this.delete=this.delete.bind(this);
@@ -67,6 +70,9 @@ export default class SSC extends Component {
             BOD_Address:"", 
             PositionInBOD: "",
             Lawyer_review:"",
+
+            paymenet:""
+
         }
     
     }
@@ -167,6 +173,12 @@ export default class SSC extends Component {
         this.setState({Lawyer_review: e.target.value })
 
     }
+
+    handlepayement(){
+        this.setState({paymenet: "" })
+
+    }
+
 
 
 
@@ -307,6 +319,19 @@ export default class SSC extends Component {
      .then(data => console.log(data)); 
  }
 
+
+ paymenet(id){
+     
+    if(this.state.paymenet !== ""){
+         
+        this.setState({paymenet: "" })}
+    fetch('/api/SSC/'+ id+ '/find')
+    .then(res => res.json())
+    .then(pay => this.setState({paymenet: pay.data},()=> console.log('you should pay',this.state.paymenet)));
+    // this.state.paymenet
+// printString(this.state.paymenet)
+ }
+
     componentDidMount(){
   
         fetch('/api/SSC/all')
@@ -437,8 +462,14 @@ export default class SSC extends Component {
             </form> 
 {
  <ul>
-     {this.state.SSC.map( ssc  => <li key = {ssc._id}> Name: {ssc.Company_name}<button onClick= {() => {this.delete(ssc._id)}}>
-      Delete </button>
+     {this.state.SSC.map( ssc  => <li key = {ssc._id}> Name: {ssc.capital}    <button onClick= {() => {this.delete(ssc._id)}}>
+      Delete </button> 
+      <button onClick= {() => {this.paymenet(ssc._id)}}>
+      pay   </button>  
+    
+       {/* {this.state.paymenet}    if(this.state.paymenet !== ""){
+         
+       this.setState({paymenet: "" }) */}
       <form onClick={() => {this.update(ssc._id)}}> 
      <label>
      Company_name
@@ -584,7 +615,7 @@ export default class SSC extends Component {
 
                 <input type="submit" value="update form" />
             </form> 
-            </li>)}
+            </li>)}<h1>You Should pay: {this.state.paymenet}</h1>
      </ul> 
   
  }
