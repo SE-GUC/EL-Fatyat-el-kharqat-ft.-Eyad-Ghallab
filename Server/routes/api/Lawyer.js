@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 
-const lawyer = require('../../models/Lawyer')
+const Lawyer = require('../../models/Lawyer')
 const validator = require('../../validations/Lawyervalid')
 const SpcForm = require('../../models/SPC')
 const Form = require('../../models/SSC')
@@ -33,6 +33,66 @@ router.put('/:id', async (req,res) => {
   }
 //}
 })
+
+//update lawyer_review SPc form 
+router.put('/spcform/:id', async (req,res) => {
+
+  try {
+
+//   const id = req.params.id
+   const Lawyer = await SpcForm.findById(req.params.id)
+   //if(!Lawyer) return res.status(404).send({error: 'form does not exist'})
+   const isValidated = validator.updateValidation(req.body)
+   const updatedlawyer=await Lawyer.updateOne(req.body)
+   if (isValidated.error){
+     return res.status(400).send({ error: isValidated.error.details[0].message })}
+     res.status(500).json({
+      message:"Lawyer is updated the form  successfully",
+      data:updatedlawyer
+    })
+  
+
+  }catch(error) {
+    res.status(500).json({
+      message:"error",
+   //console.log(error)
+})
+}
+
+})
+
+
+
+//update lawyer_review ssc form 
+router.put('/sscform/:id', async (req,res) => {
+
+  try {
+
+//   const id = req.params.id
+   const Lawyer = await SSC.findById(req.params.id)
+   //if(!Lawyer) return res.status(404).send({error: 'form does not exist'})
+   const isValidated = validator.updateValidation(req.body)
+   const updatedlawyer=await Lawyer.updateOne(req.body)
+   if (isValidated.error){
+     return res.status(400).send({ error: isValidated.error.details[0].message })}
+     res.status(500).json({
+      message:"Lawyer is updated the form  successfully",
+      data:updatedlawyer
+    })
+  
+
+  }catch(error) {
+    res.status(500).json({
+      message:"error",
+   //console.log(error)
+})
+}
+
+})
+
+
+
+
 
 // get all unlocked SSC forms
 

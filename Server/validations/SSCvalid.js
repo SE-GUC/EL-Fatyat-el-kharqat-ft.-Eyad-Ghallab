@@ -681,7 +681,7 @@ module.exports = {
 Locked:Joi.boolean(),
 Status: Joi.string(),
 is_the_external_entities_notified: Joi.boolean(),
-Lawyer_review: Joi.string(),
+//Lawyer_review: Joi.string(),
     };
 
         return Joi.validate(request, createSchema)

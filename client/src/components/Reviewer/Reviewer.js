@@ -129,13 +129,17 @@ if(this.state.password !== ""){
         .then(Reviewer => this.setState({Reviewers: Reviewer.data},()=> console.log('the Reviewer',this.state.Reviewers)));
       
     }
+  
+  
+  
+ 
+
   render() {
     return (
       <div>
         
     <h2> My Reviewers
     </h2>
-
 
 
  <form onSubmit={this.handleSubmit}>
@@ -176,8 +180,10 @@ if(this.state.password !== ""){
 {
 
   <ul>
-      {
-     this.state.Reviewers.map( Reviewer  => <li key = {Reviewer._id}> Name: {Reviewer.Name} <button onClick= {() => {this.delete(Reviewer._id)}}> Delete </button>   
+    
+    { //this.state.SPC.map( SpcForm  => <li1 key = {SpcForm._id}> investorname: {SpcForm.investorname}</li1>,
+     this.state.Reviewers.map( Reviewer  => <li key = {Reviewer._id}> Name: {Reviewer.Name}
+       <button onClick= {() => {this.delete(Reviewer._id)}}> Delete </button>   
      <form onClick={() => {this.update(Reviewer._id)}}>      
      <label>
      Name
@@ -212,7 +218,7 @@ if(this.state.password !== ""){
  
  <input type="submit" value="update Reviewer" />
             </form>  
-            </li>)}
+            </li> ) }
      </ul> 
   
  }
@@ -220,6 +226,7 @@ if(this.state.password !== ""){
     );
   }
 }
+
 
 export default Reviewer;
 

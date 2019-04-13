@@ -22,7 +22,7 @@ import React, { Component } from 'react';
         this.handleInvestorFax = this.handleInvestorFax.bind(this);
         this.handleemail = this.handleemail.bind(this);
         this.handleInvestorAddress = this.handleInvestorAddress.bind(this);
-        this.handleLawyer_review= this.handleLawyer_review.bind(this);
+        //this.handleLawyer_review= this.handleLawyer_review.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.update=this.update.bind(this);
@@ -46,7 +46,7 @@ import React, { Component } from 'react';
           Investor_Fax:'',
           email:'',
           Investor_Address:'',
-          Lawyer_review:"",
+          //Lawyer_review:"",
           spcs:[],
         
        }
@@ -151,11 +151,11 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
-handleLawyer_review(e){
+/*handleLawyer_review(e){
   this.setState({
       Lawyer_review: e.target.value
     })
-  }
+  }*/
   handleSubmit(e) {
     e.preventDefault();
     let databody  = {
@@ -177,7 +177,7 @@ handleLawyer_review(e){
       Investor_Fax:this.state.Investor_Fax,
       email:this.state.email,
       Investor_Address:this.state.Investor_Address,
-      Lawyer_review:this.state.Lawyer_review
+     // Lawyer_review:this.state.Lawyer_review
     }}
     update(id){
       console.log(this.state.Facility_name)
@@ -220,8 +220,8 @@ handleLawyer_review(e){
                                   databody = {"email":this.state.email}}
                                   if(this.state.Investor_Address !== ""){
                                     databody = {"Investor_Address":this.state.Investor_Address}}
-                                    if(this.state.Lawyer_review !== ""){
-                                      databody = {"Lawyer_review":this.state.Lawyer_review}}
+                                    /*if(this.state.Lawyer_review !== ""){
+                                      databody = {"Lawyer_review":this.state.Lawyer_review}}*/
                     console.log(this.state.Facility_name)
     
        return fetch('/api/SPC/'+id, {
@@ -420,15 +420,7 @@ render() {
                   onChange={this.handleInvestorAddress}
                   />
             </div>
-            <div className="form-group">
-                <label>Lawyer_review:  </label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  value={this.state.Lawyer_review}
-                  onChange={this.handleLawyer_review}
-                  />
-            </div>
+            
             <ul>
           {this.state.spcs.map(spc =>
             <li key = {spc._id}
