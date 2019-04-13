@@ -33,11 +33,11 @@ this.state={
 // printString(this.state.paymenet)
  }
  
- sms(num) {
+ sms(num,mssg) {
   //e.preventDefault();
   let databody  = {
     "number": num,
-   // "msg":mssg
+   "msg":mssg
     
   };
 
@@ -69,7 +69,7 @@ this.state={
             > {spc.Phone_Number} 
              <button onClick= {() => {this.paymenet(spc._id)}}>
             pay   </button>  
-            <button onClick= {() => {this.sms(spc.Phone_Number)}}>
+            <button onClick= {() => {this.sms(spc.Phone_Number,this.state.paymenet)}}>
 
              pay the fees 
             </button>  

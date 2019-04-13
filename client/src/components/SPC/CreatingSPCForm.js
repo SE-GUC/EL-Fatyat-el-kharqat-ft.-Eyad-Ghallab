@@ -41,6 +41,7 @@ class CreatingSPCForm extends Component {
     this.handleInvestorFax = this.handleInvestorFax.bind(this);
     this.handleemail = this.handleemail.bind(this);
     this.handleInvestorAddress = this.handleInvestorAddress.bind(this);
+    this.handleLawyer_review=this.handleLawyer_review.bind(this);
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     
@@ -349,7 +350,8 @@ class CreatingSPCForm extends Component {
       Phone_Number: '',
       Investor_Fax:'',
       email:'',
-      Investor_Address:''
+      Investor_Address:'',
+      Lawyer_review:""
     
    }
  }
@@ -447,6 +449,11 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
+handleLawyer_review(e){
+  this.setState({
+      Lawyer_review: e.target.value
+    })
+  }
   handleSubmit(e) {
     e.preventDefault();
     let databody  = {
@@ -467,7 +474,8 @@ handleInvestorAddress(e){
       Phone_Number: this.state.Phone_Number,
       Investor_Fax:this.state.Investor_Fax,
       email:this.state.email,
-      Investor_Address:this.state.Investor_Address
+      Investor_Address:this.state.Investor_Address,
+      Lawyer_review:this.state.Lawyer_review
     };
 
     return fetch('/api/SPC/', {
@@ -498,6 +506,7 @@ handleInvestorAddress(e){
     let typeOptions=this.state.TypeOf_IdentityProof.map(TypeOf_IdentityProof => {
       return <option key = {TypeOf_IdentityProof} value = "TypeOf_IdentityProof">{TypeOf_IdentityProof}</option>
   });
+  
     
     return (
         <div style={{ marginTop: 10 }}>
@@ -921,6 +930,16 @@ handleInvestorAddress(e){
                       onChange={this.handleInvestorAddress}
                       />
                 </div>
+                <div className="form-group">
+                    <label>Lawyer_review:  </label>
+                    <input 
+                      type="text" 
+                      className="form-control" 
+                      value={this.state.Lawyer_review}
+                      onChange={this.handleLawyer_review}
+                      />
+                </div>
+                     
                 <div className="form-group">
                     <input type="submit" 
                       value="Submit" 
