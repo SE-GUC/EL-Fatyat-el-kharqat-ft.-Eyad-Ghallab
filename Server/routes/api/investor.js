@@ -1,5 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const multer = require('multer');
+const upload = multer({
+  dest: './uploads' // this saves your file into a directory called "uploads"
+});
+
 // const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken')
 
@@ -97,6 +102,14 @@ router.put('/:id', async (req,res) => {
         console.log(error)
     }  
  })
+router.get('/', (req, res) => {
+	res.sendFile(__dirname + '/Investor.js');
+  });
+  
+  router.post('/', upload.single('file-to-upload'), (req, res) => {
+	res.redirect('/');
+  });
+ 
 
  
 
