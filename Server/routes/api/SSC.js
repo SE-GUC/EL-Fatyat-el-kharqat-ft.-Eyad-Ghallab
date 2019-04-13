@@ -5,6 +5,31 @@ const mongoose = require('mongoose')
 const Form = require('../../models/SSC')
 const validator = require('../../validations/SSCvalid')
 
+// const Nexmo = require('nexmo');
+// const nexmo = new Nexmo({
+//   apiKey: '5f5fb4ce',
+//   apiSecret: '48bJxSynuSXO0Xnj'
+// });
+ 
+
+
+
+// nexmo.message.sendSms(
+//     "NEXMO", '201149733633', 'update your form ',
+//       (err, responseData) => {
+//         if (err) {
+//           console.log(err);
+//         } else {
+//           console.dir(responseData);
+//         }
+//       }
+//    );
+
+
+
+
+
+
 //get all the  forms
 router.get('/all', async (req,res) => {
     const forms = await SSC.find()
@@ -71,7 +96,7 @@ router.get('/:id/find', async (req,res) => {
   var price = estimatedprice/1000
  var price2 = 0.0025*estimatedprice
 var finalprice=0
-  console.log(estimatedprice)
+ // console.log(estimatedprice)
   if (price < 100 ){
      finalprice += 100
   }
@@ -93,7 +118,7 @@ if (price2 >= 10 && price2 <= 1000){
 finalprice += 660
 
 
-      res.json({data : "your estimated price to be paid is EGP ",finalprice})
+     res.json({data : finalprice})
 
 
 })

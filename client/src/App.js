@@ -13,6 +13,8 @@ import Payment from './components/Payment/Payment';
 import Investor from './components/Investor/Investor';
 import Comment from './components/Comment/Comment';
 import SSC from './components/SSC/SSC';
+import AboutUs from './components/AboutUs/AboutUs';
+import ContactUs from './components/ContactUs/ContactUs';
 class App extends Component {
 
   render() {
@@ -59,10 +61,19 @@ class App extends Component {
                 <li className="nav-item">
                   <Link to={'/SSC'} className="nav-link">SSC</Link>
                 </li>
+                <li className="nav-item">
+                  <Link to={'/AboutUs'} className="nav-link">AboutUs</Link>
+                </li>
+                <li className="nav-item">
+                        <Link to={'/ContactUs'} className="nav-link">ContactUs</Link>
+                      </li>
               </ul>
             </div>
           </nav> <br/>
           <h2>Welcome to GAFI</h2> <br/>
+   
+
+
           <Switch>
               <Route exact path='/SPCHomePage' component={ SPCHomePage } />
               <Route exact path='/Admin' component={ Admin} />
@@ -75,28 +86,10 @@ class App extends Component {
               <Route exact path='/Reviewer' component={ Reviewer } />
               <Route exact path='/SSC' component={ SSC} />
               <Route exact path='/Contract' component={Contract} />
+              <Route exact path='/AboutUs' component={AboutUs} />
+              <Route exact path='/ContactUs' component={ContactUs} />
 
           </Switch>
-          {/* <Admin/>
-      
-
-    
-       
-      <Notification />
-      <Contract/>
-      <Reviewer /> 
-
-      <Comment/>
-      <Investor/>
-      <SSC/>
-      <Lawyer />
-      <ExternalEntities/> */}
-
-
-      {/* <Payment/> */}
-
-
-
 
 
         </div>

@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles';
 
-export default class CreatingSPCForm extends Component {
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing.unit * 2,
+  },
+});
+class CreatingSPCForm extends Component {
 
  constructor() {
     super();
@@ -23,261 +41,14 @@ export default class CreatingSPCForm extends Component {
     this.handleInvestorFax = this.handleInvestorFax.bind(this);
     this.handleemail = this.handleemail.bind(this);
     this.handleInvestorAddress = this.handleInvestorAddress.bind(this);
+    //this.handleLawyer_review=this.handleLawyer_review.bind(this);
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     
     this.state = { 
       Facility_name: '',
-     Governorate: [ "cairo",
-     "Alex",
-     "Ismalia",
-     "aswan",
-     "luxor",
-     "Domiat",
-     "Elbahr elahmar",
-     "asiut",
-     "Damnhor",
-     "Bne sweif",
-     "Bor saed",
-     "Giza",
-     "ganob sina",
-     "suez",
-     "faioum",
-     "qena",
-     "banha",
-     "kafr elsheikh",
-     "monofia",
-     "elmenia",
-     "elwadi elgedid",
-     "Qlioubia",
-     "Gharbia",
-    
-     "Sharaaia"],
-      City:[
-        "Abnūb",
-            "Abū al-Maṭāmīr",
-            "Abū an-Numrus",
-            "Abū Ḥammād",
-            "Abū Ḥummuṣ",
-            "Abū Kabīr",
-            "Abū Qurqās",
-            "Abū Ṣuwayr",
-            "Abū Tīj",
-            "Abū Tisht",
-            "Aḍ-Ḍabah",
-            "Ad-Dilinjāt",
-            "Ajā",
-            "Akhmīm",
-            "Al-Arīsh",
-            "Al-Ayyāṭ",
-            "Al-Badārī",
-            "Al-Badrashayn",
-            "Al-Bājūr",
-            "Al-Balyanā",
-            "Al-Baṣaliyah Baḥri",
-            "Al-Bāwīṭī",
-            "Al-Bāyaḍiyah",
-            "Al-Fashn",
-            "Al-Fatḥ-An-Nāṣiriyah",
-            "Al-Fayyūm",
-            "Al-Ghanāyim ",
-            "Al-Ghurdaqah",
-            "Al-Ḥammām",
-            "Al-Ḥāmūl",
-            "Al-Ḥawāmidiyah",
-            "Al-Ḥusayniyah",
-            "Al-Ibrāhīmiyah",
-            "Al-Idwah",
-            "Al-Iskandariyah",
-            "Al-Ismāīliyah",
-            "Al-Jamāliyah",
-            "Al-Jīzah ",
-            "Al-Khānkah",
-            "Al-Khārijah",
-            "Al-Khuṣūṣ",
-            "Al-Kurdy",
-            "Al-Maḥallah al-Kubrā",
-            "Al-Maḥmūdiyah",
-            "Al-Manshāh",
-            "Al-Manṣūrah",
-            "Al-Manzilah",
-            "Al-Marāghah",
-            "Al-Maṭariyah",
-            "Al-Minyā",
-            "Al-Minyā al-Jadīdah",
-            "Al-Qāhirah",
-            "New Cairo",
-            "Al-Qanāṭir al-Khayriyah",
-            "Al-Qanāyāt",
-            "Al-Qantarah",
-            "Al-Qanṭarah Sharq",
-            "Al-Qarnuh al-Jadīdah",
-            "Al-Qaṣāṣīn al-Jadīdah",
-            "Al-Qurayn",
-            "Al-Quṣayr",
-            "Al-Qūṣiyah",
-            "Al-Ubūr",
-            "Luxor",
-            "Al-Waqf ",
-            "Al-Wāsiṭā",
-            "El Negaila",
-            "An-New Nubariya",
-            "Armant",
-            "Ar-Radīsiyah Qiblī",
-            "Ar-Rahmaniya",
-            "Ar-Rawḍah",
-            "Ar-Riyāḍ",
-            "Ashmoun",
-            "Ash-Shalātīn",
-            "Sheikh Zayed City",
-            "Sheikh Zuweid",
-            "Ash-Shuhadā",
-            "Ash-Shurūq",
-            "Aṣ-Ṣaff",
-            "New Salhia",
-            "As-Sallūm",
-            "As-Sanṭah",
-            "As-Sarw",
-            "As-Sibāiyah Gharb",
-            "El Senbellawein",
-            "Suez",
-            "Aswān",
-            "Asyut",
-            "Aṭfīḥ",
-            "At-Tall al-Kabīr",
-            "Aṭ-Ṭūd",
-            "El Tor",
-            "Awlād Ṣaqr",
-            "Awsīm",
-            "Zagazig",
-            "Az-Zarqā",
-            "Az-Zayniyah Qiblī",
-            "Badr",
-            "Balṭīm",
-            "Banhā",
-            "Beni Mazar",
-            "Beni Suef",
-            "New Beni Suef",
-            "Banī Ubayd",
-            "Basyoun",
-            "Bibā",
-            "Bilbays",
-            "Belqas",
-            "Bīr al-Abd",
-            "Birket el-Sab",
-            "Biyalā",
-            "Burj al-Arab",
-            "Burj al-Barlus",
-            "Port Said",
-            "Damanhour",
-            "Dar as-Salām",
-            "Daraw",
-            "Dayr Mawās",
-            "Dairut",
-            "Dikirnis",
-            "Dishnā",
-            "Desouk",
-            "Diyarb Najm",
-            "Dumyāṭ ",
-            "Fayid ",
-            "Faqous",
-            "Fāraskūr  ",
-            "Farshūṭ ",
-            "Fuwah ",
-            "Ḥawsh-Īsā",
-            "Hihyā",
-            "Ibsheway",
-            "Edfu",
-            "Idkū",
-            "Ihnāsiyā",
-            "Isnā",
-            "Iṭsā",
-            "Ityāy al-Bārūd",
-            "Izbat al-Burj",
-            "Girga",
-            "Juhaynah",
-            "Kafr ad-Dawwār",
-            "Kafr al-Baṭṭīkh",
-            "Kafr el-Sheikh",
-            "Kafr az-Zayyāt",
-            "Kafr Saad",
-            "Kafr Ṣaqr",
-            "Kafr Shukr",
-            "Kawm Ḥamādah",
-            "Kawm Umbū",
-            "Kirdāsah",
-            "10th of Ramadan City",
-            "Madīnat as-Sādāt",
-            "Madīnat Badr",
-            "Madīnat Burj al-Arab al-Jadīdah",
-            "Madīnat Dumyāṭ al-Jadīdah",
-            "Madīnat Sittah Uktūbar",
-            "Maghāghah ",
-            "Maḥallah Damanah",
-            "Mallawī ",
-            "Manfalūṭ    ",
-            "Manshat al-Qanāṭir",
-            "Marsā Maṭrūḥ ",
-            "Mashtūl as-Sūq ",
-            "Maṭāy",
-            "Minūf   ",
-            "Minyā al-Qamḥ   ",
-            "Minyat an-Naṣr  ",
-            "Mīt Abū Ghālb ",
-            "Mīt Ghamr   ",
-            "Mīt Salsīl",
-            "Munshāh Abū-Umar ",
-            "Dakhla",
-            "Muṭūbis",
-            "Nabarūh ",
-            "Naj-Ḥammādī",
-            "Naqādah ",
-            "Nāṣir Būsh",
-            "Qahā   ",
-            "Qallīn ",
-            "Qalyūb",
-            "Qifṭ",
-            "Qinā",
-            "Qūṣ",
-            "Quṭūr",
-            "Quwaysinā",
-            "Rafaḥ",
-            "Rās al-Bar",
-            "Ras Ghārib ",
-            "Rashīd",
-            "Safājā",
-            "Sāḥīl Salim",
-            "Samālūṭ",
-            "Samannūd",
-            "Ṣān al-Ḥajar",
-            "Sāqultah",
-            "Sawhāj",
-            "Sharm ash-Shaykh",
-            "Shibīn al-Kawm",
-            "Shibīn al-Qanāṭir",
-            "Shirbīn",
-            "Shubrā al-Khaymah",
-            "Shubrākhīt",
-            "Ṣidfā",
-            "Sīdī Barrānī",
-            "Sīdī Ghāzī",
-            "Sīdī Sālim",
-            "Sinnūris",
-            "Sirs al-Layyānah",
-            "Sīwa",
-            "Sumusṭā al-Waqf",
-            "Ṭahṭā",
-            "Talā",
-            "Ṭalkhā",
-            "Tama al-Āmdīd",
-            "Ṭāmiyah",
-            "Ṭanṭā",
-            "Ṭimā",
-            "Ṭūkh",
-            "Natron Valley",
-            "Yūsuf aṣ-Ṣiddīq",
-            "Ziftā"
-    ],
+     Governorate: '',
+      City:'',
       Facility_Address: '',
       Facility_Phone_Number: '',
       Fax: '',
@@ -461,7 +232,7 @@ export default class CreatingSPCForm extends Component {
       "Zimbabwean Bond"],
       capital: '',
       investorname:'',
-      Gender: ['Female','Male'],
+      Gender: '',
       Nationality: [ "Afghan",
       "Albanian",
       "Algerian",
@@ -573,13 +344,14 @@ export default class CreatingSPCForm extends Component {
       "Welsh",
       "Zambian",
       "Zimbabwean"],
-      TypeOf_IdentityProof: ["Passport", "National ID"],
+      TypeOf_IdentityProof: ["Passport","National ID"],
       investor_nationalid: '',
       BirthDate: '',
       Phone_Number: '',
       Investor_Fax:'',
       email:'',
-      Investor_Address:''
+      Investor_Address:'',
+      //Lawyer_review:""
     
    }
  }
@@ -677,6 +449,11 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
+/*handleLawyer_review(e){
+  this.setState({
+      Lawyer_review: e.target.value
+    })
+  }*/
   handleSubmit(e) {
     e.preventDefault();
     let databody  = {
@@ -697,7 +474,8 @@ handleInvestorAddress(e){
       Phone_Number: this.state.Phone_Number,
       Investor_Fax:this.state.Investor_Fax,
       email:this.state.email,
-      Investor_Address:this.state.Investor_Address
+      Investor_Address:this.state.Investor_Address,
+      //Lawyer_review:this.state.Lawyer_review
     };
 
     return fetch('/api/SPC/', {
@@ -710,31 +488,26 @@ handleInvestorAddress(e){
     .then(res => res.json())
     .then(data => console.log(data)); 
     
-    // axios.post('http://localhost:5000/api/SPC/create', obj)
-    //     .then(res => console.log(res.data));
+    
     
     
   }
  
   render() {
-    let governorateOptions=this.state.Governorate.map(governorate => {
-        return <option key = {governorate} value="governorate">{governorate}</option>
+   
+  
+    let capitalcurrencyOptions=this.state.Capital_Currency.map(Capital_Currency => {
+        return <option key = {Capital_Currency} value="Capital_Currency">{Capital_Currency}</option>
     })
-    let cityOptions=this.state.City.map(city => {
-        return <option key = {city} value = "city">{city}</option>
+    let nationalityOptions=this.state.Nationality.map(Nationality => {
+        return <option key = {Nationality} value = "Nationality">{Nationality}</option>
     });
-    let capitalcurrencyOptions=this.state.Capital_Currency.map(capitalcurrency => {
-        return <option key = {capitalcurrency} value="capitalcurrency">{capitalcurrency}</option>
-    })
-    let nationalityOptions=this.state.Nationality.map(nationality => {
-        return <option key = {nationality} value = "nationality">{nationality}</option>
-    });
-    let typeOptions=this.state.TypeOf_IdentityProof.map(type => {
-        return <option key = {type} value = "type">{type}</option>
-    });
-    let genderOptions=this.state.Gender.map(gender => {
-        return <option key = {gender} value = "gender">{gender}</option>
-    });
+  
+    let typeOptions=this.state.TypeOf_IdentityProof.map(TypeOf_IdentityProof => {
+      return <option key = {TypeOf_IdentityProof} value = "TypeOf_IdentityProof">{TypeOf_IdentityProof}</option>
+  });
+  
+    
     return (
         <div style={{ marginTop: 10 }}>
             <h3 align="center">New SPC Company</h3>
@@ -748,23 +521,279 @@ handleInvestorAddress(e){
                       onChange={this.handleFacilityName}
                       />
                       </div>
-                      
                       <div className="form-group">
-                          <label>Governorate:</label> <br/>
-                          <select ref = "governorate">
-                          {governorateOptions}</select>
-                      </div>
-                      <div className="form-group">
-                          <label>City:</label> <br/>
-                          <select ref = "city"
-                        //   value={this.state.City}
-                        //   onChange={this.onChangeCity}
-                             >
-                          {cityOptions}</select>
-                            
-                      </div>
-                
-               
+
+                      <FormControl >
+          <InputLabel htmlFor="Governorate">Governorate</InputLabel> <br/>
+          <Select
+            value={this.state.Governorate}
+            onChange={this.handleGovernorate}
+           
+          >
+            <MenuItem value={"cairo"}>Cairo</MenuItem>
+            <MenuItem value={"Alex"}>Alex</MenuItem>
+            <MenuItem value={"Ismalia"}>Ismalia</MenuItem>
+            <MenuItem value={"aswan"}>Aswan</MenuItem>
+            <MenuItem value={"luxor"}>Luxor</MenuItem>
+            <MenuItem value={"Domiat"}>Domiat</MenuItem>
+            <MenuItem value={"Elbahr elahmar"}>El Bahr El Ahmar</MenuItem>
+            <MenuItem value={"asiut"}>Asiut</MenuItem>
+            <MenuItem value={"Damnhor"}>Damnhor</MenuItem>
+            <MenuItem value={"Bne sweif"}>Bne Sweif</MenuItem>
+            <MenuItem value={"Bor saed"}>Bor Saed</MenuItem>
+            <MenuItem value={"Giza"}>Giza</MenuItem>
+            <MenuItem value={"ganob sina"}>Ganob Sina</MenuItem>
+            <MenuItem value={"suez"}>Suez</MenuItem>
+            <MenuItem value={"faioum"}>Faioum</MenuItem>
+            <MenuItem value={"qena"}>Qena</MenuItem>
+            <MenuItem value={"banha"}>Banha</MenuItem>
+            <MenuItem value={"kafr elsheikh"}>Kafr El Sheikh</MenuItem>
+            <MenuItem value={"monofia"}>Monofia</MenuItem>
+            <MenuItem value={"elmenia"}>El Menia</MenuItem>
+            <MenuItem value={"elwadi elgedid"}>El Wadi El Gedid</MenuItem>
+            <MenuItem value={"Qlioubia"}>Qlioubia</MenuItem>
+            <MenuItem value={"Gharbia "}>Gharbia</MenuItem>
+            <MenuItem value={"Sharaaia"}>Sharaaia</MenuItem>
+          </Select>
+        </FormControl>
+        </div>
+        
+
+            <div className="form-group">
+
+                <FormControl >
+          <InputLabel htmlFor="City">City</InputLabel> <br/>
+          <Select
+            value={this.state.City}
+            onChange={this.handleCity}
+           
+          >
+            <MenuItem value={"Abnūb"}>Abnūb</MenuItem>
+            <MenuItem value={"Abū al-Maṭāmīr"}>Abū al-Maṭāmīr</MenuItem>
+            <MenuItem value={"Abū an-Numrus"}>Abū an-Numrus</MenuItem>
+            <MenuItem value={"Abū Ḥammād"}>Abū Ḥammād</MenuItem>
+            <MenuItem value={"Abū Ḥummuṣ"}>Abū Ḥummuṣ</MenuItem>
+            <MenuItem value={"Abū Kabīr"}>Abū Kabīr</MenuItem>
+            <MenuItem value={"Abū Qurqās"}>Abū Qurqās</MenuItem>
+            <MenuItem value={"Abū Ṣuwayr"}>Abū Ṣuwayr</MenuItem>
+            <MenuItem value={"Abū Tīj"}>Abū Tīj</MenuItem>
+            <MenuItem value={"Abū Tisht"}>Abū Tisht</MenuItem>
+            <MenuItem value={"Aḍ-Ḍabah"}>Aḍ-Ḍabah</MenuItem>
+            <MenuItem value={"Ad-Dilinjāt"}>Ad-Dilinjāt</MenuItem>
+            <MenuItem value={"Ajā"}>Ajā</MenuItem>
+            <MenuItem value={"Akhmīm"}>Akhmīm</MenuItem>
+            <MenuItem value={"Al-Arīsh"}>Al-Arīsh</MenuItem>
+            <MenuItem value={"Al-Ayyāṭ"}>Al-Ayyāṭ</MenuItem>
+            <MenuItem value={"Al-Badārī"}>Al-Badārī</MenuItem>
+            <MenuItem value={"Al-Badrashayn"}>Al-Badrashayn</MenuItem>
+            <MenuItem value={"Al-Bājūr"}>Al-Bājūr</MenuItem>
+            <MenuItem value={"Al-Balyanā"}>Al-Balyanā</MenuItem>
+            <MenuItem value={"Al-Baṣaliyah Baḥri"}>Al-Baṣaliyah Baḥri</MenuItem>
+            <MenuItem value={"Al-Bāwīṭī"}>Al-Bāwīṭī</MenuItem>
+            <MenuItem value={"Al-Bāyaḍiyah"}>Al-Bāyaḍiyah</MenuItem>
+            <MenuItem value={"Al-Fashn"}>Al-Fashn</MenuItem>
+            <MenuItem value={"Al-Fatḥ-An-Nāṣiriyah"}>Al-Fatḥ-An-Nāṣiriyah</MenuItem>
+            <MenuItem value={"Al-Fayyūm"}>Al-Fayyūm</MenuItem>
+            <MenuItem value={"Al-Ghanāyim "}>Al-Ghanāyim</MenuItem>
+            <MenuItem value={"Al-Ghurdaqah"}>Al-Ghurdaqah</MenuItem>
+            <MenuItem value={"Al-Ḥammām"}>Al-Ḥammām</MenuItem>
+            <MenuItem value={"Al-Ḥāmūl"}>Al-Ḥāmūl</MenuItem>
+            <MenuItem value={"Al-Ḥawāmidiyah"}>Al-Ḥawāmidiyah</MenuItem>
+            <MenuItem value={"Al-Ḥusayniyah"}>"Al-Ḥusayniyah</MenuItem>
+            <MenuItem value={"Al-Ibrāhīmiyah"}>Al-Ibrāhīmiyah</MenuItem>
+            <MenuItem value={"Al-Idwah"}>Al-Idwah</MenuItem>
+            <MenuItem value={"Al-Iskandariyah"}>Al-Iskandariyah</MenuItem>
+            <MenuItem value={"Al-Ismāīliyah"}>Al-Ismāīliyah</MenuItem>
+            <MenuItem value={"Al-Jamāliyah"}>Al-Jamāliyah</MenuItem>
+            <MenuItem value={"Al-Jīzah "}>Al-Jīzah </MenuItem>
+            <MenuItem value={"Al-Khānkah"}>Al-Khānkah</MenuItem>
+            <MenuItem value={"Al-Khārijah"}>Al-Khārijah</MenuItem>
+            <MenuItem value={"Al-Khuṣūṣ"}>Al-Khuṣūṣ</MenuItem>
+            <MenuItem value={"Al-Kurdy"}>Al-Kurdy</MenuItem>
+            <MenuItem value={"Al-Maḥallah al-Kubrā"}>Al-Maḥallah al-Kubrā</MenuItem>
+            <MenuItem value={"Al-Maḥmūdiyah"}>Al-Maḥmūdiyah</MenuItem>
+            <MenuItem value={"Al-Manshāh"}>Al-Manshāh</MenuItem>
+            <MenuItem value={"Al-Manṣūrah"}>Al-Manṣūrah</MenuItem>
+            <MenuItem value={"Al-Manzilah"}>Al-Manzilah</MenuItem>
+            <MenuItem value={"Al-Marāghah"}>Al-Marāghah</MenuItem>
+            <MenuItem value={"Al-Maṭariyah"}>Al-Maṭariyah</MenuItem>
+            <MenuItem value={"Al-Minyā"}>Al-Minyā</MenuItem>
+            <MenuItem value={"Al-Minyā al-Jadīdah"}>Al-Minyā al-Jadīdah</MenuItem>
+            <MenuItem value={"Al-Qāhirah"}>Al-Qāhirah</MenuItem>
+            <MenuItem value={"New Cairo"}>New Cairo</MenuItem>
+            <MenuItem value={"Al-Qanāṭir al-Khayriyah"}>Al-Qanāṭir al-Khayriyah</MenuItem>
+            <MenuItem value={"Al-Qanāyāt"}>Al-Qanāyāt</MenuItem>
+            <MenuItem value={"Al-Qantarah"}>Al-Qantarah</MenuItem>
+            <MenuItem value={"Al-Qanṭarah Sharq"}>Al-Qanṭarah Sharq</MenuItem>
+            <MenuItem value={"Al-Qarnuh al-Jadīdah"}>Al-Qarnuh al-Jadīdah</MenuItem>
+            <MenuItem value={"Al-Qaṣāṣīn al-Jadīdah"}>Al-Qaṣāṣīn al-Jadīdah</MenuItem>
+            <MenuItem value={"Al-Qurayn"}>Al-Qurayn</MenuItem>
+            <MenuItem value={"Al-Quṣayr"}>Al-Quṣayr</MenuItem>
+            <MenuItem value={"Al-Qūṣiyah"}>Al-Qūṣiyah</MenuItem>
+            <MenuItem value={"Al-Ubūr"}>Al-Ubūr</MenuItem>
+            <MenuItem value={"Luxor"}>Luxor</MenuItem>
+            <MenuItem value={"Al-Waqf "}>Al-Waqf</MenuItem>
+            <MenuItem value={"Al-Wāsiṭā"}>Al-Wāsiṭā</MenuItem>
+            <MenuItem value={"El Negaila"}>El Negaila</MenuItem>
+            <MenuItem value={"An-New Nubariya"}>An-New Nubariya</MenuItem>
+            <MenuItem value={"Armant"}>Armant</MenuItem>
+            <MenuItem value={"Ar-Radīsiyah Qiblī"}>Ar-Radīsiyah Qiblī</MenuItem>
+            <MenuItem value={"Ar-Rahmaniya"}>Ar-Rahmaniya</MenuItem>
+            <MenuItem value={"Ar-Rawḍah"}>Ar-Rawḍah</MenuItem>
+            <MenuItem value={"Ar-Riyāḍ"}>Ar-Riyāḍ</MenuItem>
+            <MenuItem value={"Ashmoun"}>Ashmoun</MenuItem>
+            <MenuItem value={"Ash-Shalātīn"}>Ash-Shalātīn</MenuItem>
+            <MenuItem value={"Sheikh Zayed City"}>Sheikh Zayed City</MenuItem>
+            <MenuItem value={"Sheikh Zuweid"}>Sheikh Zuweid</MenuItem>
+            <MenuItem value={"Ash-Shuhadā"}>Ash-Shuhadā</MenuItem>
+            <MenuItem value={"Ash-Shurūq"}>Ash-Shurūq</MenuItem>
+            <MenuItem value={"Aṣ-Ṣaff"}>Aṣ-Ṣaff</MenuItem>
+            <MenuItem value={"New Salhia"}>New Salhia</MenuItem>
+            <MenuItem value={"As-Sallūm"}>As-Sallūm</MenuItem>
+            <MenuItem value={"As-Sanṭah"}>As-Sanṭah</MenuItem>
+            <MenuItem value={"As-Sarw"}>As-Sarw</MenuItem>
+            <MenuItem value={"As-Sibāiyah Gharb"}>As-Sibāiyah Gharb</MenuItem>
+            <MenuItem value={"El Senbellawein"}>El Senbellawein</MenuItem>
+            <MenuItem value={"Suez"}>Suez</MenuItem>
+            <MenuItem value={"Aswān"}>Aswān</MenuItem>
+            <MenuItem value={"Asyut"}>Asyut</MenuItem>
+            <MenuItem value={"Aṭfīḥ"}>Aṭfīḥ</MenuItem>
+            <MenuItem value={"At-Tall al-Kabīr"}>At-Tall al-Kabīr</MenuItem>
+            <MenuItem value={"Aṭ-Ṭūd"}>Aṭ-Ṭūd</MenuItem>
+            <MenuItem value={"El Tor"}>El Tor</MenuItem>
+            <MenuItem value={"Awlād Ṣaqr"}>Awlād Ṣaqr</MenuItem>
+            <MenuItem value={"Awsīm"}>Awsīm</MenuItem>
+            <MenuItem value={"Zagazig"}>Zagazig</MenuItem>
+            <MenuItem value={"Az-Zarqā"}>Az-Zarqā</MenuItem>
+            <MenuItem value={"Az-Zayniyah Qiblī"}>Az-Zayniyah Qiblī</MenuItem>
+            <MenuItem value={"Badr"}>Badr</MenuItem>
+            <MenuItem value={"Balṭīm"}>Balṭīm</MenuItem>
+            <MenuItem value={"Banhā"}>Banhā</MenuItem>
+            <MenuItem value={"Beni Mazar"}>Beni Mazar</MenuItem>
+            <MenuItem value={"Beni Suef"}>Beni Suef</MenuItem>
+            <MenuItem value={"New Beni Suef"}>New Beni Suef</MenuItem>
+            <MenuItem value={"Banī Ubayd"}>Banī Ubayd</MenuItem>
+            <MenuItem value={"Basyoun"}>Basyoun</MenuItem>
+            <MenuItem value={"Bibā"}>Bibā</MenuItem>
+            <MenuItem value={"Bilbays"}>Bilbays</MenuItem>
+            <MenuItem value={"Belqas"}>Belqas</MenuItem>
+            <MenuItem value={"Bīr al-Abd"}>Bīr al-Abd</MenuItem>
+            <MenuItem value={"Birket el-Sab"}>Birket el-Sab</MenuItem>
+            <MenuItem value={"Biyalā"}>Biyalā</MenuItem>
+            <MenuItem value={"Burj al-Arab"}>Burj al-Arab</MenuItem>
+            <MenuItem value={"Burj al-Barlus"}>Burj al-Barlus</MenuItem>
+            <MenuItem value={"Port Said"}>Port Said</MenuItem>
+            <MenuItem value={"Damanhour"}>Damanhour</MenuItem>
+            <MenuItem value={"Dar as-Salām"}>Dar as-Salām</MenuItem>
+            <MenuItem value={"Daraw"}>Daraw</MenuItem>
+            <MenuItem value={"Dayr Mawās"}>Dayr Mawās</MenuItem>
+            <MenuItem value={"Dairut"}>Dairut</MenuItem>
+            <MenuItem value={"Dikirnis"}>Dikirnis</MenuItem>
+            <MenuItem value={"Dishnā"}>Dishnā</MenuItem>
+            <MenuItem value={"Desouk"}>Desouk</MenuItem>
+            <MenuItem value={"Diyarb Najm"}>Diyarb</MenuItem>
+            <MenuItem value={"Dumyāṭ "}>Dumyāṭ</MenuItem>
+            <MenuItem value={"Fayid "}>Fayid</MenuItem>
+            <MenuItem value={"Faqous"}>Faqous</MenuItem>
+            <MenuItem value={"Fāraskūr  "}>Fāraskūr</MenuItem>
+            <MenuItem value={"Farshūṭ "}>Farshūṭ</MenuItem>
+            <MenuItem value={"Fuwah "}>Fuwah</MenuItem>
+            <MenuItem value={"Ḥawsh-Īsā"}>Ḥawsh-Īsā</MenuItem>
+            <MenuItem value={"Hihyā"}>Hihyā</MenuItem>
+            <MenuItem value={"Ibsheway"}>Ibsheway</MenuItem>
+            <MenuItem value={"Edfu"}>Edfu</MenuItem>
+            <MenuItem value={"Idkū"}>Idkū</MenuItem>
+            <MenuItem value={"Ihnāsiyā"}>Ihnāsiyā</MenuItem>
+            <MenuItem value={"Isnā"}>Isnā</MenuItem>
+            <MenuItem value={"Iṭsā"}>Iṭsā</MenuItem>
+            <MenuItem value={"Ityāy al-Bārūd"}>Ityāy al-Bārūd</MenuItem>
+            <MenuItem value={"Izbat al-Burj"}>Izbat al-Burj</MenuItem>
+            <MenuItem value={"Girga"}>Girga</MenuItem>
+            <MenuItem value={"Juhaynah"}>Juhaynah</MenuItem>
+            <MenuItem value={"Kafr ad-Dawwār"}>Kafr ad-Dawwār</MenuItem>
+            <MenuItem value={"Kafr al-Baṭṭīkh"}>Kafr al-Baṭṭīkh</MenuItem>
+            <MenuItem value={"Kafr el-Sheikh"}>Kafr el-Sheikh</MenuItem>
+            <MenuItem value={"Kafr az-Zayyāt"}>Kafr az-Zayyāt</MenuItem>
+            <MenuItem value={"Kafr Saad"}>Kafr Saad</MenuItem>
+            <MenuItem value={"Kafr Ṣaqr"}>Kafr Ṣaqr</MenuItem>
+            <MenuItem value={"Kafr Shukr"}>Kafr Shukr</MenuItem>
+            <MenuItem value={"Kawm Ḥamādah"}>Kawm Ḥamādah</MenuItem>
+            <MenuItem value={"Kawm Umbū"}>Kawm Umbū</MenuItem>
+            <MenuItem value={"Kirdāsah"}>Kirdāsah</MenuItem>
+            <MenuItem value={"10th of Ramadan City"}>10th of Ramadan City</MenuItem>
+            <MenuItem value={"Madīnat as-Sādāt"}>Madīnat as-Sādāt</MenuItem>
+            <MenuItem value={"Madīnat Badr"}>Madīnat Badr</MenuItem>
+            <MenuItem value={"Madīnat Burj al-Arab al-Jadīdah"}>Madīnat Burj al-Arab al-Jadīdah</MenuItem>
+            <MenuItem value={"Madīnat Dumyāṭ al-Jadīdah"}>Madīnat Dumyāṭ al-Jadīdah</MenuItem>
+            <MenuItem value={"Madīnat Sittah Uktūbar"}>Madīnat Sittah Uktūbar</MenuItem>
+            <MenuItem value={"Maghāghah "}>Maghāghah</MenuItem>
+            <MenuItem value={"Maḥallah Damanah"}>Maḥallah Damanah</MenuItem>
+            <MenuItem value={"Mallawī "}>Mallawī </MenuItem>
+            <MenuItem value={"Manfalūṭ    "}>Manfalūṭ</MenuItem>
+            <MenuItem value={"Manshat al-Qanāṭir"}>Manshat al-Qanāṭir</MenuItem>
+            <MenuItem value={"Marsā Maṭrūḥ "}>Marsā Maṭrūḥ</MenuItem>
+            <MenuItem value={"Mashtūl as-Sūq "}>Mashtūl as-Sūq</MenuItem>
+            <MenuItem value={"Maṭāy"}>Maṭāy</MenuItem>
+            <MenuItem value={"Minūf   "}>Minūf</MenuItem>
+            <MenuItem value={"Minyā al-Qamḥ   "}>Minyā al-Qamḥ </MenuItem>
+            <MenuItem value={"Minyat an-Naṣr  "}>Minyat an-Naṣr</MenuItem>
+            <MenuItem value={"Mīt Abū Ghālb "}>Mīt Abū Ghālb </MenuItem>
+            <MenuItem value={"Mīt Ghamr   "}>Mīt Ghamr </MenuItem>
+            <MenuItem value={"Mīt Salsīl"}>Mīt Salsīl</MenuItem>
+            <MenuItem value={"Munshāh Abū-Umar "}>Munshāh Abū-Umar</MenuItem>
+            <MenuItem value={"Dakhla"}>Dakhla</MenuItem>
+            <MenuItem value={"Muṭūbis"}>Muṭūbis</MenuItem>
+            <MenuItem value={"Nabarūh "}>Nabarūh</MenuItem>
+            <MenuItem value={"Naj-Ḥammādī"}>Naj-Ḥammādī</MenuItem>
+            <MenuItem value={"Naqādah "}>Naqādah</MenuItem>
+            <MenuItem value={"Nāṣir Būsh"}>Nāṣir Būsh</MenuItem>
+            <MenuItem value={"Qahā   "}>Qahā</MenuItem>
+            <MenuItem value={"Qallīn "}>Qallīn</MenuItem>
+            <MenuItem value={"Qalyūb"}>Qalyūb</MenuItem>
+            <MenuItem value={"Qifṭ"}>Qifṭ</MenuItem>
+            <MenuItem value={"Qinā"}>Qinā</MenuItem>
+            <MenuItem value={"Qūṣ"}>Qūṣ</MenuItem>
+            <MenuItem value={"Quṭūr"}>Quṭūr</MenuItem>
+            <MenuItem value={"Quwaysinā"}>Quwaysinā</MenuItem>
+            <MenuItem value={"Rafaḥ"}>Rafaḥ</MenuItem>
+            <MenuItem value={"Rās al-Bar"}>Rās al-Bar</MenuItem>
+            <MenuItem value={"Ras Ghārib "}>Ras Ghārib </MenuItem>
+            <MenuItem value={"Rashīd"}>Rashīd</MenuItem>
+            <MenuItem value={"Safājā"}>Safājā</MenuItem>
+            <MenuItem value={"Sāḥīl Salim"}>Sāḥīl Salim</MenuItem>
+            <MenuItem value={"Samālūṭ"}>Samālūṭ</MenuItem>
+            <MenuItem value={"Samannūd"}>Samannūd</MenuItem>
+            <MenuItem value={"Ṣān al-Ḥajar"}>Ṣān al-Ḥajar</MenuItem>
+            <MenuItem value={"Sāqultah"}>Sāqultah</MenuItem>
+            <MenuItem value={"Sawhāj"}>Sawhāj</MenuItem>
+            <MenuItem value={"Sharm ash-Shaykh"}>Sharm ash-Shaykh</MenuItem>
+            <MenuItem value={"Shibīn al-Kawm"}>Shibīn al-Kawm</MenuItem>
+            <MenuItem value={"Shibīn al-Qanāṭir"}>Shibīn al-Qanāṭir</MenuItem>
+            <MenuItem value={"Shirbīn"}>Shirbīn</MenuItem>
+            <MenuItem value={"Shubrā al-Khaymah"}>Shubrā al-Khaymah</MenuItem>
+            <MenuItem value={"Shubrākhīt"}>Shubrākhīt</MenuItem>
+            <MenuItem value={"Ṣidfā"}>Ṣidfā</MenuItem>
+            <MenuItem value={"Sīdī Barrānī"}>Sīdī Barrānī</MenuItem>
+            <MenuItem value={"Sīdī Ghāzī"}>Sīdī Ghāzī</MenuItem>
+            <MenuItem value={"Sīdī Sālim"}>Sīdī Sālim</MenuItem>
+            <MenuItem value={"Sinnūris"}>Sinnūris</MenuItem>
+            <MenuItem value={"Sirs al-Layyānah"}>Sirs al-Layyānah</MenuItem>
+            <MenuItem value={"Sīwa"}>Sīwa</MenuItem>
+            <MenuItem value={"Sumusṭā al-Waqf"}>Sumusṭā al-Waqf</MenuItem>
+            <MenuItem value={"Ṭahṭā"}>Ṭahṭā</MenuItem>
+            <MenuItem value={"Talā"}>Talā</MenuItem>
+            <MenuItem value={"Ṭalkhā"}>Ṭalkhā</MenuItem>
+            <MenuItem value={"Tama al-Āmdīd"}>Tama al-Āmdīd</MenuItem>
+            <MenuItem value={"Ṭāmiyah"}>Ṭāmiyah</MenuItem>
+            <MenuItem value={"Ṭanṭā"}>Ṭanṭā</MenuItem>
+            <MenuItem value={"Ṭimā"}>Ṭimā</MenuItem>
+            <MenuItem value={"Ṭūkh"}>Ṭūkh</MenuItem>
+            <MenuItem value={"Natron Valley"}>Natron Valley</MenuItem>
+            <MenuItem value={"Yūsuf aṣ-Ṣiddīq"}>Yūsuf aṣ-Ṣiddīq</MenuItem>
+            <MenuItem value={"Ziftā"}>Ziftā</MenuItem>
+          </Select>
+        </FormControl> 
+               </div>
                 <div className="form-group">
                     <label>Facility Address:  </label>
                     <input 
@@ -795,7 +824,7 @@ handleInvestorAddress(e){
                 
                 <div className="form-group">
                           <label>Capital Currency:</label> <br/>
-                          <select ref = "capitalcurrency">
+                          <select ref = "Capital_Currency">
                           {capitalcurrencyOptions}</select>
                       </div>
                 
@@ -817,20 +846,22 @@ handleInvestorAddress(e){
                       onChange={this.handleinvestorname}
                       />
                 </div>
-                <div className="form-group">
-                          <label>Gender:</label> <br/>
-                          <select ref = "gender">
-                          {genderOptions}</select>
-                      </div>
-                
-                       {/* className="form-control"
-                      value={this.state.Gender}
-                      onChange={this.onChangeGender}
-                      /> */}
+                <FormControl >
+          <InputLabel htmlFor="Gender">Gender</InputLabel> <br/>
+          <Select
+            value={this.state.Gender}
+            onChange={this.handleGender}
+           
+          >
+            <MenuItem value={"Female"}>Female</MenuItem>
+            <MenuItem value={"Male"}>Male</MenuItem>
+          </Select>
+        </FormControl>
+               
                
                <div className="form-group">
                           <label>Nationality:</label> <br/>
-                          <select ref = "nationality">
+                          <select ref = "Nationality">
                           {nationalityOptions}</select>
                       </div>
                        {/* className="form-control"
@@ -840,13 +871,10 @@ handleInvestorAddress(e){
                 
                 <div className="form-group">
                           <label>Type of identity proof:</label> <br/>
-                          <select ref = "type">
+                          <select ref = "TypeOf_IdentityProof">
                           {typeOptions}</select>
                       </div>
-                       {/* className="form-control"
-                      value={this.state.TypeOf_IdentityProof}
-                      onChange={this.onChangeTypeOfIdentityProof}
-                      /> */}
+                     
                 
                 <div className="form-group">
                     <label>National ID:  </label>
@@ -902,6 +930,7 @@ handleInvestorAddress(e){
                       onChange={this.handleInvestorAddress}
                       />
                 </div>
+                
                 <div className="form-group">
                     <input type="submit" 
                       value="Submit" 
@@ -912,3 +941,4 @@ handleInvestorAddress(e){
     )
   }
 }
+ export default withStyles (styles)(CreatingSPCForm);

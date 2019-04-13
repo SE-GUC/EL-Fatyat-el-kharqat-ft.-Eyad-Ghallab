@@ -55,6 +55,7 @@ class Reviewer extends Component {
     }
     
     
+    
     delete(id){
       return fetch('/api/Reviewer/'+id, {
         method: 'DELETE',
@@ -119,22 +120,26 @@ if(this.state.password !== ""){
     .then(res => res.json())
     .then(data => console.log(data)); 
 }
+
+
     componentDidMount(){
   
         fetch('/api/Reviewer/')
         .then(res => res.json())
         .then(Reviewer => this.setState({Reviewers: Reviewer.data},()=> console.log('the Reviewer',this.state.Reviewers)));
-      //   var int = this.state.investors[1];
-      // console.log (int)
-    //  // res.json({data: this.state.investors})
+      
     }
+  
+  
+  
+ 
+
   render() {
- //  var {Investors} =  this.state;
     return (
       <div>
         
-    <h2> My Reviewers</h2>
-
+    <h2> My Reviewers
+    </h2>
 
 
  <form onSubmit={this.handleSubmit}>
@@ -175,9 +180,11 @@ if(this.state.password !== ""){
 {
 
   <ul>
-      {
-     this.state.Reviewers.map( Reviewer  => <li key = {Reviewer._id}> Name: {Reviewer.Name} <button onClick= {() => {this.delete(Reviewer._id)}}> Delete </button>   
-     <form onClick={() => {this.update(Reviewer._id)}}> 
+    
+    { //this.state.SPC.map( SpcForm  => <li1 key = {SpcForm._id}> investorname: {SpcForm.investorname}</li1>,
+     this.state.Reviewers.map( Reviewer  => <li key = {Reviewer._id}> Name: {Reviewer.Name}
+       <button onClick= {() => {this.delete(Reviewer._id)}}> Delete </button>   
+     <form onClick={() => {this.update(Reviewer._id)}}>      
      <label>
      Name
      <input type="text" name="Name" value={this.Name} onChange={this.handleNameChange}/>
@@ -211,7 +218,7 @@ if(this.state.password !== ""){
  
  <input type="submit" value="update Reviewer" />
             </form>  
-            </li>)}
+            </li> ) }
      </ul> 
   
  }
@@ -219,6 +226,7 @@ if(this.state.password !== ""){
     );
   }
 }
+
 
 export default Reviewer;
 
