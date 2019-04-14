@@ -43,5 +43,29 @@ module.exports = {
 
         return Joi.validate(request, updateSchema)
     }, 
+    registerValidation: request => {
+        const registerSchema = {
+            name: Joi.string().min(2).max(30).required(),
+            email: Joi.string().email().required(),
+            password: Joi.string().required(),
+            username :Joi.string().required(),
+            nationality :Joi.string().required(),
+            gender :Joi.string(),
+            birthdate :Joi.date(),
+            city :Joi.string().required(),
+            country :Joi.string().required(),
+            jobtitle :Joi.string().required(),
+            mobilenumber: Joi.string().trim().regex(/^[0-9]{11,11}$/),
+        }
+
+        return Joi.validate(request, registerSchema)
+    },
+    loginValidation: request => {
+        const loginSchema = {
+            email: Joi.string().email().required(),
+            password: Joi.string().required()
+        }
+        return Joi.validate(request, loginSchema)
+    }
 }
 

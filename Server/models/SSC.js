@@ -133,10 +133,8 @@ const SSCSchema = new Schema({
 },
 Lawyer_review:{
     type: String, 
-
+    default: "binding"
 }
-
-
 })
 
 module.exports = SSC = mongoose.model('SSC', SSCSchema)

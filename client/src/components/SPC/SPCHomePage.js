@@ -1,49 +1,126 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
+=======
+import './SPC.css';
+>>>>>>> 323566300f46102d505e090996971ed1f0b3731b
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Tabs from '@material-ui/core/Tabs';
+import AppBar from '@material-ui/core/AppBar';
+import NoSsr from '@material-ui/core/NoSsr';
+import logo from './unnamed.png';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import SPC from './SPC.js';
 import CreatingSPCForm from './CreatingSPCForm';
 import EditSPC from './EditSPC';
 import DeleteSPC from './DeleteSPC';
+import Workspace from './Workspace';
+const styles = theme => ({
+  root: {
+    maxWidth: 400,
+    flexGrow: 1,
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    height: 50,
+    paddingLeft: theme.spacing.unit * 4,
+    backgroundColor: theme.palette.background.default,
+    position: 'relative',
+  },
+  img: {
+    height: 255,
+    maxWidth: 400,
+    overflow: 'hidden',
+    display: 'block',
+    width: '100%',
 
-export default class SPCHomePage extends Component {
+
+
+  },
+});
+
+ 
+
+  
+class SPCHomePage extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to={'/'} className="navbar-brand">Sumerge</Link>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                  <Link to={'/'} className="nav-link">Home</Link>
+      <NoSsr>
+        <div >
+       
+          <AppBar position="static">
+            <Tabs  
+            
+           >
+            <ul className="logo">
+            <img src={logo} alt="" /></ul>
+            
+            
+                <ul className="nav-item">
+            <li >
+                  <Link to={'/CreateSPC'} className="nav-link">Create</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/create'} className="nav-link">Create</Link>
+                <li>|</li>
+</ul>
+
+                <ul className="nav-item">
+               <li >
+                  <Link to={'/DeleteSPC'} className="nav-link">Delete</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/edit'} className="nav-link">Edit</Link>
+                <li>|</li>
+                </ul>
+                <ul className="nav-item">    
+                <li>              
+                <Link to={'/EditSPC'} className="nav-link">Edit</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/delete'} className="nav-link">Delete a Form</Link>
+                <li>|</li>
+                </ul>
+                <ul className="nav-item">
+            <li >
+                  <Link to={'/ViewSPC'} className="nav-link">View</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/read'} className="nav-link">All SPC Forms</Link>
+                <li>|</li>
+                </ul>
+                <ul className="nav-item">
+            <li >
+                  <Link to={'/Workspace'} className="nav-link">Workspace</Link>
                 </li>
-              </ul>
-            </div>
-          </nav> <br/>
-          <h2>Welcome to GAFI</h2> <br/>
+                <li>|</li>
+                </ul>
+               
+               
+               
+             
+                
+
+            </Tabs> 
+          </AppBar>
+       
+          
           <Switch>
-              <Route exact path='/create' component={ CreatingSPCForm } />
-              <Route exact path='/edit' component={ EditSPC } />
-              <Route exact path='/delete' component={ DeleteSPC } /> 
-              <Route exact path='/read' component={ SPC } /> 
+              <Route exact path='/CreateSPC' component={ CreatingSPCForm } />
+              <Route exact path='/EditSPC' component={ EditSPC } />
+              <Route exact path='/DeleteSPC' component={ DeleteSPC } /> 
+              <Route exact path='/ViewSPC' component={ SPC } /> 
+              <Route exact path='/Workspace' component={ Workspace } /> 
+              
+            
+              
           </Switch>
         </div>
-      </Router>
+      </NoSsr>
+      </Router> 
+
     );
   }
 }
 
+SPCHomePage.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
+export default  withStyles(styles, { withTheme: true }) (SPCHomePage);
 
