@@ -17,7 +17,7 @@ class Lawyer extends Component {
       this.delete=this.delete.bind(this);
       this.update=this.update.bind(this);
       this.state={
-         Lawyer: [],
+         Lawyer: [],   
       username: "",
       password: "",
       fullname: "",
@@ -142,12 +142,12 @@ if(this.state.password !== ""){
 }
 
 
-
   componentDidMount(){
-      fetch('/api/Lawyer/')
+      fetch('http://localhost:5000/api/Lawyer/')
       .then(res => res.json())
       .then(Lawyer=> this.setState({Lawyer:Lawyer.data}, ()=>console.log('Lawyers fetched..',
      this.state.Lawyer)));
+   
   }
     render() {
     return (
@@ -205,6 +205,7 @@ if(this.state.password !== ""){
 {
   
           <ul>
+           
       {
      this.state.Lawyer.map( Lawyer => <li key = {Lawyer._id}> Name: {Lawyer.fullname} Number of previous cases: {Lawyer.noOfPreviousCases}<button onClick= {() => {this.delete(Lawyer._id)}}> Delete </button>   <form onClick={() => {this.update(Lawyer._id)}}> 
      <label>
@@ -256,8 +257,11 @@ if(this.state.password !== ""){
             </form>  
             </li>)}
      </ul> 
+     
   
  }
+ 
+  
       </div>
     );
   }

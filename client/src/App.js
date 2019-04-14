@@ -14,10 +14,23 @@ import Investor from './components/Investor/Investor';
 import Comment from './components/Comment/Comment';
 import SSC from './components/SSC/SSC';
 
+
 import Register from './components/Register/Register'
 import Login from './components/Login/Login'
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
+
+import AboutUs from './components/AboutUs/AboutUs';
+import ContactUs from './components/ContactUs/ContactUs';
+
+import Form from './components/Form/Form';
+
+
+import Workspace from './components/Lawyer/Workspace';
+
+import Forms from './components/Reviewer/Forms';
+
+
 class App extends Component {
 
   render() {
@@ -64,10 +77,35 @@ class App extends Component {
                 <li className="nav-item">
                   <Link to={'/SSC'} className="nav-link">SSC</Link>
                 </li>
+                <li className="nav-item">
+                  <Link to={'/AboutUs'} className="nav-link">AboutUs</Link>
+                </li>
+                <li className="nav-item">
+                        <Link to={'/ContactUs'} className="nav-link">ContactUs</Link>
+                      </li>
+
+                      <li className="nav-item">
+                        <Link to={'/Workspace'} className="nav-link">Workspace</Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link to={'/Form'} className="nav-link">Form</Link>
+                      </li>
+
+                      <li className="nav-item">
+                        <Link to={'/Workspace'} className="nav-link">Workspace</Link>
+                      </li>
+
+                      {/* <li className="nav-item">
+                        <Link to={'/Forms'} className="nav-link">Forms</Link>
+                      </li> */}
+
               </ul>
             </div>
           </nav> <br/>
           <h2>Welcome to GAFI</h2> <br/>
+   
+
+
           <Switch>
               <Route exact path='/SPCHomePage' component={ SPCHomePage } />
               <Route exact path='/Admin' component={ Admin} />
@@ -80,8 +118,17 @@ class App extends Component {
               <Route exact path='/Reviewer' component={ Reviewer } />
               <Route exact path='/SSC' component={ SSC} />
               <Route exact path='/Contract' component={Contract} />
+
               <Route exact path='/Login' component={Login} />
               <Route exact path='/Register' component={Register} />
+              <Route exact path='/AboutUs' component={AboutUs} />
+              <Route exact path='/ContactUs' component={ContactUs} />
+
+              <Route exact path='/Workspace' component={Workspace} />
+              <Route exact path='/Form' component={Form} />
+              
+
+             <Route exact path='/Forms' component={Forms} />
           </Switch>
           {/* <Admin/>
       
@@ -105,6 +152,10 @@ class App extends Component {
     <Link to={'/Register'} > <Button color="inherit">Register</Button></Link> 
         </Toolbar>
 
+             
+
+
+        
 
 
         </div>

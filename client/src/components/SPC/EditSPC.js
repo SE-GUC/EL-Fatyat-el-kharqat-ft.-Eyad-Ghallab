@@ -22,6 +22,7 @@ import React, { Component } from 'react';
         this.handleInvestorFax = this.handleInvestorFax.bind(this);
         this.handleemail = this.handleemail.bind(this);
         this.handleInvestorAddress = this.handleInvestorAddress.bind(this);
+        //this.handleLawyer_review= this.handleLawyer_review.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.update=this.update.bind(this);
@@ -45,63 +46,12 @@ import React, { Component } from 'react';
           Investor_Fax:'',
           email:'',
           Investor_Address:'',
+          //Lawyer_review:"",
           spcs:[],
         
        }
      }
-     update(id){
-      console.log(this.state.Facility_name)
-      let databody 
-    if (this.state.Facility_name !== ""){
-    databody = {"Facility_name":this.state.Facility_name}}
-    if(this.state.Governorate !== ""){
-    databody = {"Governorate":this.state.Governorate}}
     
-    if(this.state.City !== ""){
-      databody = {"City":this.state.City}}
-      if(this.state.Facility_Address !== ""){
-        databody = {"Facility_Address":this.state.Facility_Address}}
-        if(this.state.Facility_Phone_Number !== ""){
-          databody = {"Facility_Phone_Number":this.state.Facility_Phone_Number}}
-          if(this.state.Fax !== ""){
-            databody = {"Fax":this.state.Fax}}
-            if(this.state.Capital_Currency !== ""){
-              databody = {"Capital_Currency":this.state.Capital_Currency}}
-              if(this.state.capital !== ""){
-                databody = {"capital":this.state.capital}}
-                if(this.state.investorname !== ""){
-                  databody = {"investorname":this.state.investorname}}
-                  if(this.state.Gender !== ""){
-                    databody = {"Gender":this.state.Gender}}
-                    if(this.state.Nationality !== ""){
-                      databody = {"Nationality":this.state.Nationality}}
-                      if(this.state.TypeOf_IdentityProof !== ""){
-                        databody = {"TypeOf_IdentityProof":this.state.TypeOf_IdentityProof}}
-                        if(this.state.investor_nationalid !== ""){
-                          databody = {"investor_nationalid":this.state.investor_nationalid}}
-    
-                          if(this.state.BirthDate !== ""){
-                            databody = {"BirthDate":this.state.BirthDate}}
-                            if(this.state.Phone_Number !== ""){
-                              databody = {"Phone_Number":this.state.Phone_Number}}
-                              if(this.state.Investor_Fax !== ""){
-                                databody = {"Investor_Fax":this.state.Investor_Fax}}
-                                if(this.state.email !== ""){
-                                  databody = {"email":this.state.email}}
-                                  if(this.state.Investor_Address !== ""){
-                                    databody = {"Investor_Address":this.state.Investor_Address}}
-                    console.log(this.state.username)
-    
-       return fetch('/api/SPC/'+id, {
-           method: 'PUT',
-           body: JSON.stringify(databody),
-           headers: {
-               'Content-Type': 'application/json'
-           },
-       })
-       .then(res => res.json())
-       .then(data => console.log(data)); 
-    }
     componentDidMount(){
       fetch('/api/SPC')
       .then(res => res.json())
@@ -201,6 +151,11 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
+/*handleLawyer_review(e){
+  this.setState({
+      Lawyer_review: e.target.value
+    })
+  }*/
   handleSubmit(e) {
     e.preventDefault();
     // eslint-disable-next-line
@@ -222,12 +177,65 @@ handleInvestorAddress(e){
       Phone_Number: this.state.Phone_Number,
       Investor_Fax:this.state.Investor_Fax,
       email:this.state.email,
-      Investor_Address:this.state.Investor_Address
-    };}
-//     axios.post('http://localhost:5000/SPC/'+this.props.match.params.id, databody)
-//     .then(res => console.log(res.data));
+      Investor_Address:this.state.Investor_Address,
+     // Lawyer_review:this.state.Lawyer_review
+    }}
+    update(id){
+      console.log(this.state.Facility_name)
+      let databody
+    if (this.state.Facility_name !== ""){
+    databody = {"Facility_name":this.state.Facility_name}}
+    if(this.state.Governorate !== ""){
+    databody = {"Governorate":this.state.Governorate}}
+    
+    if(this.state.City !== ""){
+      databody = {"City":this.state.City}}
+      if(this.state.Facility_Address !== ""){
+        databody = {"Facility_Address":this.state.Facility_Address}}
+        if(this.state.Facility_Phone_Number !== ""){
+          databody = {"Facility_Phone_Number":this.state.Facility_Phone_Number}}
+          if(this.state.Fax !== ""){
+            databody = {"Fax":this.state.Fax}}
+            if(this.state.Capital_Currency !== ""){
+              databody = {"Capital_Currency":this.state.Capital_Currency}}
+              if(this.state.capital !== ""){
+                databody = {"capital":this.state.capital}}
+                if(this.state.investorname !== ""){
+                  databody = {"investorname":this.state.investorname}}
+                  if(this.state.Gender !== ""){
+                    databody = {"Gender":this.state.Gender}}
+                    if(this.state.Nationality !== ""){
+                      databody = {"Nationality":this.state.Nationality}}
+                      if(this.state.TypeOf_IdentityProof !== ""){
+                        databody = {"TypeOf_IdentityProof":this.state.TypeOf_IdentityProof}}
+                        if(this.state.investor_nationalid !== ""){
+                          databody = {"investor_nationalid":this.state.investor_nationalid}}
+    
+                          if(this.state.BirthDate !== ""){
+                            databody = {"BirthDate":this.state.BirthDate}}
+                            if(this.state.Phone_Number !== ""){
+                              databody = {"Phone_Number":this.state.Phone_Number}}
+                              if(this.state.Investor_Fax !== ""){
+                                databody = {"Investor_Fax":this.state.Investor_Fax}}
+                                if(this.state.email !== ""){
+                                  databody = {"email":this.state.email}}
+                                  if(this.state.Investor_Address !== ""){
+                                    databody = {"Investor_Address":this.state.Investor_Address}}
+                                    /*if(this.state.Lawyer_review !== ""){
+                                      databody = {"Lawyer_review":this.state.Lawyer_review}}*/
+                    console.log(this.state.Facility_name)
+    
+       return fetch('/api/SPC/'+id, {
+           method: 'PUT',
+           body: JSON.stringify(databody),
+           headers: {
+               'Content-Type': 'application/json'
+           },
+       })
+       .then(res => res.json())
+       .then(data => console.log(data)); 
+    }
 
-// this.props.history.push('/index');
 
 
 
@@ -413,6 +421,7 @@ render() {
                   onChange={this.handleInvestorAddress}
                   />
             </div>
+            
             <ul>
           {this.state.spcs.map(spc =>
             <li key = {spc._id}
