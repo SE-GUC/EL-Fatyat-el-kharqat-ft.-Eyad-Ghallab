@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-=======
 import './SPC.css';
->>>>>>> 323566300f46102d505e090996971ed1f0b3731b
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Tabs from '@material-ui/core/Tabs';
