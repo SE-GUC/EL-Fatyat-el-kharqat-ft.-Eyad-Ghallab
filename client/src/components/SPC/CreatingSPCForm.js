@@ -45,6 +45,7 @@ class CreatingSPCForm extends Component {
     this.handleInvestorFax = this.handleInvestorFax.bind(this);
     this.handleemail = this.handleemail.bind(this);
     this.handleInvestorAddress = this.handleInvestorAddress.bind(this);
+    //this.handleLawyer_review=this.handleLawyer_review.bind(this);
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     
@@ -66,7 +67,8 @@ class CreatingSPCForm extends Component {
       Phone_Number: '',
       Investor_Fax:'',
       email:'',
-      Investor_Address:''
+      Investor_Address:'',
+      //Lawyer_review:""
     
    }
  }
@@ -164,6 +166,11 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
+/*handleLawyer_review(e){
+  this.setState({
+      Lawyer_review: e.target.value
+    })
+  }*/
   handleSubmit(e) {
     e.preventDefault();
     let databody  = {
@@ -184,10 +191,10 @@ handleInvestorAddress(e){
       Phone_Number: this.state.Phone_Number,
       Investor_Fax:this.state.Investor_Fax,
       email:this.state.email,
-      Investor_Address:this.state.Investor_Address
+      Investor_Address:this.state.Investor_Address,
     };
 
-    return fetch('/api/SPC/', {
+    return fetch('/api/SPC/all', {
         method: 'POST',
         body: JSON.stringify(databody),
         headers: {
@@ -203,6 +210,9 @@ handleInvestorAddress(e){
   }
  
   render() {
+   
+  
+    
     return (
         <div style={{ marginTop: 10 }}>
             <h3 align="center">New SPC Company</h3>
@@ -218,6 +228,7 @@ handleInvestorAddress(e){
           
         />
         </div>
+        <br/>
                       <div className="form-group">
 
                       <FormControl >
@@ -254,7 +265,7 @@ handleInvestorAddress(e){
           </Select>
         </FormControl>
         </div>
-        
+        <br/>
 
             <div className="form-group">
 
@@ -491,7 +502,7 @@ handleInvestorAddress(e){
           </Select>
         </FormControl> 
                </div>
-
+               <br/>
                <div className="form-group">
                 <TextField
           id="outlined-adornment-amount"
@@ -502,6 +513,7 @@ handleInvestorAddress(e){
           
         />
         </div>
+        <br/>
                 <div className="form-group">
                 <TextField
           id="outlined-adornment-amount"
@@ -512,7 +524,7 @@ handleInvestorAddress(e){
           
         />
         </div>
-               
+        <br/> 
                 <div className="form-group">
                 <TextField
           id="outlined-adornment-amount"
@@ -523,6 +535,7 @@ handleInvestorAddress(e){
           
         />
         </div>
+        <br/>
         <div className="form-group">
                 <FormControl >
           <InputLabel htmlFor="Capital_Currency">Capital Currency</InputLabel> <br/>
@@ -714,6 +727,7 @@ handleInvestorAddress(e){
         </FormControl>
                
         </div>
+        <br/>
         <div className="form-group">
                 <TextField
           id="outlined-adornment-amount"
@@ -736,7 +750,7 @@ handleInvestorAddress(e){
           
         />
         </div>
-                
+        <br/>   
                  <div className="form-group">
                 <FormControl >
           <InputLabel htmlFor="Gender">Gender</InputLabel> <br/>
@@ -751,6 +765,7 @@ handleInvestorAddress(e){
         </FormControl>
                
         </div>
+        <br/>
         <div className="form-group">
                 <FormControl >
           <InputLabel htmlFor="Nationality">Nationality</InputLabel> <br/>
@@ -872,7 +887,8 @@ handleInvestorAddress(e){
                </Select>
         </FormControl>
                
-        </div>        
+        </div>  
+        <br/>      
                  <div className="form-group">
                 <FormControl >
           <InputLabel htmlFor="TypeOf_IdentityProof">Type Of Identity Proof</InputLabel> <br/>
@@ -887,6 +903,7 @@ handleInvestorAddress(e){
         </FormControl>
                
         </div>
+        <br/>
                <br/>
                       <div className="form-group">
                 <TextField
@@ -898,6 +915,7 @@ handleInvestorAddress(e){
           
         />
         </div>
+        <br/>
                 <div className="form-group">
                     <label>BirthDate:  </label>
                     <input 
@@ -907,6 +925,7 @@ handleInvestorAddress(e){
                       onChange={this.handleBirthDate}
                       />
                 </div>
+                <br/>
                 <div className="form-group">
                 <TextField
           id="outlined-adornment-amount"
@@ -917,6 +936,7 @@ handleInvestorAddress(e){
           
         />
         </div>
+        <br/>
               
                 <div className="form-group">
                 <TextField
@@ -928,7 +948,7 @@ handleInvestorAddress(e){
           
         />
         </div>
-                
+        <br/>
                 <div className="form-group">
                 <TextField
           id="outlined-adornment-amount"
@@ -939,7 +959,7 @@ handleInvestorAddress(e){
           
         />
         </div>
-                
+        <br/>
                 <div className="form-group">
                 <TextField
           id="outlined-adornment-amount"
@@ -950,7 +970,7 @@ handleInvestorAddress(e){
           
         />
         </div>
-                
+        <br/>   
                 <div className="form-group">
                     <input type="submit" 
                       value="Submit" 

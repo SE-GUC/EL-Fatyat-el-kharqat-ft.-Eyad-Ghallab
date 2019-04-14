@@ -1,12 +1,22 @@
 
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { withStyles } from '@material-ui/core/styles';
+
 
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
  import TextField from '@material-ui/core/TextField';
+ const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
  class EditSPC extends Component {
     constructor() {
         super();
@@ -57,7 +67,7 @@ import MenuItem from '@material-ui/core/MenuItem';
      }
     
     componentDidMount(){
-      fetch('/api/SPC')
+      fetch('/api/SPC/all')
       .then(res => res.json())
       .then(SPC => this.setState({spcs: SPC.data}, () => console.log('SPC fetched',this.state.spcs)));
     }
@@ -155,6 +165,7 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
+
   handleSubmit(e) {
     e.preventDefault();
     }
@@ -199,6 +210,8 @@ handleInvestorAddress(e){
                                   databody = {"email":this.state.email}}
                                   if(this.state.Investor_Address !== ""){
                                     databody = {"Investor_Address":this.state.Investor_Address}}
+                                    /*if(this.state.Lawyer_review !== ""){
+                                      databody = {"Lawyer_review":this.state.Lawyer_review}}*/
                     console.log(this.state.Facility_name)
     
        return fetch('/api/SPC/'+id, {
@@ -232,6 +245,7 @@ render() {
       
     />
     </div>
+    <br/>
                   <div className="form-group">
 
                   <FormControl >
@@ -268,7 +282,7 @@ render() {
       </Select>
     </FormControl>
     </div>
-    
+    <br/>
 
         <div className="form-group">
 
@@ -505,7 +519,7 @@ render() {
       </Select>
     </FormControl> 
            </div>
-
+           <br/>
            <div className="form-group">
             <TextField
       id="outlined-adornment-amount"
@@ -516,6 +530,7 @@ render() {
       
     />
     </div>
+    <br/>
             <div className="form-group">
             <TextField
       id="outlined-adornment-amount"
@@ -526,7 +541,7 @@ render() {
       
     />
     </div>
-           
+    <br/>
             <div className="form-group">
             <TextField
       id="outlined-adornment-amount"
@@ -537,6 +552,7 @@ render() {
       
     />
     </div>
+    <br/>
     <div className="form-group">
             <FormControl >
       <InputLabel htmlFor="Capital_Currency">Capital Currency</InputLabel> <br/>
@@ -728,6 +744,7 @@ render() {
     </FormControl>
            
     </div>
+    <br/>
     <div className="form-group">
             <TextField
       id="outlined-adornment-amount"
@@ -738,6 +755,7 @@ render() {
       
     />
     </div> 
+    
     <br/>
   
             <div className="form-group">
@@ -750,7 +768,7 @@ render() {
       
     />
     </div>
-            
+    <br/>    
              <div className="form-group">
             <FormControl >
       <InputLabel htmlFor="Gender">Gender</InputLabel> <br/>
@@ -765,6 +783,7 @@ render() {
     </FormControl>
            
     </div>
+    <br/>
     <div className="form-group">
             <FormControl >
       <InputLabel htmlFor="Nationality">Nationality</InputLabel> <br/>
@@ -886,7 +905,8 @@ render() {
            </Select>
     </FormControl>
            
-    </div>        
+    </div> 
+    <br/>       
              <div className="form-group">
             <FormControl >
       <InputLabel htmlFor="TypeOf_IdentityProof">Type Of Identity Proof</InputLabel> <br/>
@@ -912,6 +932,7 @@ render() {
       
     />
     </div>
+    <br/>
             <div className="form-group">
                 <label>BirthDate:  </label>
                 <input 
@@ -921,6 +942,7 @@ render() {
                   onChange={this.handleBirthDate}
                   />
             </div>
+            <br/>
             <div className="form-group">
             <TextField
       id="outlined-adornment-amount"
@@ -931,7 +953,7 @@ render() {
       
     />
     </div>
-           
+    <br/>  
             <div className="form-group">
             <TextField
       id="outlined-adornment-amount"
@@ -942,7 +964,7 @@ render() {
       
     />
     </div>
-           
+    <br/>
             <div className="form-group">
             <TextField
       id="outlined-adornment-amount"
@@ -953,7 +975,7 @@ render() {
       
     />
     </div>
-          
+    <br/>
             <div className="form-group">
             <TextField
       id="outlined-adornment-amount"
@@ -964,17 +986,20 @@ render() {
       
     />
     </div>
+    <br/> 
+    <div className="form-group">
             <ul>
           {this.state.spcs.map(spc =>
             <li key = {spc._id}
-            > {spc.Facility_name} <br/><button onClick = {() => {this.update(spc._id)}}> Update</button> 
+            > {spc.Facility_name} <br/>
+            <button onClick = {() => {this.update(spc._id)}}> Update</button> 
             </li>
             )}
         </ul>
-            
+        </div>
         </form>
     </div>
 )
 }
 } 
-export default EditSPC;
+export default  withStyles(styles)( EditSPC);

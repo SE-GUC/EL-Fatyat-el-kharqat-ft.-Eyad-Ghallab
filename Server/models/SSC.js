@@ -130,9 +130,11 @@ const SSCSchema = new Schema({
    is_the_external_entities_notified:{
     type:Boolean,
    
+},
+Lawyer_review:{
+    type: String, 
+    default: "binding"
 }
-
-
 })
 
 module.exports = SSC = mongoose.model('SSC', SSCSchema)

@@ -20,7 +20,9 @@ import AppBar from '@material-ui/core/AppBar';
 import NoSsr from '@material-ui/core/NoSsr';
 import logo from './unnamed.png';
 import { withStyles } from '@material-ui/core/styles';
-
+import AboutUs from './components/AboutUs/AboutUs';
+import ContactUs from './components/ContactUs/ContactUs';
+import Forms from './components/Reviewer/Forms';
 
 
 const styles = theme => ({
@@ -46,8 +48,10 @@ const styles = theme => ({
   },
 });
 
- class App extends Component {
+ 
   
+
+class App extends Component {
 
   render() {
    
@@ -141,6 +145,17 @@ const styles = theme => ({
                 </li>
                 <li>|</li>
                 </ul>
+                <ul className="nav-item">
+                <li>
+                  <Link to={'/AboutUs'} className="nav-link">About Us</Link>
+                </li>
+                <li>|</li>
+                </ul>
+                <ul className="nav-item">
+                <li >
+                        <Link to={'/ContactUs'} className="nav-link">Contact Us</Link>
+                      </li>
+                      </ul>
                 {/* <ul className="nav-item">
                 <li >
             <Tab icon={<PhoneIcon />} label="Contact Us" />
@@ -150,6 +165,12 @@ const styles = theme => ({
  </Tabs>
           </AppBar>
        
+               
+                      {/* <li className="nav-item">
+                        <Link to={'/Forms'} className="nav-link">Forms</Link>
+                      </li> */}
+    
+
           <Switch>
               <Route exact path='/SPCHomePage' component={ SPCHomePage } />
               <Route exact path='/AdminHomePage' component={ Admin} />
@@ -162,6 +183,8 @@ const styles = theme => ({
               <Route exact path='/Reviewer' component={ Reviewer } />
               <Route exact path='/SSC' component={ SSC} />
               <Route exact path='/Contract' component={Contract} />
+              <Route exact path='/AboutUs' component={ AboutUs} />
+              <Route exact path='/ContactUs' component={ContactUs} />
               </Switch> 
               <br/>
 

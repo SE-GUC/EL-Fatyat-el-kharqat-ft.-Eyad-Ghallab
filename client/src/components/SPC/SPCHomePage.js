@@ -33,6 +33,7 @@ const styles = theme => ({
     display: 'block',
     width: '100%',
 
+
   },
 });
 
@@ -83,8 +84,14 @@ class SPCHomePage extends Component {
             <li >
                   <Link to={'/Workspace'} className="nav-link">Workspace</Link>
                 </li>
+                <li>|</li>
+                </ul>
+               
+               
+               
+             
                 
-</ul>
+
             </Tabs> 
           </AppBar>
        
@@ -95,7 +102,10 @@ class SPCHomePage extends Component {
               <Route exact path='/DeleteSPC' component={ DeleteSPC } /> 
               <Route exact path='/ViewSPC' component={ SPC } /> 
               <Route exact path='/Workspace' component={ Workspace } /> 
-          </Switch>
+              
+              </Switch>
+            
+         
               <br/>
 
       

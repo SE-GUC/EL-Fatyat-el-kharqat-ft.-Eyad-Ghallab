@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 import './Reviewer.css';
+import {BrowserRouter as Router,Switch, Route, Link} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+import Forms from './Forms';
 
 class Reviewer extends Component {
     constructor(){
@@ -53,6 +57,7 @@ class Reviewer extends Component {
       this.setState({YearsOfExperience: e.target.value })
 
     }
+    
     
     
     delete(id){
@@ -119,24 +124,32 @@ if(this.state.password !== ""){
     .then(res => res.json())
     .then(data => console.log(data)); 
 }
+
+
     componentDidMount(){
   
         fetch('/api/Reviewer/')
         .then(res => res.json())
         .then(Reviewer => this.setState({Reviewers: Reviewer.data},()=> console.log('the Reviewer',this.state.Reviewers)));
-      //   var int = this.state.investors[1];
-      // console.log (int)
-    //  // res.json({data: this.state.investors})
+      
     }
+  
+  
+  
+ 
+
   render() {
- //  var {Investors} =  this.state;
     return (
+      
       <div>
         
-    <h2> My Reviewers</h2>
-
-
-
+    <h2> My Reviewers
+    </h2>
+    <Router>
+<Switch>
+  <Route exact path = './Forms'Component={Forms}/>
+</Switch>
+</Router>
  <form onSubmit={this.handleSubmit}>
                 <label>
                     Name
@@ -175,9 +188,11 @@ if(this.state.password !== ""){
 {
 
   <ul>
-      {
-     this.state.Reviewers.map( Reviewer  => <li key = {Reviewer._id}> Name: {Reviewer.Name} <button onClick= {() => {this.delete(Reviewer._id)}}> Delete </button>   
-     <form onClick={() => {this.update(Reviewer._id)}}> 
+    
+    { //this.state.SPC.map( SpcForm  => <li1 key = {SpcForm._id}> investorname: {SpcForm.investorname}</li1>,
+     this.state.Reviewers.map( Reviewer  => <li key = {Reviewer._id}> Name: {Reviewer.Name}
+       <button onClick= {() => {this.delete(Reviewer._id)}}> Delete </button>   
+     <form onClick={() => {this.update(Reviewer._id)}}>      
      <label>
      Name
      <input type="text" name="Name" value={this.Name} onChange={this.handleNameChange}/>
@@ -211,14 +226,22 @@ if(this.state.password !== ""){
  
  <input type="submit" value="update Reviewer" />
             </form>  
-            </li>)}
+            </li> ) }
      </ul> 
   
  }
-      </div>
+
+<Toolbar>
+  <Link to= {'./Forms'}><Button color ="inherit"> view  Forms</Button></Link>
+  </Toolbar>
+
+  </div>
+
+      
     );
   }
 }
 
-export default Reviewer;
+    
 
+export default Reviewer;

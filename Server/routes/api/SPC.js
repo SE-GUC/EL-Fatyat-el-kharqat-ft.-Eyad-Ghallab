@@ -6,6 +6,36 @@ const mongoose = require('mongoose')
 const SpcForm = require('../../models/SPC')
 const validator = require('../../validations/SPCvalid')
 
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: '5f5fb4ce',
+  apiSecret: '48bJxSynuSXO0Xnj'
+});
+
+
+
+
+router.post('/msg', async (req,res) => {
+
+const number = req.body.number;
+const msg = req.body.msg;
+
+nexmo.message.sendSms(
+    "NEXMO", '2'+number, 'Your case has been accepted please pay'+msg+' using fawry , vodafone cash or mobinil cash',
+      (err, responseData) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.dir(responseData);
+        }
+      }
+   );
+})
+
+
+
+
+
 //Create Form
 router.post('/', async (req,res) => {
   try {
@@ -101,7 +131,7 @@ if (price2 >= 10 && price2 <= 1000){
 finalprice += 660
 
 
-      res.json({data : "your estimated price to be paid is EGP ",finalprice})
+      res.json({data :finalprice})
 
 
 })
@@ -109,28 +139,15 @@ finalprice += 660
  router.get ('/',(req,res) =>{ 
     SpcForm.find({Status:"accepted", is_the_external_entities_notified:"true"})
   .then((Hana) => {
-            // var data= "";
-            // Hana.forEach((spcform)=> {
-            //   const id = spcform.id;
-            //   const Facility_name = spcform.Facility_name;
-            // data += `<a href="/api/SPC/${id}">${Facility_name}</a><br>`;
-            // });
+            
            res.json({data:Hana});
-            })
+            }).catch((error) => {
+              return res.send(`Error encountered retrieving all accounts. Error: ${error}`);
+            });
+            
           });
  
-  // router.get('/:id',(req,res)=>{
-  //   const query = schema.find({})
-  //   .where('_id').equals(req.params.id)
-  //     query.exec()
-  //   .then((spcform) => {
-  //     console.log(`There is a match`);
-      
-     
-// return res.send([spcform[0].id,spcform[0].Facility_name,spcform[0].Governorate,spcform[0].City,spcform[0].Facility_Address,spcform[0].Facility_Phone_Number,spcform[0].Fax,spcform[0].Capital_Currency,spcform[0].capital,spcform[0].investorname,spcform[0].Gender,spcform[0].Nationality,spcform[0].TypeOf_IdentityProof,spcform[0].investor_nationalid,spcform[0].BirthDate,spcform[0].Phone_Number,spcform[0].Investor_Fax,spcform[0].email,spcform[0].Investor_Address, spcform[0].Form_Date, spcform[0].Locked, spcform[0].Status, spcform[0].is_the_external_entities_notified]);
-   
-//   })
-// })
+  
 
 module.exports = router
 

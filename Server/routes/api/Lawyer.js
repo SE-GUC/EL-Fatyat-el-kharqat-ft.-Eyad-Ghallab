@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 
-const lawyer = require('../../models/Lawyer')
+const Lawyer = require('../../models/Lawyer')
 const validator = require('../../validations/Lawyervalid')
 const SpcForm = require('../../models/SPC')
 const Form = require('../../models/SSC')
@@ -34,6 +34,66 @@ router.put('/:id', async (req,res) => {
 //}
 })
 
+//update lawyer_review SPc form 
+router.put('/spcform/:id', async (req,res) => {
+
+  try {
+
+//   const id = req.params.id
+   const Lawyer = await SpcForm.findById(req.params.id)
+   //if(!Lawyer) return res.status(404).send({error: 'form does not exist'})
+   const isValidated = validator.updateValidation(req.body)
+   const updatedlawyer=await Lawyer.updateOne(req.body)
+   if (isValidated.error){
+     return res.status(400).send({ error: isValidated.error.details[0].message })}
+     res.status(500).json({
+      message:"Lawyer is updated the form  successfully",
+      data:updatedlawyer
+    })
+  
+
+  }catch(error) {
+    res.status(500).json({
+      message:"error",
+   //console.log(error)
+})
+}
+
+})
+
+
+
+//update lawyer_review ssc form 
+router.put('/sscform/:id', async (req,res) => {
+
+  try {
+
+//   const id = req.params.id
+   const Lawyer = await SSC.findById(req.params.id)
+   //if(!Lawyer) return res.status(404).send({error: 'form does not exist'})
+   const isValidated = validator.updateValidation(req.body)
+   const updatedlawyer=await Lawyer.updateOne(req.body)
+   if (isValidated.error){
+     return res.status(400).send({ error: isValidated.error.details[0].message })}
+     res.status(500).json({
+      message:"Lawyer is updated the form  successfully",
+      data:updatedlawyer
+    })
+  
+
+  }catch(error) {
+    res.status(500).json({
+      message:"error",
+   //console.log(error)
+})
+}
+
+})
+
+
+
+
+
 // get all unlocked SSC forms
 
 router.get('/find/SSC',(req,res)=>{
@@ -42,7 +102,7 @@ router.get('/find/SSC',(req,res)=>{
   .then((Form) => {
     console.log(`There are ${Form.length} SSC forms`);
    // res.setHeader('Content-Type', 'text/plain');
-    var datassc='';
+    var datassc ;
     Form.forEach((SSC) => {
       datassc+=`<p>Company_name:${SSC.Company_name} 
         Governorate:${SSC.Governorate} 
@@ -89,38 +149,19 @@ router.get('/find/SSC',(req,res)=>{
 });
 
 // get all unclocked SPC forms
-router.get('/find/SPC',(req,res)=>{
-
+router.get('/find/SPC',  (req,res)=>{
+//const form = await Form.find
 SpcForm.find({Locked:false}).sort({Form_Date: -1})
   .then((SpcForm) => {
      console.log(`There are ${SpcForm.length} SPC forms`);
-   var dataspc='';
-    SpcForm.forEach((SPC) => {
-      dataspc+=`<p>Company_name:${SPC.Company_name} 
-        Governorate:${SPC.Governorate} 
-        City:${SPC.City} 
-        Locked:${SPC.Locked}
-        Form_Date:${SPC.Form_Date}
-        Facility_Address:${SPC.Facility_Address}
-        Facility_Phone_Number:${SPC.Facility_Phone_Number}
-        Capital_Currency:${SPC.Capital_Currency}
-        Fax:${SPC.Fax}
-        capital:${SPC.capital}
-        investorname:${SPC.investorname}
-        Gender:${SPC.Gender}
-        Nationality:${SPC.Nationality}
-        TypeOf_IdentityProof:${SPC.TypeOf_IdentityProof}
-        investor_nationalid:${SPC.investor_nationalid}
-        BirthDate:${SPC.BirthDate}
-        Phone_Number:${SPC.Phone_Number}
-        Investor_Fax:${SPC.Investor_Fax}
-        email:${SPC.email}
-        Investor_Address:${SPC.Investor_Address}
-        Status:${SPC.Status}
-        is_the_external_entities_notified:${SPC.is_the_external_entities_notified}
-        </p></br> `;
-    });
-    return res.send(dataspc);  
+     res.json({msg: 'Lawyers are here',data:SpcForm })
+  //var dataspc ;
+    // SpcForm.forEach(() => {
+    //   console.log("hiii")
+    //  var dataspc  =  SpcForm.find()
+    //   res.json({msg: 'Lawyers are here',data: dataspc})
+    // });
+   // return res.send(dataspc);  
 })
   .catch((error) => {
     return res.send(`Error encountered retrieving all accounts. Error: ${error}`);

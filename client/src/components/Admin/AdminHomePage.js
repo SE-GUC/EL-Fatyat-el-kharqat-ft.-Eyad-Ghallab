@@ -12,6 +12,8 @@ import CreateAdmin from './CreateAdmin';
 import EditAdmin from'./EditAdmin';
 import DeleteAdmin from './DeleteAdmin'
 import Admin from './Admin';
+
+import upload from './upload';
 const styles = theme => ({
   root: {
     maxWidth: 400,
@@ -79,6 +81,12 @@ class AdminHomePage extends Component {
                 </li>
                 <li>|</li>
                 </ul>
+                <ul className="nav-item">
+            <li >
+                  <Link to={'/Upload'} className="nav-link">Upload</Link>
+                </li>
+                <li>|</li>
+                </ul>
                 
             </Tabs> 
           </AppBar>
@@ -89,6 +97,7 @@ class AdminHomePage extends Component {
               <Route exact path='/EditAdmin' component={ EditAdmin } />
               <Route exact path='/DeleteAdmin' component={ DeleteAdmin } /> 
               <Route exact path='/ViewAdmin' component={ Admin } /> 
+              <Route exact path='/Upload' component={ upload } /> 
           </Switch>
               <br/>
 

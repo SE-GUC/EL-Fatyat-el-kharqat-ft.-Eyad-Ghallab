@@ -303,6 +303,22 @@ mobilenumber:""
      </ul> 
   
  }
+   <ul>
+      {
+     this.state.Investors.map( investor  => <li key = {investor._id}> Name: {investor.name}  
+     <script type="text/javascript" charset="UTF-8" src="xyz.js"></script>  
+     <form action="/uploadfile" enctype="multipart/form-data" method="POST"> 
+<label>
+<input type="file" name="myFile" />
+   <input type="submit" value="Upload a file"/>
+</label>
+   
+</form>
+
+            
+            </li>)}
+     </ul>
+ 
       </div>
     );
   }

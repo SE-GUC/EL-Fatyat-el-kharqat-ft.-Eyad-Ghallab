@@ -15,7 +15,7 @@ class DeleteSPC extends Component {
     }
     }
    delete(id){
-        return fetch('/api/SPC/'+id, {
+        return fetch('/api/SPC/all'+id, {
           method: 'DELETE',
           headers: {
               'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ class DeleteSPC extends Component {
       .then(data => console.log(data));
       }
       componentDidMount(){
-        fetch('/api/SPC')
+        fetch('/api/SPC/all')
         .then(res => res.json())
         .then(SPC => this.setState({spcs: SPC.data}, () => console.log('SPC fetched',this.state.spcs)));
       }
