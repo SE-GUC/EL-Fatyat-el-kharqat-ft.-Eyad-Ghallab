@@ -13,6 +13,11 @@ import Payment from './components/Payment/Payment';
 import Investor from './components/Investor/Investor';
 import Comment from './components/Comment/Comment';
 import SSC from './components/SSC/SSC';
+
+import Register from './components/Register/Register'
+import Login from './components/Login/Login'
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
 class App extends Component {
 
   render() {
@@ -75,7 +80,8 @@ class App extends Component {
               <Route exact path='/Reviewer' component={ Reviewer } />
               <Route exact path='/SSC' component={ SSC} />
               <Route exact path='/Contract' component={Contract} />
-
+              <Route exact path='/Login' component={Login} />
+              <Route exact path='/Register' component={Register} />
           </Switch>
           {/* <Admin/>
       
@@ -94,8 +100,10 @@ class App extends Component {
 
 
       {/* <Payment/> */}
-
-
+<Toolbar>
+    <Link to={'/Login'} > <Button color="inherit">Login</Button> </Link> 
+    <Link to={'/Register'} > <Button color="inherit">Register</Button></Link> 
+        </Toolbar>
 
 
 

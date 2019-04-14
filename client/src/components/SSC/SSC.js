@@ -459,7 +459,7 @@ export default class SSC extends Component {
                 </label>
                 <label>
                     Capital_Currency
-                    <input type="text" name=" Capital_Currency" value={this. Capital_Currency} onChange={this.handleCapital_CurrencyChange}/>
+                    <input type="text" name=" Capital_Currency" value={this.Capital_Currency} onChange={this.handleCapital_CurrencyChange}/>
                     <br/>
                 </label>
                 <label>
