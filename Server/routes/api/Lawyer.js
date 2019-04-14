@@ -119,6 +119,7 @@ SpcForm.find({Locked:false}).sort({Form_Date: -1})
         Status:${SPC.Status}
         is_the_external_entities_notified:${SPC.is_the_external_entities_notified}
         </p></br> `;
+        
     });
     return res.send(dataspc);  
 })

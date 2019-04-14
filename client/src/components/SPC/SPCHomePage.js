@@ -6,6 +6,7 @@ import SPC from './SPC.js';
 import CreatingSPCForm from './CreatingSPCForm';
 import EditSPC from './EditSPC';
 import DeleteSPC from './DeleteSPC';
+import UnlockedForms from './UnlockedForms';
 
 export default class SPCHomePage extends Component {
   render() {
@@ -31,6 +32,9 @@ export default class SPCHomePage extends Component {
                 <li className="nav-item">
                   <Link to={'/read'} className="nav-link">All SPC Forms</Link>
                 </li>
+                <li className="nav-item">
+                  <Link to={'/workspace'} className="nav-link">Unlocked Forms</Link>
+                </li>
               </ul>
             </div>
           </nav> <br/>
@@ -39,7 +43,8 @@ export default class SPCHomePage extends Component {
               <Route exact path='/create' component={ CreatingSPCForm } />
               <Route exact path='/edit' component={ EditSPC } />
               <Route exact path='/delete' component={ DeleteSPC } /> 
-              <Route exact path='/read' component={ SPC } /> 
+              <Route exact path='/read' component={ SPC } />
+              <Route exact path='/workspace' component={ UnlockedForms } /> 
           </Switch>
         </div>
       </Router>
