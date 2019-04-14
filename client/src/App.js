@@ -10,7 +10,7 @@ import Lawyer from './components/Lawyer/Lawyer';
 import ExternalEntities from './components/ExternalEntities/ExternalEntitiesHomePage';
 import Contract from './components/Contract/Contract';
 import Payment from './components/Payment/Payment';
-import Investor from './components/Investor/Investor';
+import Investor from './components/Investor/InvHomePage';
 import Comment from './components/Comment/CommentHomePage';
 import SSC from './components/SSC/SSC';
 // import PhoneIcon from '@material-ui/icons/Phone';
