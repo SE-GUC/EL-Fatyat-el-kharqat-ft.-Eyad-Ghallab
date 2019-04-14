@@ -5,7 +5,7 @@ class SPC extends Component{
     super();
 this.state={
   spcs:[],
-  paymenet:""
+  payment:""
 
 }
   }
@@ -14,14 +14,14 @@ this.state={
     .then(res => res.json())
     .then(SPC => this.setState({spcs: SPC.data}, () => console.log('SPC fetched',this.state.spcs)));
   }
-  paymenet(id){
+  payment(id){
      
-    if(this.state.paymenet !== ""){
+    if(this.state.payment !== ""){
          
-        this.setState({paymenet: "" })}
+        this.setState({payment: "" })}
     fetch('/api/SPC/'+ id+ '/find')
     .then(res => res.json())
-    .then(pay => this.setState({paymenet: pay.data},()=> console.log('you should pay',this.state.paymenet)));
+    .then(pay => this.setState({payment: pay.data},()=> console.log('you should pay',this.state.payment)));
     // this.state.paymenet
 // printString(this.state.paymenet)
  }
@@ -33,11 +33,11 @@ this.state={
         <ul>
           {this.state.spcs.map(spc =>
             <li key = {spc._id}
-            > {spc.Facility_name}  <button onClick= {() => {this.paymenet(spc._id)}}>
+            > {spc.Facility_name}  <button onClick= {() => {this.payment(spc._id)}}>
             pay   </button>  
             </li>
             )}
-        </ul> <h1>You Should pay: {this.state.paymenet}</h1>
+        </ul> <h1>You Should pay: {this.state.payment}</h1>
       </div>
     )
   }

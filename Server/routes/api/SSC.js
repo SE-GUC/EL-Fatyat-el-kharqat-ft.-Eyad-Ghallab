@@ -7,8 +7,8 @@ const validator = require('../../validations/SSCvalid')
 
 //get all the  forms
 router.get('/all', async (req,res) => {
-    const forms = await SSC.find()
-    res.json({data: forms})
+    const forms = await Form.find()
+    res.json({msg: 'Here are the SSC Forms',data: forms})
 })
 
 

@@ -159,7 +159,7 @@ handleLawyer_review(e){
   handleSubmit(e) {
     e.preventDefault();
     let databody  = {
-      Facility_name: this.state.Facility_name,
+     Facility_name: this.state.Facility_name,
       Governorate: this.state.Governorate,
       City: this.state.City,
       Facility_Address: this.state.Facility_Address,
@@ -244,6 +244,7 @@ render() {
     <div style={{ marginTop: 10 }}>
         <h3 align="center">New SPC Company</h3>
         <form onSubmit={this.handleSubmit}>
+        
             <div className="form-group">
                 <label>Facility Name:  </label>
                 <input 

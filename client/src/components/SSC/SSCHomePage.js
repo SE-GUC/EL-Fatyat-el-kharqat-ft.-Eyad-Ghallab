@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SPC from './SPC.js';
-import CreatingSPCForm from './CreatingSPCForm';
-import EditSPC from './EditSPC';
-import DeleteSPC from './DeleteSPC';
+import SSC from './SSC.js';
+import CreatingSSCForm from './CreatingSSCForm';
+import EditSSC from './EditSSC';
+import DeleteSSC from './DeleteSSC';
 
-export default class SPCHomePage extends Component {
+export default class SSCHomePage extends Component {
   render() {
     return (
       <Router>
@@ -28,17 +28,17 @@ export default class SPCHomePage extends Component {
                   <Link to={'/delete'} className="nav-link">Delete a Form</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/read'} className="nav-link">All SPC Forms</Link>
+                  <Link to={'/read'} className="nav-link">All SSC Forms</Link>
                 </li>
               </ul>
             </div>
           </nav> <br/>
           <h2>Welcome to GAFI</h2> <br/>
           <Switch>
-              <Route exact path='/create' component={ CreatingSPCForm } />
-              <Route exact path='/edit' component={ EditSPC } />
-              <Route exact path='/delete' component={ DeleteSPC } /> 
-              <Route exact path='/read' component={ SPC } /> 
+              <Route exact path='/create' component={ CreatingSSCForm } />
+              <Route exact path='/edit' component={ EditSSC } />
+              <Route exact path='/delete' component={ DeleteSSC } /> 
+              <Route exact path='/read' component={ SSC } /> 
           </Switch>
         </div>
       </Router>
