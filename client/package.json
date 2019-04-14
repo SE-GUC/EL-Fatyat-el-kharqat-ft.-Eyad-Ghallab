@@ -7,12 +7,15 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "connected-react-router": "^6.3.2",
+    "ejs": "^2.6.1",
+    "nexmo": "^2.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-select": "^2.4.2"
+    "react-select": "^2.4.2",
+    "socket.io": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

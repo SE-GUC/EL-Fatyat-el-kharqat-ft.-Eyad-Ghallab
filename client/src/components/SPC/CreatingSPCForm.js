@@ -41,7 +41,7 @@ class CreatingSPCForm extends Component {
     this.handleInvestorFax = this.handleInvestorFax.bind(this);
     this.handleemail = this.handleemail.bind(this);
     this.handleInvestorAddress = this.handleInvestorAddress.bind(this);
-    this.handleLawyer_review=this.handleLawyer_review.bind(this);
+    //this.handleLawyer_review=this.handleLawyer_review.bind(this);
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     
@@ -351,7 +351,7 @@ class CreatingSPCForm extends Component {
       Investor_Fax:'',
       email:'',
       Investor_Address:'',
-      Lawyer_review:""
+      //Lawyer_review:""
     
    }
  }
@@ -449,11 +449,11 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
-handleLawyer_review(e){
+/*handleLawyer_review(e){
   this.setState({
       Lawyer_review: e.target.value
     })
-  }
+  }*/
   handleSubmit(e) {
     e.preventDefault();
     let databody  = {
@@ -475,7 +475,7 @@ handleLawyer_review(e){
       Investor_Fax:this.state.Investor_Fax,
       email:this.state.email,
       Investor_Address:this.state.Investor_Address,
-      Lawyer_review:this.state.Lawyer_review
+      //Lawyer_review:this.state.Lawyer_review
     };
 
     return fetch('/api/SPC/', {
@@ -930,16 +930,7 @@ handleLawyer_review(e){
                       onChange={this.handleInvestorAddress}
                       />
                 </div>
-                <div className="form-group">
-                    <label>Lawyer_review:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.Lawyer_review}
-                      onChange={this.handleLawyer_review}
-                      />
-                </div>
-                     
+                
                 <div className="form-group">
                     <input type="submit" 
                       value="Submit" 

@@ -6,6 +6,36 @@ const mongoose = require('mongoose')
 const SpcForm = require('../../models/SPC')
 const validator = require('../../validations/SPCvalid')
 
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: '5f5fb4ce',
+  apiSecret: '48bJxSynuSXO0Xnj'
+});
+
+
+
+
+router.post('/msg', async (req,res) => {
+
+const number = req.body.number;
+const msg = req.body.msg;
+
+nexmo.message.sendSms(
+    "NEXMO", '2'+number, 'Your case has been accepted please pay'+msg+' using fawry , vodafone cash or mobinil cash',
+      (err, responseData) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.dir(responseData);
+        }
+      }
+   );
+})
+
+
+
+
+
 //Create Form
 router.post('/', async (req,res) => {
   try {
