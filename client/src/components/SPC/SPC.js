@@ -4,14 +4,16 @@ class SPC extends Component{
   constructor(){
     super();
 this.state={
-  spcs:[]
+  spcs:[],
+ 
 }
   }
   componentDidMount(){
-    fetch('/api/SPC')
+    fetch('/api/SPC/all')
     .then(res => res.json())
     .then(SPC => this.setState({spcs: SPC.data}, () => console.log('SPC fetched',this.state.spcs)));
   }
+  
   render(){
     return (
       <div>
@@ -23,6 +25,7 @@ this.state={
             </li>
             )}
         </ul>
+        
       </div>
     )
   }

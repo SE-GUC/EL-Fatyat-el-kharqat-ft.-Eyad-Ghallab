@@ -24,7 +24,7 @@ router.post('/', async (req,res) => {
 })
 
 //Read Form
-router.get('/', async (req,res) => {
+router.get('/all', async (req,res) => {
     const spcforms = await SpcForm.find()
     //res.json({data: spcforms})
     res.json({msg: 'Here are the SPC Forms',data: spcforms})
@@ -106,7 +106,7 @@ finalprice += 660
 
 })
 // user story Hana
- router.get ('/accepted',(req,res) =>{ 
+ router.get ('/',(req,res) =>{ 
     SpcForm.find({Status:"accepted", is_the_external_entities_notified:"true"})
   .then((Hana) => {
             // var data= "";
@@ -115,7 +115,7 @@ finalprice += 660
             //   const Facility_name = spcform.Facility_name;
             // data += `<a href="/api/SPC/${id}">${Facility_name}</a><br>`;
             // });
-           res.send(Hana);
+           res.json({data:Hana});
             })
           });
  
