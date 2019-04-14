@@ -15,6 +15,7 @@ import Comment from './components/Comment/Comment';
 import SSC from './components/SSC/SSC';
 import AboutUs from './components/AboutUs/AboutUs';
 import ContactUs from './components/ContactUs/ContactUs';
+import Forms from './components/Reviewer/Forms';
 class App extends Component {
 
   render() {
@@ -67,6 +68,9 @@ class App extends Component {
                 <li className="nav-item">
                         <Link to={'/ContactUs'} className="nav-link">ContactUs</Link>
                       </li>
+                      {/* <li className="nav-item">
+                        <Link to={'/Forms'} className="nav-link">Forms</Link>
+                      </li> */}
               </ul>
             </div>
           </nav> <br/>
@@ -88,6 +92,7 @@ class App extends Component {
               <Route exact path='/Contract' component={Contract} />
               <Route exact path='/AboutUs' component={AboutUs} />
               <Route exact path='/ContactUs' component={ContactUs} />
+             <Route exact path='/Forms' component={Forms} />
 
           </Switch>
 
