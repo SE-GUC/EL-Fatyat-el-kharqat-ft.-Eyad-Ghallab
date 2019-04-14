@@ -31,7 +31,7 @@ export default class SSC extends Component {
         this.handleBOD_BirthDateChange= this.handleBOD_BirthDateChange.bind(this);
         this.handleBOD_AddressChange= this.handleBOD_AddressChange.bind(this);
         this.handlePositionInBODChange= this.handlePositionInBODChange.bind(this);
-        this.handleLawyer_reviewChange=this.handleLawyer_reviewChange.bind(this);
+       // this.handleLawyer_reviewChange=this.handleLawyer_reviewChange.bind(this);
        
 
        this.handlepayement=this.handlepayement.bind(this);
@@ -69,7 +69,7 @@ export default class SSC extends Component {
             BOD_BirthDate: "",
             BOD_Address:"", 
             PositionInBOD: "",
-            Lawyer_review:"",
+           // Lawyer_review:"",
 
             paymenet:""
 
@@ -169,10 +169,10 @@ export default class SSC extends Component {
         this.setState({PositionInBOD: e.target.value })
 
     }
-    handleLawyer_reviewChange(e){
+   /* handleLawyer_reviewChange(e){
         this.setState({Lawyer_review: e.target.value })
 
-    }
+    }*/
 
     handlepayement(){
         this.setState({paymenet: "" })
@@ -224,7 +224,7 @@ export default class SSC extends Component {
           "BOD_BirthDate": this.state.BirthDate,
           "BOD_Address":this.state.BOD_Address, 
           "PositionInBOD": this.state.PositionInBOD,
-          "Lawyer_review": this.state.Lawyer_review
+          //"Lawyer_review": this.state.Lawyer_review
       
         }
       return fetch('/api/SSC/', {
@@ -299,8 +299,8 @@ export default class SSC extends Component {
                                                                                 databody = {"BOD_Address":this.state.BOD_Address}}
                                                                                 if(this.state.PositionInBOD !== ""){
                                                                                     databody = {"PositionInBOD":this.state.PositionInBOD}}
-                                                                                    if(this.state.Lawyer_review !== ""){
-                                                                                        databody = {"Lawyer_review":this.state.Lawyer_review}}
+                                                                                   /* if(this.state.Lawyer_review !== ""){
+                                                                                        databody = {"Lawyer_review":this.state.Lawyer_review}}*/
                                                                                        
                                                                                    
 
@@ -453,10 +453,7 @@ export default class SSC extends Component {
                 PositionInBOD
                     <input type="text" name="PositionInBOD" value={this.PositionInBOD} onChange={this.handlePositionInBODChange}/>
                 </label>
-                <label>
-                Lawyer_review
-                    <input type="text" name="Lawyer_review" value={this.Lawyer_review} onChange={this.handleLawyer_reviewChange}/>
-                </label>
+              
 
                 <input type="submit" value="Add to DB" />
             </form> 
@@ -607,11 +604,7 @@ export default class SSC extends Component {
                     <input type="text" name="PositionInBOD" value={this.PositionInBOD} onChange={this.handlePositionInBODChange}/>
                 
                     <br/></label>
-                    <label>
-                Lawyer_review
-                    <input type="text" name="Lawyer_review" value={this.Lawyer_review} onChange={this.handleLawyer_reviewChange}/>
-                
-                    <br/></label>
+                   
 
                 <input type="submit" value="update form" />
             </form> 

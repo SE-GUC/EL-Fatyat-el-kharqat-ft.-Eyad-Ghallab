@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './SPC.css'
+
 class SPC extends Component{
  
  
@@ -10,12 +11,16 @@ class SPC extends Component{
 this.state={
   spcs:[],
   paymenet:"",
+  
   number: 0,
   msg:""
  
 
 }
+
   }
+  
+  
   componentDidMount(){
     fetch('/api/SPC')
     .then(res => res.json())
@@ -77,6 +82,12 @@ this.state={
             </li>
             )}
         </ul> <h1>You Should pay: {this.state.paymenet}</h1>
+        
+        
+       
+       
+   
+  
       </div>
     )
   }

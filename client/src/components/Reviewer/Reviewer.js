@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 import './Reviewer.css';
+import {BrowserRouter as Router,Switch, Route, Link} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+import Forms from './Forms';
 
 class Reviewer extends Component {
     constructor(){
@@ -129,15 +133,23 @@ if(this.state.password !== ""){
         .then(Reviewer => this.setState({Reviewers: Reviewer.data},()=> console.log('the Reviewer',this.state.Reviewers)));
       
     }
+  
+  
+  
+ 
+
   render() {
     return (
+      
       <div>
         
     <h2> My Reviewers
     </h2>
-
-
-
+    <Router>
+<Switch>
+  <Route exact path = './Forms'Component={Forms}/>
+</Switch>
+</Router>
  <form onSubmit={this.handleSubmit}>
                 <label>
                     Name
@@ -176,8 +188,10 @@ if(this.state.password !== ""){
 {
 
   <ul>
-      {
-     this.state.Reviewers.map( Reviewer  => <li key = {Reviewer._id}> Name: {Reviewer.Name} <button onClick= {() => {this.delete(Reviewer._id)}}> Delete </button>   
+    
+    { //this.state.SPC.map( SpcForm  => <li1 key = {SpcForm._id}> investorname: {SpcForm.investorname}</li1>,
+     this.state.Reviewers.map( Reviewer  => <li key = {Reviewer._id}> Name: {Reviewer.Name}
+       <button onClick= {() => {this.delete(Reviewer._id)}}> Delete </button>   
      <form onClick={() => {this.update(Reviewer._id)}}>      
      <label>
      Name
@@ -212,14 +226,22 @@ if(this.state.password !== ""){
  
  <input type="submit" value="update Reviewer" />
             </form>  
-            </li>)}
+            </li> ) }
      </ul> 
   
  }
-      </div>
+
+<Toolbar>
+  <Link to= {'./Forms'}><Button color ="inherit"> view  Forms</Button></Link>
+  </Toolbar>
+
+  </div>
+
+      
     );
   }
 }
 
-export default Reviewer;
+    
 
+export default Reviewer;

@@ -92,6 +92,7 @@ const SpcFormSchema = new Schema({
     },
     Lawyer_review:{
         type: String, 
+        default: "binding"
     
     }
 })
