@@ -40,6 +40,7 @@ this.state={
 // printString(this.state.paymenet)
  }
  
+ 
  sms(num,mssg) {
   //e.preventDefault();
   let databody  = {
@@ -62,7 +63,6 @@ this.state={
   
   
 }
-
 
 
 
