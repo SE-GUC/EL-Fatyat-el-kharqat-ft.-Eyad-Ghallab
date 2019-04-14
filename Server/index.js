@@ -126,6 +126,12 @@ db.collection('quotes').insertOne(finalImg, (err, result) => {
  
    
 })
+if (process.env.NODE_ENV == 'production'){
+  app.use(express.static("client/build"));
+  app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+  });
+}
 app.get('/myFile/:id', (req, res) => {
   var filename = req.params.id;
    
