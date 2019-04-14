@@ -168,31 +168,7 @@ handleInvestorAddress(e){
 
   handleSubmit(e) {
     e.preventDefault();
-<<<<<<< HEAD
-    let databody  = {
-     Facility_name: this.state.Facility_name,
-      Governorate: this.state.Governorate,
-      City: this.state.City,
-      Facility_Address: this.state.Facility_Address,
-      Facility_Phone_Number: this.state.Facility_Phone_Number,
-      Fax: this.state.Fax,
-      Capital_Currency: this.state.Capital_Currency,
-      capital: this.state.capital,
-      investorname:this.state.investorname,
-      Gender: this.state.Gender,
-      Nationality: this.state.Nationality,
-      TypeOf_IdentityProof: this.state.TypeOf_IdentityProof,
-      investor_nationalid: this.state.investor_nationalid,
-      BirthDate: this.state.BirthDate,
-      Phone_Number: this.state.Phone_Number,
-      Investor_Fax:this.state.Investor_Fax,
-      email:this.state.email,
-      Investor_Address:this.state.Investor_Address,
-      Lawyer_review:this.state.Lawyer_review
-    }}
-=======
     }
->>>>>>> 323566300f46102d505e090996971ed1f0b3731b
     update(id){
       console.log(this.state.Facility_name)
       let databody
@@ -258,11 +234,8 @@ render() {
     <div style={{ marginTop: 10 }}>
         <h3 align="center">New SPC Company</h3>
         <form onSubmit={this.handleSubmit}>
-<<<<<<< HEAD
         
-=======
 
->>>>>>> 323566300f46102d505e090996971ed1f0b3731b
             <div className="form-group">
             <TextField
       id="outlined-adornment-amount"

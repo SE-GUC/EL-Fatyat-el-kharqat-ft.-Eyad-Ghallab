@@ -10,15 +10,11 @@ class SPC extends Component{
     this.sms = this.sms.bind(this)
 this.state={
   spcs:[],
-<<<<<<< HEAD
-  payment:""
-=======
   paymenet:"",
   
   number: 0,
   msg:""
  
->>>>>>> 323566300f46102d505e090996971ed1f0b3731b
 
 }
 
@@ -31,12 +27,8 @@ this.state={
     .then(res => res.json())
     .then(SPC => this.setState({spcs: SPC.data}, () => console.log('SPC fetched',this.state.spcs)));
   }
-<<<<<<< HEAD
-  payment(id){
-=======
   
   paymenet(id){
->>>>>>> 323566300f46102d505e090996971ed1f0b3731b
      
     if(this.state.payment !== ""){
          
@@ -86,12 +78,8 @@ this.state={
         <ul>
           {this.state.spcs.map(spc =>
             <li key = {spc._id}
-<<<<<<< HEAD
-            > {spc.Facility_name}  <button onClick= {() => {this.payment(spc._id)}}>
-=======
             > {spc.Phone_Number} 
              <button onClick= {() => {this.paymenet(spc._id)}}>
->>>>>>> 323566300f46102d505e090996971ed1f0b3731b
             pay   </button>  
             <button onClick= {() => {this.sms(spc.Phone_Number,this.state.paymenet)}}>
 
@@ -100,9 +88,6 @@ this.state={
             
             </li>
             )}
-<<<<<<< HEAD
-        </ul> <h1>You Should pay: {this.state.payment}</h1>
-=======
         </ul> <h1>You Should pay: {this.state.paymenet}</h1>
         
         
@@ -114,7 +99,6 @@ this.state={
        
    
   
->>>>>>> 323566300f46102d505e090996971ed1f0b3731b
       </div>
     )
   }
