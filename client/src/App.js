@@ -13,6 +13,13 @@ import Payment from './components/Payment/Payment';
 import Investor from './components/Investor/Investor';
 import Comment from './components/Comment/Comment';
 import SSC from './components/SSC/SSC';
+
+
+import Register from './components/Register/Register'
+import Login from './components/Login/Login'
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+
 import AboutUs from './components/AboutUs/AboutUs';
 import ContactUs from './components/ContactUs/ContactUs';
 
@@ -22,6 +29,7 @@ import Form from './components/Form/Form';
 import Workspace from './components/Lawyer/Workspace';
 
 import Forms from './components/Reviewer/Forms';
+
 
 class App extends Component {
 
@@ -110,6 +118,9 @@ class App extends Component {
               <Route exact path='/Reviewer' component={ Reviewer } />
               <Route exact path='/SSC' component={ SSC} />
               <Route exact path='/Contract' component={Contract} />
+
+              <Route exact path='/Login' component={Login} />
+              <Route exact path='/Register' component={Register} />
               <Route exact path='/AboutUs' component={AboutUs} />
               <Route exact path='/ContactUs' component={ContactUs} />
 
@@ -118,8 +129,33 @@ class App extends Component {
               
 
              <Route exact path='/Forms' component={Forms} />
-
           </Switch>
+          {/* <Admin/>
+      
+
+    
+       
+      <Notification />
+      <Contract/>
+      <Reviewer /> 
+
+      <Comment/>
+      <Investor/>
+      <SSC/>
+      <Lawyer />
+      <ExternalEntities/> */}
+
+
+      {/* <Payment/> */}
+<Toolbar>
+    <Link to={'/Login'} > <Button color="inherit">Login</Button> </Link> 
+    <Link to={'/Register'} > <Button color="inherit">Register</Button></Link> 
+        </Toolbar>
+
+             
+
+
+        
 
 
         </div>
