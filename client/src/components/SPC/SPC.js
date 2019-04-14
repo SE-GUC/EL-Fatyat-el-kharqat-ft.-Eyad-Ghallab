@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './SPC.css'
+
 class SPC extends Component{
  
  
@@ -10,12 +11,23 @@ class SPC extends Component{
 this.state={
   spcs:[],
   paymenet:"",
+  form:[],
   number: 0,
   msg:""
  
 
 }
+
   }
+  get(){
+    fetch('/api/Lawyer/find/SPC')
+     .then(res => res.json())
+    .then(spc => this.setState({form: spc.data}, () => console.log('spc fetched',this.state.form)))
+    //     //.where(({Locked:false}).sort({Form_Date: -1}));
+      
+      
+    
+    }
   componentDidMount(){
     fetch('/api/SPC')
     .then(res => res.json())
@@ -77,6 +89,20 @@ this.state={
             </li>
             )}
         </ul> <h1>You Should pay: {this.state.paymenet}</h1>
+       
+       <h2>unlocked forms</h2>
+        <ul>
+<button onClick= {() => {this.get()}}> get unlocked forms </button>
+
+          {this.state.form.map(spc =>
+            <li key = {spc._id}
+            > {spc.Facility_name} 
+            </li>
+            )}
+          
+        </ul> 
+   
+  
       </div>
     )
   }
