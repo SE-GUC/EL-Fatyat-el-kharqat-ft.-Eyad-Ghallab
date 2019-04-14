@@ -69,7 +69,7 @@ router.get('/:id', async (req,res) => {
 
 //Update Form
 router.put('/:id', async (req,res) => {
-  
+  console.log("hiiii")
    const id = req.params.id
    const updatedspcform = req.body
    const isValidated = validator.updateValidation(req.body)

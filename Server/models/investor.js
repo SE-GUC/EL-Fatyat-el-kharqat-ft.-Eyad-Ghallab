@@ -15,41 +15,41 @@ const investorSchema = new Schema({
  
     username: {
         type: String, 
-        required: true
+        required: false
     },
-      password: {
+    password: {
         type: String,
         required: true
     },
     nationality: {
     type: String,
-    required: true
+    required: false
     }
     , 
     gender: {
         type: String,
-        required: true
+        required: false
     }
     ,
     birthdate: {
         type: Date,
-        required: true
+        required: false
     },
     city: {
         type: String,
-        required: true
+        required: false
     },
     country: {
         type: String,
-        required: true
+        required: false
     },
     jobtitle: {
         type: String,
-        required: true
+        required: false
     },
     mobilenumber: {
         type: String,
-        required: true
+        required: false
     }
 
 })

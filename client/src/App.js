@@ -20,8 +20,21 @@ import AppBar from '@material-ui/core/AppBar';
 import NoSsr from '@material-ui/core/NoSsr';
 import logo from './unnamed.png';
 import { withStyles } from '@material-ui/core/styles';
+
+
+import Register from './components/Register/Register'
+import Login from './components/Login/Login'
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+
 import AboutUs from './components/AboutUs/AboutUs';
 import ContactUs from './components/ContactUs/ContactUs';
+
+import Form from './components/Form/Form';
+
+
+import Workspace from './components/Lawyer/Workspace';
+
 import Forms from './components/Reviewer/Forms';
 
 
@@ -151,6 +164,19 @@ class App extends Component {
                         <Link to={'/ContactUs'} className="nav-link">Contact Us</Link>
                       </li>
                       </ul>
+                      
+                      <li className="nav-item">
+                        <Link to={'/Workspace'} className="nav-link">Workspace</Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link to={'/Form'} className="nav-link">Form</Link>
+                      </li>
+
+                      <li className="nav-item">
+                        <Link to={'/Workspace'} className="nav-link">Workspace</Link>
+                      </li>
+
+                   
                 {/* <ul className="nav-item">
                 <li >
             <Tab icon={<PhoneIcon />} label="Contact Us" />
@@ -161,10 +187,11 @@ class App extends Component {
           </AppBar>
        
                
-                      {/* <li className="nav-item">
-                        <Link to={'/Forms'} className="nav-link">Forms</Link>
-                      </li> */}
-    
+               
+
+
+          
+   
 
           <Switch>
               <Route exact path='/SPCHomePage' component={ SPCHomePage } />
@@ -180,8 +207,29 @@ class App extends Component {
               <Route exact path='/Contract' component={Contract} />
               <Route exact path='/AboutUs' component={ AboutUs} />
               <Route exact path='/ContactUs' component={ContactUs} />
-              </Switch> 
-              <br/>
+             
+
+              <Route exact path='/Login' component={Login} />
+              <Route exact path='/Register' component={Register} />
+              
+
+              <Route exact path='/Workspace' component={Workspace} />
+              <Route exact path='/Form' component={Form} />
+              
+
+             <Route exact path='/Forms' component={Forms} />
+          </Switch>
+         
+<Toolbar>
+    <Link to={'/Login'} > <Button color="inherit">Login</Button> </Link> 
+    <Link to={'/Register'} > <Button color="inherit">Register</Button></Link> 
+        </Toolbar>
+
+             
+
+
+        
+
 
         </div>
       </NoSsr>

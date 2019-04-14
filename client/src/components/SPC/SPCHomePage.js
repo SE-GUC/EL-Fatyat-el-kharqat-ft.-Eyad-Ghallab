@@ -34,6 +34,7 @@ const styles = theme => ({
     width: '100%',
 
 
+
   },
 });
 
@@ -103,12 +104,9 @@ class SPCHomePage extends Component {
               <Route exact path='/ViewSPC' component={ SPC } /> 
               <Route exact path='/Workspace' component={ Workspace } /> 
               
-              </Switch>
             
-         
-              <br/>
-
-      
+              
+          </Switch>
         </div>
       </NoSsr>
       </Router> 

@@ -11,7 +11,7 @@ class SPC extends Component{
 this.state={
   spcs:[],
   paymenet:"",
-  form:[],
+  
   number: 0,
   msg:""
  
@@ -20,6 +20,8 @@ this.state={
 
   }
  
+  
+  
   componentDidMount(){
     fetch('/api/SPC/all')
     .then(res => res.json())
@@ -87,6 +89,9 @@ this.state={
             </li>
             )}
         </ul> <h1>You Should pay: {this.state.paymenet}</h1>
+        
+        
+       
        
        
         
