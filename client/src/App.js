@@ -15,7 +15,11 @@ import Comment from './components/Comment/Comment';
 import SSC from './components/SSC/SSC';
 import AboutUs from './components/AboutUs/AboutUs';
 import ContactUs from './components/ContactUs/ContactUs';
+<<<<<<< HEAD
 import Workspace from './components/Lawyer/Workspace';
+=======
+import Forms from './components/Reviewer/Forms';
+>>>>>>> a857d59c7487b8550f76548fe742817ca54eea6d
 class App extends Component {
 
   render() {
@@ -68,9 +72,15 @@ class App extends Component {
                 <li className="nav-item">
                         <Link to={'/ContactUs'} className="nav-link">ContactUs</Link>
                       </li>
+<<<<<<< HEAD
                       <li className="nav-item">
                         <Link to={'/Workspace'} className="nav-link">Workspace</Link>
                       </li>
+=======
+                      {/* <li className="nav-item">
+                        <Link to={'/Forms'} className="nav-link">Forms</Link>
+                      </li> */}
+>>>>>>> a857d59c7487b8550f76548fe742817ca54eea6d
               </ul>
             </div>
           </nav> <br/>
@@ -92,7 +102,11 @@ class App extends Component {
               <Route exact path='/Contract' component={Contract} />
               <Route exact path='/AboutUs' component={AboutUs} />
               <Route exact path='/ContactUs' component={ContactUs} />
+<<<<<<< HEAD
               <Route exact path='/Workspace' component={Workspace} />
+=======
+             <Route exact path='/Forms' component={Forms} />
+>>>>>>> a857d59c7487b8550f76548fe742817ca54eea6d
 
           </Switch>
 

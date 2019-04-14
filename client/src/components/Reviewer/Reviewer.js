@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 import './Reviewer.css';
+import {BrowserRouter as Router,Switch, Route, Link} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+import Forms from './Forms';
 
 class Reviewer extends Component {
     constructor(){
@@ -136,12 +140,16 @@ if(this.state.password !== ""){
 
   render() {
     return (
+      
       <div>
         
     <h2> My Reviewers
     </h2>
-
-
+    <Router>
+<Switch>
+  <Route exact path = './Forms'Component={Forms}/>
+</Switch>
+</Router>
  <form onSubmit={this.handleSubmit}>
                 <label>
                     Name
@@ -222,11 +230,18 @@ if(this.state.password !== ""){
      </ul> 
   
  }
-      </div>
+
+<Toolbar>
+  <Link to= {'./Forms'}><Button color ="inherit"> view  Forms</Button></Link>
+  </Toolbar>
+
+  </div>
+
+      
     );
   }
 }
 
+    
 
 export default Reviewer;
-
