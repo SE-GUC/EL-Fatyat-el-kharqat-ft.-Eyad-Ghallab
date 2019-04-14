@@ -1,0 +1,42 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    width: 1170px;
+    margin: auto;
+}
+header{
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("Egypt.jpg");
+    height: 100vh;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+.nav-item{
+  float: right;
+  list-style: none;
+  margin-top: 30px;
+}
+.nav-item li {
+  display: inline-block;
+}
+.nav-item li a{
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+
+} 
+.nav-item li a:hover{
+  background: #fff;
+color: #333;
+} 
+.logo img{
+  width: 100px;
+  float: left;
+  height: auto;
+}
