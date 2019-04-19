@@ -194,7 +194,7 @@ handleInvestorAddress(e){
       Investor_Address:this.state.Investor_Address,
     };
 
-    return fetch('/api/SPC/all', {
+    return fetch('/api/SPC/', {
         method: 'POST',
         body: JSON.stringify(databody),
         headers: {

@@ -125,6 +125,7 @@ const SSCSchema = new Schema({
    },
    Status:{
     type:String,
+    default: "binding"
    
 },
    is_the_external_entities_notified:{
