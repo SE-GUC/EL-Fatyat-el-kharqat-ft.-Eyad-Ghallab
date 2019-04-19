@@ -11,7 +11,7 @@ class SPC extends Component{
 this.state={
   spcs:[],
   paymenet:"",
-  
+  statusShow: false,
   number: 0,
   msg:""
  
@@ -64,14 +64,41 @@ this.state={
   
 }
 
+handleShowStatus = (index) => {
+  this.setState(prevState => {
+    const newState = {
+      ...prevState,
+    }
+    newState.spcs[index] = {
+      ...prevState.spcs[index],
+      showStatus: true,
+    };
+    return newState;
+    }
+    
+  )};
+
+
 
 
   render(){
+    const {spcs} = this.state;
     return (
       <div>
         <h2>All SPC Forms</h2>
         <ul>
-            {this.state.spcs.map(spc => <li key = {spc._id}> {spc.Facility_name}</li>)}
+            {this.state.spcs.map((spc , index) => 
+            <div>
+              <li key = {spc._id}> {spc.Facility_name}</li>
+              <li key = {spc.key}>
+                
+                <button onClick={() => this.handleShowStatus(index)}>SHOW status</button>
+              </li>
+              <li key = {spc.key}>
+              {spc.showStatus && spc.Status}
+              </li>
+            </div>
+              )}
           
         </ul>
         <h2>Pay</h2>
