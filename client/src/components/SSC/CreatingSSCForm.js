@@ -50,7 +50,7 @@ class CreatingSSCForm extends Component {
         this.handleBOD_BirthDate= this.handleBOD_BirthDate.bind(this);
         this.handleBOD_Address= this.handleBOD_Address.bind(this);
         this.handlePositionInBOD= this.handlePositionInBOD.bind(this);
-        this.handleLawyer_review=this.handleLawyer_review.bind(this);
+        //this.handleLawyer_review=this.handleLawyer_review.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     
@@ -81,7 +81,7 @@ class CreatingSSCForm extends Component {
             BOD_BirthDate: "",
             BOD_Address:"", 
             PositionInBOD: "",
-            Lawyer_review:""
+            //Lawyer_review:""
 
         }
     
@@ -181,10 +181,10 @@ class CreatingSSCForm extends Component {
         this.setState({PositionInBOD: e.target.value })
 
     }
-    handleLawyer_review(e){
-        this.setState({Lawyer_review: e.target.value })
+    // handleLawyer_review(e){
+    //     this.setState({Lawyer_review: e.target.value })
 
-    }
+    // }
 
     handleSubmit(e){
         e.preventDefault();
@@ -216,7 +216,7 @@ class CreatingSSCForm extends Component {
                     "BOD_BirthDate": this.state.BirthDate,
                     "BOD_Address":this.state.BOD_Address, 
                     "PositionInBOD": this.state.PositionInBOD,
-                    "Lawyer_review": this.state.Lawyer_review
+                    //"Lawyer_review": this.state.Lawyer_review
           
         };
            return fetch('/api/SSC/', {
@@ -1167,17 +1167,7 @@ onChange={this.handleBOD_Nationality}
                  value={this.state.PositionInBOD}
                  onChange={this.handlePositionInBOD}
                  />
-           </div>
-           <div className="form-group">
-               <label>Lawyer_review:  </label>
-               <input 
-                 type="text" 
-                 className="form-control" 
-                 value={this.state.Lawyer_review}
-                 onChange={this.handleLawyer_review}
-                 />
-           </div>
-                     
+           </div>   
                 <div className="form-group">
                     <input type="submit" 
                       value="Submit" 

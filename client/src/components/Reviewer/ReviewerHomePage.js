@@ -5,7 +5,8 @@ import Reviewer from './Reviewer.js';
 import EditReviewer from './EditReviewer';
 import DeleteReviewer from './DeleteReviewer';
 import CreatingReviewer from './CreatingReviewer';
-
+import Forms from './Forms';
+import updating_Forms from './updating_Forms';
 
 export default class ReviewerHomePage extends Component {
     render() {
@@ -31,6 +32,12 @@ export default class ReviewerHomePage extends Component {
                   <li className="nav-item">
                     <Link to={'/read'} className="nav-link">All Reviewers</Link>
                   </li>
+                  <li className="nav-item">
+                    <Link to={'/view'} className="nav-link">Forms</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={'/update'} className="nav-link">updating_Forms</Link>
+                  </li>
                 </ul>
               </div>
             </nav> <br/>
@@ -40,6 +47,8 @@ export default class ReviewerHomePage extends Component {
                 <Route exact path='/edit' component={ EditReviewer } />
                 <Route exact path='/delete' component={ DeleteReviewer} /> 
                 <Route exact path='/read' component={ Reviewer } /> 
+                <Route exact path='/view' component={ Forms } /> 
+                <Route exact path='/update' component={ updating_Forms } /> 
             </Switch>
           </div>
         </Router>

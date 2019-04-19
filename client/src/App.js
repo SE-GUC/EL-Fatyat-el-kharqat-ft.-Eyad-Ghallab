@@ -45,6 +45,7 @@ import Form from './components/Form/Form';
 import Workspace from './components/Lawyer/Workspace';
 
 import Forms from './components/Reviewer/Forms';
+import updating_Forms from './components/Reviewer/updating_Forms'
 
 
 const styles = theme => ({
@@ -225,6 +226,7 @@ class App extends Component {
               
 
              <Route exact path='/Forms' component={Forms} />
+             <Route exact path='/updating_Forms' component={updating_Forms} />
           </Switch>
          
 <Toolbar>
