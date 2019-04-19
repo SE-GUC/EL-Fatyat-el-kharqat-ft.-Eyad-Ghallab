@@ -1,106 +1,97 @@
-import React, {Component} from 'react';
-import './SPC.css'
+import React, { Component } from "react";
+import "./SPC.css";
 
-class SPC extends Component{
- 
- 
- 
-  constructor(){
+class SPC extends Component {
+  constructor() {
     super();
-    this.sms = this.sms.bind(this)
-this.state={
-  spcs:[],
-  paymenet:"",
-  
-  number: 0,
-  msg:""
- 
+    this.sms = this.sms.bind(this);
+    this.state = {
+      spcs: [],
+      paymenet: "",
 
-}
+      number: 0,
+      msg: ""
+    };
+  }
 
+  componentDidMount() {
+    fetch("/api/SPC/all")
+      .then(res => res.json())
+      .then(SPC =>
+        this.setState({ spcs: SPC.data }, () =>
+          console.log("SPC fetched", this.state.spcs)
+        )
+      );
   }
- 
-  
-  
-  componentDidMount(){
-    fetch('/api/SPC/all')
-    .then(res => res.json())
-    .then(SPC => this.setState({spcs: SPC.data}, () => console.log('SPC fetched',this.state.spcs)));
-  }
-  
-  paymenet(id){
-     
-    if(this.state.payment !== ""){
-         
-        this.setState({payment: "" })}
-    fetch('/api/SPC/'+ id+ '/find')
-    .then(res => res.json())
-    .then(pay => this.setState({payment: pay.data},()=> console.log('you should pay',this.state.payment)));
+
+  paymenet(id) {
+    if (this.state.payment !== "") {
+      this.setState({ payment: "" });
+    }
+    fetch("/api/SPC/" + id + "/find")
+      .then(res => res.json())
+      .then(pay =>
+        this.setState({ payment: pay.data }, () =>
+          console.log("you should pay", this.state.payment)
+        )
+      );
     // this.state.paymenet
-// printString(this.state.paymenet)
- }
- 
- 
- sms(num,mssg) {
-  //e.preventDefault();
-  let databody  = {
-    "number": num,
-   "msg":mssg
-    
-  };
+    // printString(this.state.paymenet)
+  }
 
-  return fetch('/api/SPC/msg', {
-      method: 'POST',
+  sms(num, mssg) {
+    //e.preventDefault();
+    let databody = {
+      number: num,
+      msg: mssg
+    };
+
+    return fetch("/api/SPC/msg", {
+      method: "POST",
       body: JSON.stringify(databody),
       headers: {
-          'Content-Type': 'application/json'
-      },
-  })
-  .then(res => res.json())
-  .then(data => console.log(data)); 
-  
-  
-  
-  
-}
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
 
-
-
-  render(){
+  render() {
     return (
       <div>
         <h2>All SPC Forms</h2>
         <ul>
-            {this.state.spcs.map(spc => <li key = {spc._id}> {spc.Facility_name}</li>)}
-          
+          {this.state.spcs.map(spc => (
+            <li key={spc._id}> {spc.Facility_name}</li>
+          ))}
         </ul>
         <h2>Pay</h2>
         <ul>
-          {this.state.spcs.map(spc =>
-            <li key = {spc._id}
-            > {spc.Phone_Number} 
-             <button onClick= {() => {this.paymenet(spc._id)}}>
-            pay   </button>  
-            <button onClick= {() => {this.sms(spc.Phone_Number,this.state.paymenet)}}>
-
-             pay the fees 
-            </button>  
-            
+          {this.state.spcs.map(spc => (
+            <li key={spc._id}>
+              {" "}
+              {spc.Phone_Number}
+              <button
+                onClick={() => {
+                  this.paymenet(spc._id);
+                }}
+              >
+                pay{" "}
+              </button>
+              <button
+                onClick={() => {
+                  this.sms(spc.Phone_Number, this.state.paymenet);
+                }}
+              >
+                pay the fees
+              </button>
             </li>
-            )}
-        </ul> <h1>You Should pay: {this.state.paymenet}</h1>
-        
-        
-       
-       
-       
-        
-          
-       
-   
-  
+          ))}
+        </ul>{" "}
+        <h1>You Should pay: {this.state.paymenet}</h1>
       </div>
-    )
+    );
   }
 }
 export default SPC;
