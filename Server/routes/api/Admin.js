@@ -15,11 +15,16 @@ router.get("/", async (req, res) => {
 });
 // get admin by id
 
-router.get("/:id", function(req, res, next) {
-  Admin.findById(req.params.id, function(err, post) {
-    if (err) return next(err);
-    res.json({ msg: "Admin was recieved" }, post);
-  });
+// router.get("/:id", function(req, res, next) {
+//   Admin.findById(req.params.id, function(err, post) {
+//     if (err) return next(err);
+//     res.json({ msg: "Admin was recieved" }, post);
+//   });
+// });
+
+router.get("/:id", async (req, res) => {
+  const admin = await Admin.findById(req.params.id);
+  res.json({ data: admin });
 });
 
 // Create a Admin
