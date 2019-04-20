@@ -68,6 +68,8 @@ class Login extends Component {
     } else if (this.state.type === "reviewer") {
       this.setState({ isreviewer: true });
     }
+
+    localStorage.setItem("userid", this.state.id);
   }
 
   isAuthenticated() {
