@@ -9,7 +9,6 @@ import TextField from '@material-ui/core/TextField';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import './SPC.css'
 const styles = theme => ({
@@ -36,6 +35,8 @@ class CreatingSPCForm extends Component {
  constructor() {
     super();
     this.handleFacilityName = this.handleFacilityName.bind(this);
+    this.handleFacilityNameInEnglish = this.handleFacilityNameInEnglish.bind(this);
+
     this.handleGovernorate = this.handleGovernorate.bind(this);
     this.handleCity = this.handleCity.bind(this);
     this.handleFacilityAddress = this.handleFacilityAddress.bind(this);
@@ -53,12 +54,12 @@ class CreatingSPCForm extends Component {
     this.handleInvestorFax = this.handleInvestorFax.bind(this);
     this.handleemail = this.handleemail.bind(this);
     this.handleInvestorAddress = this.handleInvestorAddress.bind(this);
-    //this.handleLawyer_review=this.handleLawyer_review.bind(this);
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     
     this.state = { 
       Facility_name: '',
+      Facility_nameinenglish:'',
      Governorate: '',
       City:'',
       Facility_Address: '',
@@ -76,7 +77,6 @@ class CreatingSPCForm extends Component {
       Investor_Fax:'',
       email:'',
       Investor_Address:'',
-      //Lawyer_review:""
       open: false,
    }
  }
@@ -86,6 +86,11 @@ class CreatingSPCForm extends Component {
       handleFacilityName(e) {
     this.setState({
       Facility_name: e.target.value
+    });
+  }
+  handleFacilityNameInEnglish(e) {
+    this.setState({
+      Facility_nameinenglish: e.target.value
     });
   }
   handleGovernorate(e) {
@@ -189,6 +194,8 @@ handleClose = (event, reason) => {
     e.preventDefault();
     let databody  = {
       Facility_name: this.state.Facility_name,
+      Facility_nameinenglish: this.state.Facility_nameinenglish,
+
       Governorate: this.state.Governorate,
       City: this.state.City,
       Facility_Address: this.state.Facility_Address,
@@ -240,6 +247,17 @@ handleClose = (event, reason) => {
           label="Facility Name"
           value={this.state.Facility_name}
           onChange={this.handleFacilityName}
+          
+        />
+        </div>
+        <br/> 
+        <div className="form-group">
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Facility Name In English"
+          value={this.state.Facility_nameinenglish}
+          onChange={this.handleFacilityNameInEnglish}
           
         />
         </div>

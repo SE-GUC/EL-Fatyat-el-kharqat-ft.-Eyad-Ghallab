@@ -86,7 +86,7 @@ HandleButtonClick(){
 submitForm(event){
 event.preventDefault();
 superagent
-.post('/api/investors/register')
+.post('/api/investor/register')
 .send({email: this.state.email, password : this.state.password,username:this.state.username, name:this.state.name,nationality:this.state.nationality, gender:this.state.gender,birthdate:this.state.birthdate,city:this.state.city,country:this.state.country ,jobtitle:this.state.jobtitle ,mobilenumber:this.state.mobilenumber})
 .end((err,res) => {
 if(err) {this.setState({errorMessage : "Registeration failed"});return;}
