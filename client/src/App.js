@@ -8,7 +8,7 @@ import ReviewerHomePage from './components/Reviewer/ReviewerHomePage';
 import LawyerHomePage from './components/Lawyer/LawyerHomePage';
 import ContractHomePage from './components/Contract/ContractHomePage';
 import PaymentHomePage from './components/Payment/PaymentHomePage';
-
+import './App.css'
 import SSCHomePage from './components/SSC/SSCHomePage';
 
 //import ReviewerHomePage from './components/Reviewer/ReviewerHomePage';

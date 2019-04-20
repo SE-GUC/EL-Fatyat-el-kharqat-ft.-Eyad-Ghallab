@@ -5,7 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
-
+import './SSC.css'
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -235,7 +235,7 @@ class CreatingSSCForm extends Component {
   
   
       return (
-        <div style={{ marginTop: 10 }}>
+        <div className="form-group" style={{ marginTop: 10 }}>
             <h3 align="center">New SSC Company</h3>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">

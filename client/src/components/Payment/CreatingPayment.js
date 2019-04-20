@@ -159,7 +159,7 @@ const styles = theme => ({
                     <input 
                       type="text" 
                       className="form-control" 
-                      value={this.state. Card_no}
+                      value={this.state.Card_no}
                       onChange={this.handleCard_no}
                       />
                       </div>

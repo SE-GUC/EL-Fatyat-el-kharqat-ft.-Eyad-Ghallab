@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './SSC.css'
 class EditSSC extends Component {
     constructor(){
         super();
@@ -179,37 +179,7 @@ class EditSSC extends Component {
 
     handleSubmit(e){
         e.preventDefault();
-        let databody = {
-          Company_name:this.state.Company_name,
-          Governorate:this.state.Governorate, 
-          City: this.state.City,
-          Company_Address:this.state.Company_Address,
-          Company_Phone_Number:this.state.Company_Phone_Number,
-          Fax:this.state.Fax ,
-          Capital_Currency:this.state.Capital_Currency, 
-          capital:this.state.capital, 
-          investorname:this.state.investorname,
-          Investor_type:this.state.Investor_type, 
-          Gender:this.state.Gender ,
-          Nationality:this.state.Nationality, 
-          TypeOf_IdentityProof:this.state.TypeOf_IdentityProof,
-          investor_nationalid:this.state.investor_nationalid ,
-          BirthDate:this.state.BirthDate,
-          Address:this.state.Address, 
-          Phone_Number: this.state.Phone_Number,
-          email:this.state.email, 
-          BOD_Name:this.state.BOD_Name, 
-          BOD_Investor_Type:this.state.BOD_Investor_Type ,
-          BOD_Gender: this.state.BOD_Gender,
-          BOD_Nationality:this.state.BOD_Nationality, 
-          BOD_TypeOfIdentityProof:this.state.BOD_TypeOfIdentityProof,
-          BOD_NationalID:this.state.BOD_NationalID,
-          BOD_BirthDate: this.state.BirthDate,
-          BOD_Address:this.state.BOD_Address, 
-          PositionInBOD: this.state.PositionInBOD,
-          Lawyer_review: this.state.Lawyer_review
-      
-        }}
+        }
         update(id){
             console.log(this.state.Company_name)
              let databody 
@@ -272,7 +242,7 @@ class EditSSC extends Component {
                                                                                                
     console.log(this.state.Company_name)
    
-       return fetch('http://localhost:5000/api/SSC/'+id, {
+       return fetch('/api/SSC/'+id, {
          method: 'PUT',
          body: JSON.stringify(databody),
          headers: {
@@ -290,7 +260,7 @@ class EditSSC extends Component {
 render() {
 
  return (
-   <div style={{ marginTop: 10 }}>
+   <div className="form-group" style={{ marginTop: 10 }}>
        <h3 align="center">Update SSC Company</h3>
        <form onSubmit={this.handleSubmit}>
            <div className="form-group">

@@ -243,9 +243,10 @@ class EditSPC extends Component {
       .then(data => console.log(data));
   }
 
-  render() {
-    return (
-      <div style={{ marginTop: 10 }}>
+render() {
+
+  return (
+    <div className="form-group" style={{ marginTop: 10 }}>
         <h3 align="center">New SPC Company</h3>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">

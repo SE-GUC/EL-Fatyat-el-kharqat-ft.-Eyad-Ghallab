@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Lawyer from './Lawyer';
 
 
 class EditLawyer extends Component {
@@ -80,20 +79,7 @@ class EditLawyer extends Component {
       }
       handleSubmit(e){ 
         e.preventDefault();
-    
-        
-        let databody = {
-     "username":this.state.username,	
-    "password":this.state.password,	
-    "fullname":this.state.fullname,	
-    "birthdate":this.state.birthdate,	
-    "email":this.state.email,	
-    "phonenumber":this.state.phonenumber,	
-    "legaltype":this.state.legaltype,	
-    "gender":this.state.gender,	
-    "noOfPreviousCases":this.state.noOfPreviousCases,	
-        
-        }}
+  }
 
         update(id){
             console.log(this.state.fullname)
@@ -140,7 +126,7 @@ class EditLawyer extends Component {
                       <input 
                         type="text" 
                         className="form-control" 
-                        value={this.state. username}
+                        value={this.state.username}
                         onChange={this.handleusername}
                         />
                         </div>

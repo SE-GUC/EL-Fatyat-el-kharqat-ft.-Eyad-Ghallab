@@ -59,13 +59,13 @@ class Login extends Component {
 
     console.log(this.state.type);
     console.log(this.state.id);
-    if (this.state.type == "investor") {
+    if (this.state.type === "investor") {
       this.setState({ isinvestor: true });
-    } else if (this.state.type == "admin") {
+    } else if (this.state.type === "admin") {
       this.setState({ isadmin: true });
-    } else if (this.state.type == "lawyer") {
+    } else if (this.state.type === "lawyer") {
       this.setState({ islawyer: true });
-    } else if (this.state.type == "reviewer") {
+    } else if (this.state.type === "reviewer") {
       this.setState({ isreviewer: true });
     }
   }
