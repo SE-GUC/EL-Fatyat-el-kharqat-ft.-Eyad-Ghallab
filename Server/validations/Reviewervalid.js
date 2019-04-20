@@ -8,7 +8,7 @@ module.exports = {
             Username: Joi.string().alphanum().min(4).max(15).required(),
             Password: Joi.string().alphanum().min(4).required(),
             YearsOfExperience: Joi.number().required(),
-            Gender: Joi.string().alphanum().min(4).max(5).required()
+            Gender: Joi.string().alphanum().min(4).max(8).required()
 
         }
 

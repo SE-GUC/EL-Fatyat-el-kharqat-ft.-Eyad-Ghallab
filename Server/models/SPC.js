@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-// Create the schema
+
 const SpcFormSchema = new Schema({
     
     Facility_name: {
@@ -84,6 +84,7 @@ const SpcFormSchema = new Schema({
     },
     Status: {
         type: String, 
+        default: "binding"
     
     },
     is_the_external_entities_notified: {

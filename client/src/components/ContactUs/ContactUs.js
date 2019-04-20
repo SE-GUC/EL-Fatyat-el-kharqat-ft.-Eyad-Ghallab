@@ -1,6 +1,17 @@
 import React, {  Component} from "react";
 import './ContactUs.css';
 
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
 
 
 class ContactUs extends Component {
@@ -21,19 +32,30 @@ class ContactUs extends Component {
        16035</label>
        <br/>
        <form action="https://www.Facebook.com/">
-               <button type="submit">Facebook<img src="" /></button>
-            </form>
+       <Button variant="contained" href="#contained-buttons" >
+       Facebook
+      </Button>
+            </form> 
+
             <br/>
             <form action="https://www.Instagram.com/">
-               <button type="submit">Instagram<img src="" /></button>
+            <Button variant="contained" href="#contained-buttons" >
+        Instagram
+      </Button>
             </form>
+
             <br/>
             <form action="https://www.Twitter.com/">
-               <button type="submit">Twitter<img src="" /></button>
+            <Button variant="contained" href="#contained-buttons" >
+        Twitter
+      </Button>
             </form>
+
             <br/>
             <form action="https://www.GAFI.com/">
-               <button type="submit">GAFI<img src="" /></button>
+            <Button variant="contained" href="#contained-buttons" >
+        GAFI
+      </Button>
             </form>
       
                 
@@ -49,4 +71,4 @@ class ContactUs extends Component {
 
 
 
-export default ContactUs;
+export default  withStyles(styles)(ContactUs);

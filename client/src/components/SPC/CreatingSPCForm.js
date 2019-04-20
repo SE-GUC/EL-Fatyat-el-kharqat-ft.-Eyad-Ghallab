@@ -5,6 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   root: {
@@ -14,6 +15,9 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120,
+  },
+  textField: {
+    flexBasis: 200,
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
@@ -52,299 +56,12 @@ class CreatingSPCForm extends Component {
       Facility_Address: '',
       Facility_Phone_Number: '',
       Fax: '',
-      Capital_Currency: ["Abkhazian apsar",
-      "Russian ruble",
-      "Afghan afghani",
-      "Albanian lek",
-      "Alderney pound",
-      "British pound",
-      "Guernsey pound",
-      "Algerian dinar",
-      "Euro",
-      "Angolan kwanza",
-      "East Caribbean dollar",
-      "Argentine peso",
-      "Armenian dram",
-      "Aruban florin",
-      "Ascension pound",
-      "Saint Helena pound",
-      "Australian dollar",
-      "Azerbaijani manat",
-      "Bahamian dollar",
-      "Bahraini dinar",
-      "Bangladeshi taka",
-      "Barbadian dollar",
-      "Belarusian ruble",
-      "Belize dollar",
-      "West African CFA franc",
-      "Bermudian dollar",
-      "Bhutanese ngultrum",
-      "Indian rupee",
-      "Bolivian boliviano",
-      "Bosnia and Herzegovina convertible mark",
-      "Botswana pula",
-      "Brazilian real",
-      "British Virgin Islands dollar",
-      "Brunei dollar",
-      "Singapore dollar",
-      "Bulgarian lev",
-      "Burundian franc",
-      "Cambodian riel",
-      "Central African CFA franc",
-      "Canadian dollar",
-      "Cape Verdean escudo",
-      "Cayman Islands dollar",
-      "Chilean peso",
-      "Chinese yuan",
-      "Colombian peso",
-      "Comorian franc",
-      "Congolese franc",
-      "New Zealand dollar",
-      "Cook Islands dollar",
-      "Costa Rican colón",
-      "Croatian kuna",
-      "Cuban convertible peso",
-      "Cuban peso",
-      "Netherlands Antillean guilder",
-      "Czech koruna",
-      "Danish krone",
-      "Djiboutian franc",
-      "Dominican peso",
-      "Egyptian pound",
-      "Eritrean nakfa",
-      "Ethiopian birr",
-      "Falkland Islands pound",
-      "Faroese króna",
-      "Fijian dollar",
-      "CFP franc",
-      "Gambian dalasi",
-      "Georgian lari",
-      "Ghana cedi",
-      "Gibraltar pound",
-      "Guatemalan quetzal",
-      "Guinean franc",
-      "Guyanese dollar",
-      "Haitian gourde",
-      "Honduran lempira",
-      "Hong Kong dollar",
-      "Hungarian forint",
-      "Icelandic króna",
-      "Indonesian rupiah",
-      "Iranian rial",
-      "Iraqi dinar",
-      "Manx pound",
-      "Israeli new shekel",
-      "Jamaican dollar",
-      "Japanese yen",
-      "Jersey pound",
-      "Jordanian dinar",
-      "Kazakhstani tenge",
-      "Kenyan shilling",
-      "Kiribati dollar",
-      "North Korean won",
-      "South Korean won",
-      "Kuwaiti dinar",
-      "Kyrgyzstani som",
-      "Lao kip",
-      "Lebanese pound",
-      "Lesotho loti",
-      "South African rand",
-      "Liberian dollar",
-      "Libyan dinar",
-      "Swiss franc",
-      "Macanese pataca",
-      "Macedonian denar",
-      "Malagasy ariary",
-      "Malawian kwacha",
-      "Malaysian ringgit",
-      "Maldivian rufiyaa",
-      "Mauritanian ouguiya",
-      "Mauritian rupee",
-      "Mexican peso",
-      "Micronesian dollar",
-      "Moldovan leu",
-      "Mongolian tögrög",
-      "Moroccan dirham",
-      "Mozambican metical",
-      "Burmese kyat",
-      "Nagorno-Karabakh dram",
-      "Namibian dollar",
-      "Nauruan dollar",
-      "Nepalese rupee",
-      "Nicaraguan córdoba",
-      "Nigerian naira",
-      "Niue dollar",
-      "Turkish lira",
-      "Norwegian krone",
-      "Omani rial",
-      "Pakistani rupee",
-      "Palauan dollar",
-      "Panamanian balboa",
-      "Papua New Guinean kina",
-      "Paraguayan guaraní",
-      "Peruvian nuevo sol",
-      "Philippine peso",
-      "Pitcairn Islands dollar",
-      "Polish złoty",
-      "Qatari riyal",
-      "Romanian leu",
-      "Rwandan franc",
-      "Sahrawi peseta",
-      "Samoan tālā",
-      "São Tomé and Príncipe dobra",
-      "Saudi riyal",
-      "Serbian dinar",
-      "Seychellois rupee",
-      "Sierra Leonean leone",
-      "Solomon Islands dollar",
-      "Somali shilling",
-      "Somaliland shilling",
-      "South Georgia and the South Sandwich Islands pound",
-      "South Sudanese pound",
-      "Sri Lankan rupee",
-      "Sudanese pound",
-      "Surinamese dollar",
-      "Swazi lilangeni",
-      "Swedish krona",
-      "Syrian pound",
-      "New Taiwan dollar",
-      "Tajikistani somoni",
-      "Tanzanian shilling",
-      "Thai baht",
-      "Tongan paʻanga",
-      "Transnistrian ruble",
-      "Trinidad and Tobago dollar",
-      "Tristan da Cunha pound",
-      "Tunisian dinar",
-      "Turkmenistan manat",
-      "Tuvaluan dollar",
-      "Ugandan shilling",
-      "Ukrainian hryvnia",
-      "United Arab Emirates dirham",
-      "Uruguayan peso",
-      "Uzbekistani som",
-      "Vanuatu vatu",
-      "Venezuelan bolívar",
-      "Vietnamese đồng",
-      "Yemeni rial",
-      "Zambian kwacha",
-      "United States dollar",
-      "Zimbabwean Bond"],
+      Capital_Currency: '',
       capital: '',
       investorname:'',
       Gender: '',
-      Nationality: [ "Afghan",
-      "Albanian",
-      "Algerian",
-      "Argentinian",
-      "Australian",
-      "Austrian",
-      "Bangladeshi",
-      "Belgian",
-      "Bolivian",
-      "Batswana",
-      "Brazilian",
-      "Bulgarian",
-      "Cambodian",
-      "Cameroonian",
-      "Canadian",
-      "Chilean",
-      "Chinese",
-      "Colombian",
-      "Costa Rican",
-      "Croatian",
-      "Cuban",
-      "Czech",
-      "Danish",
-      "Dominican",
-      "Ecuadorian",
-      "Egyptian",
-      "Salvadorian",
-      "English",
-      "Estonian",
-      "Ethiopian",
-      "Fijian",
-      "Finnish",
-      "French",
-      "German",
-      "Ghanaian",
-      "Greek",
-      "Guatemalan",
-      "Haitian",
-      "Honduran",
-      "Hungarian",
-      "Icelandic",
-      "Indian",
-      "Indonesian",
-      "Iranian",
-      "Iraqi",
-      "Irish",
-      "Israeli",
-      "Italian",
-      "Jamaican",
-      "Japanese",
-      "Jordanian",
-      "Kenyan",
-      "Kuwaiti",
-      "Lao",
-      "Latvian",
-      "Lebanese",
-      "Libyan",
-      "Lithuanian",
-      "Malaysian",
-      "Malian",
-      "Maltese",
-      "Mexican",
-      "Mongolian",
-      "Moroccan",
-      "Mozambican",
-      "Namibian",
-      "Nepalese",
-      "Dutch",
-      "New Zealand",
-      "Nicaraguan",
-      "Nigerian",
-      "Norwegian",
-      "Pakistani",
-      "Panamanian",
-      "Paraguayan",
-      "Peruvian",
-      "Philippine",
-      "Polish",
-      "Portuguese",
-      "Romanian",
-      "Russian",
-      "Saudi",
-      "Scottish",
-      "Senegalese",
-      "Serbian",
-      "Singaporean",
-      "Slovak",
-      "South African",
-      "Korean",
-      "Spanish",
-      "Sri Lankan",
-      "Sudanese",
-      "Swedish",
-      "Swiss",
-      "Syrian",
-      "Taiwanese",
-      "Tajikistani",
-      "Thai",
-      "Tongan",
-      "Tunisian",
-      "Turkish",
-      "Ukrainian",
-      "Emirati",
-      "British",
-      "American",
-      "Uruguayan",
-      "Venezuelan",
-      "Vietnamese",
-      "Welsh",
-      "Zambian",
-      "Zimbabwean"],
-      TypeOf_IdentityProof: ["Passport","National ID"],
+      Nationality: '',
+      TypeOf_IdentityProof:'',
       investor_nationalid: '',
       BirthDate: '',
       Phone_Number: '',
@@ -475,7 +192,6 @@ handleInvestorAddress(e){
       Investor_Fax:this.state.Investor_Fax,
       email:this.state.email,
       Investor_Address:this.state.Investor_Address,
-      //Lawyer_review:this.state.Lawyer_review
     };
 
     return fetch('/api/SPC/', {
@@ -496,31 +212,23 @@ handleInvestorAddress(e){
   render() {
    
   
-    let capitalcurrencyOptions=this.state.Capital_Currency.map(Capital_Currency => {
-        return <option key = {Capital_Currency} value="Capital_Currency">{Capital_Currency}</option>
-    })
-    let nationalityOptions=this.state.Nationality.map(Nationality => {
-        return <option key = {Nationality} value = "Nationality">{Nationality}</option>
-    });
-  
-    let typeOptions=this.state.TypeOf_IdentityProof.map(TypeOf_IdentityProof => {
-      return <option key = {TypeOf_IdentityProof} value = "TypeOf_IdentityProof">{TypeOf_IdentityProof}</option>
-  });
-  
     
     return (
         <div style={{ marginTop: 10 }}>
             <h3 align="center">New SPC Company</h3>
             <form onSubmit={this.handleSubmit}>
+
                 <div className="form-group">
-                    <label>Facility Name:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.Facility_name}
-                      onChange={this.handleFacilityName}
-                      />
-                      </div>
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Facility Name"
+          value={this.state.Facility_name}
+          onChange={this.handleFacilityName}
+          
+        />
+        </div>
+        <br/>
                       <div className="form-group">
 
                       <FormControl >
@@ -557,12 +265,12 @@ handleInvestorAddress(e){
           </Select>
         </FormControl>
         </div>
-        
+        <br/>
 
             <div className="form-group">
 
                 <FormControl >
-          <InputLabel htmlFor="City">City</InputLabel> <br/>
+          <InputLabel htmlFor="City">City</InputLabel> <br/> 
           <Select
             value={this.state.City}
             onChange={this.handleCity}
@@ -794,58 +502,256 @@ handleInvestorAddress(e){
           </Select>
         </FormControl> 
                </div>
+               <br/>
+               <div className="form-group">
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Facility Address"
+          value={this.state.Facility_Address}
+          onChange={this.handleFacilityAddress}
+          
+        />
+        </div>
+        <br/>
                 <div className="form-group">
-                    <label>Facility Address:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.Facility_Address}
-                      onChange={this.handleFacilityAddress}
-                      />
-                </div>
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Facility Phone Number"
+          value={this.state.Facility_Phone_Number}
+          onChange={this.handleFacilityPhoneNumber}
+          
+        />
+        </div>
+        <br/> 
                 <div className="form-group">
-                    <label>Facility Phone Number:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.Facility_Phone_Number}
-                      onChange={this.handleFacilityPhoneNumber}
-                      />
-                </div>
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Fax"
+          value={this.state.Fax}
+          onChange={this.handleFax}
+          
+        />
+        </div>
+        <br/>
+        <div className="form-group">
+                <FormControl >
+          <InputLabel htmlFor="Capital_Currency">Capital Currency</InputLabel> <br/>
+          <Select
+            value={this.state.Capital_Currency}
+            onChange={this.handleCapitalCurrency}
+           
+          >
+         
+            <MenuItem value={"Abkhazian apsar"}>Abkhazian apsar</MenuItem>
+      <MenuItem value={"Russian ruble"}>Russian ruble</MenuItem>
+      <MenuItem value={"Afghan afghani"}>Afghan afghani</MenuItem>
+      <MenuItem value={"Albanian lek"}>Albanian lek</MenuItem>
+      <MenuItem value={"Alderney pound"}>Alderney pound</MenuItem>
+      <MenuItem value={"British pound"}>British pound</MenuItem>
+      <MenuItem value={"Guernsey pound"}>Guernsey pound</MenuItem>
+      <MenuItem value={"Algerian dinar"}>Algerian dinar</MenuItem>
+      <MenuItem value={"Euro"}>Euro</MenuItem>
+      <MenuItem value={"Angolan kwanza"}>Angolan kwanza</MenuItem>
+      <MenuItem value={"East Caribbean dollar"}>East Caribbean dollar</MenuItem>
+      <MenuItem value={"Argentine peso"}>Argentine peso</MenuItem>
+      <MenuItem value={"Armenian dram"}>Armenian dram</MenuItem>
+      <MenuItem value={"Aruban florin"}>Aruban florin</MenuItem>
+      <MenuItem value={"Ascension pound"}>Ascension pound</MenuItem>
+      <MenuItem value={"Saint Helena pound"}>Saint Helena pound</MenuItem>
+      <MenuItem value={"Australian dollar"}>Australian dollar</MenuItem>
+      <MenuItem value={"Azerbaijani manat"}>Azerbaijani manat</MenuItem>
+      <MenuItem value={"Bahamian dollar"}>Bahamian dollar</MenuItem>
+      <MenuItem value={"Bahraini dinar"}>Bahraini dinar</MenuItem>
+      <MenuItem value={"Bangladeshi taka"}>Bangladeshi taka</MenuItem>
+      <MenuItem value={"Barbadian dollar"}>Barbadian dollar</MenuItem>
+      <MenuItem value={"Belarusian ruble"}>Belarusian ruble</MenuItem>
+      <MenuItem value={"Belize dollar"}>Belize dollar</MenuItem>
+      <MenuItem value={"West African CFA franc"}>West African CFA franc</MenuItem>
+      <MenuItem value={"Bermudian dollar"}>Bermudian dollar</MenuItem>
+      <MenuItem value={"Bhutanese ngultrum"}>Bhutanese ngultrum</MenuItem>
+      <MenuItem value={"Indian rupee"}>Indian rupee</MenuItem>
+      <MenuItem value={"Bolivian boliviano"}>Bolivian boliviano</MenuItem>
+      <MenuItem value={"Bosnia and Herzegovina convertible mark"}>Bosnia and Herzegovina convertible mark</MenuItem>
+      <MenuItem value={"Botswana pula"}>Botswana pula</MenuItem>
+      <MenuItem value={"Brazilian real"}>Brazilian real</MenuItem>
+      <MenuItem value={"British Virgin Islands dollar"}>British Virgin Islands dollar</MenuItem>
+      <MenuItem value={"Brunei dollar"}>Brunei dollar</MenuItem>
+      <MenuItem value={"Singapore dollar"}>Singapore dollar</MenuItem>
+      <MenuItem value={"Bulgarian lev"}>Bulgarian lev</MenuItem>
+      <MenuItem value={"Burundian franc"}>Burundian franc</MenuItem>
+      <MenuItem value={"Cambodian riel"}>Cambodian riel</MenuItem>
+      <MenuItem value={"Central African CFA franc"}>Central African CFA franc"</MenuItem>
+      <MenuItem value={"Canadian dollar"}>Canadian dollar</MenuItem>
+      <MenuItem value={"Cape Verdean escudo"}>Cape Verdean escudo</MenuItem>
+      <MenuItem value={"Cayman Islands dollar"}>Cayman Islands dollar</MenuItem>
+      <MenuItem value={"Chilean peso"}>Chilean peso</MenuItem>
+      <MenuItem value={"Chinese yuan"}>Chinese yuan</MenuItem>
+      <MenuItem value={"Colombian peso"}>Colombian peso</MenuItem>
+      <MenuItem value={"Comorian franc"}>Comorian franc</MenuItem>
+      <MenuItem value={"Congolese franc"}>Congolese franc</MenuItem>
+      <MenuItem value={"New Zealand dollar"}>New Zealand dollar</MenuItem>
+      <MenuItem value={"Cook Islands dollar"}>Cook Islands dollar</MenuItem>
+      <MenuItem value={"Costa Rican colón"}>Costa Rican colón</MenuItem>
+      <MenuItem value={"Croatian kuna"}>Croatian kuna</MenuItem>
+      <MenuItem value={"Cuban convertible peso"}>Cuban convertible peso</MenuItem>
+      <MenuItem value={"Cuban peso"}>Cuban peso</MenuItem>
+      <MenuItem value={"Netherlands Antillean guilder"}>Netherlands Antillean guilder</MenuItem>
+      <MenuItem value={"Czech koruna"}>Czech koruna</MenuItem>
+      <MenuItem value={"Danish krone"}>Danish krone</MenuItem>
+      <MenuItem value={"Djiboutian franc"}>Djiboutian franc</MenuItem>
+      <MenuItem value={"Dominican peso"}>Dominican peso</MenuItem>
+      <MenuItem value={"Egyptian pound"}>Egyptian pound</MenuItem>
+      <MenuItem value={"Eritrean nakfa"}>Eritrean nakfa</MenuItem>
+      <MenuItem value={"Ethiopian birr"}>Ethiopian birr</MenuItem>
+      <MenuItem value={"Falkland Islands pound"}>Falkland Islands pound</MenuItem>
+      <MenuItem value={"Faroese króna"}>Faroese króna</MenuItem>
+      <MenuItem value={"Fijian dollar"}>Fijian dollar</MenuItem>
+      <MenuItem value={"CFP franc"}>CFP franc</MenuItem>
+      <MenuItem value={"Gambian dalasi"}>Gambian dalasi</MenuItem>
+      <MenuItem value={"Georgian lari"}>Georgian lari</MenuItem>
+      <MenuItem value={"Ghana cedi"}>Ghana cedi</MenuItem>
+      <MenuItem value={"Gibraltar pound"}>Gibraltar pound</MenuItem>
+      <MenuItem value={"Guatemalan quetzal"}>Guatemalan quetzal</MenuItem>
+      <MenuItem value={"Guinean franc"}>Guinean franc</MenuItem>
+      <MenuItem value={"Guyanese dollar"}>Guyanese dollar</MenuItem>
+      <MenuItem value={"Haitian gourde"}>Haitian gourde</MenuItem>
+      <MenuItem value={"Honduran lempira"}>Honduran lempira</MenuItem>
+      <MenuItem value={"Hong Kong dollar"}>Hong Kong dollar</MenuItem>
+      <MenuItem value={"Hungarian forint"}>Hungarian forint</MenuItem>
+      <MenuItem value={"Icelandic króna"}>Icelandic króna</MenuItem>
+      <MenuItem value={"Indonesian rupiah"}>Indonesian rupiah</MenuItem>
+      <MenuItem value={"Iranian rial"}>Iranian rial</MenuItem>
+      <MenuItem value={"Iraqi dinar"}>Iraqi dinar</MenuItem>
+      <MenuItem value={"Manx pound"}>Manx pound</MenuItem>
+      <MenuItem value={"Israeli new shekel"}>Israeli new shekel</MenuItem>
+      <MenuItem value={"Jamaican dollar"}>Jamaican dollar</MenuItem>
+      <MenuItem value={"Japanese yen"}>Japanese yen</MenuItem>
+      <MenuItem value={"Jersey pound"}>Jersey pound</MenuItem>
+      <MenuItem value={"Jordanian dinar"}>Jordanian dinar</MenuItem>
+      <MenuItem value={"Kazakhstani tenge"}>Kazakhstani tenge</MenuItem>
+      <MenuItem value={"Kenyan shilling"}>Kenyan shilling</MenuItem>
+      <MenuItem value={"Kiribati dollar"}>Kiribati dollar</MenuItem>
+      <MenuItem value={"North Korean won"}>North Korean won</MenuItem>
+      <MenuItem value={"South Korean won"}>South Korean won</MenuItem>
+      <MenuItem value={"Kuwaiti dinar"}>Kuwaiti dinar</MenuItem>
+      <MenuItem value={"Kyrgyzstani som"}>Kyrgyzstani som</MenuItem>
+      <MenuItem value={"Lao kip"}>Lao kip</MenuItem>
+      <MenuItem value={"Lebanese pound"}>Lebanese pound</MenuItem>
+      <MenuItem value={"Lesotho loti"}>Lesotho loti</MenuItem>
+      <MenuItem value={"South African rand"}>South African rand</MenuItem>
+      <MenuItem value={"Liberian dollar"}>Liberian dollar</MenuItem>
+      <MenuItem value={"Libyan dinar"}>Libyan dinar</MenuItem>
+      <MenuItem value={"Swiss franc"}>Swiss franc</MenuItem>
+      <MenuItem value={"Macanese pataca"}>Macanese pataca</MenuItem>
+      <MenuItem value={"Macedonian denar"}>Macedonian denar</MenuItem>
+      <MenuItem value={"Malagasy ariary"}>Malagasy ariary</MenuItem>
+      <MenuItem value={"Malawian kwacha"}>Malawian kwacha</MenuItem>
+      <MenuItem value={"Malaysian ringgit"}>Malaysian ringgit</MenuItem>
+      <MenuItem value={"Maldivian rufiyaa"}>Maldivian rufiyaa</MenuItem>
+      <MenuItem value={"Mauritanian ouguiya"}>Mauritanian ouguiya</MenuItem>
+      <MenuItem value={"Mauritian rupee"}>Mauritian rupee</MenuItem>
+      <MenuItem value={"Mexican peso"}>Mexican peso</MenuItem>
+      <MenuItem value={"Micronesian dollar"}>Micronesian dollar</MenuItem>
+      <MenuItem value={"Moldovan leu"}>Moldovan leu</MenuItem>
+      <MenuItem value={"Mongolian tögrög"}>Mongolian tögrög</MenuItem>
+      <MenuItem value={"Moroccan dirham"}>Moroccan dirham</MenuItem>
+      <MenuItem value={"Mozambican metical"}>Mozambican metical</MenuItem>
+      <MenuItem value={"Burmese kyat"}>Burmese kyat</MenuItem>
+      <MenuItem value={"Nagorno-Karabakh dram"}>Nagorno-Karabakh dram</MenuItem>
+      <MenuItem value={"Namibian dollar"}>Namibian dollar</MenuItem>
+      <MenuItem value={"Nauruan dollar"}>Nauruan dollar</MenuItem>
+      <MenuItem value={"Nepalese rupee"}>Nepalese rupee</MenuItem>
+      <MenuItem value={"Nicaraguan córdoba"}>Nicaraguan córdoba</MenuItem>
+      <MenuItem value={"Nigerian naira"}>Nigerian naira</MenuItem>
+      <MenuItem value={"Niue dollar"}>Niue dollar</MenuItem>
+      <MenuItem value={"Turkish lira"}>Turkish lira</MenuItem>
+      <MenuItem value={"Norwegian krone"}>Norwegian krone</MenuItem>
+      <MenuItem value={"Omani rial"}>Omani rial</MenuItem>
+      <MenuItem value={"Pakistani rupee"}>Pakistani rupee</MenuItem>
+      <MenuItem value={"Palauan dollar"}>Palauan dollar</MenuItem>
+      <MenuItem value={"Panamanian balboa"}>Panamanian balboa</MenuItem>
+      <MenuItem value={"Papua New Guinean kina"}>Papua New Guinean kina</MenuItem>
+      <MenuItem value={"Paraguayan guaraní"}>Paraguayan guaraní</MenuItem>
+      <MenuItem value={"Peruvian nuevo sol"}>Peruvian nuevo sol</MenuItem>
+      <MenuItem value={"Philippine peso"}>Philippine peso</MenuItem>
+      <MenuItem value={"Pitcairn Islands dollar"}>Pitcairn Islands dollar</MenuItem>
+      <MenuItem value={"Polish złoty"}>Polish złoty</MenuItem>
+      <MenuItem value={"Qatari riyal"}>Qatari riyal</MenuItem>
+      <MenuItem value={"Romanian leu"}>Romanian leu</MenuItem>
+      <MenuItem value={"Rwandan franc"}>Rwandan franc</MenuItem>
+      <MenuItem value={"Sahrawi peseta"}>Sahrawi peseta</MenuItem>
+      <MenuItem value={"Samoan tālā"}>Samoan tālā</MenuItem>
+      <MenuItem value={"São Tomé and Príncipe dobra"}>São Tomé and Príncipe dobra</MenuItem>
+      <MenuItem value={"Saudi riyal"}>Saudi riyal</MenuItem>
+      <MenuItem value={"Serbian dinar"}>Serbian dinar</MenuItem>
+      <MenuItem value={"Seychellois rupee"}>Seychellois rupee</MenuItem>
+      <MenuItem value={"Sierra Leonean leone"}>Sierra Leonean leone</MenuItem>
+      <MenuItem value={"Solomon Islands dollar"}>Solomon Islands dollar</MenuItem>
+      <MenuItem value={"Somali shilling"}>Somali shilling</MenuItem>
+      <MenuItem value={"Somaliland shilling"}>Somaliland shilling</MenuItem>
+      <MenuItem value={"South Georgia and the South Sandwich Islands pound"}>South Georgia and the South Sandwich Islands pound</MenuItem>
+      <MenuItem value={"South Sudanese pound"}>South Sudanese pound</MenuItem>
+      <MenuItem value={"Sri Lankan rupee"}>Sri Lankan rupee</MenuItem>
+      <MenuItem value={"Sudanese pound"}>Sudanese pound</MenuItem>
+      <MenuItem value={"Surinamese dollar"}>Surinamese dollar</MenuItem>
+      <MenuItem value={"Swazi lilangeni"}>Swazi lilangeni</MenuItem>
+      <MenuItem value={"Swedish krona"}>Swedish krona</MenuItem>
+      <MenuItem value={"Syrian pound"}>Syrian pound</MenuItem>
+      <MenuItem value={"New Taiwan dollar"}>New Taiwan dollar</MenuItem>
+      <MenuItem value={"Tajikistani somoni"}>Tajikistani somoni</MenuItem>
+      <MenuItem value={"Tanzanian shilling"}>Tanzanian shilling</MenuItem>
+      <MenuItem value={"Thai baht"}>Thai baht</MenuItem>
+      <MenuItem value={"Tongan paʻanga"}>Tongan paʻanga</MenuItem>
+      <MenuItem value={"Transnistrian ruble"}>Transnistrian ruble</MenuItem>
+      <MenuItem value={"Trinidad and Tobago dollar"}>Trinidad and Tobago dollar</MenuItem>
+      <MenuItem value={"Tristan da Cunha pound"}>Tristan da Cunha pound</MenuItem>
+      <MenuItem value={"Tunisian dinar"}>Tunisian dinar</MenuItem>
+      <MenuItem value={"Turkmenistan manat"}>Turkmenistan manat</MenuItem>
+      <MenuItem value={"Tuvaluan dollar"}>Tuvaluan dollar</MenuItem>
+      <MenuItem value={"Ugandan shilling"}>Ugandan shilling</MenuItem>
+      <MenuItem value={"Ukrainian hryvnia"}>Ukrainian hryvnia</MenuItem>
+      <MenuItem value={"United Arab Emirates dirham"}>United Arab Emirates dirham</MenuItem>
+      <MenuItem value={"Uruguayan peso"}>Uruguayan peso</MenuItem>
+      <MenuItem value={"Uzbekistani som"}>Uzbekistani som</MenuItem>
+      <MenuItem value={"Vanuatu vatu"}>Vanuatu vatu</MenuItem>
+      <MenuItem value={"Venezuelan bolívar"}>Venezuelan bolívar</MenuItem>
+      <MenuItem value={"Vietnamese đồng"}>Vietnamese đồng</MenuItem>
+      <MenuItem value={"Yemeni rial"}>Yemeni rial</MenuItem>
+      <MenuItem value={"Zambian kwacha"}>Zambian kwacha</MenuItem>
+      <MenuItem value={"United States dollar"}>United States dollar</MenuItem>
+      <MenuItem value={"Zimbabwean Bond"}>Zimbabwean Bond</MenuItem>
+          </Select>
+        </FormControl>
+               
+        </div>
+        <br/>
+        <div className="form-group">
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Capital"
+          value={this.state.capital}
+          onChange={this.handlecapital}
+          
+        />
+        </div> 
+        <br/>
+      
                 <div className="form-group">
-                    <label>Fax:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.Fax}
-                      onChange={this.handleFax}
-                      />
-                </div>
-                
-                <div className="form-group">
-                          <label>Capital Currency:</label> <br/>
-                          <select ref = "Capital_Currency">
-                          {capitalcurrencyOptions}</select>
-                      </div>
-                
-                <div className="form-group">
-                    <label>Capital:  </label>
-                    <input 
-                      type="number" 
-                      className="form-control" 
-                      value={this.state.capital}
-                      onChange={this.handlecapital}
-                      />
-                </div>
-                <div className="form-group">
-                    <label>Investor Name:  </label>
-                    <input 
-                      type="test" 
-                      className="form-control" 
-                      value={this.state.investorname}
-                      onChange={this.handleinvestorname}
-                      />
-                </div>
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Investor Name"
+          value={this.state.investorname}
+          onChange={this.handleinvestorname}
+          
+        />
+        </div>
+        <br/>   
+                 <div className="form-group">
                 <FormControl >
           <InputLabel htmlFor="Gender">Gender</InputLabel> <br/>
           <Select
@@ -858,33 +764,158 @@ handleInvestorAddress(e){
           </Select>
         </FormControl>
                
+        </div>
+        <br/>
+        <div className="form-group">
+                <FormControl >
+          <InputLabel htmlFor="Nationality">Nationality</InputLabel> <br/>
+          <Select
+            value={this.state.Nationality}
+            onChange={this.handleNationality}
+           
+          >
+<MenuItem value={"Afghan"}>Afghan</MenuItem>
+<MenuItem value={"Albanian"}>Albanian</MenuItem>
+<MenuItem value={"Algerian"}>Algerian</MenuItem>
+<MenuItem value={"Argentinian"}>Argentinian</MenuItem>
+<MenuItem value={"Australian"}>Australian</MenuItem>
+<MenuItem value={"Austrian"}>Austrian</MenuItem>
+<MenuItem value={"Bangladeshi"}>Bangladeshi</MenuItem>
+<MenuItem value={"Belgian"}>Belgian</MenuItem>
+<MenuItem value={"Bolivian"}>Bolivian</MenuItem>
+<MenuItem value={"Batswana"}>Batswana</MenuItem>
+<MenuItem value={"Bulgarian"}>Bulgarian</MenuItem>
+<MenuItem value={"Cambodian"}>Cambodian</MenuItem>
+<MenuItem value={"Cameroonian"}>Cameroonian</MenuItem>
+<MenuItem value={"Canadian"}>Canadian</MenuItem>
+<MenuItem value={"Chilean"}>Chilean</MenuItem>
+<MenuItem value={"Chinese"}>Chinese </MenuItem>
+ <MenuItem value={"Colombian" }>Colombian </MenuItem>
+ <MenuItem value={"Costa Rican"}>Costa Rican </MenuItem>
+ <MenuItem value={"Croatian"}>Croatian </MenuItem>
+ <MenuItem value={"Cuban"}>Cuban </MenuItem>
+ <MenuItem value={"Czech"}>Czech </MenuItem>
+ <MenuItem value={"Danish"}>Danish </MenuItem>
+ <MenuItem value={"Dominican"}>Dominican </MenuItem>
+ <MenuItem value={"Ecuadorian"}>Ecuadorian </MenuItem>
+ <MenuItem value={"Egyptian"}>Egyptian </MenuItem>
+ <MenuItem value={"Salvadorian"}>Salvadorian </MenuItem>
+ <MenuItem value={"English"}>English </MenuItem>
+ <MenuItem value={"Estonian"}>Estonian </MenuItem>
+ <MenuItem value={"Ethiopian"}>Ethiopian </MenuItem>
+ <MenuItem value={"Fijian"}>Fijian </MenuItem>
+ <MenuItem value={"Finnish"}>Finnish </MenuItem>
+ <MenuItem value={"French"}>French </MenuItem>
+ <MenuItem value={"German"}>German </MenuItem>
+ <MenuItem value={"Ghanaian"}>Ghanaian </MenuItem>
+ <MenuItem value={"Greek"}>Greek </MenuItem>
+ <MenuItem value={"Guatemalan"}>Guatemalan</MenuItem>
+ <MenuItem value={"Haitian"}>Haitian</MenuItem>
+ <MenuItem value={"Honduran"}>Honduran</MenuItem>
+ <MenuItem value={"Hungarian"}>Hungarian</MenuItem>
+ <MenuItem value={"Icelandic"}>Icelandic</MenuItem>
+ <MenuItem value={"Indian"}>Indian</MenuItem>
+ <MenuItem value={"Indonesian"}>Indonesian</MenuItem>
+ <MenuItem value={"Iranian"}>Iranian</MenuItem>
+ <MenuItem value={"Iraqi"}>Iraqi</MenuItem>
+ <MenuItem value={"Irish"}>Irish</MenuItem>
+ <MenuItem value={"Israeli"}>Israeli</MenuItem>
+ <MenuItem value={"Italian"}>Italian</MenuItem>
+ <MenuItem value={"Jamaican"}>Jamaican</MenuItem>
+ <MenuItem value={"Japanese"}>Japanese</MenuItem>
+ <MenuItem value={"Jordanian"}>Jordanian</MenuItem>
+ <MenuItem value={"Kenyan"}>Kenyan</MenuItem>
+ <MenuItem value={"Kuwaiti"}>Kuwaiti</MenuItem>
+ <MenuItem value={"Lao"}>Lao</MenuItem>
+ <MenuItem value={"Latvian"}>Latvian</MenuItem>
+ <MenuItem value={"Lebanese"}>Lebanese</MenuItem>
+ <MenuItem value={"Libyan"}>Libyan</MenuItem>
+ <MenuItem value={"Lithuanian"}>Lithuanian</MenuItem>
+ <MenuItem value={"Malaysian"}>Malaysian</MenuItem>
+ <MenuItem value={"Malian"}>Malian</MenuItem>
+ <MenuItem value={"Maltese"}>Maltese</MenuItem>
+ <MenuItem value={"Mexican"}>Mexican</MenuItem>
+ <MenuItem value={"Mongolian"}>Mongolian</MenuItem>
+ <MenuItem value={"Moroccan"}>Moroccan</MenuItem>
+ <MenuItem value={"Mozambican"}>Mozambican</MenuItem>
+ <MenuItem value={"Namibian"}>Namibian</MenuItem>
+ <MenuItem value={"Nepalese"}>Nepalese</MenuItem>
+ <MenuItem value={"Dutch"}>Dutch</MenuItem>
+ <MenuItem value={"New Zealand"}>New Zealand</MenuItem>
+ <MenuItem value={"Nicaraguan"}>Nicaraguan</MenuItem>
+ <MenuItem value={"Nigerian"}>Nigerian</MenuItem>
+ <MenuItem value={"Norwegian"}>Norwegian</MenuItem>
+ <MenuItem value={"Pakistani"}>Pakistani</MenuItem>
+ <MenuItem value={"Panamanian"}>Panamanian</MenuItem>
+ <MenuItem value={"Paraguayan"}>Paraguayan</MenuItem>
+ <MenuItem value={"Peruvian"}>Peruvian</MenuItem>
+ <MenuItem value={"Philippine"}>Philippine</MenuItem>
+ <MenuItem value={"Polish"}>Polish</MenuItem>
+ <MenuItem value={"Portuguese"}>Portuguese</MenuItem>
+ <MenuItem value={"Romanian"}>Romanian</MenuItem>
+ <MenuItem value={"Russian"}>Russian</MenuItem>
+ <MenuItem value={"Saudi"}>Saudi</MenuItem>
+ <MenuItem value={"Scottish"}>Scottish</MenuItem>
+ <MenuItem value={"Senegalese"}>Senegalese</MenuItem>
+ <MenuItem value={"Serbian"}>Serbian</MenuItem>
+ <MenuItem value={"Singaporean"}>Singaporean</MenuItem>
+ <MenuItem value={"Slovak"}>Slovak</MenuItem>
+ <MenuItem value={"South African"}>South African</MenuItem>
+ <MenuItem value={"Korean"}>Korean</MenuItem>
+ <MenuItem value={"Spanish"}>Spanish</MenuItem>
+ <MenuItem value={"Sri Lankan"}>Sri Lankan</MenuItem>
+ <MenuItem value={"Sudanese"}>Sudanese</MenuItem>
+ <MenuItem value={"Swedish"}>Swedish</MenuItem>
+ <MenuItem value={"Swiss"}>Swiss</MenuItem>
+ <MenuItem value={"Syrian"}>Syrian</MenuItem>
+ <MenuItem value={"Taiwanese"}>Taiwanese</MenuItem>
+ <MenuItem value={"Tajikistani"}>Tajikistani</MenuItem>
+ <MenuItem value={"Thai"}>Thai</MenuItem>
+ <MenuItem value={"Tongan"}>Tongan</MenuItem>
+ <MenuItem value={"Tunisian"}>Tunisian</MenuItem>
+ <MenuItem value={"Turkish"}>Turkish</MenuItem>
+ <MenuItem value={"Ukrainian"}>Ukrainian</MenuItem>
+ <MenuItem value={"Emirati"}>Emirati</MenuItem>
+ <MenuItem value={"British"}>British</MenuItem>
+ <MenuItem value={"American"}>American</MenuItem>
+ <MenuItem value={"Uruguayan"}>Uruguayan</MenuItem>
+ <MenuItem value={"Venezuelan"}>Venezuelan</MenuItem>
+ <MenuItem value={"Vietnamese"}>Vietnamese</MenuItem>
+ <MenuItem value={"Welsh"}>Welsh</MenuItem>
+ <MenuItem value={"Zambian"}>Zambian</MenuItem>
+ <MenuItem value={"Zimbabwean"}>Zimbabwean</MenuItem>
+               </Select>
+        </FormControl>
                
-               <div className="form-group">
-                          <label>Nationality:</label> <br/>
-                          <select ref = "Nationality">
-                          {nationalityOptions}</select>
-                      </div>
-                       {/* className="form-control"
-                      value={this.state.Nationality}
-                      onChange={this.onChangeNationality}
-                      /> */}
-                
-                <div className="form-group">
-                          <label>Type of identity proof:</label> <br/>
-                          <select ref = "TypeOf_IdentityProof">
-                          {typeOptions}</select>
-                      </div>
-                     
-                
-                <div className="form-group">
-                    <label>National ID:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.investor_nationalid}
-                      onChange={this.handleinvestornationalid}
-                      />
-                </div>
+        </div>  
+        <br/>      
+                 <div className="form-group">
+                <FormControl >
+          <InputLabel htmlFor="TypeOf_IdentityProof">Type Of Identity Proof</InputLabel> <br/>
+          <Select
+            value={this.state.TypeOf_IdentityProof}
+            onChange={this.handleTypeOfIdentityProof}
+           
+          >
+            <MenuItem value={"Passport"}>Passport</MenuItem>
+            <MenuItem value={"National ID"}>National ID</MenuItem>
+          </Select>
+        </FormControl>
+               
+        </div>
+        <br/>
+               <br/>
+                      <div className="form-group">
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="National ID"
+          value={this.state.investor_nationalid}
+          onChange={this.handleinvestornationalid}
+          
+        />
+        </div>
+        <br/>
                 <div className="form-group">
                     <label>BirthDate:  </label>
                     <input 
@@ -894,43 +925,52 @@ handleInvestorAddress(e){
                       onChange={this.handleBirthDate}
                       />
                 </div>
+                <br/>
                 <div className="form-group">
-                    <label> Phone Number:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.Phone_Number}
-                      onChange={this.handlePhoneNumber}
-                      />
-                </div>
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Phone Number"
+          value={this.state.Phone_Number}
+          onChange={this.handlePhoneNumber}
+          
+        />
+        </div>
+        <br/>
+              
                 <div className="form-group">
-                    <label>Fax:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.Investor_Fax}
-                      onChange={this.handleInvestorFax}
-                      />
-                </div>
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Fax"
+          value={this.state.Investor_Fax}
+          onChange={this.handleInvestorFax}
+          
+        />
+        </div>
+        <br/>
                 <div className="form-group">
-                    <label>Email:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.email}
-                      onChange={this.handleemail}
-                      />
-                </div>
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Email"
+          value={this.state.email}
+          onChange={this.handleemail}
+          
+        />
+        </div>
+        <br/>
                 <div className="form-group">
-                    <label>Address:  </label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.Investor_Address}
-                      onChange={this.handleInvestorAddress}
-                      />
-                </div>
-                
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Address"
+          value={this.state.Investor_Address}
+          onChange={this.handleInvestorAddress}
+          
+        />
+        </div>
+        <br/>   
                 <div className="form-group">
                     <input type="submit" 
                       value="Submit" 
