@@ -65,7 +65,7 @@ app.get("/test", (req, res) => res.send(`<h1>Deployed on Heroku</h1>`));
 app.use(bodyParser.json());
 app.use("/api/SSC", updateSSC);
 app.use("/api/Reviewer", Reviewer);
-app.use("/api/investors", investor);
+app.use("/api/investor", investor);
 app.use("/api/Lawyer", Lawyer);
 app.use("/api/Admin", Admin);
 app.use("/api/Comment", Comment);

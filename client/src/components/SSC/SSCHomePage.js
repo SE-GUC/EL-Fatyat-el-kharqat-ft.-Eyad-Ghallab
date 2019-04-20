@@ -1,49 +1,123 @@
 import React, { Component } from 'react';
+import './SSC.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Tabs from '@material-ui/core/Tabs';
+import AppBar from '@material-ui/core/AppBar';
+import NoSsr from '@material-ui/core/NoSsr';
+import logo from './unnamed.png';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import SSC from './SSC.js';
 import CreatingSSCForm from './CreatingSSCForm';
 import EditSSC from './EditSSC';
 import DeleteSSC from './DeleteSSC';
+const styles = theme => ({
+  root: {
+    maxWidth: 400,
+    flexGrow: 1,
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    height: 50,
+    paddingLeft: theme.spacing.unit * 4,
+    backgroundColor: theme.palette.background.default,
+    position: 'relative',
+  },
+  img: {
+    height: 255,
+    maxWidth: 400,
+    overflow: 'hidden',
+    display: 'block',
+    width: '100%',
 
-export default class SSCHomePage extends Component {
+
+
+  },
+});
+
+ 
+
+  
+class SSCHomePage extends Component {
+  state = {
+    value: 0,
+  };
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
   render() {
+    const { value } = this.state;
     return (
       <Router>
-        <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to={'/'} className="navbar-brand">Sumerge</Link>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                  <Link to={'/'} className="nav-link">Home</Link>
+      <NoSsr>
+        <div >
+       
+          <AppBar position="static">
+            <Tabs  value={value} onChange={this.handleChange}
+            
+           >
+            <ul className="logo">
+            <img src={logo} alt="" /></ul>
+            
+            
+                <ul className="nav-item">
+            <li >
+                  <Link to={'/CreateSSC'} className="nav-link">Create</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/create'} className="nav-link">Create</Link>
+                <li>|</li>
+</ul>
+
+                <ul className="nav-item">
+               <li >
+                  <Link to={'/DeleteSSC'} className="nav-link">Delete</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/edit'} className="nav-link">Edit</Link>
+                <li>|</li>
+                </ul>
+                <ul className="nav-item">    
+                <li>              
+                <Link to={'/EditSSC'} className="nav-link">Edit</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/delete'} className="nav-link">Delete a Form</Link>
+                <li>|</li>
+                </ul>
+                <ul className="nav-item">
+            <li >
+                  <Link to={'/ViewSSC'} className="nav-link">View</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/read'} className="nav-link">All SSC Forms</Link>
-                </li>
-              </ul>
-            </div>
-          </nav> <br/>
-          <h2>Welcome to GAFI</h2> <br/>
+                <li>|</li>
+                </ul>
+             
+               
+               
+             
+                
+
+            </Tabs> 
+          </AppBar>
+       
+          
           <Switch>
-              <Route exact path='/create' component={ CreatingSSCForm } />
-              <Route exact path='/edit' component={ EditSSC } />
-              <Route exact path='/delete' component={ DeleteSSC } /> 
-              <Route exact path='/read' component={ SSC } /> 
+              <Route exact path='/CreateSSC' component={ CreatingSSCForm } />
+              <Route exact path='/EditSSC' component={ EditSSC } />
+              <Route exact path='/DeleteSSC' component={ DeleteSSC } /> 
+              <Route exact path='/ViewSSC' component={ SSC } /> 
+              
+            
+              
           </Switch>
         </div>
-      </Router>
+      </NoSsr>
+      </Router> 
+
     );
   }
 }
 
+SSCHomePage.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
+export default  withStyles(styles, { withTheme: true }) (SSCHomePage);
 

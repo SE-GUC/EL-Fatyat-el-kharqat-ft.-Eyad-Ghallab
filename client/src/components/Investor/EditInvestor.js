@@ -9,6 +9,10 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
