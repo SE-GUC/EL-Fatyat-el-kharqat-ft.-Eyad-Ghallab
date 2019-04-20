@@ -8,7 +8,7 @@ import ReviewerHomePage from './components/Reviewer/ReviewerHomePage';
 import LawyerHomePage from './components/Lawyer/LawyerHomePage';
 import ContractHomePage from './components/Contract/ContractHomePage';
 import PaymentHomePage from './components/Payment/PaymentHomePage';
-
+import './App.css'
 import SSCHomePage from './components/SSC/SSCHomePage';
 
 //import ReviewerHomePage from './components/Reviewer/ReviewerHomePage';
@@ -44,6 +44,7 @@ import Form from './components/Form/Form';
 import Workspace from './components/Lawyer/Workspace';
 
 import Forms from './components/Reviewer/Forms';
+import updating_Forms from './components/Reviewer/updating_Forms'
 
 
 const styles = theme => ({
@@ -253,6 +254,8 @@ class App extends Component {
               
 
              <Route exact path='/Forms' component={Forms} /> */}
+             <Route exact path='/Forms' component={Forms} />
+             <Route exact path='/updating_Forms' component={updating_Forms} />
           </Switch>
          
 
