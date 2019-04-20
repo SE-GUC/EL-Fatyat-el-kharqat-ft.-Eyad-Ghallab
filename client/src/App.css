@@ -8,19 +8,12 @@
     margin: auto;
 }
 header{
-  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("Egypt.jpg");
-
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("Egypt.jpg");
     height: 100vh;
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center center;
-    background-repeat: no-repeat;
-
-    position: absolute;
-    top:0;
-    bottom: 0;
-    z-index: -5;
-    width: 100%;
+    position: relative;
 }
 .nav-item{
   float: right;
@@ -46,4 +39,4 @@ color: #333;
   width: 100px;
   float: left;
   height: auto;
-} 
+}
