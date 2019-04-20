@@ -11,7 +11,6 @@ const SpcFormSchema = new Schema({
     },
     Facility_nameinenglish: {
         type: String,
-        required: true
     },
     Governorate: {
         type: Object,

@@ -7,16 +7,19 @@ const SSCSchema = new Schema({
         type: String,
         required: true
     },
+    Company_nameinenglish: {
+        type: String,
+    },
     Governorate: {
         type: String,
-       // required: true
+       required: true
     },
     City: {
         type: String, 
         required: true
     },
     reviews: {
-        type: [String]
+        type: String
     },
     Company_Address: {
         type: String, 
@@ -24,11 +27,9 @@ const SSCSchema = new Schema({
     },
     Company_Phone_Number: {
         type: String, 
-        required: true
     },
     Fax: {
         type: String, 
-        required: true
     },
     Capital_Currency: {
         type: String, 
@@ -44,11 +45,9 @@ const SSCSchema = new Schema({
     },
     Investor_type: {
         type: String, 
-        required: true
     },
     Gender: {
         type: String, 
-        required: true
     },
     Nationality: {
         type: String, 
@@ -72,11 +71,13 @@ const SSCSchema = new Schema({
     },
     Phone_Number: {
         type: String, 
-        required: true
+    },
+    Investor_Fax:{
+        type: String, 
+
     },
     email: {
         type: String, 
-        required: true
     },
     BOD_Name: {
         type: String, 
@@ -103,7 +104,7 @@ const SSCSchema = new Schema({
         required: true
     },
     BOD_BirthDate: {
-        type: String, 
+        type: Date, 
         required: true
     },
     BOD_Address: {
