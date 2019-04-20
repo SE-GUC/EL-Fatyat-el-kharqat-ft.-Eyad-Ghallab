@@ -246,7 +246,7 @@ handleClose = (event, reason) => {
           variant="outlined"
           label="Facility Name"
           value={this.state.Facility_name}
-          onChange={this.handleFacilityName}
+          onChange={this.handleFacilityName} required
           
         />
         </div>
@@ -257,7 +257,7 @@ handleClose = (event, reason) => {
           variant="outlined"
           label="Facility Name In English"
           value={this.state.Facility_nameinenglish}
-          onChange={this.handleFacilityNameInEnglish}
+          onChange={this.handleFacilityNameInEnglish} 
           
         />
         </div>
@@ -268,7 +268,7 @@ handleClose = (event, reason) => {
           <InputLabel htmlFor="Governorate">Governorate</InputLabel> <br/>
           <Select
             value={this.state.Governorate}
-            onChange={this.handleGovernorate}
+            onChange={this.handleGovernorate}required
            
           >
             <MenuItem value={"cairo"}>Cairo</MenuItem>
@@ -306,7 +306,7 @@ handleClose = (event, reason) => {
           <InputLabel htmlFor="City">City</InputLabel> <br/> 
           <Select
             value={this.state.City}
-            onChange={this.handleCity}
+            onChange={this.handleCity} required
            
           >
             <MenuItem value={"Abnūb"}>Abnūb</MenuItem>
@@ -542,7 +542,7 @@ handleClose = (event, reason) => {
           variant="outlined"
           label="Facility Address"
           value={this.state.Facility_Address}
-          onChange={this.handleFacilityAddress}
+          onChange={this.handleFacilityAddress} required
           
         />
         </div>
@@ -574,7 +574,7 @@ handleClose = (event, reason) => {
           <InputLabel htmlFor="Capital_Currency">Capital Currency</InputLabel> <br/>
           <Select
             value={this.state.Capital_Currency}
-            onChange={this.handleCapitalCurrency}
+            onChange={this.handleCapitalCurrency} required
            
           >
          
@@ -779,7 +779,7 @@ handleClose = (event, reason) => {
           variant="outlined"
           label="Investor Name"
           value={this.state.investorname}
-          onChange={this.handleinvestorname}
+          onChange={this.handleinvestorname} required
           
         />
         </div>
@@ -789,7 +789,7 @@ handleClose = (event, reason) => {
           <InputLabel htmlFor="Gender">Gender</InputLabel> <br/>
           <Select
             value={this.state.Gender}
-            onChange={this.handleGender}
+            onChange={this.handleGender} required
            
           >
             <MenuItem value={"Female"}>Female</MenuItem>
@@ -804,7 +804,7 @@ handleClose = (event, reason) => {
           <InputLabel htmlFor="Nationality">Nationality</InputLabel> <br/>
           <Select
             value={this.state.Nationality}
-            onChange={this.handleNationality}
+            onChange={this.handleNationality} required
            
           >
 <MenuItem value={"Afghan"}>Afghan</MenuItem>
@@ -927,7 +927,7 @@ handleClose = (event, reason) => {
           <InputLabel htmlFor="TypeOf_IdentityProof">Type Of Identity Proof</InputLabel> <br/>
           <Select
             value={this.state.TypeOf_IdentityProof}
-            onChange={this.handleTypeOfIdentityProof}
+            onChange={this.handleTypeOfIdentityProof} required
            
           >
             <MenuItem value={"Passport"}>Passport</MenuItem>
@@ -944,7 +944,7 @@ handleClose = (event, reason) => {
           variant="outlined"
           label="National ID"
           value={this.state.investor_nationalid}
-          onChange={this.handleinvestornationalid}
+          onChange={this.handleinvestornationalid} required
           
         />
         </div>
@@ -955,7 +955,7 @@ handleClose = (event, reason) => {
                       type="date" 
                       className="form-control" 
                       value={this.state.BirthDate}
-                      onChange={this.handleBirthDate}
+                      onChange={this.handleBirthDate} required
                       />
                 </div>
                 <br/>
@@ -999,7 +999,7 @@ handleClose = (event, reason) => {
           variant="outlined"
           label="Address"
           value={this.state.Investor_Address}
-          onChange={this.handleInvestorAddress}
+          onChange={this.handleInvestorAddress} required
           
         />
         </div>
@@ -1009,31 +1009,7 @@ handleClose = (event, reason) => {
                       value="Submit" 
                       className="btn btn-primary"/>
                 </div> 
-                <Snackbar
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          open={this.state.open}
-          autoHideDuration={6000}
-          onClose={this.handleClose}
-          ContentProps={{
-            'aria-describedby': 'message-id',
-          }}
-          message={<span id="message-id">You created Your SPC Company Request Successfuly</span>}
-          action={[
-            
-            <IconButton
-              key="close"
-              aria-label="Close"
-              color="inherit"
-              className={classes.close}
-              onClick={this.handleClose}
-            >
-              <CloseIcon />
-            </IconButton>
-            ]}
-            />
+                
             </form>
         </div>
     )

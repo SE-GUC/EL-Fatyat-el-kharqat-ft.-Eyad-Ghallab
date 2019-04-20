@@ -82,9 +82,10 @@ class Login extends Component {
     //{this.renderRedirect()}
     const isAlreadyAuthenticated = this.isAuthenticated();
     return (
-      <div className="Login">
+      <body>
+      <div className="login-box">
         {isAlreadyAuthenticated && this.state.isinvestor ? (
-          <Redirect to={{ pathname: "/Investor" }} />
+          <Redirect to={{ pathname: "/InvHomePage" }} />
         ) : isAlreadyAuthenticated && this.state.isadmin ? (
           <Redirect to={{ pathname: "/AdminHomePage" }} />
         ) : isAlreadyAuthenticated && this.state.islawyer ? (
@@ -93,39 +94,23 @@ class Login extends Component {
           <Redirect to={{ pathname: "/Reviewer" }} />
         ) : (
           <form onSubmit={this.submitForm.bind(this)}>
-            <h2>Login Page</h2>
-            <TextField
-              id="standard-Email-input"
-              label="Email"
-              type="Email"
-              margin="normal"
-              value={this.state.email}
-              onChange={this.handleemailChanged.bind(this)}
-            />{" "}
-            <br />
-            <TextField
-              id="standard-password-input"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              margin="normal"
-              value={this.state.password}
-              onChange={this.handlePasswordChanged.bind(this)}
-            />
-            <br />
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              onClick={() => {
-                this.type();
-              }}
-            >
-              Login
-            </Button>
+            <h1>Login Page</h1>
+            <div class = "textbox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            
+            <input type = "Email" placeholder="Email" name="" value={this.state.email} onChange={this.handleemailChanged.bind(this)}></input>
+            </div>
+            <div class = "textbox">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+
+            <input type = "password" placeholder="Password" name="" value={this.state.password} onChange={this.handlePasswordChanged.bind(this)}></input>
+            </div>
+            <input class="btn" type="submit"  name="" value="Sign In" onClick={()=> {this.type()}}></input>
+           
           </form>
         )}
       </div>
+      </body>
     );
   }
 }
