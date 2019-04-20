@@ -92,7 +92,7 @@ class Login extends Component {
         ) : isAlreadyAuthenticated && this.state.islawyer ? (
           <Redirect to={{ pathname: "/LawyerHomePage" }} />
         ) : isAlreadyAuthenticated && this.state.isreviewer ? (
-          <Redirect to={{ pathname: "/Reviewer" }} />
+          <Redirect to={{ pathname: "/ReviewerHomePage" }} />
         ) : (
           <form onSubmit={this.submitForm.bind(this)}>
             <h2>Login Page</h2>
