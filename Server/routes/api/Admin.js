@@ -64,6 +64,54 @@ router.put('/:id',async (req,res) => {
  })
 
 
+ router.post('/register', async (req, res) => {
+	try {
+		const isValidated = validator.registerValidation(req.body);
+		if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message });
+		const {email, name, password,username, address} = req.body;
+		const admin = await Admin.findOne({ email });
+		if (admin) return res.status(400).json({ email: 'Email already exists' });
+		const salt = bcrypt.genSaltSync(10);
+		const hashedPassword = bcrypt.hashSync(password, salt);
+		const newUser = new Admin({
+			name,
+			password: hashedPassword,
+      email,
+      username,
+      address
+		});
+		await Admin.create(newUser);
+		res.json({ msg: 'Admin created successfully', data: newUser });
+	} catch (error) {
+		res.status(422).send({ error: 'Can not create user' });
+	}
+});
+ 
+
+ router.post('/login', async (req, res) => {
+	try {
+		const { email, password } = req.body;
+		const admin = await Admin.findOne({ email });
+		if (!admin) return res.status(404).json({ email: 'Email does not exist' });
+		const match = bcrypt.compareSync(password, admin.password);
+		if (match) {
+            const payload = {
+                id: admin.id,
+                name: admin.name,
+                email: admin.email
+            }
+            const token = jwt.sign(payload, tokenKey, { expiresIn: '1h' })
+            return res.json({token: `Bearer ${token}`})
+        }
+		else return res.status(400).send({ password: 'Wrong password' });
+	} catch (e) {}
+});
+
+
+
+
+
+
 
  router.get('/', (req, res) => res.json({ data: Admins }));
   
