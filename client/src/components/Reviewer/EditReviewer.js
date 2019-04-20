@@ -64,14 +64,7 @@ class EditReviewer extends Component {
     
       handleSubmit(e){
         e.preventDefault();
-        let databody = {
-            "Password":this.state.Password,	
-            "Name":this.state.Name,	
-            "Email":this.state.Email,	
-            "Username":	this.state.Username,	
-            "YearsOfExperience":	this.state.YearsOfExperience,	
-            "Gender":	this.state.Gender,	
-        }}
+    }
         update(id){
            
             console.log(this.state.Username)

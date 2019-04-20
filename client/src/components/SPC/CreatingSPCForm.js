@@ -6,7 +6,12 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+import './SPC.css'
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -21,6 +26,9 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
+  },
+  close: {
+    padding: theme.spacing.unit / 2,
   },
 });
 class CreatingSPCForm extends Component {
@@ -69,7 +77,7 @@ class CreatingSPCForm extends Component {
       email:'',
       Investor_Address:'',
       //Lawyer_review:""
-    
+      open: false,
    }
  }
     handleChange(event) {
@@ -166,11 +174,17 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
-/*handleLawyer_review(e){
-  this.setState({
-      Lawyer_review: e.target.value
-    })
-  }*/
+handleClick = () => {
+  this.setState({ open: true });
+};
+
+handleClose = (event, reason) => {
+  if (reason === 'clickaway') {
+    return;
+  }
+
+  this.setState({ open: false });
+};
   handleSubmit(e) {
     e.preventDefault();
     let databody  = {
@@ -194,7 +208,7 @@ handleInvestorAddress(e){
       Investor_Address:this.state.Investor_Address,
     };
 
-    return fetch('/api/SPC/all', {
+    return fetch('/api/SPC/', {
         method: 'POST',
         body: JSON.stringify(databody),
         headers: {
@@ -211,11 +225,12 @@ handleInvestorAddress(e){
  
   render() {
    
-  
+    const { classes } = this.props;
     
     return (
-        <div style={{ marginTop: 10 }}>
+        <div className="form-group" style={{ marginTop: 10 }}>
             <h3 align="center">New SPC Company</h3>
+            <br/>
             <form onSubmit={this.handleSubmit}>
 
                 <div className="form-group">
@@ -972,13 +987,41 @@ handleInvestorAddress(e){
         </div>
         <br/>   
                 <div className="form-group">
-                    <input type="submit" 
+                    <input onClick={this.handleClick} type="submit" 
                       value="Submit" 
                       className="btn btn-primary"/>
-                </div>
+                </div> 
+                <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">You created Your SPC Company Request Successfuly</span>}
+          action={[
+            
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+            ]}
+            />
             </form>
         </div>
     )
   }
 }
+CreatingSPCForm.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
  export default withStyles (styles)(CreatingSPCForm);

@@ -7,7 +7,6 @@ import AppBar from '@material-ui/core/AppBar';
 import NoSsr from '@material-ui/core/NoSsr';
 import logo from './unnamed.png';
 import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 
 import EditInv from'./EditInvestor';
 import DeleteInv from './DeleteInvstor'

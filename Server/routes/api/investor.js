@@ -90,7 +90,7 @@ router.put('/:id', async (req,res) => {
      if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
      const updatedinv = await investor.updateOne(req.body)
      res.json({msg: 'investor updated successfully', data: updatedinv})
-
+ 
     }
     catch(error) {
         console.log(error)

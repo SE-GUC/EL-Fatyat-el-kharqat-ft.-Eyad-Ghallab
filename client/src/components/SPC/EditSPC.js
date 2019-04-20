@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withStyles } from '@material-ui/core/styles';
+import './SPC.css'
 
 
 import FormControl from '@material-ui/core/FormControl';
@@ -231,7 +232,7 @@ handleInvestorAddress(e){
 render() {
 
   return (
-    <div style={{ marginTop: 10 }}>
+    <div className="form-group" style={{ marginTop: 10 }}>
         <h3 align="center">New SPC Company</h3>
         <form onSubmit={this.handleSubmit}>
         

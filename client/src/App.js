@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SPCHomePage from './components/SPC/SPCHomePage';
-
-
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import ReviewerHomePage from './components/Reviewer/ReviewerHomePage';
 import LawyerHomePage from './components/Lawyer/LawyerHomePage';
 import ContractHomePage from './components/Contract/ContractHomePage';
@@ -74,9 +73,19 @@ const styles = theme => ({
   
 
 class App extends Component {
+  state = {
+    anchorEl: null,
+  };
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
 
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
   render() {
-   
+    const { anchorEl } = this.state;
+
     return (
       <Router>
       <NoSsr>
@@ -84,33 +93,38 @@ class App extends Component {
         <div >
           
         <AppBar position="static" >
-            <Tabs  
-            
-            >
+            <Tabs>
             <ul className="logo">
             <img src={logo} alt="" /></ul>
             
             <ul className="nav-item">
                <li >
-                  <Link to={'/'} className="nav-link">Home</Link>
+                <Link to={'/'} className="nav-link">Home</Link>
                 </li>
                 <li>|</li>
                 </ul>
-              
+
                 <ul className="nav-item">
-            <li >
-                  <Link to={'/SPCHomePage'} className="nav-link">SPC</Link>
-                
-        
-       
-                </li>
-                <li>|</li>
-                </ul>
-                <ul className="nav-item">
-                <li >
-                  <Link to={'/SSCHomePage'} className="nav-link">SSC</Link>
-                </li>
-                </ul>
+                <li>
+                <Button className="nav-link"
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          aria-haspopup="true"
+          onClick={this.handleClick}
+        >
+          New Company
+        </Button>
+        <Menu className="nav-link"
+          id="simple-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={this.handleClose}
+        >
+          <Link to={'/SPCHomePage'} onClick={this.handleClose} className="nav-link">SPC</Link>
+          <Link to={'/SSCHomePage'} onClick={this.handleClose} className="nav-link">SSC</Link>          
+        </Menu>
+        </li>
+        <li>|</li>
+        </ul>
                 
                 <ul className="nav-item">
                <li >
@@ -127,8 +141,9 @@ class App extends Component {
                 <ul className="nav-item">   
                 <li>
                   <Link to={'/ContractHomePage'} className="nav-link">Contract</Link>
-                <li>|</li>
+                
               </li>
+              <li>|</li>
                 </ul>
                 <ul className="nav-item">
                 <li>
@@ -139,17 +154,18 @@ class App extends Component {
                 <ul className="nav-item">
                 <li >
                   <Link to={'/LawyerHomePage'} className="nav-link">Lawyer</Link>
-                <li>|</li>
+                
                 </li>
+                <li>|</li>
                 </ul>
                 
                
-                <ul className="nav-item">
+                {/* <ul className="nav-item">
                 <li >
                   <Link to={'/NotificationHomePage'} className="nav-link">Notification</Link>
                 </li>
                 <li>|</li>
-                </ul>
+                </ul> */}
                 <ul className="nav-item">
                 <li >
                   <Link to={'/PaymentHomePage'} className="nav-link">Payment</Link>
@@ -159,8 +175,8 @@ class App extends Component {
                 <ul className="nav-item">
                 <li>
                   <Link to={'/ReviewerHomePage'} className="nav-link">Reviewer</Link>
-                <li>|</li>
                </li>
+               <li>|</li>
                </ul>
                 
                 
@@ -175,9 +191,21 @@ class App extends Component {
                 <li >
                         <Link to={'/ContactUs'} className="nav-link">Contact Us</Link>
                       </li>
+                      <li>|</li>
                       </ul>
-                      
-                      <li className="nav-item">
+                      <ul className="nav-item">
+                <li >
+    <Link to={'/Login'} className="nav-link" > <Button color="inherit">Login</Button> </Link> 
+    </li>
+                      <li>|</li>
+                      </ul>
+                      <ul className="nav-item">
+                <li >
+    <Link to={'/Register'} className="nav-link" > <Button color="inherit">Register</Button></Link> 
+    </li>
+                      <li>|</li>
+                      </ul>
+                      {/* <li className="nav-item">
                         <Link to={'/Workspace'} className="nav-link">Workspace</Link>
                       </li>
                       <li className="nav-item">
@@ -186,7 +214,7 @@ class App extends Component {
 
                       <li className="nav-item">
                         <Link to={'/Workspace'} className="nav-link">Workspace</Link>
-                      </li>
+                      </li> */}
 
                    
  </Tabs>
@@ -212,7 +240,7 @@ class App extends Component {
               <Route exact path='/CommentHomePage' component={ Comment } /> 
               <Route exact path='/ExternalEntitiesHomePage' component={ ExternalEntities } /> 
               <Route exact path='/NotificationHomePage' component={ Notification } /> 
-              \
+              
               <Route exact path='/ContactUs' component={ContactUs} />
              
 
@@ -220,17 +248,14 @@ class App extends Component {
               <Route exact path='/Register' component={Register} />
               
 
-              <Route exact path='/Workspace' component={Workspace} />
+              {/* <Route exact path='/Workspace' component={Workspace} />
               <Route exact path='/Form' component={Form} />
               
 
-             <Route exact path='/Forms' component={Forms} />
+             <Route exact path='/Forms' component={Forms} /> */}
           </Switch>
          
-<Toolbar>
-    <Link to={'/Login'} > <Button color="inherit">Login</Button> </Link> 
-    <Link to={'/Register'} > <Button color="inherit">Register</Button></Link> 
-        </Toolbar>
+
 
              
 

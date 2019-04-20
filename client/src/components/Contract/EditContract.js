@@ -187,38 +187,7 @@ class EditContract extends Component {
     
         handleSubmit(e){
           e.preventDefault();
-          let databody={
-           " First_party_name":this.state.First_party_address,
-            "Second_party_name":this.state.Second_party_name,   
-            "First_party_address":this.state.First_party_address,  
-            "Second_party_address":this.state.Second_party_address,
-            "Day":this.state.Day,   
-            "Month":this.state.Month,   
-            "Year":this.state.Year, 
-            "Corporate_name":this.state.Corporate_name,  
-            "Corporate_governorate":this.state.Corporate_governorate,
-            "Corporate_city":this.state.Corporate_city,
-            "Corporate_address":this.state.Corporate_address,
-            "Corporate_Phone_Number":this.state.Corporate_Phone_Number,
-            "Investor_name":this.state.Investor_name,  
-            "Investor_address":this.state.Investor_address,  
-            "Investor_ID":this.state.Investor_ID,
-            "Investor_nationality":this.state.Investor_nationality, 
-            "Investor_DOB":this.state.Investor_DOB, 
-            "Investor_phone_number":this.state.Investor_phone_number,
-            "Investor_Fax":this.state.Investor_Fax,
-            "Investor_email":this.state.Investor_email,
-            "Main_business_activity":this.state.Main_business_activity,
-           "Other_activities":this.state.Other_activities,
-           "Duration_of_the_company":this.state.Duration_of_the_company,
-            "Initial_capital": this.state.Initial_capital,
-            "Capital_Currency":this.state.Capital_Currency,
-            "Status":this.state.Status,
-            "Type_of_form":this.state.Type_of_form,
-
-
-
-          }
+         
         }
           
           update(id){
