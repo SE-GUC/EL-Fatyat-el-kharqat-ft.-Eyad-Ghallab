@@ -89,7 +89,6 @@ router.post("/", async (req, res) => {
 router.post("/register", async (req, res) => {
   console.log("ana da5alt");
   try {
-    
     console.log("ana da5alt hena");
     const {
       name,
@@ -165,7 +164,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.get("/find/SSC", (req, res) => {
-  SSC.find({ Lawyer_review: "accepted" })
+  SSC.find({ Lawyer_review: "accepted", Status: "binding" })
     .sort({ Formdate: -1 })
     .then(SSC => {
       console.log(`There are ${SSC.length} SSC forms`);
@@ -190,10 +189,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-
-
-
-
 //delete a reviewer
 router.delete("/:id", async (req, res) => {
   try {
@@ -212,7 +207,7 @@ router.delete("/:id", async (req, res) => {
 // get all accepted SPC forms
 
 router.get("/find/SPC", (req, res) => {
-  SpcForm.find({ Lawyer_review: "accepted" })
+  SpcForm.find({ Lawyer_review: "accepted", Status: "binding" })
     .sort({ Form_Date: -1 })
     .then(SpcForm => {
       console.log(`There are ${SpcForm.length} SPC forms`);
@@ -294,9 +289,6 @@ router.get("/:id", async (req, res) => {
   const reviewers = await Rev.findById(req.params.id);
   res.json({ data: reviewers });
 });
-
-
-
 
 // get all accepted status SPC forms
 router.get("/find/spcform", (req, res) => {
