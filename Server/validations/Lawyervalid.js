@@ -12,8 +12,8 @@ module.exports = {
             birthdate: Joi.date(),
             email: Joi.string().email(),
             phonenumber:Joi.string().trim().regex(/^[0-9]{11,11}$/),
-            legaltype: Joi.string().alphanum(),
-            gender: Joi.string().alphanum(),
+            legaltype: Joi.string(),
+            gender: Joi.string(),
             noOfPreviousCases: Joi.number(),
         
         }
