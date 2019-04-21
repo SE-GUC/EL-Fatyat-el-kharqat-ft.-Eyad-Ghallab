@@ -108,7 +108,7 @@ class CreateAdmin extends Component {
           variant="outlined"
           label="Name"
           value={this.state.name}
-          onChange={this.handlenameChange}
+          onChange={this.handlenameChange}required
           
         />
         </div> 
@@ -118,7 +118,7 @@ class CreateAdmin extends Component {
           variant="outlined"
           label="Address"
           value={this.state.address}
-          onChange={this.handleaddressChange}
+          onChange={this.handleaddressChange} required
           
         />
         </div> 
@@ -128,7 +128,7 @@ class CreateAdmin extends Component {
           variant="outlined"
           label="Email"
           value={this.state.email}
-          onChange={this.handleemailChange}
+          onChange={this.handleemailChange} required
           
         />
         </div> 
@@ -138,7 +138,7 @@ class CreateAdmin extends Component {
           variant="outlined"
           label="User Name"
           value={this.state.username}
-          onChange={this.handleusernameChange}
+          onChange={this.handleusernameChange} required
           
         />
         </div>
@@ -149,7 +149,7 @@ class CreateAdmin extends Component {
             id="adornment-password"
             type={this.state.showPassword ? 'text' : 'password'}
             value={this.state.password}
-            onChange={this.handlepasswordChange}
+            onChange={this.handlepasswordChange} required
             endAdornment={
               <InputAdornment position="end">
                 <IconButton

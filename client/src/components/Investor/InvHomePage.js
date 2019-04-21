@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Contract from './Investor';
+import Investor from './Investor';
+import EditInvestor from './EditInvestor'
 import SPC from '../SPC/CreatingSPCForm'
 import SSC from '../SSC/CreatingSSCForm'
 import Menu from '@material-ui/core/Menu';
@@ -34,6 +35,9 @@ export default class InvHomePage extends Component {
                     <Link to={'/read'} className="nav-link">My Profile</Link>
                   </li>
                   <li className="nav-item">
+                    <Link to={'/edit'} className="nav-link">Edit My Profile</Link>
+                  </li>
+                  <li className="nav-item">
                 <Button className="nav-link"
           aria-owns={anchorEl ? 'simple-menu' : undefined}
           aria-haspopup="true"
@@ -57,7 +61,8 @@ export default class InvHomePage extends Component {
           
             <Switch>
                
-                <Route exact path='/read' component={ Contract } /> 
+                <Route exact path='/read' component={ Investor } />
+                <Route exact path='/edit' component={ EditInvestor } /> 
                 <Route exact path='/NewSPC' component={ SPC } /> 
                 <Route exact path='/NewSSC' component={ SSC } /> 
 
