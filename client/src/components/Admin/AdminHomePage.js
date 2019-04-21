@@ -7,6 +7,7 @@ import Reviewer from '../regreviewer/registerrev'
 import Lawyer from '../registerlawyer/reglawyer'
 import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
+import regAdmin from '../registerAdmin/regadmin'
 export default class InvHomePage extends Component {
   state = {
     anchorEl: null,
@@ -68,6 +69,7 @@ export default class InvHomePage extends Component {
                 <Route exact path='/edit' component={ EditAdmin } /> 
                 <Route exact path='/Reviewer' component={ Reviewer } /> 
                 <Route exact path='/Lawyer' component={ Lawyer } /> 
+                <Route exact path='/Admin' component={ regAdmin } /> 
 
 
             </Switch>

@@ -2,7 +2,17 @@ import React, { Component } from "react";
 import superagent from "superagent";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { Redirect } from "react-router-dom";
+import Snackbar from '@material-ui/core/Snackbar';
+import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+
+const styles = theme => ({
+  close: {
+    padding: theme.spacing.unit / 2,
+  },
+});
+
 
 class reglawyer extends Component {
   constructor() {
@@ -17,9 +27,22 @@ class reglawyer extends Component {
       legaltype: "",
       birthdate: "",
       noOfPreviousCases: "",
-      gender: ""
+      gender: "",
+      open:false,
     };
-  }
+  } 
+  handleClick = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({ open: false });
+  };
+
 
   handleusername(e) {
     this.setState({ username: e.target.value });
@@ -90,12 +113,11 @@ class reglawyer extends Component {
   render() {
     console.log(this.state);
     const isAlreadyAuthenticated = this.isAuthenticated();
+    const { classes } = this.props;
 
     return (
       <div className="Register">
-        {isAlreadyAuthenticated ? (
-          <Redirect to={{ pathname: "/SignIn" }} />
-        ) : (
+        
           <form onSubmit={this.submitForm.bind(this)}>
             <h2>Register A New Lawyer</h2>
             <TextField
@@ -104,7 +126,7 @@ class reglawyer extends Component {
               type="text"
               margin="normal"
               value={this.state.username}
-              onChange={this.handleusername.bind(this)}
+              onChange={this.handleusername.bind(this)} required
             />{" "}
             <br />
             <TextField
@@ -114,7 +136,7 @@ class reglawyer extends Component {
               autoComplete="current-password"
               margin="normal"
               value={this.state.password}
-              onChange={this.handlepassword.bind(this)}
+              onChange={this.handlepassword.bind(this)} required
             />{" "}
             <br />
             <TextField
@@ -123,7 +145,7 @@ class reglawyer extends Component {
               type="text"
               margin="normal"
               value={this.state.fullname}
-              onChange={this.handlefullname.bind(this)}
+              onChange={this.handlefullname.bind(this)} required
             />{" "}
             <br />
             <TextField
@@ -132,7 +154,7 @@ class reglawyer extends Component {
               type="email"
               margin="normal"
               value={this.state.email}
-              onChange={this.handleemail.bind(this)}
+              onChange={this.handleemail.bind(this)} required
             />
             <br />
             <TextField
@@ -141,7 +163,7 @@ class reglawyer extends Component {
               type="text"
               margin="normal"
               value={this.state.phonenumber}
-              onChange={this.handlephonenumber.bind(this)}
+              onChange={this.handlephonenumber.bind(this)} required
             />{" "}
             <br />
             <TextField
@@ -150,7 +172,7 @@ class reglawyer extends Component {
               type="text"
               margin="normal"
               value={this.state.legaltype}
-              onChange={this.handlelegaltype.bind(this)}
+              onChange={this.handlelegaltype.bind(this)} required
             />{" "}
             <br />
             <TextField
@@ -158,7 +180,7 @@ class reglawyer extends Component {
               type="date"
               margin="normal"
               value={this.state.birthdate}
-              onChange={this.handlebirthdate.bind(this)}
+              onChange={this.handlebirthdate.bind(this)} required
             />{" "}
             <br />
             <TextField
@@ -167,7 +189,7 @@ class reglawyer extends Component {
               type="text"
               margin="normal"
               value={this.state.noOfPreviousCases}
-              onChange={this.handlenoOfPreviousCases.bind(this)}
+              onChange={this.handlenoOfPreviousCases.bind(this)} required
             />{" "}
             <br />
             <TextField
@@ -176,16 +198,42 @@ class reglawyer extends Component {
               type="gender"
               margin="normal"
               value={this.state.gender}
-              onChange={this.handlegender.bind(this)}
+              onChange={this.handlegender.bind(this)} required
             />{" "}
             <br />
-            <Button variant="contained" color="primary" type="submit">
+            <Button variant="contained" color="primary" type="submit" onClick={this.handleClick}>
               Register
-            </Button>
+            </Button> 
+            <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">You Registered A New Lawyer</span>}
+          action={[
+            
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+                      ]}
+                      />
+               
           </form>
-        )}
+        
       </div>
     );
   }
 }
-export default reglawyer;
+export default withStyles(styles)(reglawyer); 

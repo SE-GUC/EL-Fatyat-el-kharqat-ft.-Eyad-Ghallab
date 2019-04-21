@@ -69,7 +69,7 @@ module.exports = {
       nationalid: Joi.string()
         .min(14)
         .max(14)
-        .required()
+       
     };
 
     return Joi.validate(request, updateSchema);

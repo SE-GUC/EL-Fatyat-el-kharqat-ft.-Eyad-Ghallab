@@ -9,6 +9,8 @@ import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import ViewSPC from "./mycompSPC.js";
 import ViewSSC from "./mycompSSC.js";
+import spcstatus from "./spcstatus";
+import sscstatus from "./sscstatus";
 export default class InvHomePage extends Component {
   state = {
     anchorEl: null
@@ -42,11 +44,22 @@ export default class InvHomePage extends Component {
                     My Profile
                   </Link>
                 </li>
+               
                 <li className="nav-item">
                   <Link to={"/edit"} className="nav-link">
                     Edit My Profile
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to={"/spcstatus"} className="nav-link">
+                   My SPC Companies Status
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/sscstatus"} className="nav-link">
+                  My SSC Companies Status                  </Link>
+                </li>
+                
                 <li className="nav-item">
                   <Link to={"/ViewSPC"} className="nav-link">
                     My SPC Companies
@@ -57,6 +70,9 @@ export default class InvHomePage extends Component {
                     My SSC Companies
                   </Link>
                 </li>
+                
+               
+
                 <li className="nav-item">
                   <Button
                     className="nav-link"
@@ -100,6 +116,9 @@ export default class InvHomePage extends Component {
             <Route exact path="/NewSSC" component={SSC} />
             <Route exact path="/ViewSPC" component={ViewSPC} />
             <Route exact path="/ViewSSC" component={ViewSSC} />
+            <Route exact path="/spcstatus" component={spcstatus} />
+            <Route exact path="/sscstatus" component={sscstatus} />
+
           </Switch>
         </div>
       </Router>
