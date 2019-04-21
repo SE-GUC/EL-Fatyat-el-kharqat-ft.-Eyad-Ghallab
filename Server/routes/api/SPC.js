@@ -69,10 +69,10 @@ router.get("/all", async (req, res) => {
   res.json({ msg: "Here are the SPC Forms", data: spcforms });
 });
 
-// router.get("/:id", async (req, res) => {
-//   const spcforms = await SpcForm.findById(req.params.id);
-//   res.json({ data: spcforms });
-// });
+router.get("/:id", async (req, res) => {
+  const spcforms = await SpcForm.findById(req.params.id);
+  res.json({ data: spcforms });
+});
 
 // router.get("/:investor_nationalid", async (req, res) => {
 //   const investor = req.params.investor_nationalid;
