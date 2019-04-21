@@ -31,7 +31,15 @@ router.get("/:investor_nationalid/SSC", async (req, res) => {
   });
   res.json({ data: user });
 });
+router.get("/:investor_nationalid/status", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
 
+  const national = await Form.find({
+    investor_nationalid: nationalid,
+   
+  });
+  res.json({ data: national });
+});
 router.get("/all", async (req, res) => {
   const forms = await Form.find();
   res.json({ msg: "Here are the SSC Forms", data: forms });

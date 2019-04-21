@@ -18,6 +18,15 @@ router.get("/:investor_nationalid/SPC", async (req, res) => {
     Status: "accepted"
   });
   res.json({ data: national });
+}); 
+router.get("/:investor_nationalid/status", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
+
+  const national = await SpcForm.find({
+    investor_nationalid: nationalid,
+   
+  });
+  res.json({ data: national });
 });
 
 router.post("/msg", async (req, res) => {
@@ -27,9 +36,25 @@ router.post("/msg", async (req, res) => {
   nexmo.message.sendSms(
     "NEXMO",
     "2" + number,
-    "Your case has been accepted please pay" +
-      msg +
-      " using fawry , vodafone cash or mobinil cash",
+    "Please update your case",
+    (err, responseData) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.dir(responseData);
+      }
+    }
+  );
+});
+
+router.post("/pay", async (req, res) => {
+  const number = req.body.number;
+  const msg = req.body.msg;
+
+  nexmo.message.sendSms(
+    "NEXMO",
+    "2" + number,
+    "Your case has been accepted please pay using fawry",
     (err, responseData) => {
       if (err) {
         console.log(err);

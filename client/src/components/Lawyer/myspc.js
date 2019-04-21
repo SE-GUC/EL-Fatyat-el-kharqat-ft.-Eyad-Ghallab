@@ -3,9 +3,13 @@ import React, { Component } from "react";
 class myspc extends Component {
   constructor() {
     super();
+    this.sms = this.sms.bind(this);
     this.state = {
+      number: 0,
+
       SPC: [],
-      isSPC: false
+      isSPC: false,
+      isloaded: true
     };
   }
 
@@ -20,13 +24,33 @@ class myspc extends Component {
       );
     if (this.state.SPC != []) {
       this.setState({ isSPC: true });
+      this.setState({ isloaded: true });
     }
 
     //console.log(this.state.isSPC);
   }
 
+  sms(num, e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    let databody = {
+      number: num
+    };
+
+    return fetch("/api/SPC/msg", {
+      method: "POST",
+      body: JSON.stringify(databody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
+
   Approve(e) {
     e.preventDefault();
+    e.stopImmediatePropagation();
     console.log("why the hell");
     var databody = { Lawyer_review: "accepted" };
     console.log(databody);
@@ -43,6 +67,7 @@ class myspc extends Component {
   }
   Reject(e) {
     e.preventDefault();
+    e.stopImmediatePropagation();
     var databody = { Lawyer_review: "rejected" };
     return fetch("/api/SPC/" + localStorage.getItem("id"), {
       method: "PUT",
@@ -105,20 +130,6 @@ class myspc extends Component {
             <br />
             Lawyer_review: {this.state.SPC.Lawyer_review}
             <br />
-            <button
-              onClick={() => {
-                this.Approve();
-              }}
-            >
-              Accept
-            </button>
-            <button
-              onClick={() => {
-                this.Reject();
-              }}
-            >
-              Reject
-            </button>
           </form>
         ) : (
           <h1> this is so bad</h1>
