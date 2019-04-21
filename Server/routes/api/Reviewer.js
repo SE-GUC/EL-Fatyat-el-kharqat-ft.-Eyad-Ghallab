@@ -35,23 +35,74 @@ router.post("/", async (req, res) => {
   }
 });
 
+// router.post("/register", async (req, res) => {
+//   console.log("ana da5alt");
+//   try {
+//     // const isValidated = validator.registerValidation(req.body);
+//     // console.log("malak?");
+//     // if (isValidated.error)
+//     //   return res
+//     //     .status(400)
+//     //     .send({ error: isValidated.error.details[0].message });
+//     console.log("ana da5alt hena");
+//     const {
+//       Name,
+//       Email,
+//       Password,
+//       YearsOfExperience,
+//       Username,
+//       Gender
+//     } = req.body;
+//     const reviewer = await Rev.findOne({ Email });
+//     console.log("ana gayaaaa");
+//     if (reviewer)
+//       return res.status(400).json({ email: "Email already exists" });
+//     console.log("we hena");
+//     const salt = bcrypt.genSaltSync(10);
+//     const hashedPassword = bcrypt.hashSync(Password, salt);
+//     const newUser = new Rev({
+//       Name,
+//       Email,
+//       Password: hashedPassword,
+//       YearsOfExperience,
+//       Username,
+//       Gender
+//     });
+//     console.log("ana da5alt hena kaman");
+//     await Rev.create(newUser);
+//     console.log("ana hena");
+//     //const user = await us.create(req.body);
+//     const type = new us({
+//       type: "reviewer",
+//       email,
+//       password: hashedPassword,
+//       id: newUser.id
+//     });
+//     console.log("what the hell ");
+//     const user = await us.create(type);
+//     res.json({ msg: "User created successfully", data: newUser });
+//   } catch (error) {
+//     res.status(422).send({ error: "Can not create user" });
+//   }
+// });
+
 router.post("/register", async (req, res) => {
   console.log("ana da5alt");
   try {
-    const isValidated = validator.registerValidation(req.body);
-    console.log("malak?");
-    if (isValidated.error)
-      return res
-        .status(400)
-        .send({ error: isValidated.error.details[0].message });
+    // const isValidated = validator.registerValidation(req.body);
+    // console.log("malak?");
+    // if (isValidated.error)
+    //   return res
+    //     .status(400)
+    //     .send({ error: isValidated.error.details[0].message });
     console.log("ana da5alt hena");
     const {
-      Name,
-      Email,
-      Password,
-      YearsOfExperience,
-      Username,
-      Gender
+      name,
+      email,
+      password,
+      yearsOfExperience,
+      username,
+      gender
     } = req.body;
     const reviewer = await Rev.findOne({ email });
     if (reviewer)
@@ -60,12 +111,12 @@ router.post("/register", async (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
     const newUser = new Rev({
-      Name,
-      Email,
-      Password: hashedPassword,
-      YearsOfExperience,
-      Username,
-      Gender
+      name,
+      email,
+      password: hashedPassword,
+      yearsOfExperience,
+      username,
+      gender
     });
     console.log("ana da5alt hena kaman");
     await Rev.create(newUser);

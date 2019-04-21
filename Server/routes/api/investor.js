@@ -109,7 +109,8 @@ router.post("/register", async (req, res) => {
       city,
       country,
       jobtitle,
-      mobilenumber
+      mobilenumber,
+      nationalid
     } = req.body;
     const investor = await inv.findOne({ email });
     if (investor)
@@ -127,7 +128,8 @@ router.post("/register", async (req, res) => {
       city,
       country,
       jobtitle,
-      mobilenumber
+      mobilenumber,
+      nationalid
     });
 
     await inv.create(newUser);
@@ -136,7 +138,8 @@ router.post("/register", async (req, res) => {
       type: "investor",
       email,
       password: hashedPassword,
-      id: newUser.id
+      id: newUser.id,
+      nationalid: newUser.nationalid
     });
     const user = await us.create(type);
     res.json({ msg: "User created successfully", data: newUser });

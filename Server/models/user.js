@@ -19,6 +19,10 @@ const userSchema = new Schema({
   id: {
     type: String,
     required: false
+  },
+  nationalid: {
+    type: String,
+    required: false
   }
 });
 
