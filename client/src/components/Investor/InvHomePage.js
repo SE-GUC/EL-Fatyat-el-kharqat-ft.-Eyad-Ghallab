@@ -1,109 +1,71 @@
 import React, { Component } from 'react';
-
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Tabs from '@material-ui/core/Tabs';
-import AppBar from '@material-ui/core/AppBar';
-import NoSsr from '@material-ui/core/NoSsr';
-import logo from './unnamed.png';
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+import Contract from './Investor';
+import SPC from '../SPC/CreatingSPCForm'
+import SSC from '../SSC/CreatingSSCForm'
+import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
+export default class InvHomePage extends Component {
+  state = {
+    anchorEl: null,
+  };
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
 
-import EditInv from'./EditInvestor';
-import DeleteInv from './DeleteInvstor'
-import Investor from './Investor';
-
-import upload from './upload';
-const styles = theme => ({
-  root: {
-    maxWidth: 400,
-    flexGrow: 1,
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    height: 50,
-    paddingLeft: theme.spacing.unit * 4,
-    backgroundColor: theme.palette.background.default,
-    position: 'relative',
-  },
-  img: {
-    height: 255,
-    maxWidth: 400,
-    overflow: 'hidden',
-    display: 'block',
-    width: '100%',
-
-  },
-});
-
- 
-
-  
-class InvHomePage extends Component {
-  render() {
-    return (
-      <Router>
-      <NoSsr>
-        <div >
-       
-          <AppBar position="static">
-            <Tabs 
-            
-            >
-            <ul className="logo">
-            <img src={logo} alt="" /></ul>
-            
-            
-              
-               
-                <ul className="nav-item">
-               <li >
-                  <Link to={'/DeleteInv'} className="nav-link">Delete</Link>
-                </li>
-                <li>|</li>
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+    render() {
+      const { anchorEl } = this.state;
+      return (
+        <Router>
+          <div className="container">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+             
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                    <Link to={'/'} className="nav-link">Home</Link>
+                  </li>
+                 
+                  <li className="nav-item">
+                    <Link to={'/read'} className="nav-link">My Profile</Link>
+                  </li>
+                  <li className="nav-item">
+                <Button className="nav-link"
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          aria-haspopup="true"
+          onClick={this.handleClick}
+        >
+          New Company
+        </Button>
+        <Menu className="nav-link"
+          id="simple-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={this.handleClose}
+        >
+          <Link to={'/NewSPC'} onClick={this.handleClose} className="nav-link">Sole Propretorship Company</Link>
+          <Link to={'/NewSSC'} onClick={this.handleClose} className="nav-link">Single Shareholder Company</Link>          
+        </Menu>
+        </li>
                 </ul>
-                <ul className="nav-item">    
-                <li>              
-                <Link to={'/EditInv'} className="nav-link">Edit</Link>
-                </li>
-                <li>|</li>
-                </ul>
-                <ul className="nav-item">
-            <li >
-                  <Link to={'/ViewInv'} className="nav-link">View</Link>
-                </li>
-                <li>|</li>
-                </ul>
-                <ul className="nav-item">
-            <li >
-                  <Link to={'/Upload'} className="nav-link">Upload</Link>
-                </li>
-                <li>|</li>
-                </ul>
-                
-            </Tabs> 
-          </AppBar>
-       
+              </div>
+            </nav> <br/>
           
-          <Switch>
-              
-              <Route exact path='/EditInv' component={ EditInv } />
-              <Route exact path='/DeleteInv' component={ DeleteInv} /> 
-              <Route exact path='/ViewInv' component={ Investor} /> 
-              <Route exact path='/Upload' component={ upload } /> 
-          </Switch>
-              <br/>
+            <Switch>
+               
+                <Route exact path='/read' component={ Contract } /> 
+                <Route exact path='/NewSPC' component={ SPC } /> 
+                <Route exact path='/NewSSC' component={ SSC } /> 
 
-      
-        </div>
-      </NoSsr>
-      </Router> 
-
-    );
+            </Switch>
+          </div>
+        </Router>
+      );
+    }
   }
-}
-
-
-export default  withStyles(styles, { withTheme: true }) (InvHomePage);
-
+  
+  

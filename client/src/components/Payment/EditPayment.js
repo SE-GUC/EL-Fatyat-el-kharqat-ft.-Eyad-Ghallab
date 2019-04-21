@@ -113,23 +113,7 @@ class EditPayment extends Component {
       }  
       handleSubmit(e){
         e.preventDefault();
-        let databody = {
-            "Card_type":this.state.Card_type,	
-    "Card_no":this.state.Card_no,	
-    "Amount":this.state.Amount,	
-    "Firstname":	this.state.Firstname,	
-    "Lastname":	this.state.Lastname,	
-    "Email":	this.state.Email,	
-    "Phone_number":	this.state.Phone_number,	
-    "City":this.state.City,	
-    "Street_Address":	this.state.Street_Address,	
-    "State_Region":	this.state.State_Region,	
-    "Expire_date": 	this.state.Expire_date,	
-    "CVC":this.state.CVC,
-    "Country":this.state.Country,
-    "Postal_Zipcode":this.state.Postal_Zipcode,
-        
-}}
+        }
 update(id){
     // e.preventDefault();
     console.log(this.state.Firstname)

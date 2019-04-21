@@ -5,7 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
-
+import './SSC.css'
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -24,6 +24,7 @@ class CreatingSSCForm extends Component {
     constructor(){
         super();
         this.handleCompany_name= this.handleCompany_name.bind(this);
+        this.handleCompany_nameinenglish= this.handleCompany_nameinenglish.bind(this);
         this.handleGovernorate= this.handleGovernorate.bind(this);
         this.handleCity =  this.handleCity.bind(this);
         this.handleCompany_Address =  this.handleCompany_Address.bind(this);
@@ -59,6 +60,8 @@ class CreatingSSCForm extends Component {
         this.state ={
           SSC:[],
             Company_name:"",
+            Company_nameinenglish:"",
+
             Governorate:"",
             City: "",
             Company_Address:"",
@@ -92,6 +95,9 @@ class CreatingSSCForm extends Component {
       handleCompany_name(e){
         this.setState({Company_name: e.target.value })
     }
+    handleCompany_nameinenglish(e){
+      this.setState({Company_nameinenglish: e.target.value })
+  }
     handleGovernorate(e){
         this.setState({Governorate: e.target.value })
     }
@@ -190,6 +196,8 @@ class CreatingSSCForm extends Component {
         e.preventDefault();
         let databody = {
           "Company_name":this.state.Company_name,
+          "Company_nameinenglish":this.state.Company_nameinenglish,
+
                     "Governorate":this.state.Governorate, 
                     "City": this.state.City,
                     "Company_Address":this.state.Company_Address,
@@ -235,7 +243,7 @@ class CreatingSSCForm extends Component {
   
   
       return (
-        <div style={{ marginTop: 10 }}>
+        <div className="form-group" style={{ marginTop: 10 }}>
             <h3 align="center">New SSC Company</h3>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
@@ -245,6 +253,15 @@ class CreatingSSCForm extends Component {
                       className="form-control" 
                       value={this.state.Company_name}
                       onChange={this.handleCompany_name}
+                      />
+                      </div>
+                      <div className="form-group">
+                    <label>Company Name In English:  </label>
+                    <input 
+                      type="text" 
+                      className="form-control" 
+                      value={this.state.Company_nameinenglish}
+                      onChange={this.handleCompany_nameinenglish}
                       />
                       </div>
                       <div className="form-group">

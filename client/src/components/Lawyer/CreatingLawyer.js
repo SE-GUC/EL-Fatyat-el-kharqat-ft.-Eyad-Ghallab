@@ -121,7 +121,7 @@ render() {
               <input 
                 type="text" 
                 className="form-control" 
-                value={this.state. username}
+                value={this.state.username}
                 onChange={this.handleusername}
                 />
                 </div>

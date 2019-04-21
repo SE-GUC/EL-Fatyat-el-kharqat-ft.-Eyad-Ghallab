@@ -4,9 +4,13 @@ const Schema = mongoose.Schema
 
 const SpcFormSchema = new Schema({
     
+    
     Facility_name: {
         type: String,
         required: true
+    },
+    Facility_nameinenglish: {
+        type: String,
     },
     Governorate: {
         type: Object,
