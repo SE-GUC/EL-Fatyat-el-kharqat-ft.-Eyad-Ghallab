@@ -10,12 +10,13 @@ import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import "./Lawyer.css";
 import hana from "./myssc";
-import sama from "./myspc"
+import sama from "./myspc";
 export default class LawyerHomePage extends Component {
   state = {
     anchorEl: null
   };
   handleClick = event => {
+    //event.preventDefault();
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -54,7 +55,7 @@ export default class LawyerHomePage extends Component {
                     Workspace
                   </Link>
                 </li>
-                
+
                 <li className="nav-item">
                   <Button
                     className="nav-link"
@@ -99,7 +100,6 @@ export default class LawyerHomePage extends Component {
             <Route exact path="/workspace" component={Workspace} />
             <Route exact path="/myssc" component={hana} />
             <Route exact path="/myspc" component={sama} />
-
           </Switch>
         </div>
       </Router>
