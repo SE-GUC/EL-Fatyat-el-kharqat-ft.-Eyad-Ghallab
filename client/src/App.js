@@ -16,6 +16,7 @@ import NoSsr from "@material-ui/core/NoSsr";
 import AppBar from "@material-ui/core/AppBar";
 
 import "./App.css";
+import Reviewer from "./components/Reviewer/Reviewer";
 class App extends Component {
   render() {
     return (
