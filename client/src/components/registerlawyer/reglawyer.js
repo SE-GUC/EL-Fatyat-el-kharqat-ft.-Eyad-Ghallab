@@ -17,67 +17,56 @@ class reglawyer extends Component {
       legaltype: "",
       birthdate: "",
       noOfPreviousCases: "",
-      gender: "",
-      
+      gender: ""
     };
   }
 
-  handleusername(e){
-    this.setState({username: e.target.value })
-
+  handleusername(e) {
+    this.setState({ username: e.target.value });
   }
-  handlepassword(e){
-    this.setState({ password: e.target.value })
-
+  handlepassword(e) {
+    this.setState({ password: e.target.value });
   }
-  handlefullname(e){
-    this.setState({fullname: e.target.value })
-
+  handlefullname(e) {
+    this.setState({ fullname: e.target.value });
   }
-  handlebirthdate(e){
-    this.setState({ birthdate: e.target.value })
-
+  handlebirthdate(e) {
+    this.setState({ birthdate: e.target.value });
   }
-  handleemail(e){
-    this.setState({email: e.target.value })
-
+  handleemail(e) {
+    this.setState({ email: e.target.value });
   }
-  handlephonenumber(e){
-    this.setState({ phonenumber: e.target.value })
-
+  handlephonenumber(e) {
+    this.setState({ phonenumber: e.target.value });
   }
-  handlelegaltype(e){
-    this.setState({ legaltype: e.target.value })
-
+  handlelegaltype(e) {
+    this.setState({ legaltype: e.target.value });
   }
-  handlegender(e){
-    this.setState({gender: e.target.value })
-
+  handlegender(e) {
+    this.setState({ gender: e.target.value });
   }
-  handlenoOfPreviousCases(e){
-    this.setState({noOfPreviousCases: e.target.value })
-
+  handlenoOfPreviousCases(e) {
+    this.setState({ noOfPreviousCases: e.target.value });
   }
-  
+
   HandleButtonClick() {
     this.setState();
   }
 
-  
   submitForm(event) {
     event.preventDefault();
     superagent
       .post("/api/Lawyer/register")
       .send({
-       username: this.state.username,
-      password: this.state.password,
-      fullname: this.state.fullname,
-      email: this.state.email,
-      phonenumber: this.state.phonenumber,
-      legaltype: this.state.legaltype,
-      birthdate: this.state.birthdate,
-      noOfPreviousCases: this.state.noOfPreviousCases,
-      gender: this.state.gender,
+        username: this.state.username,
+        password: this.state.password,
+        fullname: this.state.fullname,
+        email: this.state.email,
+        phonenumber: this.state.phonenumber,
+        legaltype: this.state.legaltype,
+        birthdate: this.state.birthdate,
+        noOfPreviousCases: this.state.noOfPreviousCases,
+        gender: this.state.gender
       })
       .end((err, res) => {
         if (err) {
@@ -103,7 +92,7 @@ class reglawyer extends Component {
     const isAlreadyAuthenticated = this.isAuthenticated();
 
     return (
-        <div className="Register">
+      <div className="Register">
         {isAlreadyAuthenticated ? (
           <Redirect to={{ pathname: "/SignIn" }} />
         ) : (
