@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
     const Comment = await Comment1.create(req.body);
     res.json({ msg: "Comment was created successfully", data: Comment });
   } catch (error) {
-    // We will be handling the error later
+    
     console.log(error);
   }
 });
@@ -46,7 +46,6 @@ router.delete('/:id', async (req,res) => {
      res.json({msg:'Comment was deleted successfully', data: deletedComment})
     }
     catch(error) {
-        // We will be handling the error later
         console.log(error)
     }  
  })
@@ -57,15 +56,11 @@ router.delete('/:id', async (req,res) => {
 router.put('/:id', async (req,res) => {
     try {
      const id = req.params.id
-    //  const investor = await inv.findOne({id})
-    //  if(!investor) return res.status(404).send({error: 'investor does not exist'})
-    //  const isValidated = validator.updateValidation(req.body)
-    //  if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+    
      const updatedcom = await Comment1.updateOne(req.body)
      res.json({msg: 'Comment updated successfully', data: updatedcom})
     }
     catch(error) {
-        // We will be handling the error later
         console.log(error)
     }  
  })

@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 class Workspace extends Component {
   constructor() {
     super();
-    this.Approve = this.Approve.bind(this);
+
     this.state = {
       SPC: [],
       SSC: [],
@@ -14,19 +14,7 @@ class Workspace extends Component {
       idssc: false
     };
   }
-  // componentDidMount() {
-  //     console.log("SSC");
-  //     fetch("/api/SSC/" + localStorage.getItem("id") + "/SSC")
-  //       .then(res => res.json())
-  //       .then(ssc =>
-  //         this.setState({ SSC: ssc.data }, () =>
-  //           console.log("My SSC Companies", this.state.SSC)
-  //         )
-  //       );
-  //     if (this.state.SSC != []) {
-  //       this.setState.isSSC = true;
-  //     }
-  //   }
+
   local(id) {
     localStorage.setItem("id", id);
 
@@ -37,32 +25,6 @@ class Workspace extends Component {
 
     this.setState({ idssc: true });
   }
-  //   Approve(id) {
-  //     var databody = { Lawyer_review: "accepted" };
-  //     console.log(databody);
-
-  //     return fetch("/api/SPC/" + id, {
-  //       method: "PUT",
-  //       body: JSON.stringify(databody),
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       }
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => console.log(data));
-  //   }
-  //   Reject(id) {
-  //     var databody = { Lawyer_review: "rejected" };
-  //     return fetch("/api/SPC/" + id, {
-  //       method: "PUT",
-  //       body: JSON.stringify(databody),
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       }
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => console.log(data));
-  //   }
 
   sms(num) {
     // e.preventDefault();
@@ -73,69 +35,6 @@ class Workspace extends Component {
 
     return fetch("/api/SPC/msg", {
       method: "POST",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-
-  Approve() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    console.log("why the hell");
-    var databody = { Lawyer_review: "accepted" };
-    console.log(databody);
-
-    return fetch("/api/SPC/" + localStorage.getItem("id"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Reject() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    var databody = { Lawyer_review: "rejected" };
-    return fetch("/api/SPC/" + localStorage.getItem("id"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Approvessc() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    console.log("why the hell");
-    var databody = { Lawyer_review: "accepted" };
-    console.log(databody);
-
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Rejectssc() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    var databody = { Lawyer_review: "rejected" };
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
       body: JSON.stringify(databody),
       headers: {
         "Content-Type": "application/json"
@@ -191,27 +90,6 @@ class Workspace extends Component {
                 {" "}
                 Review Company{" "}
               </button>
-              <button
-                onClick={() => {
-                  this.Approve();
-                }}
-              >
-                Accept
-              </button>
-              <button
-                onClick={() => {
-                  this.Reject();
-                }}
-              >
-                Reject
-              </button>
-              <button
-                onClick={() => {
-                  this.sms(spc.Phone_Number);
-                }}
-              >
-                Update
-              </button>
             </li>
           ))}
         </ul>
@@ -239,52 +117,14 @@ class Workspace extends Component {
                 {" "}
                 Review Company{" "}
               </button>
-              <button
-                onClick={() => {
-                  this.Approvessc();
-                }}
-              >
-                Accept
-              </button>
-              <button
-                onClick={() => {
-                  this.Rejectssc();
-                }}
-              >
-                Reject
-              </button>
-              <button
-                onClick={() => {
-                  this.sms(ssc.Phone_Number);
-                }}
-              >
-                Update
-              </button>
             </li>
           ))}
         </ul>
         {this.state.idssc ? <Redirect to={{ pathname: "/myssc" }} /> : <h1 />}
 
-        {/* <button onClick={()=>{this.getssc()}}>get untlocked SSC forms </button> 
-            <ul>
-      {
-     this.state.SSC.map(ssc => 
-        <li key = {ssc._id}>
-           Name: {ssc.Facility_name} 
-         investor name:{ssc.investorname}NP
-    Company_name: {ssc.Company_name}<br/> ,Governorate: {ssc.Governorate}<br/> , City:{ssc.City}<br/>
-  , Company_Address:{ssc.Company_Address}<br/> , Company_Phone_Number:{ssc.Company_Phone_Number}<br/>
-   , Fax:{ssc.Fax}<br/> , Capital_Currency:{ssc.Capital_Currency}<br/> ,capital:{ssc.capital}<br/>
-    ,investorname:{ssc.investorname}<br/> ,Gender:{ssc.Gender}<br/> ,Nationality:{ssc.Nationality}<br/> ,
-    TypeOf_IdentityProof: {ssc.TypeOf_IdentityProof}<br/> ,investor_nationalid:{ssc.investor_nationalid}<br/> 
-    ,BirthDate:{ssc.BirthDate}<br/> ,
-    Phone_Number:{ssc.Phone_Number}<br/> ,Investor_Fax:{ssc.Investor_Fax}<br/> ,email:{ssc.email}<br/> 
-    <button onClick= {() => {this.Approve(ssc._id)}}> Approve </button> <button onClick= {() => {this.Reject(ssc._id)}}>
-     Reject </button> 
-               */}
+        
 
-        {/* </li>)} */}
-        {/* </ul>  */}
+        
       </div>
     );
   }

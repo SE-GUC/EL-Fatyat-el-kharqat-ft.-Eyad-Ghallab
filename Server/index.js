@@ -4,8 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-const storage = require('multer-gridfs-storage')({
-  url: 'mongodb+srv://sama123:sama.1998@se-q3mun.mongodb.net/test?retryWrites=true'
+const storage = require("multer-gridfs-storage")({
+  url:
+    "mongodb+srv://sama123:sama.1998@se-q3mun.mongodb.net/test?retryWrites=true"
 });
 const app = express();
 const spcforms = require("./routes/api/SPC");
@@ -19,6 +20,7 @@ const national = require("./routes/api/national");
 const Comment = require("./routes/api/Comment");
 
 const user = require("./routes/api/user");
+const contractFinal = require("./routes/api/contractFinal");
 
 const multer = require("multer");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,7 +39,6 @@ const ExternalEntities = require("./routes/api/ExternalEntities");
 dotenv.config();
 
 var url = process.env.MONGOLAB_URI;
-// const db = require('./config/keys').mongoURI
 mongoose
   .connect(url, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected..."))
@@ -76,11 +77,19 @@ app.use("/api/Contract", Contract);
 app.use("/api/Payment", Payment);
 app.use("/api/ExternalEntities", ExternalEntities);
 app.use("/api/user", user);
+app.use("/api/contractFinal", contractFinal);
 app.use("/api/Notification", Notification);
 app.use("/api/SPC", spcforms);
+// SET STORAGE
 
-
-
+var Storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, "uploads");
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now());
+  }
+});
 
 var upload = multer({ storage: storage });
 
@@ -93,41 +102,18 @@ app.post("/uploadfile", upload.single("myFile"), (req, res, next) => {
   }
   res.send(file);
 });
-/*
-app.post("/uploadfile", upload.single("myFile"), (req, res) => {
-  const file = req.file;
-  url.collection("fs.files").insertOne(file, (err, result) => {
-    console.log(result);
-
-    if (err) return console.log(err);
-
-    console.log("saved to database");
-    res.redirect("/");
-  });
- */
-
-  app.get("/myFile/:id", (req, res) => {
-   var file =req.body
-   file.Find('_id').url.collection("fs.files").then(file.data)
-
-    // url.collection("fs.files").findOne(
-    //   { _id: ObjectId(file) },
-    //   (err, result) => {
-    //     if (err) return console.log(err);
-
-        res.contentType("file");
-       
-      }
-    );
-  //});
 
 
-//app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
+app.get("/myFile/:id", (req, res) => {
+  var file = req.body;
+  file
+    .Find("_id")
+    .url.collection("fs.files")
+    .then(file.data);
 
-//const port = process.env.PORT || 3000
-//app.listen(port, () => console.log(`Server on ${port}`))
-
-
+  
+  res.contentType("file");
+});
 
 app.use((req, res) =>
   res.status(404).send(`<h1>Can not find what you're looking for</h1>`)

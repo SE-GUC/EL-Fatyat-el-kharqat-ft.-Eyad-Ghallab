@@ -13,14 +13,7 @@ router.get("/", async (req, res) => {
   const admins = await Admin.find();
   res.json({ msg: "Admin was recieved", data: admins });
 });
-// get admin by id
 
-// router.get("/:id", function(req, res, next) {
-//   Admin.findById(req.params.id, function(err, post) {
-//     if (err) return next(err);
-//     res.json({ msg: "Admin was recieved" }, post);
-//   });
-// });
 
 router.get("/:id", async (req, res) => {
   const admin = await Admin.findById(req.params.id);
@@ -46,12 +39,7 @@ router.post("/", async (req, res) => {
 router.post("/register", async (req, res) => {
   console.log("ana da5alt");
   try {
-    // const isValidated = validator.registerValidation(req.body);
-    // console.log("malak?");
-    // if (isValidated.error)
-    //   return res
-    //     .status(400)
-    //     .send({ error: isValidated.error.details[0].message });
+    
     console.log("ana da5alt hena");
     const {
       name,
@@ -82,7 +70,7 @@ router.post("/register", async (req, res) => {
     });
     console.log("ana da5alt hena kaman");
     await Admin.create(newUser);
-    //const user = await us.create(req.body);
+    
     const type = new us({
       type: "admin",
       email,
@@ -106,7 +94,7 @@ router.delete("/:id", async (req, res) => {
     const deletedAdmin = await Admin.findByIdAndRemove(id);
     res.json({ msg: "Admin was deleted successfully", data: deletedAdmin });
   } catch (error) {
-    // We will be handling the error later
+    
     console.log(error);
   }
 });

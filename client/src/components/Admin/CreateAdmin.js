@@ -9,6 +9,12 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+var unirest = require('unirest');
+//const {Translate} = require('@google-cloud/translate');
+//const translate = new Translate();
+//var bodyParser=require('body-parser');
+
+
 
 const styles = theme => ({
   root: {
@@ -94,12 +100,15 @@ class CreateAdmin extends Component {
     .then(data => console.log(data)); 
 
   }
+
+
   render() {
    
     
     return (
         <div style={{ marginTop: 10 }}>
             <h3 align="center">Admin</h3>
+           
             <form onSubmit={this.handleSubmit}>
 
                 <div className="form-group">
@@ -109,6 +118,7 @@ class CreateAdmin extends Component {
           label="Name"
           value={this.state.name}
           onChange={this.handlenameChange}required
+          
           
         />
         </div> 
@@ -167,8 +177,19 @@ class CreateAdmin extends Component {
                     <input type="submit" 
                       value="Submit" 
                       className="btn btn-primary"/>
+                    
                 </div>
+               
         </form>
+       
+        
+        
+        
+          
+        
+       
+       
+       
         </div>
     )
   }

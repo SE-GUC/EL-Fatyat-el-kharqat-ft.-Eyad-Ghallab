@@ -66,9 +66,7 @@ class EditInvestor extends Component {
           console.log("the investors", this.state.Investors)
         )
       );
-    //   var int = this.state.investors[1];
-    // console.log (int)
-    //  // res.json({data: this.state.investors})
+   
   }
   handlenameChange(e) {
     this.setState({ name: e.target.value });

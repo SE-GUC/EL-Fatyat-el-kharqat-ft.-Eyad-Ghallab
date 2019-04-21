@@ -19,7 +19,7 @@ class Admin extends Component {
  
 
   render() {
-    //JSON.stringify(this.state.ad);
+    
     return (
       <div>
         <h2>My profile</h2>

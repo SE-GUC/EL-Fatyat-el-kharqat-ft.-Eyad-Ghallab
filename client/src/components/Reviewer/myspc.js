@@ -3,18 +3,14 @@ import React, { Component } from "react";
 class myspc extends Component {
   constructor() {
     super();
-    this.sms = this.sms.bind(this);
     this.state = {
-      number: 0,
-
       SPC: [],
-      isSPC: false,
-      isloaded: true
+      isSPC: false
     };
   }
 
   componentDidMount() {
-    
+    // e.preventDefault();
     fetch("/api/SPC/" + localStorage.getItem("id"))
       .then(res => res.json())
       .then(spc =>
@@ -24,32 +20,12 @@ class myspc extends Component {
       );
     if (this.state.SPC != []) {
       this.setState({ isSPC: true });
-      this.setState({ isloaded: true });
     }
 
-    
+    console.log(this.state.isSPC);
   }
-
-  sms(num) {
-    
-    let databody = {
-      number: num
-    };
-
-    return fetch("/api/SPC/msg", {
-      method: "POST",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Approve() {
-    
-    console.log("why the hell");
-    var databody = { Lawyer_review: "accepted" };
+  resendspc() {
+    var databody = { Lawyer_review: "binding" };
     console.log(databody);
 
     return fetch("/api/SPC/" + localStorage.getItem("id"), {
@@ -62,9 +38,11 @@ class myspc extends Component {
       .then(res => res.json())
       .then(data => console.log(data));
   }
-  Reject() {
-    
-    var databody = { Lawyer_review: "rejected" };
+
+  Approvespc(num) {
+    var databody = { Status: "accepted" };
+    console.log(databody);
+    this.sms(num);
     return fetch("/api/SPC/" + localStorage.getItem("id"), {
       method: "PUT",
       body: JSON.stringify(databody),
@@ -76,8 +54,38 @@ class myspc extends Component {
       .then(data => console.log(data));
   }
 
-  render() {
+  Rejectspc() {
+    var databody = { Status: "rejected" };
+    console.log(databody);
+    return fetch("/api/SPC/" + localStorage.getItem("id"), {
+      method: "PUT",
+      body: JSON.stringify(databody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
+  sms(num) {
     
+    let databody = {
+      number: num
+    };
+
+    return fetch("/api/SPC/pay", {
+      method: "POST",
+      body: JSON.stringify(databody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
+
+  render() {
+   
     return (
       <div>
         <h2>The Company</h2>
@@ -124,24 +132,24 @@ class myspc extends Component {
         <br />
         <button
           onClick={() => {
-            this.Approve();
+            this.Approvespc(this.state.SPC.Phone_Number);
           }}
         >
           Accept
         </button>
         <button
           onClick={() => {
-            this.Reject();
+            this.Rejectspc();
           }}
         >
           Reject
         </button>
         <button
           onClick={() => {
-            this.sms(this.state.SPC.Phone_Number);
+            this.resendspc();
           }}
         >
-          Update
+          Send back to lawyer
         </button>
       </div>
     );

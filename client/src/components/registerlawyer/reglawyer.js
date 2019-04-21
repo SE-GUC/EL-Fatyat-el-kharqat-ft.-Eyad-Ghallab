@@ -98,7 +98,7 @@ class reglawyer extends Component {
         }
         console.log("res.body:", res.body);
         localStorage.setItem("token", res.body.token);
-        //this.setState();
+        
         this.forceUpdate();
       });
   }

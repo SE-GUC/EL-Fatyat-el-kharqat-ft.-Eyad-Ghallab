@@ -42,7 +42,7 @@ class Login extends Component {
         }
         console.log("res.body:", res.body);
         localStorage.setItem("token", res.body.token);
-        //this.setState();
+        
         this.forceUpdate();
       });
   }
@@ -84,7 +84,7 @@ class Login extends Component {
   }
   render() {
     console.log(this.state);
-    //{this.renderRedirect()}
+    
     const isAlreadyAuthenticated = this.isAuthenticated();
     return (
       <body>

@@ -10,7 +10,7 @@ class myssc extends Component {
   }
 
   componentDidMount() {
-   
+    // e.preventDefault();
     fetch("/api/SSC/" + localStorage.getItem("sscid"))
       .then(res => res.json())
       .then(ssc =>
@@ -24,11 +24,9 @@ class myssc extends Component {
 
     console.log(this.state.isSSC);
   }
+  resendssc() {
+    var databody = { Lawyer_review: "binding" };
 
-  Approve(e) {
-    e.preventDefault();
-    console.log("why the hell");
-    var databody = { Lawyer_review: "accepted" };
     console.log(databody);
 
     return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
@@ -41,44 +39,11 @@ class myssc extends Component {
       .then(res => res.json())
       .then(data => console.log(data));
   }
-
-  sms(num) {
-    
-    let databody = {
-      number: num
-    };
-
-    return fetch("/api/SPC/msg", {
-      method: "POST",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-
-  Reject(e) {
-    e.preventDefault();
-    var databody = { Lawyer_review: "rejected" };
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Approvessc() {
-    
-    console.log("why the hell");
-    var databody = { Lawyer_review: "accepted" };
+  Approvessc(num) {
+    var databody = { Status: "accepted" };
     console.log(databody);
-
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
+    this.sms(num);
+    return fetch("/api/SPC/" + localStorage.getItem("sscid"), {
       method: "PUT",
       body: JSON.stringify(databody),
       headers: {
@@ -89,8 +54,8 @@ class myssc extends Component {
       .then(data => console.log(data));
   }
   Rejectssc() {
-    
-    var databody = { Lawyer_review: "rejected" };
+    var databody = { Status: "rejected" };
+    console.log(databody);
     return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
       method: "PUT",
       body: JSON.stringify(databody),
@@ -101,9 +66,25 @@ class myssc extends Component {
       .then(res => res.json())
       .then(data => console.log(data));
   }
+  sms(num) {
+    
+    let databody = {
+      number: num
+    };
+
+    return fetch("/api/SPC/pay", {
+      method: "POST",
+      body: JSON.stringify(databody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
 
   render() {
-    
+   
     return (
       <div>
         <h2>The Company</h2>
@@ -166,7 +147,7 @@ class myssc extends Component {
         <br />
         <button
           onClick={() => {
-            this.Approvessc();
+            this.Approvessc(this.state.SSC.Phone_Number);
           }}
         >
           Accept
@@ -180,10 +161,10 @@ class myssc extends Component {
         </button>
         <button
           onClick={() => {
-            this.sms(this.state.SSC.Phone_Number);
+            this.resendssc();
           }}
         >
-          Update
+          Send back to lawyer
         </button>
       </div>
     );
