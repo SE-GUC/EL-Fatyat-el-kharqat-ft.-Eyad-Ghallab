@@ -13,7 +13,10 @@ const nexmo = new Nexmo({
 router.get("/:investor_nationalid/SPC", async (req, res) => {
   const nationalid = req.params.investor_nationalid;
 
-  const national = await SpcForm.findOne({ investor_nationalid: nationalid });
+  const national = await SpcForm.find({
+    investor_nationalid: nationalid,
+    Status: "accepted"
+  });
   res.json({ data: national });
 });
 
