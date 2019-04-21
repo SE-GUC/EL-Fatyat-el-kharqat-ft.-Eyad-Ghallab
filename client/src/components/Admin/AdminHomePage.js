@@ -37,6 +37,7 @@ export default class InvHomePage extends Component {
                   <li className="nav-item">
                     <Link to={'/edit'} className="nav-link">Edit My Profile</Link>
                   </li>
+                 
                   <li className="nav-item">
                 <Button className="nav-link"
           aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -56,7 +57,7 @@ export default class InvHomePage extends Component {
           <Link to={'/Admin'} onClick={this.handleClose} className="nav-link">Admin</Link>          
           
         </Menu>
-        </li>
+        </li>`
                 </ul>
               </div>
             </nav> <br/>
