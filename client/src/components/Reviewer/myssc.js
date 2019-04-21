@@ -121,6 +121,7 @@ class myssc extends Component {
             <br />
             PositionInBOD: {this.state.SSC.PositionInBOD}
             <br />
+           
           </form>
         ) : (
           <h1> this is so bad</h1>

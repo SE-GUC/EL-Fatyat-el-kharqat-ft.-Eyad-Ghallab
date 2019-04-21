@@ -18,6 +18,15 @@ router.get("/:investor_nationalid/SPC", async (req, res) => {
     Status: "accepted"
   });
   res.json({ data: national });
+}); 
+router.get("/:investor_nationalid/status", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
+
+  const national = await SpcForm.find({
+    investor_nationalid: nationalid,
+   
+  });
+  res.json({ data: national });
 });
 
 router.post("/msg", async (req, res) => {
@@ -27,9 +36,25 @@ router.post("/msg", async (req, res) => {
   nexmo.message.sendSms(
     "NEXMO",
     "2" + number,
-    "Your case has been accepted please pay" +
-      msg +
-      " using fawry , vodafone cash or mobinil cash",
+    "Please update your case",
+    (err, responseData) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.dir(responseData);
+      }
+    }
+  );
+});
+
+router.post("/pay", async (req, res) => {
+  const number = req.body.number;
+  const msg = req.body.msg;
+
+  nexmo.message.sendSms(
+    "NEXMO",
+    "2" + number,
+    "Your case has been accepted please pay using fawry",
     (err, responseData) => {
       if (err) {
         console.log(err);
@@ -74,6 +99,37 @@ router.get("/:id", async (req, res) => {
   res.json({ data: spcforms });
 });
 
+router.get("/city/:id", async (req, res) => {
+  const spcforms = await SpcForm.findById(req.params.id);
+  res.json({ data: spcforms.City });
+});
+
+router.get("/gov/:id", async (req, res) => {
+  const spcforms = await SpcForm.findById(req.params.id);
+  res.json({ data: spcforms.Governorate });
+});
+
+router.get("/name/:id", async (req, res) => {
+  const spcforms = await SpcForm.findById(req.params.id);
+  res.json({ data: spcforms.Facility_name });
+});
+
+
+// router.get("/gov/:id", async (req, res) => {
+//   const spcforms = await SpcForm.findById(req.params.id);
+//   res.json({ data: spcforms.Governorate });
+// });
+// router.get("/city/:id", async (req, res) => {
+//   const spcforms = await SpcForm.findById(req.params.id);
+//   res.json({ data: spcforms.Corporate_city });
+// });
+// router.get("/address/:id", async (req, res) => {
+//   const spcforms = await SpcForm.findById(req.params.id);
+//   res.json({ data: spcforms.Corporate_address });
+// });
+
+
+
 // router.get("/:investor_nationalid", async (req, res) => {
 //   const investor = req.params.investor_nationalid;
 //   console.log(investor);
@@ -83,6 +139,7 @@ router.get("/:id", async (req, res) => {
 //   }
 //   res.json({ data: spc });
 // });
+
 //Update Form
 router.put("/:id", async (req, res) => {
   console.log("hiiii");

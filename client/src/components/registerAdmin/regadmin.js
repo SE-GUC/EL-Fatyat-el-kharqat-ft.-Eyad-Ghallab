@@ -14,7 +14,7 @@ const styles = theme => ({
 });
 
 
-class registerrev extends Component {
+class regadmin extends Component {
   constructor() {
     super();
 
@@ -23,8 +23,7 @@ class registerrev extends Component {
       password: "",
       name: "",
       username: "",
-      YearsOfExperience: "",
-      gender: "",
+      address: "",
       open:false
     };
   }
@@ -55,13 +54,11 @@ class registerrev extends Component {
     this.setState({ username: event.target.value });
   }
 
-  handleYearsOfExperienceChanged(event) {
-    this.setState({ YearsOfExperience: event.target.value });
+  handleaddressChanged(event) {
+    this.setState({ address: event.target.value });
   }
 
-  handlegenderChanged(event) {
-    this.setState({ gender: event.target.value });
-  }
+  
 
   HandleButtonClick() {
     this.setState();
@@ -70,14 +67,13 @@ class registerrev extends Component {
   submitForm(event) {
     event.preventDefault();
     superagent
-      .post("/api/Reviewer/register")
+      .post("/api/Admin/register")
       .send({
         email: this.state.email,
         password: this.state.password,
         username: this.state.username,
         name: this.state.name,
-        yearsOfExperience: this.state.YearsOfExperience,
-        gender: this.state.gender
+        address: this.state.address,
       })
       .end((err, res) => {
         if (err) {
@@ -100,7 +96,6 @@ class registerrev extends Component {
   }
   render() {
     console.log(this.state);
-    //{this.renderRedirect()}
     const isAlreadyAuthenticated = this.isAuthenticated();
     const { classes } = this.props;
 
@@ -108,20 +103,20 @@ class registerrev extends Component {
       <div className="Register">
        
           <form onSubmit={this.submitForm.bind(this)}>
-            <h2>Register A New Reviewer</h2>
+            <h2>Register A New Admin</h2>
             <TextField
               id="standard-name-input"
               label="name"
-              type="name"
+              type="text"
               margin="normal"
               value={this.state.name}
-              onChange={this.handlenameChanged.bind(this)} required
+              onChange={this.handlenameChanged.bind(this)}required
             />{" "}
             <br />
             <TextField
               id="standard-username-input"
               label="username"
-              type="username"
+              type="text"
               margin="normal"
               value={this.state.username}
               onChange={this.handleusernameChanged.bind(this)} required
@@ -147,22 +142,14 @@ class registerrev extends Component {
             />
             <br />
             <TextField
-              id="standard-YearsOfExperience-input"
-              label="YearsOfExperience"
-              type="YearsOfExperience"
+              id="standard-address-input"
+              label="Address"
+              type="text"
               margin="normal"
-              value={this.state.YearsOfExperience}
-              onChange={this.handleYearsOfExperienceChanged.bind(this)} required
+              value={this.state.address}
+              onChange={this.handleaddressChanged.bind(this)} required
             />{" "}
-            <br />
-            <TextField
-              id="standard-gender-input"
-              label="gender"
-              type="gender"
-              margin="normal"
-              value={this.state.gender}
-              onChange={this.handlegenderChanged.bind(this)} required
-            />{" "}
+           
             <br />
             <Button variant="contained" color="primary" type="submit" onClick={this.handleClick}>
               Register
@@ -178,7 +165,7 @@ class registerrev extends Component {
           ContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id">You Registered A New Reviewer</span>}
+          message={<span id="message-id">You Registered A New Admin</span>}
           action={[
             
             <IconButton
@@ -198,4 +185,4 @@ class registerrev extends Component {
     );
   }
 }
-export default withStyles(styles)(registerrev);
+export default withStyles(styles)(regadmin);

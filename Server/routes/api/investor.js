@@ -54,7 +54,6 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    //   const id = req.params.id
     const investor = await inv.findById(req.params.id);
     if (!investor)
       return res.status(404).send({ error: "investor does not exist" });

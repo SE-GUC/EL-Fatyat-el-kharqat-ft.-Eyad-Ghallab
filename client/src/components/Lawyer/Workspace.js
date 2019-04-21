@@ -10,7 +10,8 @@ class Workspace extends Component {
       SSC: [],
       isSSC: true,
       Lawyer_review: "",
-      id: false
+      id: false,
+      idssc: false
     };
   }
   // componentDidMount() {
@@ -28,14 +29,67 @@ class Workspace extends Component {
   //   }
   local(id) {
     localStorage.setItem("id", id);
+
     this.setState({ id: true });
   }
+  localssc(id) {
+    localStorage.setItem("sscid", id);
 
-  Approve(id) {
+    this.setState({ idssc: true });
+  }
+  //   Approve(id) {
+  //     var databody = { Lawyer_review: "accepted" };
+  //     console.log(databody);
+
+  //     return fetch("/api/SPC/" + id, {
+  //       method: "PUT",
+  //       body: JSON.stringify(databody),
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       }
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => console.log(data));
+  //   }
+  //   Reject(id) {
+  //     var databody = { Lawyer_review: "rejected" };
+  //     return fetch("/api/SPC/" + id, {
+  //       method: "PUT",
+  //       body: JSON.stringify(databody),
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       }
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => console.log(data));
+  //   }
+
+  sms(num) {
+    // e.preventDefault();
+    // e.stopImmediatePropagation();
+    let databody = {
+      number: num
+    };
+
+    return fetch("/api/SPC/msg", {
+      method: "POST",
+      body: JSON.stringify(databody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
+
+  Approve() {
+    // e.preventDefault();
+    // e.stopImmediatePropagation();
+    console.log("why the hell");
     var databody = { Lawyer_review: "accepted" };
     console.log(databody);
 
-    return fetch("/api/SPC/" + id, {
+    return fetch("/api/SPC/" + localStorage.getItem("id"), {
       method: "PUT",
       body: JSON.stringify(databody),
       headers: {
@@ -45,9 +99,42 @@ class Workspace extends Component {
       .then(res => res.json())
       .then(data => console.log(data));
   }
-  Reject(id) {
+  Reject() {
+    // e.preventDefault();
+    // e.stopImmediatePropagation();
     var databody = { Lawyer_review: "rejected" };
-    return fetch("/api/SPC/" + id, {
+    return fetch("/api/SPC/" + localStorage.getItem("id"), {
+      method: "PUT",
+      body: JSON.stringify(databody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
+  Approvessc() {
+    // e.preventDefault();
+    // e.stopImmediatePropagation();
+    console.log("why the hell");
+    var databody = { Lawyer_review: "accepted" };
+    console.log(databody);
+
+    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
+      method: "PUT",
+      body: JSON.stringify(databody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
+  Rejectssc() {
+    // e.preventDefault();
+    // e.stopImmediatePropagation();
+    var databody = { Lawyer_review: "rejected" };
+    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
       method: "PUT",
       body: JSON.stringify(databody),
       headers: {
@@ -87,7 +174,7 @@ class Workspace extends Component {
             this.getspc();
           }}
         >
-          get untlocked SPC forms{" "}
+          get unlocked SPC forms{" "}
         </button>
         <ul>
           {this.state.SPC.map(spc => (
@@ -103,6 +190,27 @@ class Workspace extends Component {
               >
                 {" "}
                 Review Company{" "}
+              </button>
+              <button
+                onClick={() => {
+                  this.Approve();
+                }}
+              >
+                Accept
+              </button>
+              <button
+                onClick={() => {
+                  this.Reject();
+                }}
+              >
+                Reject
+              </button>
+              <button
+                onClick={() => {
+                  this.sms(spc.Phone_Number);
+                }}
+              >
+                Update
               </button>
             </li>
           ))}
@@ -121,20 +229,41 @@ class Workspace extends Component {
             <li key={ssc._id}>
               Company_name: {ssc.Company_name}
               <br />
-              Form_Date:{ssc.Form_Date}
+              Form_Date:{ssc.Formdate}
               <br />
               <button
                 onClick={() => {
-                  this.local(ssc._id);
+                  this.localssc(ssc._id);
                 }}
               >
                 {" "}
                 Review Company{" "}
               </button>
+              <button
+                onClick={() => {
+                  this.Approvessc();
+                }}
+              >
+                Accept
+              </button>
+              <button
+                onClick={() => {
+                  this.Rejectssc();
+                }}
+              >
+                Reject
+              </button>
+              <button
+                onClick={() => {
+                  this.sms(ssc.Phone_Number);
+                }}
+              >
+                Update
+              </button>
             </li>
           ))}
         </ul>
-        {/* {this.state.id ? <Redirect to={{ pathname: "/myssc" }} /> : <h1 />} */}
+        {this.state.idssc ? <Redirect to={{ pathname: "/myssc" }} /> : <h1 />}
 
         {/* <button onClick={()=>{this.getssc()}}>get untlocked SSC forms </button> 
             <ul>

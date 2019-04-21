@@ -8,6 +8,7 @@ import Reviewer from '../regreviewer/registerrev'
 import Lawyer from '../registerlawyer/reglawyer'
 import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
+import regAdmin from '../registerAdmin/regadmin'
 export default class InvHomePage extends Component {
   state = {
     anchorEl: null,
@@ -38,6 +39,7 @@ export default class InvHomePage extends Component {
                   <li className="nav-item">
                     <Link to={'/edit'} className="nav-link">Edit My Profile</Link>
                   </li>
+                 
                   <li className="nav-item">
                     <Link to={'/AllForms'} className="nav-link">View Cases</Link>
                   </li>
@@ -61,7 +63,7 @@ export default class InvHomePage extends Component {
           <Link to={'/Admin'} onClick={this.handleClose} className="nav-link">Admin</Link>          
           
         </Menu>
-        </li>
+        </li>`
                 </ul>
               </div>
             </nav> <br/>
@@ -73,6 +75,8 @@ export default class InvHomePage extends Component {
                 <Route exact path='/Reviewer' component={ Reviewer } /> 
                 <Route exact path='/Lawyer' component={ Lawyer } /> 
                 <Route exact path='/AllForms' component={ AllForms } /> 
+                <Route exact path='/Admin' component={ regAdmin } /> 
+
 
             </Switch>
           </div>

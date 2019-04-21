@@ -4,7 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-
+const storage = require('multer-gridfs-storage')({
+  url: 'mongodb+srv://sama123:sama.1998@se-q3mun.mongodb.net/test?retryWrites=true'
+});
 const app = express();
 const spcforms = require("./routes/api/SPC");
 const Admin = require("./routes/api/Admin");
@@ -17,6 +19,7 @@ const national = require("./routes/api/national");
 const Comment = require("./routes/api/Comment");
 
 const user = require("./routes/api/user");
+const contractFinal = require("./routes/api/contractFinal");
 
 const multer = require("multer");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -74,6 +77,9 @@ app.use("/api/Contract", Contract);
 app.use("/api/Payment", Payment);
 app.use("/api/ExternalEntities", ExternalEntities);
 app.use("/api/user", user);
+app.use("/api/contractFinal", contractFinal);
+app.use("/api/Notification", Notification);
+app.use("/api/SPC", spcforms);
 // SET STORAGE
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -83,6 +89,10 @@ var storage = multer.diskStorage({
     cb(null, file.fieldname + "-" + Date.now());
   }
 });
+
+
+
+
 
 var upload = multer({ storage: storage });
 
@@ -95,16 +105,10 @@ app.post("/uploadfile", upload.single("myFile"), (req, res, next) => {
   }
   res.send(file);
 });
+/*
 app.post("/uploadfile", upload.single("myFile"), (req, res) => {
-  var img = fs.readFileSync(req.file.path);
-  var encode_image = img.toString("base64");
-  // Define a JSONobject for the image attributes for saving to database
-
-  var finalImg = {
-    contentType: req.file.mimetype,
-    image: new Buffer(encode_image, "base64")
-  };
-  db.collection("quotes").insertOne(finalImg, (err, result) => {
+  const file = req.file;
+  url.collection("fs.files").insertOne(file, (err, result) => {
     console.log(result);
 
     if (err) return console.log(err);
@@ -112,34 +116,30 @@ app.post("/uploadfile", upload.single("myFile"), (req, res) => {
     console.log("saved to database");
     res.redirect("/");
   });
-  if (process.env.NODE_ENV == "production") {
-    app.use(express.static("client/build"));
-    app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-    });
-  }
+ */
+
   app.get("/myFile/:id", (req, res) => {
-    var filename = req.params.id;
+   var file =req.body
+   file.Find('_id').url.collection("fs.files").then(file.data)
 
-    db.collection("mycollection").findOne(
-      { _id: ObjectId(filename) },
-      (err, result) => {
-        if (err) return console.log(err);
+    // url.collection("fs.files").findOne(
+    //   { _id: ObjectId(file) },
+    //   (err, result) => {
+    //     if (err) return console.log(err);
 
-        res.contentType("image/jpeg");
-        res.send(result.image.buffer);
+        res.contentType("file");
+       
       }
     );
-  });
-});
+  //});
+
 
 //app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
 
 //const port = process.env.PORT || 3000
 //app.listen(port, () => console.log(`Server on ${port}`))
 
-app.use("/api/Notification", Notification);
-app.use("/api/SPC", spcforms);
+
 
 app.use((req, res) =>
   res.status(404).send(`<h1>Can not find what you're looking for</h1>`)

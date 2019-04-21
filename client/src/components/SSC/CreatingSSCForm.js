@@ -1234,7 +1234,13 @@ onChange={this.handleBOD_Nationality}
             </Button>
                
             </form>
-        </div>
+            <form action="/uploadfile" enctype="multipart/form-data"  method="POST"> 
+            <label>
+            <input type="file" name="myFile" />
+               <Button variant="contained" color="primary" type="submit" >  Upload A File
+            </Button>
+            </label>
+               </form>        </div>
     )
   }
 }
