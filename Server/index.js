@@ -4,8 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-const storage = require('multer-gridfs-storage')({
-  url: 'mongodb+srv://sama123:sama.1998@se-q3mun.mongodb.net/test?retryWrites=true'
+const storage = require("multer-gridfs-storage")({
+  url:
+    "mongodb+srv://sama123:sama.1998@se-q3mun.mongodb.net/test?retryWrites=true"
 });
 const app = express();
 const spcforms = require("./routes/api/SPC");
@@ -81,7 +82,8 @@ app.use("/api/contractFinal", contractFinal);
 app.use("/api/Notification", Notification);
 app.use("/api/SPC", spcforms);
 // SET STORAGE
-var storage = multer.diskStorage({
+
+var Storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, "uploads");
   },
@@ -89,10 +91,6 @@ var storage = multer.diskStorage({
     cb(null, file.fieldname + "-" + Date.now());
   }
 });
-
-
-
-
 
 var upload = multer({ storage: storage });
 
@@ -118,28 +116,26 @@ app.post("/uploadfile", upload.single("myFile"), (req, res) => {
   });
  */
 
-  app.get("/myFile/:id", (req, res) => {
-   var file =req.body
-   file.Find('_id').url.collection("fs.files").then(file.data)
+app.get("/myFile/:id", (req, res) => {
+  var file = req.body;
+  file
+    .Find("_id")
+    .url.collection("fs.files")
+    .then(file.data);
 
-    // url.collection("fs.files").findOne(
-    //   { _id: ObjectId(file) },
-    //   (err, result) => {
-    //     if (err) return console.log(err);
+  // url.collection("fs.files").findOne(
+  //   { _id: ObjectId(file) },
+  //   (err, result) => {
+  //     if (err) return console.log(err);
 
-        res.contentType("file");
-       
-      }
-    );
-  //});
-
+  res.contentType("file");
+});
+//});
 
 //app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
 
 //const port = process.env.PORT || 3000
 //app.listen(port, () => console.log(`Server on ${port}`))
-
-
 
 app.use((req, res) =>
   res.status(404).send(`<h1>Can not find what you're looking for</h1>`)

@@ -9,11 +9,9 @@ import updating_Forms from "./updating_Forms";
 import hana from "./myssc";
 import sama from "./myspc";
 
-
 export default class ReviewerHomePage extends Component {
   render() {
     return (
- 
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,19 +31,21 @@ export default class ReviewerHomePage extends Component {
                     My Profile
                   </Link>
                 </li>
-                
-                  {/* <li className="nav-item">
+
+                {/* <li className="nav-item">
                     <Link to={'/edit'} className="nav-link">Edit</Link>
                   </li> */}
-                  
-                  <li className="nav-item">
-                    <Link to={'/view'} className="nav-link">Forms</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to={'/update'} className="nav-link">updating_Forms</Link>
-                  </li>
-                  <Link to={'/edit'} className="nav-link">Edit Profile</Link>
-                
+
+                <li className="nav-item">
+                  <Link to={"/view"} className="nav-link">
+                    Forms
+                  </Link>
+                </li>
+
+                <Link to={"/edit"} className="nav-link">
+                  Edit Profile
+                </Link>
+
                 <li className="nav-item">
                   <Link to={"/workspace"} className="nav-link">
                     Accepted Forms
@@ -58,28 +58,23 @@ export default class ReviewerHomePage extends Component {
                 </li>
               </ul>
             </div>
-          </nav> <br/>
-            <h2>Welcome to GAFI</h2> <br/>
-            <Switch>
-                {/* <Route exact path='/create' component={ CreatingReviewer } /> */}
-                <Route exact path='/edit' component={ EditReviewer } />
-                {/* <Route exact path='/delete' component={ DeleteReviewer} />  */}
-                <Route exact path='/read' component={ Reviewer } /> 
-                <Route exact path='/view' component={ Forms } /> 
-                <Route exact path='/update' component={ updating_Forms } /> 
-              <Route exact path='/workspace' component={  Forms } /> 
-              <Route exact path='/status' component={  updating_Forms } />     
-              <Route exact path="/myssc" component={hana} />
-            <Route exact path="/myspc" component={sama} />            
-            </Switch>
-          </div>
-        </Router>
-                 
-        
-          
-
-         
-       
+          </nav>{" "}
+          <br />
+          <h2>Welcome to GAFI</h2> <br />
+          <Switch>
+            {/* <Route exact path='/create' component={ CreatingReviewer } /> */}
+            <Route exact path="/edit" component={EditReviewer} />
+            {/* <Route exact path='/delete' component={ DeleteReviewer} />  */}
+            <Route exact path="/read" component={Reviewer} />
+            <Route exact path="/view" component={Forms} />
+            <Route exact path="/update" component={updating_Forms} />
+            <Route exact path="/workspace" component={Forms} />
+            <Route exact path="/status" component={updating_Forms} />
+            <Route exact path="/myssc" component={hana} />
+            <Route exact path="/myspc" component={sama} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

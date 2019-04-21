@@ -7,6 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 import "./Reviewer.css";
 import { Redirect } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   root: {
@@ -36,7 +37,8 @@ class updating_Forms extends Component {
       SPC: [],
       SSC: [],
       Status: "",
-      Lawyer_review: ""
+      Lawyer_review: "",
+      spcforms: ""
     };
   }
   local(id) {
@@ -50,9 +52,6 @@ class updating_Forms extends Component {
     this.setState({ idssc: true });
   }
 
- 
- 
-  
   getspc() {
     fetch("/api/Reviewer/find/SPC")
       .then(res => res.json())
@@ -72,7 +71,43 @@ class updating_Forms extends Component {
         )
       );
   }
+  yourfunc1(id) {
+    fetch("/api/SSC/companyname/" + id, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(sscform =>
+        this.setState({ sscforms: sscform.data }, () =>
+          console.log("ssc form fetched", this.state.sscforms)
+        )
+      );
+    localStorage.setItem("contractS", this.state.sscforms);
 
+    console.log(this.state.sscforms);
+
+    this.set1(id);
+  }
+
+  set1(id) {
+    let databody = {
+      Corporate_name: localStorage.getItem("contractS")
+      // "form_id":id
+    };
+
+    fetch("/api/contractFinal", {
+      method: "POST",
+      body: JSON.stringify(databody),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+    console.log("Done");
+  }
   render() {
     return (
       <div>
@@ -100,7 +135,10 @@ class updating_Forms extends Component {
                 {" "}
                 Review Company{" "}
               </button>
-             
+              <br />
+              <Button onClick={() => this.yourfunc1(spc._id)}>
+                Create Contract
+              </Button>
             </li>
           ))}
         </ul>
@@ -128,7 +166,10 @@ class updating_Forms extends Component {
                 {" "}
                 Review Company{" "}
               </button>
-             
+              <br />
+              <Button onClick={() => this.yourfunc1(ssc._id)}>
+                Create Contract
+              </Button>
             </li>
           ))}
         </ul>
