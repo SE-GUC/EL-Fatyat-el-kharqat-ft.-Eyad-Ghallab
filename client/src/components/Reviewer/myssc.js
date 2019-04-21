@@ -121,20 +121,7 @@ class myssc extends Component {
             <br />
             PositionInBOD: {this.state.SSC.PositionInBOD}
             <br />
-            <button
-              onClick={() => {
-                this.Approve();
-              }}
-            >
-              Accept
-            </button>
-            <button
-              onClick={() => {
-                this.Reject();
-              }}
-            >
-              Reject
-            </button>
+           
           </form>
         ) : (
           <h1> this is so bad</h1>

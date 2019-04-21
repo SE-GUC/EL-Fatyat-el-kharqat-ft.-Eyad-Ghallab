@@ -11,7 +11,7 @@ class myspc extends Component {
 
   componentDidMount() {
     // e.preventDefault();
-    fetch("/api/Reviewer/find/SPC" )
+    fetch("/api/SPC/" + localStorage.getItem("id"))
       .then(res => res.json())
       .then(spc =>
         this.setState({ SPC: spc.data }, () =>
@@ -24,7 +24,6 @@ class myspc extends Component {
 
     console.log(this.state.isSPC);
   }
-  
 
   Approve(e) {
     e.preventDefault();
@@ -106,21 +105,6 @@ class myspc extends Component {
             <br />
             Lawyer_review: {this.state.SPC.Lawyer_review}
             <br />
-            <button
-              onClick={() => {
-                this.Approve();
-              }}
-            >
-              Accept
-            </button>
-            <button
-              onClick={() => {
-                this.Reject();
-              }}
-            >
-              Reject
-            </button>
-           
           </form>
         ) : (
           <h1> this is so bad</h1>
