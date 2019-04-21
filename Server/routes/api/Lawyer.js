@@ -93,7 +93,7 @@ router.put("/sscform/:id", async (req, res) => {
 
 router.get("/find/SSC", (req, res) => {
   Form.find({ Locked: false })
-    .sort({ Formdate: -1 })
+    .sort({ Formdate: 1 })
     .then(Form => {
       console.log(`There are ${Form.length} SSC forms`);
       res.json({ msg: "Unlocked spc forms", data: Form });
@@ -112,7 +112,7 @@ router.get("/find/SSC", (req, res) => {
 // get all unclocked SPC forms
 router.get("/find/SPC", (req, res) => {
   SpcForm.find({ Locked: false })
-    .sort({ Form_Date: -1 })
+    .sort({ Form_Date: 1 })
     .then(SpcForm => {
       console.log(`There are ${SpcForm.length} SPC forms`);
       res.json({ msg: "Unlocked spc forms", data: SpcForm });
@@ -135,7 +135,6 @@ router.get("/", async (req, res) => {
   const lawyers = await Lawyer.find();
   res.json({ msg: "Lawyers are here", data: lawyers });
 });
-
 
 router.get("/:id", async (req, res) => {
   const lawyers = await Lawyer.findById(req.params.id);
@@ -196,7 +195,6 @@ router.post("/register", async (req, res) => {
     res.status(422).send({ error: "Can not create user" });
   }
 });
-
 
 router.post("/createlawyer", async (req, res) => {
   try {
