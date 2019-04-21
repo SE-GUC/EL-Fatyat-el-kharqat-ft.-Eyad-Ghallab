@@ -27,21 +27,91 @@ const styles = theme => ({
 class updating_Forms extends Component {
     constructor(){
             super()
-            this.Approve=this.Approve.bind(this)
-            this.Reject=this.Reject.bind(this)
+            this.Approvespc=this.Approvespc.bind(this)
+            this.Rejectspc=this.Rejectspc.bind(this)
+            this.resendspc=this.resendspc.bind(this)
+
+            this.Approvessc=this.Approvessc.bind(this)
+            this.Rejectssc=this.Rejectssc.bind(this)
+            this.resendssc=this.resendssc.bind(this)
             this.state={
                 SPC: [],
                 SSC:[],
-                Status:""
+                Status:"",
+                Lawyer_review:""
         }
 }
 
-Approve(id){
+// Approve(id){
+
+//     var databody= {"Status":"accepted"}
+//     console.log(databody)
+    
+//     return fetch('http://localhost:5000/api/Reviewer/spcform/'+id, {
+//         method: 'PUT',
+//         body: JSON.stringify(databody),
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     })
+//     .then(res => res.json())
+//     .then(data => console.log(data)); 
+    
+    
+//     }
+//     Reject(id){
+//         var databody= {"Status":"rejected"}
+//         console.log(databody)
+//         return fetch('http://localhost:5000/api/Reviewer/spcform/'+id, {
+//             method: 'PUT',
+//             body: JSON.stringify(databody),
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//         })
+//         .then(res => res.json())
+//         .then(data => console.log(data)); 
+        
+//     }
+    resendssc(id){
+        var databody= {"Lawyer_review":"binding"}
+    console.log(databody)
+    
+    return fetch('/api/Reviewer/sscform/'+id, {
+        method: 'PUT',
+        body: JSON.stringify(databody),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(res => res.json())
+    .then(data => console.log(data)); 
+    
+
+    }
+    resendspc(id){
+        var databody= {"Lawyer_review":"binding"}
+    console.log(databody)
+    
+    return fetch('/api/Reviewer/sscform/'+id, {
+        method: 'PUT',
+        body: JSON.stringify(databody),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(res => res.json())
+    .then(data => console.log(data)); 
+    
+
+    }
+    
+Approvespc(id){
 
     var databody= {"Status":"accepted"}
     console.log(databody)
     
-    return fetch('http://localhost:5000/api/Reviewer/spcform/'+id, {
+    return fetch('/api/Reviewer/spcform/'+id, {
         method: 'PUT',
         body: JSON.stringify(databody),
         headers: {
@@ -53,10 +123,12 @@ Approve(id){
     
     
     }
-    Reject(id){
-        var databody= {"Status":"rejected"}
+    Approvessc(id){
+
+        var databody= {"Status":"accepted"}
         console.log(databody)
-        return fetch('http://localhost:5000/api/Reviewer/spcform/'+id, {
+        
+        return fetch('/api/Reviewer/sscform/'+id, {
             method: 'PUT',
             body: JSON.stringify(databody),
             headers: {
@@ -66,14 +138,14 @@ Approve(id){
         .then(res => res.json())
         .then(data => console.log(data)); 
         
-    }
-    
-Approveaa(id){
+        
+        }
 
-    var databody= {"Status":"accepted"}
+
+Rejectssc(id){
+    var databody= {"Status":"rejected"}
     console.log(databody)
-    
-    return fetch('http://localhost:5000/api/Reviewer/sscform/'+id, {
+    return fetch('/api/Reviewer/sscform/'+id, {
         method: 'PUT',
         body: JSON.stringify(databody),
         headers: {
@@ -83,14 +155,11 @@ Approveaa(id){
     .then(res => res.json())
     .then(data => console.log(data)); 
     
-    
-    }
-
-
-Rejectbb(id){
+}
+Rejectspc(id){
     var databody= {"Status":"rejected"}
     console.log(databody)
-    return fetch('http://localhost:5000/api/Reviewer/sscform/'+id, {
+    return fetch('/api/Reviewer/spcform/'+id, {
         method: 'PUT',
         body: JSON.stringify(databody),
         headers: {
@@ -104,9 +173,10 @@ Rejectbb(id){
 
 
 
+
 getspc(){
     
-    fetch('http://localhost:5000/api/Reviewer/find/SPC')
+    fetch('/api/Reviewer/find/SPC')
 
 .then(res => res.json())
 .then(spc => this.setState({SPC: spc.data}, () => console.log('spc fetched',this.state.SPC)));
@@ -114,7 +184,7 @@ getspc(){
 }
 
 getssc(){
-    fetch('http://localhost:5000/api/Reviewer/find/SSC')
+    fetch('/api/Reviewer/find/SSC')
 
 .then(res => res.json())
 .then(ssc => this.setState({SSC: ssc.data}, () => console.log('ssc fetched',this.state.SSC)));
@@ -140,7 +210,9 @@ render(){
     Phone_Number:{spc.Phone_Number}<br/> ,Investor_Fax:{spc.Investor_Fax}<br/> ,email:{spc.email}<br/> ,Investor_Address:{spc.Investor_Address}<br/> ,
     Form_Date:{spc.Form_Date}<br/> ,Locked:{spc.Locked}<br/> ,Lawyer_review:{spc.Lawyer_review}<br/> ,is_the_external_entities_notified:{spc.is_the_external_entities_notified}<br/>  */}
     Status:{spc.Status}
-    <button onClick= {() => {this.Approve(spc._id)}}> Approve </button> <button onClick= {() => {this.Reject(spc._id)}}> Reject </button> 
+    <button onClick= {() => {this.Approvespc(spc._id)}}> Approve </button> 
+    <button onClick= {() => {this.Rejectspc(spc._id)}}> Reject </button>
+    <button onClick= {() => {this.resendspc(spc._id)}}> back to lawyer </button> 
               
             </li>)}
      </ul> 
@@ -159,7 +231,9 @@ render(){
     TypeOf_IdentityProof: {ssc.TypeOf_IdentityProof}<br/> ,investor_nationalid:{ssc.investor_nationalid}<br/> ,BirthDate:{ssc.BirthDate}<br/> ,
     Phone_Number:{ssc.Phone_Number}<br/> ,Investor_Fax:{ssc.Investor_Fax}<br/> ,email:{ssc.email}<br/>  */}
     Status:{ssc.Status}
-    <button onClick= {() => {this.Approveaa(ssc._id)}}> Approve </button> <button onClick= {() => {this.Rejectbb(ssc._id)}}> Reject </button> 
+    <button onClick= {() => {this.Approvessc(ssc._id)}}> Approve </button>
+     <button onClick= {() => {this.Rejectssc(ssc._id)}}> Reject </button>
+     <button onClick= {() => {this.resendssc(ssc._id)}}> back to lawyer </button> 
               
           
             </li>)}
