@@ -94,9 +94,9 @@ class reglawyer extends Component {
   isAuthenticated() {
     const token = localStorage.getItem("token");
     if (token != null) {
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
   render() {
     console.log(this.state);
