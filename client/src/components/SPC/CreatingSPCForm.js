@@ -6,10 +6,9 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import PropTypes from 'prop-types';
+import Button from "@material-ui/core/Button";
+
 import './SPC.css'
 const styles = theme => ({
   root: {
@@ -1004,12 +1003,10 @@ handleClose = (event, reason) => {
         />
         </div>
         <br/>   
-                <div className="form-group">
-                    <input onClick={this.handleClick} type="submit" 
-                      value="Submit" 
-                      className="btn btn-primary"/>
-                </div> 
-                
+        <Button variant="contained" color="primary" type="submit"  onClick={this.handleClick}>
+              Submit
+            </Button>
+               
             </form>
         </div>
     )

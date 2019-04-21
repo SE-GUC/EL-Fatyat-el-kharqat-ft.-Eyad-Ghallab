@@ -25,7 +25,10 @@ const validator = require("../../validations/SSCvalid");
 
 router.get("/:investor_nationalid/SSC", async (req, res) => {
   const findme = req.params.investor_nationalid;
-  const user = await Form.findOne({ investor_nationalid: findme });
+  const user = await Form.findOne({
+    investor_nationalid: findme,
+    Status: "accepted"
+  });
   res.json({ data: user });
 });
 

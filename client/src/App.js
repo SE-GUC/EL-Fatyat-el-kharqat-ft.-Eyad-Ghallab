@@ -72,8 +72,8 @@ class App extends Component {
                   path="/LawyerHomePage"
                   component={LawyerHomePage}
                 />
-                <Route exact path="/LawyerHomePage" component={SPC} />
-                <Route exact path="/LawyerHomePage" component={SSC} />
+                {/* <Route exact path="/LawyerHomePage" component={SPC} />
+                <Route exact path="/LawyerHomePage" component={SSC} /> */}
               </Switch>
             </div>
           </NoSsr>

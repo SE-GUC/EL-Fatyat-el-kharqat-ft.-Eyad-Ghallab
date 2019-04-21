@@ -5,6 +5,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
+
 import './SSC.css'
 const styles = theme => ({
   root: {
@@ -1185,11 +1187,10 @@ onChange={this.handleBOD_Nationality}
                  onChange={this.handlePositionInBOD}
                  />
            </div>   
-                <div className="form-group">
-                    <input type="submit" 
-                      value="Submit" 
-                      className="btn btn-primary"/>
-                </div>
+           <Button variant="contained" color="primary" type="submit"  onClick={this.handleClick}>
+              Submit
+            </Button>
+               
             </form>
         </div>
     )
