@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
 
-class Register extends Component {
+class registerrev extends Component {
   constructor() {
     super();
 
@@ -95,7 +95,7 @@ class Register extends Component {
     return (
       <div className="Register">
         {isAlreadyAuthenticated ? (
-          <Redirect to={{ pathname: "/Login" }} />
+          <Redirect to={{ pathname: "/SignIn" }} />
         ) : (
           <form onSubmit={this.submitForm.bind(this)}>
             <h2>Register Page</h2>
@@ -163,4 +163,4 @@ class Register extends Component {
     );
   }
 }
-export default Register;
+export default registerrev;

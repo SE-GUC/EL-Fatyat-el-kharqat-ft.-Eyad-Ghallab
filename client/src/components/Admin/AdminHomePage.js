@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Admin from './Admin';
 import EditAdmin from './EditAdmin'
-
+import Reviewer from '../regreviewer/registerrev'
+import Lawyer from '../registerlawyer/reglawyer'
 import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
 export default class InvHomePage extends Component {
@@ -64,7 +65,9 @@ export default class InvHomePage extends Component {
                
                 <Route exact path='/read' component={ Admin } />
                 <Route exact path='/edit' component={ EditAdmin } /> 
-                
+                <Route exact path='/Reviewer' component={ Reviewer } /> 
+                <Route exact path='/Lawyer' component={ Lawyer } /> 
+
 
             </Switch>
           </div>

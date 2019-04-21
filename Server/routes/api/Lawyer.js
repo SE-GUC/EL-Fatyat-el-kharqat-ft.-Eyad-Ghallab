@@ -197,6 +197,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
 router.post("/createlawyer", async (req, res) => {
   try {
     const isValidated = validator.createValidation(req.body);
