@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-//import store from './globalState/store'
-//import { Provider } from 'react-redux';
+import { arch } from 'os';
+import { get } from 'https';
 
 ReactDOM.render(
     // <Provider store={store}>
