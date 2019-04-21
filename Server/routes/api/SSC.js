@@ -141,6 +141,11 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/:id", async (req, res) => {
+  const sscforms = await Form.findById(req.params.id);
+  res.json({ data: sscforms });
+});
+
 // router.get('/:id',(req,res)=>{
 //   const query = Form.find({})
 //   .where('_id').equals(req.params.id)

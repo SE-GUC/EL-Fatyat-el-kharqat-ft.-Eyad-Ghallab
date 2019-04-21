@@ -1035,15 +1035,26 @@ handleClose = (event, reason) => {
         <Button variant="contained" color="primary" type="submit"  onClick={this.handleClick}>
               Submit
             </Button>
+            <div className="form-group">
 
-         
+            <script type="text/javascript" charset="UTF-8" src="xyz.js"></script> 
+            
+               </div>
+
         <br/>   
         <Button variant="contained" color="primary" type="button"  onClick={this. Download_As_txt }>
-              Download_as_txt
+              Download as text
             </Button>
+            <br/> 
             
-               
             </form>
+            <form action="/uploadfile" enctype="multipart/form-data"  method="POST"> 
+            <label>
+            <input type="file" name="myFile" />
+               <Button variant="contained" color="primary" type="submit" >  Upload A File
+            </Button>
+            </label>
+               </form>
         </div>
     )
   }

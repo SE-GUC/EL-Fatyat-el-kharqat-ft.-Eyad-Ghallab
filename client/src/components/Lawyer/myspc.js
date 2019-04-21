@@ -22,7 +22,7 @@ class myspc extends Component {
       this.setState({ isSPC: true });
     }
 
-    console.log(this.state.isSPC);
+    //console.log(this.state.isSPC);
   }
 
   Approve(e) {

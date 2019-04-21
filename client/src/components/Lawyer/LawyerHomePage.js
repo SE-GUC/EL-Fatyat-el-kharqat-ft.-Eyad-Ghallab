@@ -10,7 +10,7 @@ import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import "./Lawyer.css";
 import hana from "./myssc";
-
+import sama from "./myspc"
 export default class LawyerHomePage extends Component {
   state = {
     anchorEl: null
@@ -54,12 +54,7 @@ export default class LawyerHomePage extends Component {
                     Workspace
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={"/myssc"} className="nav-link">
-                    SPC
-                  </Link>
-                </li>
-
+                
                 <li className="nav-item">
                   <Button
                     className="nav-link"
@@ -102,7 +97,9 @@ export default class LawyerHomePage extends Component {
             <Route exact path="/NewSPC" component={SPC} />
             <Route exact path="/NewSSC" component={SSC} />
             <Route exact path="/workspace" component={Workspace} />
-            <Route exact path="/myscc" component={hana} />
+            <Route exact path="/myssc" component={hana} />
+            <Route exact path="/myspc" component={sama} />
+
           </Switch>
         </div>
       </Router>

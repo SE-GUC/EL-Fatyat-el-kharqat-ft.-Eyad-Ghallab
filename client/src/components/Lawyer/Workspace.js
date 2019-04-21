@@ -10,7 +10,8 @@ class Workspace extends Component {
       SSC: [],
       isSSC: true,
       Lawyer_review: "",
-      id: false
+      id: false,
+      idssc: false
     };
   }
   // componentDidMount() {
@@ -28,9 +29,14 @@ class Workspace extends Component {
   //   }
   local(id) {
     localStorage.setItem("id", id);
+
     this.setState({ id: true });
   }
+  localssc(id) {
+    localStorage.setItem("sscid", id);
 
+    this.setState({ idssc: true });
+  }
   Approve(id) {
     var databody = { Lawyer_review: "accepted" };
     console.log(databody);
@@ -87,7 +93,7 @@ class Workspace extends Component {
             this.getspc();
           }}
         >
-          get untlocked SPC forms{" "}
+          get unlocked SPC forms{" "}
         </button>
         <ul>
           {this.state.SPC.map(spc => (
@@ -121,11 +127,11 @@ class Workspace extends Component {
             <li key={ssc._id}>
               Company_name: {ssc.Company_name}
               <br />
-              Form_Date:{ssc.Form_Date}
+              Form_Date:{ssc.Formdate}
               <br />
               <button
                 onClick={() => {
-                  this.local(ssc._id);
+                  this.localssc(ssc._id);
                 }}
               >
                 {" "}
@@ -134,7 +140,7 @@ class Workspace extends Component {
             </li>
           ))}
         </ul>
-        {/* {this.state.id ? <Redirect to={{ pathname: "/myssc" }} /> : <h1 />} */}
+        {this.state.idssc ? <Redirect to={{ pathname: "/myssc" }} /> : <h1 />}
 
         {/* <button onClick={()=>{this.getssc()}}>get untlocked SSC forms </button> 
             <ul>
