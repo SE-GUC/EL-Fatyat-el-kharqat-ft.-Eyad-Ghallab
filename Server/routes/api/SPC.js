@@ -5,25 +5,19 @@ const mongoose = require("mongoose");
 const SpcForm = require("../../models/SPC");
 const validator = require("../../validations/SPCvalid");
 
-router.get("/:investor_nationalid/get", async (req, res) => {
-  const found = req.params.investor_nationalid;
-  const user = await SpcForm.findOne({ found });
-  if (user) {
-    console.log("found it");
-  } else {
-    console.log("did not find it");
-  }
-  // const user = await us.findOne(req.params.email);
-  //const type = user.type;
-  console.log(user);
-  //console.log(type);
-  res.json({ data: user });
-});
-
 const Nexmo = require("nexmo");
 const nexmo = new Nexmo({
   apiKey: "5f5fb4ce",
   apiSecret: "48bJxSynuSXO0Xnj"
+});
+router.get("/:investor_nationalid/SPC", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
+
+  const national = await SpcForm.find({
+    investor_nationalid: nationalid,
+    Status: "accepted"
+  });
+  res.json({ data: national });
 });
 
 router.post("/msg", async (req, res) => {

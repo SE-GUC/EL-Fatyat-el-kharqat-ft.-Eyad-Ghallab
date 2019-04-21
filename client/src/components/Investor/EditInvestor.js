@@ -9,9 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-//import "bootstrap/dist/css/bootstrap.min.css";
 
-//import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
@@ -152,7 +150,7 @@ class EditInvestor extends Component {
     }
     console.log(this.state.username);
     return fetch(
-      "http://localhost:5000/api/Investors/" + localStorage.getItem("userid"),
+      "/api/Investors/" + localStorage.getItem("userid"),
       {
         method: "PUT",
         body: JSON.stringify(databody),
@@ -167,7 +165,7 @@ class EditInvestor extends Component {
   render() {
     return (
       <div style={{ marginTop: 10 }}>
-        <h3 align="center">Investor</h3>
+        <h3 align="center">Edit Your Profile</h3>
         <form onSubmit={this.handleSubmit}>
           <label>
             Name

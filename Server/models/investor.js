@@ -49,6 +49,10 @@ const investorSchema = new Schema({
   mobilenumber: {
     type: String,
     required: false
+  },
+  nationalid: {
+    type: String,
+    required: false
   }
 });
 

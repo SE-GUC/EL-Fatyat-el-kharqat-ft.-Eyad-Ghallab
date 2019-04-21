@@ -136,6 +136,12 @@ router.get("/", async (req, res) => {
   res.json({ msg: "Lawyers are here", data: lawyers });
 });
 
+
+router.get("/:id", async (req, res) => {
+  const lawyers = await Lawyer.findById(req.params.id);
+  res.json({ data: lawyers });
+});
+
 // Create a Lawyer
 router.post("/register", async (req, res) => {
   console.log("ana da5alt");
@@ -190,6 +196,7 @@ router.post("/register", async (req, res) => {
     res.status(422).send({ error: "Can not create user" });
   }
 });
+
 
 router.post("/createlawyer", async (req, res) => {
   try {

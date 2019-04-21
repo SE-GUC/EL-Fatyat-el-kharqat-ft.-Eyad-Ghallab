@@ -21,23 +21,17 @@ const validator = require("../../validations/SSCvalid");
 //       }
 //    );
 
-router.get("/:investor_nationalid/get", async (req, res) => {
-  const findme = req.params.investor_nationalid;
-  const user = await Form.findOne({ findme });
+//get all the  forms
 
-  if (user) {
-    console.log("found it");
-  } else {
-    console.log("did not find it");
-  }
-  // const user = await us.findOne(req.params.email);
-  //const type = user.type;
-  console.log(user);
-  //console.log(type);
+router.get("/:investor_nationalid/SSC", async (req, res) => {
+  const findme = req.params.investor_nationalid;
+  const user = await Form.findOne({
+    investor_nationalid: findme,
+    Status: "accepted"
+  });
   res.json({ data: user });
 });
 
-//get all the  forms
 router.get("/all", async (req, res) => {
   const forms = await Form.find();
   res.json({ msg: "Here are the SSC Forms", data: forms });

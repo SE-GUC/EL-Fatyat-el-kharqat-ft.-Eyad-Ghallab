@@ -51,29 +51,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-//  router.post('/login', async (req, res) => {
-// 	try {
-// 		const { email, password } = req.body;
-//         const investor = await inv.findOne({ email });
-//         console.log(investor)
-// 		if (!investor) return res.status(404).json({ email: 'Email does not exist' });
-// 		//const match = bcrypt.compareSync(password, investor.get("password"));
-// 		if (password == investor.get("password")) {
-//             const payload = {
-//                 id: investor.id,
-//                 name: investor.name,
-//                 email: investor.email
-//             }
-//             const token = jwt.sign(payload, tokenKey, { expiresIn: '1h' })
-//             res.json({data: `Bearer ${token}`})
-//             return res.json({ data: 'Token' })
-//         }
-// 		else return res.status(400).send({ password: 'Wrong password' });
-// 	} catch (error) {
-
-//         console.log(error)
-//     }
-// });
 
 router.put("/:id", async (req, res) => {
   try {
@@ -132,7 +109,8 @@ router.post("/register", async (req, res) => {
       city,
       country,
       jobtitle,
-      mobilenumber
+      mobilenumber,
+      nationalid
     } = req.body;
     const investor = await inv.findOne({ email });
     if (investor)
@@ -150,7 +128,8 @@ router.post("/register", async (req, res) => {
       city,
       country,
       jobtitle,
-      mobilenumber
+      mobilenumber,
+      nationalid
     });
 
     await inv.create(newUser);
@@ -159,7 +138,8 @@ router.post("/register", async (req, res) => {
       type: "investor",
       email,
       password: hashedPassword,
-      id: newUser.id
+      id: newUser.id,
+      nationalid: newUser.nationalid
     });
     const user = await us.create(type);
     res.json({ msg: "User created successfully", data: newUser });
