@@ -8,6 +8,7 @@ import CreatingReviewer from './CreatingReviewer';
 import Forms from './Forms';
 import updating_Forms from './updating_Forms';
 
+
 export default class ReviewerHomePage extends Component {
     render() {
       return (
@@ -38,6 +39,9 @@ export default class ReviewerHomePage extends Component {
                   <li className="nav-item">
                     <Link to={'/update'} className="nav-link">updating_Forms</Link>
                   </li>
+
+                  
+
                 </ul>
               </div>
             </nav> <br/>
@@ -49,6 +53,7 @@ export default class ReviewerHomePage extends Component {
                 <Route exact path='/read' component={ Reviewer } /> 
                 <Route exact path='/view' component={ Forms } /> 
                 <Route exact path='/update' component={ updating_Forms } /> 
+                
             </Switch>
           </div>
         </Router>
