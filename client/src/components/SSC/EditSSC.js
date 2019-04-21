@@ -4,6 +4,8 @@ class EditSSC extends Component {
     constructor(){
         super();
         this.handleCompany_name= this.handleCompany_name.bind(this);
+        this.handleCompany_nameinenglish= this.handleCompany_nameinenglish.bind(this);
+
         this.handleGovernorate= this.handleGovernorate.bind(this);
         this.handleCity =  this.handleCity.bind(this);
         this.handleCompany_Address =  this.handleCompany_Address.bind(this);
@@ -37,7 +39,8 @@ class EditSSC extends Component {
     
 
        this.state = { 
-        Company_name: '',
+        Company_name: '',         Company_nameinenglish: '',
+
         Governorate: "",
          City:"",
          Company_Address: '',
@@ -82,6 +85,9 @@ class EditSSC extends Component {
      }
      handleCompany_name(e){
         this.setState({Company_name: e.target.value })
+    }
+    handleCompany_nameinenglish(e){
+        this.setState({Company_nameinenglish: e.target.value })
     }
     handleGovernorate(e){
         this.setState({Governorate: e.target.value })
@@ -185,6 +191,8 @@ class EditSSC extends Component {
              let databody 
          if (this.state.Company_name !== ""){
            databody = {"Company_name":this.state.Company_name}}
+           if (this.state.Company_nameinenglish !== ""){
+            databody = {"Company_nameinenglish":this.state.Company_nameinenglish}}
          if(this.state.Governorate !== ""){
            databody = {"Governorate":this.state.Governorate}}
         if(this.state.City !== ""){
@@ -272,7 +280,15 @@ render() {
                  onChange={this.handleCompany_name}
                  />
                  </div>
-                 
+                 <div className="form-group">
+               <label>Company Name In English:  </label>
+               <input 
+                 type="text" 
+                 className="form-control" 
+                 value={this.state.Company_nameinenglish}
+                 onChange={this.handleCompany_nameinenglish}
+                 />
+                 </div>
                  <div className="form-group">
                  <label>Governorate:  </label>
                <input 

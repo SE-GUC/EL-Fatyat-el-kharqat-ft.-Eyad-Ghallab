@@ -13,7 +13,7 @@ const updateSSC = require("./routes/api/SSC");
 const Reviewer = require("./routes/api/Reviewer");
 const investor = require("./routes/api/investor");
 const Lawyer = require("./routes/api/Lawyer");
-
+const national = require("./routes/api/national");
 const Comment = require("./routes/api/Comment");
 
 const user = require("./routes/api/user");
@@ -64,8 +64,9 @@ app.get("/test", (req, res) => res.send(`<h1>Deployed on Heroku</h1>`));
 
 app.use(bodyParser.json());
 app.use("/api/SSC", updateSSC);
+app.use("/api/national", national);
 app.use("/api/Reviewer", Reviewer);
-app.use("/api/investor", investor);
+app.use("/api/investors", investor);
 app.use("/api/Lawyer", Lawyer);
 app.use("/api/Admin", Admin);
 app.use("/api/Comment", Comment);

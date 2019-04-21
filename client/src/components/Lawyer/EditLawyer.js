@@ -33,7 +33,7 @@ class EditLawyer extends Component {
         }
     }
     componentDidMount(){
-        fetch('/api/Lawyer/')
+        fetch('/api/Lawyer/' + localStorage.getItem("userid"))
         .then(res => res.json())
         .then(Lawyer => this.setState({lawyers: Lawyer.data},
              () => console.log('Lawyer fetched',this.state.lawyers)));
@@ -81,7 +81,7 @@ class EditLawyer extends Component {
         e.preventDefault();
   }
 
-        update(id){
+        update(){
             console.log(this.state.fullname)
              let databody 
           if (this.state.username !== ""){
@@ -104,7 +104,7 @@ class EditLawyer extends Component {
                        databody = {"noOfPreviousCases":this.state.noOfPreviousCases}}
                        
                            console.log(this.state.username)
-             return fetch('/api/Lawyer/'+id, {
+             return fetch('/api/Lawyer/'+ localStorage.getItem("userid"), {
                  method: 'PUT',
                  body: JSON.stringify(databody),
                  headers: {
@@ -198,14 +198,14 @@ class EditLawyer extends Component {
                         />
                         </div>
                  
-                        <ul>
-    {this.state.lawyers.map(lawyer =>
-      <li key = {lawyer._id}
-      >  {lawyer.username}
-       <br/><button onClick = {() => {this.update(lawyer._id)}}> Update</button> 
-      </li>
-      )}
-  </ul>
+                        <button
+            onClick={() => {
+              this.update();
+            }}
+          >
+            {" "}
+            Update
+          </button>
             </form>
             </div>
         )

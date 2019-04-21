@@ -1,35 +1,32 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 // Create the schema
 const ReviewerSchema = new Schema({
-    Name: {
-        type: String,
-        required: true
-    },
-    Email: {
-        type: String,
-        required: true
-    },
-    Password: {
-        type: String,
-        required: true
-    },
-    YearsOfExperience: {
-        type: Number,
-        required: true
-    },
-    Username:{
-        type: String,
-        required: true
-    },
-    Gender:{
-        type: String,
-        required: true
-    },
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  yearsOfExperience: {
+    type: Number,
+    required: true
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  gender: {
+    type: String,
+    required: true
+  }
+});
 
-
-
-})
-
-module.exports = Reviewer = mongoose.model('Reviewer', ReviewerSchema)
+module.exports = Reviewer = mongoose.model("Reviewer", ReviewerSchema);

@@ -1,119 +1,79 @@
 import React, { Component } from 'react';
-import './Admin.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Tabs from '@material-ui/core/Tabs';
-import AppBar from '@material-ui/core/AppBar';
-import NoSsr from '@material-ui/core/NoSsr';
-import logo from './unnamed.png';
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import CreateAdmin from './CreateAdmin';
-import EditAdmin from'./EditAdmin';
-import DeleteAdmin from './DeleteAdmin'
 import Admin from './Admin';
+import EditAdmin from './EditAdmin'
+import Reviewer from '../regreviewer/registerrev'
+import Lawyer from '../registerlawyer/reglawyer'
+import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
+export default class InvHomePage extends Component {
+  state = {
+    anchorEl: null,
+  };
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
 
-import upload from './upload';
-const styles = theme => ({
-  root: {
-    maxWidth: 400,
-    flexGrow: 1,
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    height: 50,
-    paddingLeft: theme.spacing.unit * 4,
-    backgroundColor: theme.palette.background.default,
-    position: 'relative',
-  },
-  img: {
-    height: 255,
-    maxWidth: 400,
-    overflow: 'hidden',
-    display: 'block',
-    width: '100%',
-
-  },
-});
-
- 
-
-  
-class AdminHomePage extends Component {
-   
-  render() {
-    return (
-      <Router>
-      <NoSsr>
-        <div >
-       
-          <AppBar position="static">
-            <Tabs 
-            
-            >
-            <ul className="logo">
-            <img src={logo} alt="" /></ul>
-            
-            
-              
-                <ul className="nav-item">
-            <li >
-                  <Link to={'/CreateAdmin'} className="nav-link">Create</Link>
-                </li>
-                <li>|</li>
-</ul>
-
-                <ul className="nav-item">
-               <li >
-                  <Link to={'/DeleteAdmin'} className="nav-link">Delete</Link>
-                </li>
-                <li>|</li>
-                </ul>
-                <ul className="nav-item">    
-                <li>              
-                <Link to={'/EditAdmin'} className="nav-link">Edit</Link>
-                </li>
-                <li>|</li>
-                </ul>
-                <ul className="nav-item">
-            <li >
-                  <Link to={'/ViewAdmin'} className="nav-link">View</Link>
-                </li>
-                <li>|</li>
-                </ul>
-                <ul className="nav-item">
-            <li >
-                  <Link to={'/Upload'} className="nav-link">Upload</Link>
-                </li>
-                <li>|</li>
-                </ul>
-                
-            </Tabs> 
-          </AppBar>
-       
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+    render() {
+      const { anchorEl } = this.state;
+      return (
+        <Router>
+          <div className="container">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+             
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                    <Link to={'/'} className="nav-link">Home</Link>
+                  </li>
+                 
+                  <li className="nav-item">
+                    <Link to={'/read'} className="nav-link">My Profile</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={'/edit'} className="nav-link">Edit My Profile</Link>
+                  </li>
+                  <li className="nav-item">
+                <Button className="nav-link"
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          aria-haspopup="true"
+          onClick={this.handleClick}
+        >
+          Register new user
+        </Button>
+        <Menu className="nav-link"
+          id="simple-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={this.handleClose}
+        >
+          <Link to={'/Lawyer'} onClick={this.handleClose} className="nav-link">Lawyer</Link>
+          <Link to={'/Reviewer'} onClick={this.handleClose} className="nav-link">Reviewer</Link>
+          <Link to={'/Admin'} onClick={this.handleClose} className="nav-link">Admin</Link>          
           
-          <Switch>
-              <Route exact path='/CreateAdmin' component={ CreateAdmin } />
-              <Route exact path='/EditAdmin' component={ EditAdmin } />
-              <Route exact path='/DeleteAdmin' component={ DeleteAdmin } /> 
-              <Route exact path='/ViewAdmin' component={ Admin } /> 
-              <Route exact path='/Upload' component={ upload } /> 
-          </Switch>
-              <br/>
+        </Menu>
+        </li>
+                </ul>
+              </div>
+            </nav> <br/>
+          
+            <Switch>
+               
+                <Route exact path='/read' component={ Admin } />
+                <Route exact path='/edit' component={ EditAdmin } /> 
+                <Route exact path='/Reviewer' component={ Reviewer } /> 
+                <Route exact path='/Lawyer' component={ Lawyer } /> 
 
-      
-        </div>
-      </NoSsr>
-      </Router> 
 
-    );
+            </Switch>
+          </div>
+        </Router>
+      );
+    }
   }
-}
-
-AdminHomePage.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-};
-export default  withStyles(styles, { withTheme: true }) (AdminHomePage);
-
+  
+  

@@ -9,28 +9,22 @@
 }
 header{
   background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("Egypt.jpg");
-
-    height: 100vh;
+   height: 100vh;
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center center;
-    background-repeat: no-repeat;
-
-    position: absolute;
-    top:0;
-    bottom: 0;
-    z-index: -5;
-    width: 100%;
+    position: relative;
+    
 }
-.nav-item{
+.nav-area{
   float: right;
   list-style: none;
   margin-top: 30px;
 }
-.nav-item li {
+.nav-area li {
   display: inline-block;
 }
-.nav-item li a{
+.nav-area li a{
   color: #fff;
   text-decoration: none;
   padding: 5px 20px;
@@ -38,12 +32,12 @@ header{
   font-size: 14px;
 
 } 
-.nav-item li a:hover{
-  background: #fff;
+.nav-area li a:hover{
+background: #fff;
 color: #333;
 } 
 .logo img{
   width: 100px;
   float: left;
   height: auto;
-} 
+}
