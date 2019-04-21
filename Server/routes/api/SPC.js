@@ -18,6 +18,15 @@ router.get("/:investor_nationalid/SPC", async (req, res) => {
     Status: "accepted"
   });
   res.json({ data: national });
+}); 
+router.get("/:investor_nationalid/status", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
+
+  const national = await SpcForm.find({
+    investor_nationalid: nationalid,
+   
+  });
+  res.json({ data: national });
 });
 
 router.post("/msg", async (req, res) => {
