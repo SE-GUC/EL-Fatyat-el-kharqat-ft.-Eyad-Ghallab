@@ -4,7 +4,7 @@ class mycompSSC extends Component {
     super();
     this.state = {
       SSC: [],
-      isSSC: true
+      isSSC: false
     };
   }
 
@@ -18,7 +18,7 @@ class mycompSSC extends Component {
         )
       );
     if (this.state.SSC != []) {
-      this.setState.isSSC = true;
+      this.setState({ isSSC: true });
     }
   }
   render() {

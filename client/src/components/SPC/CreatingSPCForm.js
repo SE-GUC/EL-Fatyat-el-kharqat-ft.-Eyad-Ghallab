@@ -8,8 +8,11 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import Button from "@material-ui/core/Button";
-
+import {saveAs} from 'file-saver';
 import './SPC.css'
+const blobstream = require('blob-stream');
+
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -82,6 +85,32 @@ class CreatingSPCForm extends Component {
     handleChange(event) {
         this.setState({value: event.target.value});
       }
+
+
+      Download_As_txt = () =>{
+
+        var saver = require('file-saver');
+        var blob = new Blob(['Facility Name is: ', this.state.Facility_nameinenglish,"\n"
+                            ,'Arabic is: ',this.state.Facility_name,"\n",
+                            'Governorate:', this.state.Governorate,"\n",
+                            'City is:',this.state.City,"\n",
+                            'Facility_Address:',this.state.Facility_Address,"\n",
+                            'Facility_Phone_Number:',this.state.Facility_Phone_Number,"\n",
+                            'Fax:',this.state.Fax,this.state.Fax,"\n",
+                            'Capital_Currency:',this.state.Capital_Currency,"\n",
+                            'capital:',this.state.capital,"\n",
+                            'investorname:',this.state.investorname,"\n",
+                            'Gender:',this.state.Gender,"\n",
+                            'Nationality:',this.state.Nationality,"\n",
+                            'TypeOf_IdentityProof:',this.state.TypeOf_IdentityProof,"\n",
+                            'investor_nationalid:',this.state.investor_nationalid,"\n",
+                            'BirthDate:',this.state.BirthDate,"\n",
+                            'Phone_Number:',this.state.Phone_Number,"\n",
+                            'Investor_Fax:',this.Investor_Fax,"\n",
+                            'email:',"\n",this.state.email,"\n",
+                            'Investor_Address:',this.state.Investor_Address,"\n"],{type:'text/plain',endings:'native'});
+        saver.saveAs(blob,"SPC Form" + ".txt");}
+
       handleFacilityName(e) {
     this.setState({
       Facility_name: e.target.value
@@ -1006,8 +1035,26 @@ handleClose = (event, reason) => {
         <Button variant="contained" color="primary" type="submit"  onClick={this.handleClick}>
               Submit
             </Button>
-               
+            <div className="form-group">
+
+            <script type="text/javascript" charset="UTF-8" src="xyz.js"></script> 
+            
+               </div>
+
+        <br/>   
+        <Button variant="contained" color="primary" type="button"  onClick={this. Download_As_txt }>
+              Download as text
+            </Button>
+            <br/> 
+            
             </form>
+            <form action="/uploadfile" enctype="multipart/form-data"  method="POST"> 
+            <label>
+            <input type="file" name="myFile" />
+               <Button variant="contained" color="primary" type="submit" >  Upload A File
+            </Button>
+            </label>
+               </form>
         </div>
     )
   }
