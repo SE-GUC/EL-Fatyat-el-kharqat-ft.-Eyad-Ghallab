@@ -19,6 +19,7 @@ const national = require("./routes/api/national");
 const Comment = require("./routes/api/Comment");
 
 const user = require("./routes/api/user");
+const contractFinal = require("./routes/api/contractFinal");
 
 const multer = require("multer");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -76,8 +77,19 @@ app.use("/api/Contract", Contract);
 app.use("/api/Payment", Payment);
 app.use("/api/ExternalEntities", ExternalEntities);
 app.use("/api/user", user);
+app.use("/api/contractFinal", contractFinal);
 app.use("/api/Notification", Notification);
 app.use("/api/SPC", spcforms);
+// SET STORAGE
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, "uploads");
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now());
+  }
+});
+
 
 
 

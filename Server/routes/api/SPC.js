@@ -99,6 +99,37 @@ router.get("/:id", async (req, res) => {
   res.json({ data: spcforms });
 });
 
+router.get("/city/:id", async (req, res) => {
+  const spcforms = await SpcForm.findById(req.params.id);
+  res.json({ data: spcforms.City });
+});
+
+router.get("/gov/:id", async (req, res) => {
+  const spcforms = await SpcForm.findById(req.params.id);
+  res.json({ data: spcforms.Governorate });
+});
+
+router.get("/name/:id", async (req, res) => {
+  const spcforms = await SpcForm.findById(req.params.id);
+  res.json({ data: spcforms.Facility_name });
+});
+
+
+// router.get("/gov/:id", async (req, res) => {
+//   const spcforms = await SpcForm.findById(req.params.id);
+//   res.json({ data: spcforms.Governorate });
+// });
+// router.get("/city/:id", async (req, res) => {
+//   const spcforms = await SpcForm.findById(req.params.id);
+//   res.json({ data: spcforms.Corporate_city });
+// });
+// router.get("/address/:id", async (req, res) => {
+//   const spcforms = await SpcForm.findById(req.params.id);
+//   res.json({ data: spcforms.Corporate_address });
+// });
+
+
+
 // router.get("/:investor_nationalid", async (req, res) => {
 //   const investor = req.params.investor_nationalid;
 //   console.log(investor);
@@ -108,6 +139,7 @@ router.get("/:id", async (req, res) => {
 //   }
 //   res.json({ data: spc });
 // });
+
 //Update Form
 router.put("/:id", async (req, res) => {
   console.log("hiiii");
