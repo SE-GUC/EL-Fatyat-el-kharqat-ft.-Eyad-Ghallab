@@ -16,7 +16,8 @@ class Login extends Component {
       isreviewer: false,
       isadmin: false,
       type: "",
-      id: ""
+      id: "",
+      nationalid: ""
     };
   }
 
@@ -53,7 +54,10 @@ class Login extends Component {
       .then(user =>
         this.setState(
           { type: user.data.type },
-          this.setState({ id: user.data.id })
+          this.setState(
+            { id: user.data.id },
+            this.setState({ nationalid: user.data.nationalid })
+          )
         )
       );
 
@@ -70,6 +74,7 @@ class Login extends Component {
     }
 
     localStorage.setItem("userid", this.state.id);
+    localStorage.setItem("nationalid", this.state.nationalid);
   }
 
   isAuthenticated() {
@@ -85,33 +90,52 @@ class Login extends Component {
     const isAlreadyAuthenticated = this.isAuthenticated();
     return (
       <body>
-      <div className="login-box">
-        {isAlreadyAuthenticated && this.state.isinvestor ? (
-          <Redirect to={{ pathname: "/InvHomePage" }} />
-        ) : isAlreadyAuthenticated && this.state.isadmin ? (
-          <Redirect to={{ pathname: "/AdminHomePage" }} />
-        ) : isAlreadyAuthenticated && this.state.islawyer ? (
-          <Redirect to={{ pathname: "/LawyerHomePage" }} />
-        ) : isAlreadyAuthenticated && this.state.isreviewer ? (
-          <Redirect to={{ pathname: "/Reviewer" }} />
-        ) : (
-          <form onSubmit={this.submitForm.bind(this)}>
-            <h1>Login Page</h1>
-            <div class = "textbox">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            
-            <input type = "Email" placeholder="Email" name="" value={this.state.email} onChange={this.handleemailChanged.bind(this)}></input>
-            </div>
-            <div class = "textbox">
-            <i class="fa fa-lock" aria-hidden="true"></i>
+        <div className="login-box">
+          {isAlreadyAuthenticated && this.state.isinvestor ? (
+            <Redirect to={{ pathname: "/InvHomePage" }} />
+          ) : isAlreadyAuthenticated && this.state.isadmin ? (
+            <Redirect to={{ pathname: "/AdminHomePage" }} />
+          ) : isAlreadyAuthenticated && this.state.islawyer ? (
+            <Redirect to={{ pathname: "/LawyerHomePage" }} />
+          ) : isAlreadyAuthenticated && this.state.isreviewer ? (
+            <Redirect to={{ pathname: "/ReviewerHomePage" }} />
+          ) : (
+            <form onSubmit={this.submitForm.bind(this)}>
+              <h1>Login Page</h1>
+              <div class="textbox">
+                <i class="fa fa-user" aria-hidden="true" />
 
-            <input type = "password" placeholder="Password" name="" value={this.state.password} onChange={this.handlePasswordChanged.bind(this)}></input>
-            </div>
-            <input class="btn" type="submit"  name="" value="Sign In" onClick={()=> {this.type()}}></input>
-           
-          </form>
-        )}
-      </div>
+                <input
+                  type="Email"
+                  placeholder="Email"
+                  name=""
+                  value={this.state.email}
+                  onChange={this.handleemailChanged.bind(this)}
+                />
+              </div>
+              <div class="textbox">
+                <i class="fa fa-lock" aria-hidden="true" />
+
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name=""
+                  value={this.state.password}
+                  onChange={this.handlePasswordChanged.bind(this)}
+                />
+              </div>
+              <input
+                class="btn"
+                type="submit"
+                name=""
+                value="Sign In"
+                onClick={() => {
+                  this.type();
+                }}
+              />
+            </form>
+          )}
+        </div>
       </body>
     );
   }
