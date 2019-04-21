@@ -58,7 +58,7 @@ class Forms extends Component {
   return(
 
     <div>
-    <h2>All accepted spc Forms</h2>
+    <h2>All accepted spc Forms by Lawyer </h2>
     <ul>
       {this.state.spcs.map(spc =>
         <li key = {spc._id}
@@ -66,7 +66,7 @@ class Forms extends Component {
         </li>
             )}
         </ul> 
-        <h2>All accepted ssc Forms</h2>
+        <h2>All accepted ssc Forms by Lawyer </h2>
         <ul>
           {this.state.SSC.map(ssc =>
             <li key = {ssc._id}
