@@ -7,8 +7,8 @@ import SPC from "../SPC/CreatingSPCForm";
 import SSC from "../SSC/CreatingSSCForm";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
-import ViewSPC from "./mycompSPC";
-import ViewSSC from "./mycompSSC";
+import ViewSPC from "./mycompSPC.js";
+import ViewSSC from "./mycompSSC.js";
 export default class InvHomePage extends Component {
   state = {
     anchorEl: null
