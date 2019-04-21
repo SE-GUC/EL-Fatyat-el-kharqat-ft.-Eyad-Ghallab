@@ -111,15 +111,42 @@ isAuthenticated(){
     const isAlreadyAuthenticated = this.isAuthenticated();
     
     return (
+      <body>
      
-      <div className = "Register">
-     {isAlreadyAuthenticated ? <Redirect to = {{pathname : '/Login'}} /> : (
+      <div class = "wrap">
+     {isAlreadyAuthenticated ? <Redirect to = {{pathname : '/SignIn'}} /> : (
      <form onSubmit = {this.submitForm.bind(this)}>
-    <h2>Register Page</h2>
   
-   
+  <h3>Sign Up Here</h3>
+  <div class = "textbox">
+<input type ="text" placeholder="Name" value = {this.state.name}  onChange = {this.handlenameChanged.bind(this)} required></input></div>
+<div class = "textbox">
+<input type ="text" placeholder="UserName" value = {this.state.username}  onChange = {this.handleusernameChanged.bind(this)} required></input></div>
+<div class = "textbox">
 
-<TextField
+<input type ="Email" placeholder="Email" value = {this.state.email}  onChange = {this.handleemailChanged.bind(this)}  required></input></div>
+<div class = "textbox">
+
+<input type ="password" placeholder="Password"  value = {this.state.password}  onChange = {this.handlePasswordChanged.bind(this)} required></input></div>
+<div class = "textbox">
+
+<input type ="text" placeholder="Nationality" value = {this.state.nationality}  onChange = {this.handlenationalityChanged.bind(this)}  required></input></div>
+<div class = "textbox">
+
+<input type ="text" placeholder="Gender"  value = {this.state.gender}  onChange = {this.handlegenderChanged.bind(this)} required></input></div>
+<div class = "textbox">
+<input type ="date" placeholder="Birthdate" value = {this.state.birthdate}  onChange = {this.handlebirthdateChanged.bind(this)} required></input></div>
+<div class = "textbox">
+<input type ="text" placeholder="City" value = {this.state.city}  onChange = {this.handlecityChanged.bind(this)} required></input></div>
+<div class = "textbox">
+<input type ="text" placeholder="Country" value = {this.state.country}  onChange = {this.handlecountryChanged.bind(this)} required></input></div>
+<div class = "textbox">
+<input type ="text" placeholder="Job Title" value = {this.state.jobtitle}  onChange = {this.handlejobtitleChanged.bind(this)} required></input></div>
+<div class = "textbox">
+<input type ="text" placeholder="Mobile Number" value = {this.state.mobilenumber}  onChange = {this.handlemobilenumberChanged.bind(this)} required></input></div>
+<input class="btn" type = "submit" Value="Submit"></input>
+
+{/* <TextField
           id="standard-name-input"
           label="name"
           type="name"
@@ -217,10 +244,11 @@ isAuthenticated(){
         Register
         
       </Button>
-     
+      */}
     </form>
      )}
       </div>
+      </body>
     );
   }
 }

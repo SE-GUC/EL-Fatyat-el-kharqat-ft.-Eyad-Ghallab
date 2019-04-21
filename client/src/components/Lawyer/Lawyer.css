@@ -119,3 +119,37 @@
 /* .nav-item{
    display: none;
   } */
+
+
+.navbar{
+    width: auto;
+    height: 57px;
+    line-height: 60px;
+    padding-bottom: 4px;
+    padding: 24px 30px 20px 30px;
+    
+    margin-top: 10px;
+    width: 100%;
+}
+
+.nav-item{
+    float: right;
+    list-style: none;
+    margin-top: 30px;
+  }
+
+  .nav-item li {
+    display: inline-block;
+  }
+  .nav-item li a{
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+  
+  } 
+  .nav-item li a:hover{
+  background: #fff;
+  color: #333;
+  } 

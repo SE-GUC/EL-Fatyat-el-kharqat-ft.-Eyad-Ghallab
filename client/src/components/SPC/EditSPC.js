@@ -19,6 +19,7 @@ class EditSPC extends Component {
   constructor() {
     super();
     this.handleFacilityName = this.handleFacilityName.bind(this);
+    this.handleFacilityNameInEnglish = this.handleFacilityNameInEnglish.bind(this);
     this.handleGovernorate = this.handleGovernorate.bind(this);
     this.handleCity = this.handleCity.bind(this);
     this.handleFacilityAddress = this.handleFacilityAddress.bind(this);
@@ -42,6 +43,8 @@ class EditSPC extends Component {
 
     this.state = {
       Facility_name: "",
+      Facility_nameinenglish: "",
+
       Governorate: "",
       City: "",
       Facility_Address: "",
@@ -78,6 +81,11 @@ class EditSPC extends Component {
   handleFacilityName(e) {
     this.setState({
       Facility_name: e.target.value
+    });
+  }
+  handleFacilityNameInEnglish(e) {
+    this.setState({
+      Facility_nameinenglish: e.target.value
     });
   }
   handleGovernorate(e) {
@@ -175,6 +183,9 @@ class EditSPC extends Component {
     if (this.state.Facility_name !== "") {
       databody = { Facility_name: this.state.Facility_name };
     }
+    if (this.state.Facility_nameinenglish !== "") {
+      databody = { Facility_nameinenglish: this.state.Facility_nameinenglish };
+    }
     if (this.state.Governorate !== "") {
       databody = { Governorate: this.state.Governorate };
     }
@@ -256,6 +267,16 @@ render() {
               label="Facility Name"
               value={this.state.Facility_name}
               onChange={this.handleFacilityName}
+            />
+          </div>
+          <br />
+          <div className="form-group">
+            <TextField
+              id="outlined-adornment-amount"
+              variant="outlined"
+              label="Facility Name In English"
+              value={this.state.Facility_nameinenglish}
+              onChange={this.handleFacilityNameInEnglish}
             />
           </div>
           <br />

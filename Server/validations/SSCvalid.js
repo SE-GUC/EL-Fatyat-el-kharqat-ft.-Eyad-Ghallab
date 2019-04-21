@@ -3,12 +3,13 @@ const Joi = require('joi')
 module.exports = {
     createValidation: request => {
         const createSchema = {
-           // _id:Joi.string().,
-            Company_name: Joi.string().min(2).required(),
+            Company_name: Joi.string().required(),
+            Company_nameinenglish: Joi.string(),
+
             Governorate: Joi.string().valid("cairo","Alex","Ismalia","aswan","luxor","Domiat","Elbahr elahmar","asiut","Damnhor",
             "Bne sweif","Bor saed","Giza","ganob sina","suez","faioum","qena","banha","kafr elsheikh","monofia","aswan",
-            "elmenia","elwadi elgedid","Qlioubia","Gharbia","aswan","Sharaaia" ),
-            City: Joi.string().valid(
+            "elmenia","elwadi elgedid","Qlioubia","Gharbia","aswan","Sharaaia" ).required(),
+                        City: Joi.string().valid(
         "Abnūb",
         "Abū al-Maṭāmīr",
         "Abū an-Numrus",
@@ -421,7 +422,6 @@ module.exports = {
         .required(),
       capital: Joi.number().integer().min(50000).max(999999999999).required(),
       investorname: Joi.string()
-        .min(3)
         .required(),
       Investor_type: Joi.valid("Person"),
       Gender: Joi.valid("Female","Male"),
@@ -543,15 +543,15 @@ module.exports = {
         .required(),
       Address: Joi.string().required(),
       Phone_Number: Joi.string()
-        .max(11)
-        ,
+        .max(11).min(11),
+        Investor_Fax: Joi.string(),
+
       email: Joi.string(),
       BOD_Name: Joi.string()
-        .min(3)
         .required(),
       BOD_Investor_Type: Joi.string().valid("Person").required(),
       BOD_Gender: Joi.string()
-        .valid("Female","Male"),
+        .valid("Female","Male").required(),
       BOD_Nationality: Joi.string().valid(" Afghan ",
       "Albanian ",
       " Algerian ",
@@ -667,13 +667,9 @@ module.exports = {
         .valid("NationalID","Passport")
         .required(),
       BOD_NationalID: Joi.string().min(14).max(14).required(),
-      BOD_BirthDate: Joi.string()
-        .min(3)
-        .required(),
+      BOD_BirthDate: Joi.date().required(),
       BOD_Address: Joi.string().required(),
-      Company_name: Joi.string()
-        .min(3)
-        .required(),
+     
       PositionInBOD: Joi.string().valid("Chair","Vice President","Secretary","Treasurer","Past President","Director",
       "Public Relations (PR) Director","Membership Director","Industry, Legislation, Conservation Director",
       "At-Large","Webmaster").required(),
@@ -681,7 +677,6 @@ module.exports = {
 Locked:Joi.boolean(),
 Status: Joi.string(),
 is_the_external_entities_notified: Joi.boolean(),
-//Lawyer_review: Joi.string(),
     };
 
         return Joi.validate(request, createSchema)
@@ -690,6 +685,8 @@ is_the_external_entities_notified: Joi.boolean(),
     updateValidation: request => {
         const updateSchema = {
             Company_name: Joi.string(),
+            Company_nameinenglish: Joi.string(),
+
             Governorate: Joi.string().valid(
                 "cairo",
                 "Alex",

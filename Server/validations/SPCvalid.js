@@ -51,7 +51,7 @@ module.exports = {
       
         const updateSchema = {
             Facility_name: Joi.string(),
-          
+          Facility_nameinenglish:Joi.string(),
           Facility_Address: Joi.string(),
           Facility_Phone_Number: Joi.string(),
           Fax: Joi.string(),
