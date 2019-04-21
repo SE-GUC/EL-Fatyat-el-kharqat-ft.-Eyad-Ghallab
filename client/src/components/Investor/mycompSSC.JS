@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 class mycompSSC extends Component {
-  onstructor() {
+  constructor() {
     super();
     this.state = {
       SSC: [],

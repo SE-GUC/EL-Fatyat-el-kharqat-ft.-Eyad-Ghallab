@@ -7,6 +7,8 @@ import SPC from '../SPC/CreatingSPCForm'
 import SSC from '../SSC/CreatingSSCForm'
 import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
+import ViewSPC from './mycompSPC';
+import ViewSSC from './mycompSSC'
 export default class InvHomePage extends Component {
   state = {
     anchorEl: null,
@@ -38,6 +40,12 @@ export default class InvHomePage extends Component {
                     <Link to={'/edit'} className="nav-link">Edit My Profile</Link>
                   </li>
                   <li className="nav-item">
+                    <Link to={'/ViewSPC'} className="nav-link">My SPC Companies</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={'/ViewSSC'} className="nav-link">My SSC Companies</Link>
+                  </li>
+                  <li className="nav-item">
                 <Button className="nav-link"
           aria-owns={anchorEl ? 'simple-menu' : undefined}
           aria-haspopup="true"
@@ -55,6 +63,8 @@ export default class InvHomePage extends Component {
           <Link to={'/NewSSC'} onClick={this.handleClose} className="nav-link">Single Shareholder Company</Link>          
         </Menu>
         </li>
+        
+               
                 </ul>
               </div>
             </nav> <br/>
@@ -65,6 +75,8 @@ export default class InvHomePage extends Component {
                 <Route exact path='/edit' component={ EditInvestor } /> 
                 <Route exact path='/NewSPC' component={ SPC } /> 
                 <Route exact path='/NewSSC' component={ SSC } /> 
+                <Route exact path='/ViewSPC' component={ ViewSPC } /> 
+                <Route exact path='/ViewSSC' component={ ViewSSC } /> 
 
             </Switch>
           </div>
