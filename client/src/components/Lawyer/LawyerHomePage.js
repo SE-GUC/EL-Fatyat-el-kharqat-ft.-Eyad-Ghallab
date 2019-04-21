@@ -16,7 +16,7 @@ export default class LawyerHomePage extends Component {
     anchorEl: null
   };
   handleClick = event => {
-    //event.preventDefault();
+   
     this.setState({ anchorEl: event.currentTarget });
   };
 

@@ -53,7 +53,7 @@ class UpdateComment extends Component {
     
 } 
 update(id){
-    // e.preventDefault();
+    
     console.log(this.state.name)
      let databody 
  if (this.state.name !== ""){

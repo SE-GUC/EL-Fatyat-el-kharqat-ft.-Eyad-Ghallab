@@ -11,7 +11,6 @@ import PaymentHomePage from './components/Payment/PaymentHomePage';
 import './App.css'
 import SSCHomePage from './components/SSC/SSCHomePage';
 
-//import ReviewerHomePage from './components/Reviewer/ReviewerHomePage';
 import Admin from './components/Admin/AdminHomePage';
 import Notification from './components/Notification/NotificationHomePage';
 
@@ -161,12 +160,7 @@ class App extends Component {
                 </ul>
                 
                
-                {/* <ul className="nav-item">
-                <li >
-                  <Link to={'/NotificationHomePage'} className="nav-link">Notification</Link>
-                </li>
-                <li>|</li>
-                </ul> */}
+                
                 <ul className="nav-item">
                 <li >
                   <Link to={'/PaymentHomePage'} className="nav-link">Payment</Link>
@@ -206,16 +200,7 @@ class App extends Component {
     </li>
                       <li>|</li>
                       </ul>
-                      {/* <li className="nav-item">
-                        <Link to={'/Workspace'} className="nav-link">Workspace</Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link to={'/Form'} className="nav-link">Form</Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link to={'/Workspace'} className="nav-link">Workspace</Link>
-                      </li> */}
+                      
 
                    
  </Tabs>
@@ -249,11 +234,7 @@ class App extends Component {
               <Route exact path='/Register' component={Register} />
               
 
-              {/* <Route exact path='/Workspace' component={Workspace} />
-              <Route exact path='/Form' component={Form} />
               
-
-             <Route exact path='/Forms' component={Forms} /> */}
              <Route exact path='/Forms' component={Forms} />
              <Route exact path='/updating_Forms' component={updating_Forms} />
           </Switch>

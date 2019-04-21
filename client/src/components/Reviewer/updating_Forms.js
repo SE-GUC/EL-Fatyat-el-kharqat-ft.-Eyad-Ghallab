@@ -26,13 +26,7 @@ const styles = theme => ({
 class updating_Forms extends Component {
   constructor() {
     super();
-    // this.Approvespc = this.Approvespc.bind(this);
-    // this.Rejectspc = this.Rejectspc.bind(this);
-    // this.resendspc = this.resendspc.bind(this);
-
-    // this.Approvessc = this.Approvessc.bind(this);
-    // this.Rejectssc = this.Rejectssc.bind(this);
-    // this.resendssc = this.resendssc.bind(this);
+    
     this.state = {
       SPC: [],
       SSC: [],
@@ -94,7 +88,7 @@ class updating_Forms extends Component {
   set1(id) {
     let databody = {
       Corporate_name: localStorage.getItem("contractS")
-      // "form_id":id
+      
     };
 
     fetch("/api/contractFinal", {

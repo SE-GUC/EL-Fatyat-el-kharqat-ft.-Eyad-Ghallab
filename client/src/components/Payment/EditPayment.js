@@ -115,7 +115,7 @@ class EditPayment extends Component {
         e.preventDefault();
         }
 update(id){
-    // e.preventDefault();
+    
     console.log(this.state.Firstname)
      let databody 
   if (this.state.Card_type !== ""){

@@ -100,7 +100,7 @@ class registerrev extends Component {
   }
   render() {
     console.log(this.state);
-    //{this.renderRedirect()}
+    
     const isAlreadyAuthenticated = this.isAuthenticated();
     const { classes } = this.props;
 

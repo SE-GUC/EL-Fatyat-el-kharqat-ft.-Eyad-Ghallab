@@ -68,8 +68,7 @@ class myspc extends Component {
       .then(data => console.log(data));
   }
   sms(num) {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
+    
     let databody = {
       number: num
     };
@@ -86,8 +85,7 @@ class myspc extends Component {
   }
 
   render() {
-    // const pro = this.getpro();
-    //console.log(this.state.investors);
+   
     return (
       <div>
         <h2>The Company</h2>

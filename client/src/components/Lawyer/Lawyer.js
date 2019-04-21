@@ -13,11 +13,7 @@ class Lawyer extends Component {
   }
   
 
-  // componentDidMount(){
-  //     fetch('/api/Lawyer/')
-  //     .then(res => res.json())
-  //     .then(Lawyer=> this.setState({lawyers:Lawyer.data}, ()=>console.log('Lawyers fetched..',
-  //    this.state.lawyers)));
+  
   componentDidMount() {
     
     fetch("/api/Lawyer/" + localStorage.getItem("userid"))
@@ -30,16 +26,7 @@ class Lawyer extends Component {
   }
     render() {
     return (
-    //   <div>
-    //   <h2>All Lawyers </h2>
-    //   <ul>
-    //   {this.state.lawyers.map( lawyer  => <li key = {lawyer._id}> 
-    //     fullname: {lawyer.fullname} 
-          
-    //       </li>
-    //       )}
-    //   </ul> 
-    // </div>
+    
     <div>
     <h2>My Profile</h2>
     username: {this.state.lawyers.username}

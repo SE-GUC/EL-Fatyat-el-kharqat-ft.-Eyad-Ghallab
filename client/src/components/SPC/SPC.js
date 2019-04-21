@@ -35,12 +35,11 @@ class SPC extends Component {
           console.log("you should pay", this.state.payment)
         )
       );
-    // this.state.paymenet
-    // printString(this.state.paymenet)
+    
   }
 
   sms(num, mssg) {
-    //e.preventDefault();
+    
     let databody = {
       number: num,
       msg: mssg

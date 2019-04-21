@@ -55,7 +55,6 @@ class CreatingSSCForm extends Component {
         this.handleBOD_BirthDate= this.handleBOD_BirthDate.bind(this);
         this.handleBOD_Address= this.handleBOD_Address.bind(this);
         this.handlePositionInBOD= this.handlePositionInBOD.bind(this);
-        //this.handleLawyer_review=this.handleLawyer_review.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     
@@ -88,7 +87,6 @@ class CreatingSSCForm extends Component {
             BOD_BirthDate: "",
             BOD_Address:"", 
             PositionInBOD: "",
-            //Lawyer_review:""
 
         }
     

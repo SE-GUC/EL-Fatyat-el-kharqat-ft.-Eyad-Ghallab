@@ -14,7 +14,7 @@ class myspc extends Component {
   }
 
   componentDidMount() {
-    // e.preventDefault();
+    
     fetch("/api/SPC/" + localStorage.getItem("id"))
       .then(res => res.json())
       .then(spc =>
@@ -27,12 +27,11 @@ class myspc extends Component {
       this.setState({ isloaded: true });
     }
 
-    //console.log(this.state.isSPC);
+    
   }
 
   sms(num) {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
+    
     let databody = {
       number: num
     };
@@ -48,8 +47,7 @@ class myspc extends Component {
       .then(data => console.log(data));
   }
   Approve() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
+    
     console.log("why the hell");
     var databody = { Lawyer_review: "accepted" };
     console.log(databody);
@@ -65,8 +63,7 @@ class myspc extends Component {
       .then(data => console.log(data));
   }
   Reject() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
+    
     var databody = { Lawyer_review: "rejected" };
     return fetch("/api/SPC/" + localStorage.getItem("id"), {
       method: "PUT",
@@ -80,8 +77,7 @@ class myspc extends Component {
   }
 
   render() {
-    // const pro = this.getpro();
-    //console.log(this.state.investors);
+    
     return (
       <div>
         <h2>The Company</h2>

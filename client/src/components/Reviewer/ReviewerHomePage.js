@@ -32,9 +32,6 @@ export default class ReviewerHomePage extends Component {
                   </Link>
                 </li>
 
-                {/* <li className="nav-item">
-                    <Link to={'/edit'} className="nav-link">Edit</Link>
-                  </li> */}
 
                 <li className="nav-item">
                   <Link to={"/view"} className="nav-link">
@@ -62,9 +59,9 @@ export default class ReviewerHomePage extends Component {
           <br />
           <h2>Welcome to GAFI</h2> <br />
           <Switch>
-            {/* <Route exact path='/create' component={ CreatingReviewer } /> */}
+            
             <Route exact path="/edit" component={EditReviewer} />
-            {/* <Route exact path='/delete' component={ DeleteReviewer} />  */}
+           
             <Route exact path="/read" component={Reviewer} />
             <Route exact path="/view" component={Forms} />
             <Route exact path="/update" component={updating_Forms} />

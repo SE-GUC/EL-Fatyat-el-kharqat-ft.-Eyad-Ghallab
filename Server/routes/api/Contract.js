@@ -25,7 +25,6 @@ router.post('/', async (req,res) => {
      res.json({msg:'Contract was created successfully', data: newContract})
     }
     catch(error) {
-        // We will be handling the error later
         console.log(error)
     }  
  })
@@ -53,7 +52,6 @@ router.put('/:id', async (req,res) => {
      res.json({msg:'Contract was deleted successfully', data: deletedContract})
     }
     catch(error) {
-        // We will be handling the error later
         console.log(error)
     }  
  })

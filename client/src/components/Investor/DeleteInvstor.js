@@ -16,7 +16,7 @@ class DeleteInvestor extends Component {
     delete(id){
         return fetch('/api/investors/'+id, {
           method: 'DELETE',
-         // body: JSON.stringify(databody),
+         
           headers: {
               'Content-Type': 'application/json'
           },
@@ -30,9 +30,7 @@ class DeleteInvestor extends Component {
         fetch('/api/investors/')
         .then(res => res.json())
         .then(investors => this.setState({investors: investors.data},()=> console.log('the investors',this.state.investors)));
-      //   var int = this.state.investors[1];
-      // console.log (int)
-    //  // res.json({data: this.state.investors})
+      
     }
       render() {
         return (

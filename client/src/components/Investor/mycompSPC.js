@@ -24,9 +24,9 @@ class mycompSPC extends Component {
     console.log(this.state.isSPC);
   }
   render() {
-    // const pro = this.getpro();
+    
     console.log(this.state.investors);
-    // const isscc = this.state.isSSC;
+   
     return (
       <div>
       

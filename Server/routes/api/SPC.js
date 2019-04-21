@@ -82,7 +82,6 @@ router.post("/", async (req, res) => {
     const newSpcForm = await SpcForm.create(req.body);
     res.json({ msg: "Form was created successfully", data: newSpcForm });
   } catch (error) {
-    // We will be handling the error later
     console.log(error);
   }
 });
@@ -90,7 +89,6 @@ router.post("/", async (req, res) => {
 //Read Form
 router.get("/all", async (req, res) => {
   const spcforms = await SpcForm.find();
-  //res.json({data: spcforms})
   res.json({ msg: "Here are the SPC Forms", data: spcforms });
 });
 
@@ -115,30 +113,7 @@ router.get("/name/:id", async (req, res) => {
 });
 
 
-// router.get("/gov/:id", async (req, res) => {
-//   const spcforms = await SpcForm.findById(req.params.id);
-//   res.json({ data: spcforms.Governorate });
-// });
-// router.get("/city/:id", async (req, res) => {
-//   const spcforms = await SpcForm.findById(req.params.id);
-//   res.json({ data: spcforms.Corporate_city });
-// });
-// router.get("/address/:id", async (req, res) => {
-//   const spcforms = await SpcForm.findById(req.params.id);
-//   res.json({ data: spcforms.Corporate_address });
-// });
 
-
-
-// router.get("/:investor_nationalid", async (req, res) => {
-//   const investor = req.params.investor_nationalid;
-//   console.log(investor);
-//   const spc = await SpcForm.findOne({ investor });
-//   if (spc) {
-//     console.log(spc);
-//   }
-//   res.json({ data: spc });
-// });
 
 //Update Form
 router.put("/:id", async (req, res) => {
@@ -174,7 +149,6 @@ router.delete("/:id", async (req, res) => {
     const deletedSpcForm = await SpcForm.findByIdAndRemove(id);
     res.json({ msg: "Form was deleted successfully", data: deletedSpcForm });
   } catch (error) {
-    // We will be handling the error later
     console.log(error);
   }
 });
