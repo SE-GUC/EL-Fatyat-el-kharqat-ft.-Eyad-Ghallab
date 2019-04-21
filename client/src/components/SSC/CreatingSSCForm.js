@@ -5,7 +5,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
+import {saveAs} from 'file-saver';
 import './SSC.css'
+const blobstream = require('blob-stream');
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -91,6 +95,40 @@ class CreatingSSCForm extends Component {
     }
     handleChange(event) {
         this.setState({value: event.target.value});
+      }
+
+
+
+      Download_As_txt = () =>{
+
+        var saver = require('file-saver');
+        var blob = new Blob(['Company_name is: ', this.state.Company_name,"\n"
+                            ,'Company_nameinenglish: ',this.state.Company_nameinenglish,"\n",
+                            'Governorate:', this.state.Governorate,"\n",
+                            'City:',this.state.City,"\n",
+                            'Company_Address:',this.state.Company_Address,"\n",
+                            'Company_Phone_Number:',this.state.Company_Phone_Number,"\n",
+                            'Fax:',this.state.Fax,this.state.Fax,"\n",
+                            'Capital_Currency:',this.state.Capital_Currency,"\n",
+                            'TypeOf_IdentityProof:',this.state.TypeOf_IdentityProof,"\n",
+                            'investor_nationalid:',this.state.investor_nationalid,"\n",
+                            'BirthDate:',this.state.BirthDate,"\n",
+                            'Address:',this.state.Address,"\n",
+                            'Phone_Number:',this.state. Phone_Number,"\n",
+                            'email:',this.state.email,"\n",
+                            'BOD_Name:',this.state.BOD_Name,"\n",
+                            'BOD_Investor_Type:',this.state. BOD_Investor_Type,"\n",
+                            'BOD_Gender:',this. BOD_Gender,"\n",
+                            'BOD_Nationality:',"\n",this.state.BOD_Nationality,"\n",
+                            'BOD_TypeOfIdentityProof',this.state.BOD_TypeOfIdentityProof,"\n",
+                            'BOD_NationalID:',this.BOD_NationalID, "\n",
+                            'BOD_BirthDate:',this.BOD_BirthDate, "\n",
+                            'BOD_Address:',this.BOD_Address,"\n", 
+                             'PositionInBOD:',this.PositionInBOD,"\n",
+                            'BOD_BirthDate:',this.BOD_BirthDate,"\n",
+                             'BOD_Address:' ,this.BOD_Address,"\n", 
+                            'PositionInBOD:', this.PositionInBOD, "\n" ],{type:'text/plain',endings:'native'});
+        saver.saveAs(blob,"SSC Form" + ".txt");
       }
       handleCompany_name(e){
         this.setState({Company_name: e.target.value })
@@ -1185,13 +1223,24 @@ onChange={this.handleBOD_Nationality}
                  onChange={this.handlePositionInBOD}
                  />
            </div>   
-                <div className="form-group">
-                    <input type="submit" 
-                      value="Submit" 
-                      className="btn btn-primary"/>
-                </div>
+           <Button variant="contained" color="primary" type="submit"  onClick={this.handleClick}>
+              Submit
+            </Button>
+
+
+           
+           <Button variant="contained" color="primary" type="button"  onClick={this.Download_As_txt}>
+              Download_As_txt
+            </Button>
+               
             </form>
-        </div>
+            <form action="/uploadfile" enctype="multipart/form-data"  method="POST"> 
+            <label>
+            <input type="file" name="myFile" />
+               <Button variant="contained" color="primary" type="submit" >  Upload A File
+            </Button>
+            </label>
+               </form>        </div>
     )
   }
 }

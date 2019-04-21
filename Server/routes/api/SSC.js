@@ -25,10 +25,21 @@ const validator = require("../../validations/SSCvalid");
 
 router.get("/:investor_nationalid/SSC", async (req, res) => {
   const findme = req.params.investor_nationalid;
-  const user = await Form.findOne({ investor_nationalid: findme });
+  const user = await Form.findOne({
+    investor_nationalid: findme,
+    Status: "accepted"
+  });
   res.json({ data: user });
 });
+router.get("/:investor_nationalid/status", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
 
+  const national = await Form.find({
+    investor_nationalid: nationalid,
+   
+  });
+  res.json({ data: national });
+});
 router.get("/all", async (req, res) => {
   const forms = await Form.find();
   res.json({ msg: "Here are the SSC Forms", data: forms });
@@ -155,6 +166,17 @@ router.get('/companyName/:id',async (req, res) => {
   res.json({ data: sscforms.Company_name });
 
 });
+router.get("/by/:id", async (req, res) => {
+  const sscforms = await Form.findById(req.params.id);
+  res.json({ data: sscforms });
+});
+
+// router.get('/:id',(req,res)=>{
+//   const query = Form.find({})
+//   .where('_id').equals(req.params.id)
+//     query.exec()
+//   .then((sscform) => {
+//     console.log(`There is a match`);
 
 
 

@@ -9,6 +9,12 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+var unirest = require('unirest');
+//const {Translate} = require('@google-cloud/translate');
+//const translate = new Translate();
+//var bodyParser=require('body-parser');
+
+
 
 const styles = theme => ({
   root: {
@@ -94,12 +100,90 @@ class CreateAdmin extends Component {
     .then(data => console.log(data)); 
 
   }
+//   translate(e) {
+//     console.log("hii")
+//     var url =
+//        "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q="+  encodeURI(e)+'';
+// //console.log(url[0][0][0])
+//        const result= JSON.parse(fetch(url).getcontenttext()).
+//         then(result[0][0][0]);
+//         console.log(result[0][0][0])
+
+         
+        //.then(res => res.json(url.data))
+       // .then(url => this.setState({ url:url.data}, () => console.log('Admins fetched',this.state.url)));
+       //fetch(url
+        
+       // body: JSON.stringify(url),
+        //headers: {
+          //  'Content-Type': 'application/json'
+        //},
+   // })
+    //var translatedText = result[0][0][0];
+    //return result
+
+      // //var sourceText = ''
+      // if (e.parameter){
+      //  var sourceText =e
+      //  // e.parameter;
+      // }
+      
+      // var sourceLang = 'en';
+      // if (e.parameter.source){
+      //   sourceLang = e
+      //   //e.parameter.source;
+      // }
+    
+      // var targetLang = 'ar';
+      // if (e.target){
+      //   targetLang = e.target;
+      // }
+      
+      /* Option 1 */
+      //var LanguageApp;
+      
+      //var translatedText = LanguageApp.translate(sourceText, sourceLang, targetLang)
+      
+      /* Option 2 */  
+      
+    //   var url =
+    //    "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q=" + encodeURI(e);
+    //   //var UrlFetchApp;          
+      
+    //   var result = JSON.parse(url.getContentText());
+    
+      
+    //  var translatedText = result[0][0][0];
+      
+    //   // 
+    //   return translatedText
+    
+ // }
+ 
+//   get(e){
+//   //const e 
+//  const target= 'ar' 
+//  //const model='nmt' 
+//  const options = {
+//     to: target,
+//    // model: model,
+//   };
+//   let [translations] =  translate.translate(e, options);
+// translations = Array.isArray(translations) ? translations : [translations];
+// console.log('Translations:');
+// translations.forEach((translation, i) => {
+//   console.log(`${e[i]} => (${target}) ${translation}`);
+// });
+
+// }
+
   render() {
    
     
     return (
         <div style={{ marginTop: 10 }}>
             <h3 align="center">Admin</h3>
+           
             <form onSubmit={this.handleSubmit}>
 
                 <div className="form-group">
@@ -108,7 +192,8 @@ class CreateAdmin extends Component {
           variant="outlined"
           label="Name"
           value={this.state.name}
-          onChange={this.handlenameChange}
+          onChange={this.handlenameChange}required
+          
           
         />
         </div> 
@@ -118,7 +203,7 @@ class CreateAdmin extends Component {
           variant="outlined"
           label="Address"
           value={this.state.address}
-          onChange={this.handleaddressChange}
+          onChange={this.handleaddressChange} required
           
         />
         </div> 
@@ -128,7 +213,7 @@ class CreateAdmin extends Component {
           variant="outlined"
           label="Email"
           value={this.state.email}
-          onChange={this.handleemailChange}
+          onChange={this.handleemailChange} required
           
         />
         </div> 
@@ -138,7 +223,7 @@ class CreateAdmin extends Component {
           variant="outlined"
           label="User Name"
           value={this.state.username}
-          onChange={this.handleusernameChange}
+          onChange={this.handleusernameChange} required
           
         />
         </div>
@@ -149,7 +234,7 @@ class CreateAdmin extends Component {
             id="adornment-password"
             type={this.state.showPassword ? 'text' : 'password'}
             value={this.state.password}
-            onChange={this.handlepasswordChange}
+            onChange={this.handlepasswordChange} required
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -167,8 +252,19 @@ class CreateAdmin extends Component {
                     <input type="submit" 
                       value="Submit" 
                       className="btn btn-primary"/>
+                    
                 </div>
+               
         </form>
+       
+        
+        
+        
+          
+        
+       
+       
+       
         </div>
     )
   }

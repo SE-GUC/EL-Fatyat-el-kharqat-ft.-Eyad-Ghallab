@@ -89,12 +89,7 @@ router.post("/", async (req, res) => {
 router.post("/register", async (req, res) => {
   console.log("ana da5alt");
   try {
-    // const isValidated = validator.registerValidation(req.body);
-    // console.log("malak?");
-    // if (isValidated.error)
-    //   return res
-    //     .status(400)
-    //     .send({ error: isValidated.error.details[0].message });
+    
     console.log("ana da5alt hena");
     const {
       name,
@@ -136,23 +131,23 @@ router.post("/register", async (req, res) => {
 });
 
 //update a reviewer
-router.put("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const Reviewer = await Rev.findOne({ id });
-    if (!Rev) return res.status(404).send({ error: "reviewer does not exist" });
-    const isValidated = validator.updateValidation(req.body);
-    if (isValidated.error)
-      return res
-        .status(400)
-        .send({ error: isValidated.error.details[0].message });
-    const updatedreviewer = await Rev.updateOne(req.body);
-    res.json({ msg: "reviewer updated successfully", data: updatedreviewer });
-  } catch (error) {
-    // We will be handling the error later
-    console.log(error);
-  }
-});
+// router.put("/:id", async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const Reviewer = await Rev.findOne({ id });
+//     if (!Rev) return res.status(404).send({ error: "reviewer does not exist" });
+//     const isValidated = validator.updateValidation(req.body);
+//     if (isValidated.error)
+//       return res
+//         .status(400)
+//         .send({ error: isValidated.error.details[0].message });
+//     const updatedreviewer = await Rev.updateOne(req.body);
+//     res.json({ msg: "reviewer updated successfully", data: updatedreviewer });
+//   } catch (error) {
+//     // We will be handling the error later
+//     console.log(error);
+//   }
+// });
 
 //delete a reviewer
 router.delete("/:id", async (req, res) => {
@@ -178,24 +173,26 @@ router.get("/find/SSC", (req, res) => {
     });
 });
 
-//update a reviewer
 router.put("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
-    const Reviewer = await Rev.findOne({ id });
-    if (!Rev) return res.status(404).send({ error: "reviewer does not exist" });
+    const reviewer = await Rev.findById(req.params.id);
+    if (!reviewer)
+      return res.status(404).send({ error: "Reviewer does not exist" });
     const isValidated = validator.updateValidation(req.body);
     if (isValidated.error)
       return res
         .status(400)
         .send({ error: isValidated.error.details[0].message });
-    const updatedreviewer = await Rev.updateOne(req.body);
-    res.json({ msg: "reviewer updated successfully", data: updatedreviewer });
+    const updatedrev = await reviewer.updateOne(req.body);
+    res.json({ msg: "Reviewer updated jjj successfully", data: updatedrev });
   } catch (error) {
-    // We will be handling the error later
     console.log(error);
   }
 });
+
+
+
+
 
 //delete a reviewer
 router.delete("/:id", async (req, res) => {
@@ -292,6 +289,14 @@ router.get("/find/sscform", (req, res) => {
       );
     });
 });
+
+router.get("/:id", async (req, res) => {
+  const reviewers = await Rev.findById(req.params.id);
+  res.json({ data: reviewers });
+});
+
+
+
 
 // get all accepted status SPC forms
 router.get("/find/spcform", (req, res) => {

@@ -73,17 +73,6 @@ class Register extends Component {
     this.setState();
   }
 
-  // setRedirect = () => {
-  //   this.setState({
-  //     redirect: true
-  //   })
-  // }
-  // renderRedirect = () => {
-  //   if (this.state.redirect) {
-  //     return <Redirect to='/Investor' />
-  //   }
-  // }
-
   submitForm(event) {
     event.preventDefault();
     superagent

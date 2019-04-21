@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './Admin.css'
 class upload extends Component{
   constructor(){
     super();

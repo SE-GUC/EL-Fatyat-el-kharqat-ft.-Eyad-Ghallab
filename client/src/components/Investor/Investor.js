@@ -18,12 +18,9 @@ class Investor extends Component {
         )
       );
 
-    //   var int = this.state.investors[1];
-    // console.log (int)
-    //  // res.json({data: this.state.investors})
+   
   }
   render() {
-    // const pro = this.getpro();
     console.log(this.state.investors);
     return (
       <div>

@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import IconButton from "@material-ui/core/IconButton";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
+
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-//import "bootstrap/dist/css/bootstrap.min.css";
 
-//import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   root: {
@@ -43,6 +36,7 @@ class EditInvestor extends Component {
     this.handlenationalityChange = this.handlenationalityChange.bind(this);
     this.handlepasswordChange = this.handlepasswordChange.bind(this);
     this.handleusernameChange = this.handleusernameChange.bind(this);
+    this.handlenationalidChange=this.handlenationalidChange.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
@@ -60,6 +54,7 @@ class EditInvestor extends Component {
       jobtitle: "",
 
       mobilenumber: "",
+      nationalid:"",
       investors: []
     };
   }
@@ -107,13 +102,15 @@ class EditInvestor extends Component {
   }
   handlemobilenumberChange(e) {
     this.setState({ mobilenumber: e.target.value });
+  } 
+  handlenationalidChange(e) {
+    this.setState({ nationalid: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
   }
   update() {
-    // e.preventDefault();
     console.log(this.state.username);
     let databody;
     if (this.state.name !== "") {
@@ -150,9 +147,12 @@ class EditInvestor extends Component {
     if (this.state.mobilenumber !== "") {
       databody = { mobilenumber: this.state.mobilenumber };
     }
+    if (this.state.nationalid !== "") {
+      databody = { nationalid: this.state.nationalid };
+    }
     console.log(this.state.username);
     return fetch(
-      "http://localhost:5000/api/Investors/" + localStorage.getItem("userid"),
+      "/api/investors/" + localStorage.getItem("userid"),
       {
         method: "PUT",
         body: JSON.stringify(databody),
@@ -167,118 +167,118 @@ class EditInvestor extends Component {
   render() {
     return (
       <div style={{ marginTop: 10 }}>
-        <h3 align="center">Investor</h3>
+        <h3 align="center">Edit Your Profile</h3>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Name
-            <input
+        <TextField
+              id="standard-name-input"
+              label="Name"
               type="text"
-              name="name"
-              value={this.name}
-              onChange={this.handlenameChange}
+              margin="normal"
+              value={this.state.name}
+              onChange={this.handlenameChange.bind(this)} 
             />
-          </label>
-          <br />
-          <label>
-            password
-            <input
+            <br />
+            <TextField
+              id="standard-username-input"
+              label="UserName"
               type="text"
-              name="password"
-              value={this.password}
-              onChange={this.handlepasswordChange}
+              margin="normal"
+              value={this.state.username}
+              onChange={this.handleusernameChange.bind(this)} 
             />
-          </label>
-          <br />
-          <label>
-            email
-            <input
+            <br />
+            <TextField
+              id="standard-Email-input"
+              label="Email"
+              type="Email"
+              margin="normal"
+              value={this.state.email}
+              onChange={this.handleemailChange.bind(this)} 
+            />
+            <br />
+            <TextField
+              id="standard-password-input"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              margin="normal"
+              value={this.state.password}
+              onChange={this.handlepasswordChange.bind(this)} 
+            />
+            <br />
+            <TextField
+              id="standard-nationality-input"
+              label="Nationality"
               type="text"
-              name="email"
-              value={this.email}
-              onChange={this.handleemailChange}
+              margin="normal"
+              value={this.state.nationality}
+              onChange={this.handlenationalityChange.bind(this)} 
             />
-          </label>
-          <br />
-          <label>
-            username
-            <input
+            <br />
+            <TextField
+              id="standard-gender-input"
+              label="Gender"
+              type="gender"
+              margin="normal"
+              value={this.state.gender}
+              onChange={this.handlegenderChange.bind(this)} 
+            />{" "}
+             <br />
+            <TextField
+              id="standard-birthdate-input"
+              type="date"
+              margin="normal"
+              value={this.state.birthdate}
+              onChange={this.handlebithdateChange.bind(this)} 
+            />{" "}
+            <br />
+            <TextField
+              id="standard-city-input"
+              label="City"
               type="text"
-              name="username"
-              value={this.username}
-              onChange={this.handleusernameChange}
-            />
-          </label>
-          <br />
-          <label>
-            nationality
-            <input
+              margin="normal"
+              value={this.state.city}
+              onChange={this.handlecityChange.bind(this)} 
+            />{" "}
+             <br />
+             <TextField
+              id="standard-country-input"
+              label="Country"
               type="text"
-              name="nationality"
-              value={this.nationality}
-              onChange={this.handlenationalityChange}
-            />
-          </label>
-          <br />
-          <label>
-            gender
-            <input
+              margin="normal"
+              value={this.state.country}
+              onChange={this.handlecountryChange.bind(this)} 
+            />{" "}
+             <br />
+             <TextField
+              id="standard-jobtitle-input"
+              label="Job Title"
               type="text"
-              name="gender"
-              value={this.gender}
-              onChange={this.handlegenderChange}
-            />
-          </label>
-          <br />
-          <label>
-            birthdate
-            <input
+              margin="normal"
+              value={this.state.jobtitle}
+              onChange={this.handlejobtitleChange.bind(this)} 
+            />{" "}
+             <br />
+             <TextField
+              id="standard-mobilenumber-input"
+              label="Mobile Number"
               type="text"
-              name="birthdate"
-              value={this.birthdate}
-              onChange={this.handlebithdateChange}
-            />
-          </label>
-          <br />
-          <label>
-            city
-            <input
+              margin="normal"
+              value={this.state.mobilenumber}
+              onChange={this.handlemobilenumberChange.bind(this)} 
+            />{" "}
+             <br />
+             <TextField
+              id="standard-nationalid-input"
+              label="National ID"
               type="text"
-              name="city"
-              value={this.city}
-              onChange={this.handlecityChange}
-            />
-          </label>
-          <br />
-          <label>
-            country
-            <input
-              type="text"
-              name="country"
-              value={this.country}
-              onChange={this.handlecountryChange}
-            />
-          </label>
-          <br />
-          <label>
-            jobtitle
-            <input
-              type="text"
-              name="jobtitle"
-              value={this.jobtitle}
-              onChange={this.handlejobtitleChange}
-            />
-          </label>
-          <br />
-          <label>
-            mobilenumber
-            <input
-              type="text"
-              name="mobilenumber"
-              value={this.mobilenumber}
-              onChange={this.handlemobilenumberChange}
-            />
-          </label>
-          <br />
+              margin="normal"
+              value={this.state.nationalid}
+              onChange={this.handlenationalidChange.bind(this)} 
+            />{" "}
+             <br />
+            
+            
           <button
             onClick={() => {
               this.update();

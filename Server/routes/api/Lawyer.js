@@ -91,32 +91,48 @@ router.put("/sscform/:id", async (req, res) => {
 
 // get all unlocked SSC forms
 
-router.get("/find/SSC", (req, res) => {
-  Form.find({ Locked: false })
-    .sort({ Formdate: -1 })
-    .then(Form => {
-      console.log(`There are ${Form.length} SSC forms`);
-      res.json({ msg: "Unlocked spc forms", data: Form });
-    })
+// router.get("/find/SSC", (req, res) => {
+//   Form.find({ Locked: false })
+//     .sort({ Formdate: 1 })
+//     .then(Form => {
+//       console.log(`There are ${Form.length} SSC forms`);
+//       res.json({ msg: "Unlocked spc forms", data: Form });
+//     })
 
-    // });
-    // return res.send(datassc)
+//     // });
+//     // return res.send(datassc)
 
-    .catch(error => {
-      return res.send(
-        `Error encountered retrieving all accounts. Error: ${error}`
-      );
-    });
+//     .catch(error => {
+//       return res.send(
+//         `Error encountered retrieving all accounts. Error: ${error}`
+//       );
+//     });
+// });
+
+// get all unlocked SPC forms
+// router.get("/find/SPC", (req, res) => {
+//   SpcForm.find({ Locked: false })
+//     .sort({ Form_Date: 1 })
+//     .then(SpcForm => {
+//       console.log(`There are ${SpcForm.length} SPC forms`);
+//       res.json({ msg: "Unlocked spc forms", data: SpcForm });
+//     });
+// });
+
+router.get("/find/SPC", async (req, res) => {
+  const forms = await SpcForm.find({
+    Locked: false,
+    Lawyer_review: "binding"
+  });
+  res.json({ data: forms });
 });
 
-// get all unclocked SPC forms
-router.get("/find/SPC", (req, res) => {
-  SpcForm.find({ Locked: false })
-    .sort({ Form_Date: -1 })
-    .then(SpcForm => {
-      console.log(`There are ${SpcForm.length} SPC forms`);
-      res.json({ msg: "Unlocked spc forms", data: SpcForm });
-    });
+router.get("/find/SSC", async (req, res) => {
+  const forms = await Form.find({
+    Locked: false,
+    Lawyer_review: "binding"
+  });
+  res.json({ data: forms });
 });
 
 router.delete("/:id", async (req, res) => {
@@ -134,6 +150,11 @@ router.delete("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   const lawyers = await Lawyer.find();
   res.json({ msg: "Lawyers are here", data: lawyers });
+});
+
+router.get("/:id", async (req, res) => {
+  const lawyers = await Lawyer.findById(req.params.id);
+  res.json({ data: lawyers });
 });
 
 // Create a Lawyer

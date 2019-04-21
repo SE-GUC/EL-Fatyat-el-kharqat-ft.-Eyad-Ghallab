@@ -51,33 +51,9 @@ router.post("/", async (req, res) => {
   }
 });
 
-//  router.post('/login', async (req, res) => {
-// 	try {
-// 		const { email, password } = req.body;
-//         const investor = await inv.findOne({ email });
-//         console.log(investor)
-// 		if (!investor) return res.status(404).json({ email: 'Email does not exist' });
-// 		//const match = bcrypt.compareSync(password, investor.get("password"));
-// 		if (password == investor.get("password")) {
-//             const payload = {
-//                 id: investor.id,
-//                 name: investor.name,
-//                 email: investor.email
-//             }
-//             const token = jwt.sign(payload, tokenKey, { expiresIn: '1h' })
-//             res.json({data: `Bearer ${token}`})
-//             return res.json({ data: 'Token' })
-//         }
-// 		else return res.status(400).send({ password: 'Wrong password' });
-// 	} catch (error) {
-
-//         console.log(error)
-//     }
-// });
 
 router.put("/:id", async (req, res) => {
   try {
-    //   const id = req.params.id
     const investor = await inv.findById(req.params.id);
     if (!investor)
       return res.status(404).send({ error: "investor does not exist" });
