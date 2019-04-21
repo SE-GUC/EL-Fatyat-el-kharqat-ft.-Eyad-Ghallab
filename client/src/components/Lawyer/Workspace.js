@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 class Workspace extends Component {
   constructor() {
     super();
-    this.Approve = this.Approve.bind(this);
+
     this.state = {
       SPC: [],
       SSC: [],
@@ -14,19 +14,7 @@ class Workspace extends Component {
       idssc: false
     };
   }
-  // componentDidMount() {
-  //     console.log("SSC");
-  //     fetch("/api/SSC/" + localStorage.getItem("id") + "/SSC")
-  //       .then(res => res.json())
-  //       .then(ssc =>
-  //         this.setState({ SSC: ssc.data }, () =>
-  //           console.log("My SSC Companies", this.state.SSC)
-  //         )
-  //       );
-  //     if (this.state.SSC != []) {
-  //       this.setState.isSSC = true;
-  //     }
-  //   }
+
   local(id) {
     localStorage.setItem("id", id);
 
@@ -37,32 +25,6 @@ class Workspace extends Component {
 
     this.setState({ idssc: true });
   }
-  //   Approve(id) {
-  //     var databody = { Lawyer_review: "accepted" };
-  //     console.log(databody);
-
-  //     return fetch("/api/SPC/" + id, {
-  //       method: "PUT",
-  //       body: JSON.stringify(databody),
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       }
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => console.log(data));
-  //   }
-  //   Reject(id) {
-  //     var databody = { Lawyer_review: "rejected" };
-  //     return fetch("/api/SPC/" + id, {
-  //       method: "PUT",
-  //       body: JSON.stringify(databody),
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       }
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => console.log(data));
-  //   }
 
   sms(num) {
     // e.preventDefault();
@@ -73,69 +35,6 @@ class Workspace extends Component {
 
     return fetch("/api/SPC/msg", {
       method: "POST",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-
-  Approve() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    console.log("why the hell");
-    var databody = { Lawyer_review: "accepted" };
-    console.log(databody);
-
-    return fetch("/api/SPC/" + localStorage.getItem("id"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Reject() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    var databody = { Lawyer_review: "rejected" };
-    return fetch("/api/SPC/" + localStorage.getItem("id"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Approvessc() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    console.log("why the hell");
-    var databody = { Lawyer_review: "accepted" };
-    console.log(databody);
-
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Rejectssc() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    var databody = { Lawyer_review: "rejected" };
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
       body: JSON.stringify(databody),
       headers: {
         "Content-Type": "application/json"
@@ -191,27 +90,6 @@ class Workspace extends Component {
                 {" "}
                 Review Company{" "}
               </button>
-              <button
-                onClick={() => {
-                  this.Approve();
-                }}
-              >
-                Accept
-              </button>
-              <button
-                onClick={() => {
-                  this.Reject();
-                }}
-              >
-                Reject
-              </button>
-              <button
-                onClick={() => {
-                  this.sms(spc.Phone_Number);
-                }}
-              >
-                Update
-              </button>
             </li>
           ))}
         </ul>
@@ -238,27 +116,6 @@ class Workspace extends Component {
               >
                 {" "}
                 Review Company{" "}
-              </button>
-              <button
-                onClick={() => {
-                  this.Approvessc();
-                }}
-              >
-                Accept
-              </button>
-              <button
-                onClick={() => {
-                  this.Rejectssc();
-                }}
-              >
-                Reject
-              </button>
-              <button
-                onClick={() => {
-                  this.sms(ssc.Phone_Number);
-                }}
-              >
-                Update
               </button>
             </li>
           ))}

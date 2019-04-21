@@ -25,13 +25,13 @@ const styles = theme => ({
 class updating_Forms extends Component {
   constructor() {
     super();
-    this.Approvespc = this.Approvespc.bind(this);
-    this.Rejectspc = this.Rejectspc.bind(this);
-    this.resendspc = this.resendspc.bind(this);
+    // this.Approvespc = this.Approvespc.bind(this);
+    // this.Rejectspc = this.Rejectspc.bind(this);
+    // this.resendspc = this.resendspc.bind(this);
 
-    this.Approvessc = this.Approvessc.bind(this);
-    this.Rejectssc = this.Rejectssc.bind(this);
-    this.resendssc = this.resendssc.bind(this);
+    // this.Approvessc = this.Approvessc.bind(this);
+    // this.Rejectssc = this.Rejectssc.bind(this);
+    // this.resendssc = this.resendssc.bind(this);
     this.state = {
       SPC: [],
       SSC: [],
@@ -50,110 +50,9 @@ class updating_Forms extends Component {
     this.setState({ idssc: true });
   }
 
-  sms(num) {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    let databody = {
-      number: num
-    };
-
-    return fetch("/api/SPC/pay", {
-      method: "POST",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-
-  resendssc() {
-    var databody = { Lawyer_review: "binding" };
-
-    console.log(databody);
-
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  resendspc() {
-    var databody = { Lawyer_review: "binding" };
-    console.log(databody);
-
-    return fetch("/api/SPC/" + localStorage.getItem("id"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-
-  Approvespc(num) {
-    var databody = { Status: "accepted" };
-    console.log(databody);
-    this.sms(num);
-    return fetch("/api/SPC/" + localStorage.getItem("id"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Approvessc(num) {
-    var databody = { Status: "accepted" };
-    console.log(databody);
-    this.sms(num);
-    return fetch("/api/SPC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-
-  Rejectssc() {
-    var databody = { Status: "rejected" };
-    console.log(databody);
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-  Rejectspc() {
-    var databody = { Status: "rejected" };
-    console.log(databody);
-    return fetch("/api/SPC/" + localStorage.getItem("id"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-
+ 
+ 
+  
   getspc() {
     fetch("/api/Reviewer/find/SPC")
       .then(res => res.json())
@@ -201,27 +100,7 @@ class updating_Forms extends Component {
                 {" "}
                 Review Company{" "}
               </button>
-              <button
-                onClick={() => {
-                  this.Approvespc(spc.Phone_Number);
-                }}
-              >
-                Accept
-              </button>
-              <button
-                onClick={() => {
-                  this.Rejectspc();
-                }}
-              >
-                Reject
-              </button>
-              <button
-                onClick={() => {
-                  this.resendspc();
-                }}
-              >
-                Send back to lawyer
-              </button>
+             
             </li>
           ))}
         </ul>
@@ -249,27 +128,7 @@ class updating_Forms extends Component {
                 {" "}
                 Review Company{" "}
               </button>
-              <button
-                onClick={() => {
-                  this.Approvessc(ssc.Phone_Number);
-                }}
-              >
-                Accept
-              </button>
-              <button
-                onClick={() => {
-                  this.Rejectssc();
-                }}
-              >
-                Reject
-              </button>
-              <button
-                onClick={() => {
-                  this.resendssc();
-                }}
-              >
-                Send back to lawyer
-              </button>
+             
             </li>
           ))}
         </ul>

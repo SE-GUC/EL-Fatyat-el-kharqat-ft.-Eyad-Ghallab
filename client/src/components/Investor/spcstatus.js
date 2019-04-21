@@ -5,10 +5,15 @@ class spcstatus extends Component {
     super();
     this.state = {
       SPC: [],
-      isSPC: false
+      isSPC: false,
+      payment: ""
     };
   }
-
+  local(id) {
+    localStorage.setItem("payment", id);
+    //this.paymenet(localStorage.getItem("payment"));
+    // this.setState({ id: true });
+  }
   componentDidMount() {
     fetch("/api/SPC/" + localStorage.getItem("nationalid") + "/status")
       .then(res => res.json())
@@ -23,28 +28,56 @@ class spcstatus extends Component {
 
     console.log(this.state.isSPC);
   }
+
+  paymenet(id) {
+    //e.preventDefault();
+    if (this.state.payment !== "") {
+      this.setState({ payment: "" });
+    }
+    fetch("/api/SPC/" + id + "/find")
+      .then(res => res.json())
+      .then(pay =>
+        this.setState({ payment: pay.data }, () =>
+          console.log("you should pay", this.state.payment)
+        )
+      );
+    // this.state.paymenet
+    // printString(this.state.paymenet)
+  }
+
   render() {
     console.log(this.state.investors);
     return (
       <div>
-        {this.state.isSPC ? (
-          <form>
-            <ul>
-              {this.state.SPC.map(SPC => (
-                <li key={SPC._id}>
-                  {" "}
-                  Facility name: {SPC.Facility_name}
-                  <br />
-                  Facility name in English: {SPC.Facility_nameinenglish}
-                  <br />
-                  Status : {SPC.Status}
-                </li>
-              ))}
-            </ul>
-          </form>
-        ) : (
-          <h1> You dont have any Companies yet</h1>
-        )}
+        <ul>
+          {this.state.SPC.map(SPC => (
+            <li key={SPC._id}>
+              {" "}
+              Facility name: {SPC.Facility_name}
+              <br />
+              Facility name in English: {SPC.Facility_nameinenglish}
+              <br />
+              Status : {SPC.Status}
+              <br />
+              <button
+                onClick={() => {
+                  this.paymenet(SPC._id);
+                }}
+              >
+                Fees
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {/* <button
+          onClick={() => {
+            this.paymenet();
+          }}
+        >
+          Fees
+        </button> */}
+        <h1>You Should pay: {this.state.payment}</h1>
       </div>
     );
   }
