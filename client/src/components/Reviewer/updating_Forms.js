@@ -106,7 +106,7 @@ Rejectbb(id){
 
 getspc(){
     
-    fetch('/api/SPC/all')
+    fetch('http://localhost:5000/api/Reviewer/find/SPC')
 
 .then(res => res.json())
 .then(spc => this.setState({SPC: spc.data}, () => console.log('spc fetched',this.state.SPC)));
@@ -114,7 +114,7 @@ getspc(){
 }
 
 getssc(){
-    fetch('/api/SSC/all')
+    fetch('http://localhost:5000/api/Reviewer/find/SSC')
 
 .then(res => res.json())
 .then(ssc => this.setState({SSC: ssc.data}, () => console.log('ssc fetched',this.state.SSC)));
@@ -145,7 +145,7 @@ render(){
             </li>)}
      </ul> 
 
-     }
+     
      <button onClick={()=>{this.getssc()}}> SSC forms </button> 
             <ul>
       {
@@ -165,7 +165,7 @@ render(){
             </li>)}
      </ul> 
   
- }
+ 
 
         </div>
     )}

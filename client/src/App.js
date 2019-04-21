@@ -16,6 +16,7 @@ import NoSsr from "@material-ui/core/NoSsr";
 import AppBar from "@material-ui/core/AppBar";
 
 import "./App.css";
+import Reviewer from "./components/Reviewer/Reviewer";
 class App extends Component {
   render() {
     return (
@@ -72,8 +73,8 @@ class App extends Component {
                   path="/LawyerHomePage"
                   component={LawyerHomePage}
                 />
-                <Route exact path="/LawyerHomePage" component={SPC} />
-                <Route exact path="/LawyerHomePage" component={SSC} />
+                {/* <Route exact path="/LawyerHomePage" component={SPC} />
+                <Route exact path="/LawyerHomePage" component={SSC} /> */}
               </Switch>
             </div>
           </NoSsr>

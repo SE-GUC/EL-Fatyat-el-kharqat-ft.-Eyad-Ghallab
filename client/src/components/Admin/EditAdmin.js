@@ -50,7 +50,7 @@ class EditAdmin extends Component {
  componentDidMount(){
     fetch('/api/Admin')
     .then(res => res.json())
-    .then(Admin => this.setState({admins: Admin.data}, () => console.log('Admins fetched',this.state.admins)));
+    .then(admins=> this.setState({Admins: admins.data}, () => console.log('Admins fetched',this.state.Admins)));
   }
  handlenameChange(e){
     this.setState({name: e.target.value })
@@ -101,7 +101,7 @@ update(id){
        
        
                    console.log(this.state.username)
-     return fetch('http://localhost:5000/api/Admin/'+id, {
+     return fetch('/api/Admin/'+ localStorage.getItem("userid"), {
          method: 'PUT',
          body: JSON.stringify(databody),
          headers: {
@@ -182,12 +182,15 @@ update(id){
         </FormControl>
         </div>
         <ul>
-          {this.state.admins.map(admin =>
-            <li key = {admin._id}
-            > {admin.name} <br/><button onClick = {() => {this.update(admin._id)}}> Update</button> 
-            </li>
-            )}
-        </ul>
+        <button
+            onClick={() => {
+              this.update();
+            }}
+          >
+            {" "}
+            Update
+          </button>
+          </ul>
         </form>
         </div>
     )

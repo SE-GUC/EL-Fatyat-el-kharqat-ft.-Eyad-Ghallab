@@ -13,7 +13,10 @@ const nexmo = new Nexmo({
 router.get("/:investor_nationalid/SPC", async (req, res) => {
   const nationalid = req.params.investor_nationalid;
 
-  const national = await SpcForm.findOne({ investor_nationalid: nationalid });
+  const national = await SpcForm.find({
+    investor_nationalid: nationalid,
+    Status: "accepted"
+  });
   res.json({ data: national });
 });
 
@@ -66,10 +69,10 @@ router.get("/all", async (req, res) => {
   res.json({ msg: "Here are the SPC Forms", data: spcforms });
 });
 
-// router.get("/:id", async (req, res) => {
-//   const spcforms = await SpcForm.findById(req.params.id);
-//   res.json({ data: spcforms });
-// });
+router.get("/:id", async (req, res) => {
+  const spcforms = await SpcForm.findById(req.params.id);
+  res.json({ data: spcforms });
+});
 
 // router.get("/:investor_nationalid", async (req, res) => {
 //   const investor = req.params.investor_nationalid;

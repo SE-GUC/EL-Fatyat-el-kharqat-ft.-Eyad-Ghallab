@@ -89,12 +89,7 @@ router.post("/", async (req, res) => {
 router.post("/register", async (req, res) => {
   console.log("ana da5alt");
   try {
-    // const isValidated = validator.registerValidation(req.body);
-    // console.log("malak?");
-    // if (isValidated.error)
-    //   return res
-    //     .status(400)
-    //     .send({ error: isValidated.error.details[0].message });
+    
     console.log("ana da5alt hena");
     const {
       name,

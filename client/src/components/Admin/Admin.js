@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import "./Admin.css";
 class Admin extends Component {
   constructor() {
     super();
     this.state = {
-      admins: [""],
-      ad: []
+      admins: [],
+     
     };
   }
   componentDidMount() {
@@ -17,26 +16,14 @@ class Admin extends Component {
         )
       );
   }
-  get() {
-    fetch("/api/Admin/" + localStorage.getItem("userid"))
-      .then(res => res.json())
-      .then(Admin =>
-        this.setState({ ad: Admin.data }, () =>
-          console.log("Admins fetched", this.state.ad)
-        )
-      );
-  }
+ 
 
   render() {
     //JSON.stringify(this.state.ad);
     return (
       <div>
         <h2>My profile</h2>
-        {/* <ul>
-          {this.state.admins.map(admin => (
-            <li key={admin._id}> {this.admin}</li>
-          ))}
-        </ul> */}
+     
         Name: {this.state.admins.name}
         <br />
         Address: {this.state.admins.address}
