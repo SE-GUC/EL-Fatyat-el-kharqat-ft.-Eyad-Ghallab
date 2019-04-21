@@ -7,8 +7,8 @@ body{
 .wrap{
     width: 280px;
     position: absolute;
-    top: 51%;
-    left: 50%;
+    top: 52.5%;
+    left: 60%;
     transform: translate(-50%,-50%);
     color: white;
 }
