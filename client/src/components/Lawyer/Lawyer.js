@@ -24,7 +24,7 @@ class Lawyer extends Component {
       .then(res => res.json())
       .then(law =>
         this.setState({ lawyers: law.data }, () =>
-          console.log("the investors", this.state.lawyers)
+          console.log("the Lawyers", this.state.lawyers)
         )
       );
   }
