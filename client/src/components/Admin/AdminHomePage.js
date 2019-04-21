@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Admin from './Admin';
 import EditAdmin from './EditAdmin'
+import AllForms from './AllForms'
 import Reviewer from '../regreviewer/registerrev'
 import Lawyer from '../registerlawyer/reglawyer'
 import Menu from '@material-ui/core/Menu';
@@ -38,6 +39,10 @@ export default class InvHomePage extends Component {
                     <Link to={'/edit'} className="nav-link">Edit My Profile</Link>
                   </li>
                   <li className="nav-item">
+                    <Link to={'/AllForms'} className="nav-link">View Cases</Link>
+                  </li>
+
+                  <li className="nav-item">
                 <Button className="nav-link"
           aria-owns={anchorEl ? 'simple-menu' : undefined}
           aria-haspopup="true"
@@ -67,7 +72,7 @@ export default class InvHomePage extends Component {
                 <Route exact path='/edit' component={ EditAdmin } /> 
                 <Route exact path='/Reviewer' component={ Reviewer } /> 
                 <Route exact path='/Lawyer' component={ Lawyer } /> 
-
+                <Route exact path='/AllForms' component={ AllForms } /> 
 
             </Switch>
           </div>
