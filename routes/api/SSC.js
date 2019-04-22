@@ -16,6 +16,14 @@ router.get("/:investor_nationalid/SSC", async (req, res) => {
   });
   res.json({ data: user });
 });
+router.get("/:investor_nationalid/update", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
+
+  const national = await Form.find({
+    investor_nationalid: nationalid,
+  });
+  res.json({ data: national });
+});
 router.get("/:investor_nationalid/status", async (req, res) => {
   const nationalid = req.params.investor_nationalid;
 
@@ -28,7 +36,32 @@ router.get("/all", async (req, res) => {
   const forms = await Form.find();
   res.json({ msg: "Here are the SSC Forms", data: forms });
 });
-
+router.put("/:investor_nationalid/update", async (req, res) => {
+  console.log("hiiii");
+  const id = req.params.investor_nationalid;
+  const updatedsscform = req.body;
+  const isValidated = validator.updateValidation(req.body);
+  console.log("bb")
+  if (isValidated.error) {
+    return res
+      .status(400)
+      .send({ error: isValidated.error.details[0].message });
+  } else {
+    Form.update({ investor_nationalid: id }, { $set: updatedsscform })
+      .exec()
+      .then(() => {
+        res.status(500).json({
+          message: "Form is updated Successfully",
+          data: updatedsscform
+        });
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: "Server error"
+        });
+      });
+  }
+});
 // Create a form
 router.post("/", async (req, res) => {
   try {

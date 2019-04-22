@@ -32,16 +32,16 @@ class mycompSPC extends Component {
         {this.state.isSPC ? (
           <form>
             <h2>The Company</h2>
-            Company name: {this.state.SPC.Facility_name}
-            <br /> Company name in English:{" "}
+            Facility name: {this.state.SPC.Facility_name}
+            <br /> Facility name in English:{" "}
             {this.state.SPC.Facility_nameinenglish}
             <br />
             Governorate: {this.state.SPC.Governorate}
             <br />
             City: {this.state.SPC.City}
             <br />
-            Company Address: {this.state.SPC.Facility_Address}
-            <br /> Company Phone Number:: {this.state.SPC.Facility_Phone_Number}
+           Facility Address: {this.state.SPC.Facility_Address}
+            <br /> Facility Phone Number:: {this.state.SPC.Facility_Phone_Number}
             <br />
             Fax: {this.state.SPC.Fax}
             <br />
@@ -56,7 +56,7 @@ class mycompSPC extends Component {
             Nationality: {this.state.SPC.Nationality}
             <br /> Type of IdentityProof: {this.state.SPC.TypeOf_IdentityProof}
             <br />
-            investor nationalid: {this.state.SPC.investor_nationalid}
+            Investor National ID: {this.state.SPC.investor_nationalid}
             <br />
             Birth Date: {this.state.SPC.BirthDate}
             <br />

@@ -75,11 +75,15 @@ class EditSSC extends Component {
       }
     }
    
-   componentDidMount(){
-     fetch('/api/SSC/all')
-     .then(res => res.json())
-     .then(SSC => this.setState({sscs: SSC.data}, () => console.log('SSC fetched',this.state.sscs)));
-   }
+    componentDidMount() {
+        fetch("/api/SSC/"+ localStorage.getItem("nationalid") + "/update")
+          .then(res => res.json())
+          .then(SSC =>
+            this.setState({ sscs: SSC.data }, () =>
+              console.log("SSC fetched", this.state.sscs)
+            )
+          );
+      }
     handleChange(event) {
        this.setState({value: event.target.value});
      }
@@ -250,16 +254,16 @@ class EditSSC extends Component {
                                                                                                
     console.log(this.state.Company_name)
    
-       return fetch('/api/SSC/'+id, {
-         method: 'PUT',
-         body: JSON.stringify(databody),
-         headers: {
-             'Content-Type': 'application/json'
-         },
-     })
-     .then(res => res.json())
-     .then(data => console.log(data)); 
- }
+    return fetch(
+        "/api/SSC/"+id,
+        {
+          method: "PUT",
+          body: JSON.stringify(databody),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      ) }
 
 
 
@@ -530,13 +534,12 @@ render() {
 
            
            <ul>
-         {this.state.sscs.map(ssc =>
-           <li key = {ssc._id}
-           > {ssc.Company_name} 
-           <br/><button onClick = {() => {this.update(ssc._id)}}> Update</button> 
-           </li>
-           )}
-       </ul>
+          {this.state.sscs.map(ssc =>
+            <li key = {ssc._id}
+            > {ssc.Company_name} <br/><button onClick = {() => {this.update(ssc._id)}}> Update</button> 
+            </li>
+            )}
+        </ul>
        </form>
    </div>
 )

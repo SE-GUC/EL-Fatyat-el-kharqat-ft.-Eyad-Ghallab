@@ -11,6 +11,8 @@ import Button from "@material-ui/core/Button";
 import "./Lawyer.css";
 import hana from "./myssc";
 import sama from "./myspc";
+import EditSPC from "../SPC/EditSPC";
+import EditSSC from "../SSC/EditSSC";
 export default class LawyerHomePage extends Component {
   state = {
     anchorEl: null
@@ -48,6 +50,16 @@ export default class LawyerHomePage extends Component {
                 <li className="nav-item">
                   <Link to={"/edit"} className="nav-link">
                     Edit Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/editspc"} className="nav-link">
+                    Edit SPC
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/editssc"} className="nav-link">
+                    Edit SSC
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -100,6 +112,8 @@ export default class LawyerHomePage extends Component {
             <Route exact path="/workspace" component={Workspace} />
             <Route exact path="/myssc" component={hana} />
             <Route exact path="/myspc" component={sama} />
+            <Route exact path="/editspc" component={EditSPC} />
+            <Route exact path="/editssc" component={EditSSC} />
           </Switch>
         </div>
       </Router>

@@ -11,6 +11,8 @@ import ViewSPC from "./mycompSPC.js";
 import ViewSSC from "./mycompSSC.js";
 import spcstatus from "./spcstatus";
 import sscstatus from "./sscstatus";
+import EditSPC from "../SPC/EditSPC";
+import EditSSC from "../SSC/EditSSC";
 export default class InvHomePage extends Component {
   state = {
     anchorEl: null
@@ -48,6 +50,16 @@ export default class InvHomePage extends Component {
                 <li className="nav-item">
                   <Link to={"/edit"} className="nav-link">
                     Edit My Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/editspc"} className="nav-link">
+                    Edit SPC
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={"/editssc"} className="nav-link">
+                    Edit SSC
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -118,6 +130,8 @@ export default class InvHomePage extends Component {
             <Route exact path="/ViewSSC" component={ViewSSC} />
             <Route exact path="/spcstatus" component={spcstatus} />
             <Route exact path="/sscstatus" component={sscstatus} />
+            <Route exact path="/editspc" component={EditSPC} />
+            <Route exact path="/editssc" component={EditSSC} />
 
           </Switch>
         </div>
