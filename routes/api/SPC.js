@@ -129,7 +129,7 @@ router.get("/all", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const spcforms = await SpcForm.findById(req.params.id);
   //const spcforms = await SpcForm.findById(req.params.id);
-  res.json({ data: spcforms.City });
+  res.json({ data: spcforms });
 });
 
 router.get("/gov/:id", async (req, res) => {
