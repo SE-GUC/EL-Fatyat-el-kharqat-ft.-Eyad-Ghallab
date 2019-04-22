@@ -22,7 +22,6 @@ class mycompSSC extends Component {
     }
   }
   render() {
-    
     console.log(this.state.investors);
     return (
       <div>
