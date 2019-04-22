@@ -13,9 +13,7 @@ this.state={
     fetch('/api/investors/')
     .then(res => res.json())
     .then(investors => this.setState({Investors: investors.data},()=> console.log('the investors',this.state.Investors)));
-  //   var int = this.state.investors[1];
-  // console.log (int)
-//  // res.json({data: this.state.investors})
+ 
 } 
   
   render(){

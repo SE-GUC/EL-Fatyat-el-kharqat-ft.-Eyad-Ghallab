@@ -6,6 +6,12 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
+import Button from "@material-ui/core/Button";
+import {saveAs} from 'file-saver';
+import './SPC.css'
+const blobstream = require('blob-stream');
+
 
 const styles = theme => ({
   root: {
@@ -22,12 +28,17 @@ const styles = theme => ({
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
   },
+  close: {
+    padding: theme.spacing.unit / 2,
+  },
 });
 class CreatingSPCForm extends Component {
 
  constructor() {
     super();
     this.handleFacilityName = this.handleFacilityName.bind(this);
+    this.handleFacilityNameInEnglish = this.handleFacilityNameInEnglish.bind(this);
+
     this.handleGovernorate = this.handleGovernorate.bind(this);
     this.handleCity = this.handleCity.bind(this);
     this.handleFacilityAddress = this.handleFacilityAddress.bind(this);
@@ -45,12 +56,12 @@ class CreatingSPCForm extends Component {
     this.handleInvestorFax = this.handleInvestorFax.bind(this);
     this.handleemail = this.handleemail.bind(this);
     this.handleInvestorAddress = this.handleInvestorAddress.bind(this);
-    //this.handleLawyer_review=this.handleLawyer_review.bind(this);
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     
     this.state = { 
       Facility_name: '',
+      Facility_nameinenglish:'',
      Governorate: '',
       City:'',
       Facility_Address: '',
@@ -68,16 +79,46 @@ class CreatingSPCForm extends Component {
       Investor_Fax:'',
       email:'',
       Investor_Address:'',
-      //Lawyer_review:""
-    
+      open: false,
    }
  }
     handleChange(event) {
         this.setState({value: event.target.value});
       }
+
+
+      Download_As_txt = () =>{
+
+        var saver = require('file-saver');
+        var blob = new Blob(['Facility Name is: ', this.state.Facility_nameinenglish,"\n"
+                            ,'Arabic is: ',this.state.Facility_name,"\n",
+                            'Governorate:', this.state.Governorate,"\n",
+                            'City is:',this.state.City,"\n",
+                            'Facility_Address:',this.state.Facility_Address,"\n",
+                            'Facility_Phone_Number:',this.state.Facility_Phone_Number,"\n",
+                            'Fax:',this.state.Fax,this.state.Fax,"\n",
+                            'Capital_Currency:',this.state.Capital_Currency,"\n",
+                            'capital:',this.state.capital,"\n",
+                            'investorname:',this.state.investorname,"\n",
+                            'Gender:',this.state.Gender,"\n",
+                            'Nationality:',this.state.Nationality,"\n",
+                            'TypeOf_IdentityProof:',this.state.TypeOf_IdentityProof,"\n",
+                            'investor_nationalid:',this.state.investor_nationalid,"\n",
+                            'BirthDate:',this.state.BirthDate,"\n",
+                            'Phone_Number:',this.state.Phone_Number,"\n",
+                            'Investor_Fax:',this.Investor_Fax,"\n",
+                            'email:',"\n",this.state.email,"\n",
+                            'Investor_Address:',this.state.Investor_Address,"\n"],{type:'text/plain',endings:'native'});
+        saver.saveAs(blob,"SPC Form" + ".txt");}
+
       handleFacilityName(e) {
     this.setState({
       Facility_name: e.target.value
+    });
+  }
+  handleFacilityNameInEnglish(e) {
+    this.setState({
+      Facility_nameinenglish: e.target.value
     });
   }
   handleGovernorate(e) {
@@ -166,15 +207,23 @@ handleInvestorAddress(e){
         Investor_Address: e.target.value
       })
 }
-/*handleLawyer_review(e){
-  this.setState({
-      Lawyer_review: e.target.value
-    })
-  }*/
+handleClick = () => {
+  this.setState({ open: true });
+};
+
+handleClose = (event, reason) => {
+  if (reason === 'clickaway') {
+    return;
+  }
+
+  this.setState({ open: false });
+};
   handleSubmit(e) {
     e.preventDefault();
     let databody  = {
       Facility_name: this.state.Facility_name,
+      Facility_nameinenglish: this.state.Facility_nameinenglish,
+
       Governorate: this.state.Governorate,
       City: this.state.City,
       Facility_Address: this.state.Facility_Address,
@@ -194,7 +243,7 @@ handleInvestorAddress(e){
       Investor_Address:this.state.Investor_Address,
     };
 
-    return fetch('/api/SPC/all', {
+    return fetch('/api/SPC/', {
         method: 'POST',
         body: JSON.stringify(databody),
         headers: {
@@ -211,11 +260,12 @@ handleInvestorAddress(e){
  
   render() {
    
-  
+    const { classes } = this.props;
     
     return (
-        <div style={{ marginTop: 10 }}>
+        <div className="form-group" style={{ marginTop: 10 }}>
             <h3 align="center">New SPC Company</h3>
+            <br/>
             <form onSubmit={this.handleSubmit}>
 
                 <div className="form-group">
@@ -224,7 +274,18 @@ handleInvestorAddress(e){
           variant="outlined"
           label="Facility Name"
           value={this.state.Facility_name}
-          onChange={this.handleFacilityName}
+          onChange={this.handleFacilityName} required
+          
+        />
+        </div>
+        <br/> 
+        <div className="form-group">
+                <TextField
+          id="outlined-adornment-amount"
+          variant="outlined"
+          label="Facility Name In English"
+          value={this.state.Facility_nameinenglish}
+          onChange={this.handleFacilityNameInEnglish} 
           
         />
         </div>
@@ -235,7 +296,7 @@ handleInvestorAddress(e){
           <InputLabel htmlFor="Governorate">Governorate</InputLabel> <br/>
           <Select
             value={this.state.Governorate}
-            onChange={this.handleGovernorate}
+            onChange={this.handleGovernorate}required
            
           >
             <MenuItem value={"cairo"}>Cairo</MenuItem>
@@ -273,7 +334,7 @@ handleInvestorAddress(e){
           <InputLabel htmlFor="City">City</InputLabel> <br/> 
           <Select
             value={this.state.City}
-            onChange={this.handleCity}
+            onChange={this.handleCity} required
            
           >
             <MenuItem value={"Abnūb"}>Abnūb</MenuItem>
@@ -509,7 +570,7 @@ handleInvestorAddress(e){
           variant="outlined"
           label="Facility Address"
           value={this.state.Facility_Address}
-          onChange={this.handleFacilityAddress}
+          onChange={this.handleFacilityAddress} required
           
         />
         </div>
@@ -541,7 +602,7 @@ handleInvestorAddress(e){
           <InputLabel htmlFor="Capital_Currency">Capital Currency</InputLabel> <br/>
           <Select
             value={this.state.Capital_Currency}
-            onChange={this.handleCapitalCurrency}
+            onChange={this.handleCapitalCurrency} required
            
           >
          
@@ -746,7 +807,7 @@ handleInvestorAddress(e){
           variant="outlined"
           label="Investor Name"
           value={this.state.investorname}
-          onChange={this.handleinvestorname}
+          onChange={this.handleinvestorname} required
           
         />
         </div>
@@ -756,7 +817,7 @@ handleInvestorAddress(e){
           <InputLabel htmlFor="Gender">Gender</InputLabel> <br/>
           <Select
             value={this.state.Gender}
-            onChange={this.handleGender}
+            onChange={this.handleGender} required
            
           >
             <MenuItem value={"Female"}>Female</MenuItem>
@@ -771,7 +832,7 @@ handleInvestorAddress(e){
           <InputLabel htmlFor="Nationality">Nationality</InputLabel> <br/>
           <Select
             value={this.state.Nationality}
-            onChange={this.handleNationality}
+            onChange={this.handleNationality} required
            
           >
 <MenuItem value={"Afghan"}>Afghan</MenuItem>
@@ -894,7 +955,7 @@ handleInvestorAddress(e){
           <InputLabel htmlFor="TypeOf_IdentityProof">Type Of Identity Proof</InputLabel> <br/>
           <Select
             value={this.state.TypeOf_IdentityProof}
-            onChange={this.handleTypeOfIdentityProof}
+            onChange={this.handleTypeOfIdentityProof} required
            
           >
             <MenuItem value={"Passport"}>Passport</MenuItem>
@@ -911,7 +972,7 @@ handleInvestorAddress(e){
           variant="outlined"
           label="National ID"
           value={this.state.investor_nationalid}
-          onChange={this.handleinvestornationalid}
+          onChange={this.handleinvestornationalid} required
           
         />
         </div>
@@ -922,7 +983,7 @@ handleInvestorAddress(e){
                       type="date" 
                       className="form-control" 
                       value={this.state.BirthDate}
-                      onChange={this.handleBirthDate}
+                      onChange={this.handleBirthDate} required
                       />
                 </div>
                 <br/>
@@ -966,19 +1027,39 @@ handleInvestorAddress(e){
           variant="outlined"
           label="Address"
           value={this.state.Investor_Address}
-          onChange={this.handleInvestorAddress}
+          onChange={this.handleInvestorAddress} required
           
         />
         </div>
         <br/>   
-                <div className="form-group">
-                    <input type="submit" 
-                      value="Submit" 
-                      className="btn btn-primary"/>
-                </div>
+        <Button variant="contained" color="primary" type="submit"  onClick={this.handleClick}>
+              Submit
+            </Button>
+            <div className="form-group">
+
+            <script type="text/javascript" charset="UTF-8" src="xyz.js"></script> 
+            
+               </div>
+
+        <br/>   
+        <Button variant="contained" color="primary" type="button"  onClick={this. Download_As_txt }>
+              Download as text
+            </Button>
+            <br/> 
+            
             </form>
+            <form action="/uploadfile" enctype="multipart/form-data"  method="POST"> 
+            <label>
+            <input type="file" name="myFile" />
+               <Button variant="contained" color="primary" type="submit" >  Upload A File
+            </Button>
+            </label>
+               </form>
         </div>
     )
   }
 }
+CreatingSPCForm.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
  export default withStyles (styles)(CreatingSPCForm);

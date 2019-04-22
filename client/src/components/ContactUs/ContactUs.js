@@ -1,9 +1,8 @@
 import React, {  Component} from "react";
-import './ContactUs.css';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
+import './ContactUs.css'
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -17,18 +16,18 @@ const styles = theme => ({
 class ContactUs extends Component {
         render() {
           return (
-            
-              <div className="container">
+           <body>
+<div className="box">
                 
          
-      <h1>Contact us On:</h1>
-      <label>Adress:
+      <h1>Contact us on:</h1>
+      <label>Address:
         No. 3, Salah Salem st., Nasr City, Cairo, 11562, Egypt.
       </label><br/>
-      <label>telephone number:
+      <label>Telephone Number:
       +202 240 55 452
       </label><br/>
-      <label>FAX:
+      <label>Fax:
        16035</label>
        <br/>
        <form action="https://www.Facebook.com/">
@@ -50,19 +49,12 @@ class ContactUs extends Component {
         Twitter
       </Button>
             </form>
-
-            <br/>
-            <form action="https://www.GAFI.com/">
-            <Button variant="contained" href="#contained-buttons" >
-        GAFI
-      </Button>
-            </form>
       
                 
       
               </div>
             
-      
+              </body>
           );
                   
         }

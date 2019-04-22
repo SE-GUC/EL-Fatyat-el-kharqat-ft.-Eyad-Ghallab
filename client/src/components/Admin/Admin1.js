@@ -72,7 +72,6 @@ password : "",
       .then(data => console.log(data)); 
   }
   update(id){
-    // e.preventDefault();
     console.log(this.state.username)
      let databody 
  if (this.state.name !== ""){
@@ -102,7 +101,6 @@ password : "",
  delete(id){
     return fetch('/api/Admin/'+id, {
       method: 'DELETE',
-     // body: JSON.stringify(databody),
       headers: {
           'Content-Type': 'application/json'
       },

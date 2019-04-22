@@ -96,7 +96,7 @@ handleSubmit(e){
 
   render() {
    
-    //if (this.props.isLoggedIn) {
+    
      return (
       <div >
         <header className = "App-header">
@@ -131,35 +131,7 @@ handleSubmit(e){
 
    
   }
-//   return (
-//     <Router>
-//     <div>
-//       <h1> Please login to view Notifications </h1>
-//       <Toolbar>
-//     <Link to={'/Login'} > <Button color="inherit"  onClick={this.login}>Login</Button> </Link> 
-//       <Button color="inherit">Register</Button>
-//         </Toolbar>
-//          <Switch>
-//       <Route exact path='/Login' component={Login} />
-//          </Switch>
-//     </div>
-//     </Router>
-// )
 
-
-
-//}
 }
-// Notification.propTypes = {
-// 	login: PropTypes.func.isRequired,
-// 	logout: PropTypes.func.isRequired,
-// };
 
-// const mapStateToProps = state => ({
-// 	Notification: state.Notification.Notification,
-// 	isLoggedIn: state.auth.isLoggedIn,
-// 	loggedUser: state.auth.loggedUser,
-// });
-
-// export default connect(mapStateToProps,{login, logout })(Notification);
 export default Notification;

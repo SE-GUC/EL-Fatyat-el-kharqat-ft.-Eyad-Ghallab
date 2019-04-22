@@ -5,6 +5,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
+import {saveAs} from 'file-saver';
+import './SSC.css'
+const blobstream = require('blob-stream');
 
 const styles = theme => ({
   root: {
@@ -24,6 +28,7 @@ class CreatingSSCForm extends Component {
     constructor(){
         super();
         this.handleCompany_name= this.handleCompany_name.bind(this);
+        this.handleCompany_nameinenglish= this.handleCompany_nameinenglish.bind(this);
         this.handleGovernorate= this.handleGovernorate.bind(this);
         this.handleCity =  this.handleCity.bind(this);
         this.handleCompany_Address =  this.handleCompany_Address.bind(this);
@@ -50,7 +55,6 @@ class CreatingSSCForm extends Component {
         this.handleBOD_BirthDate= this.handleBOD_BirthDate.bind(this);
         this.handleBOD_Address= this.handleBOD_Address.bind(this);
         this.handlePositionInBOD= this.handlePositionInBOD.bind(this);
-        this.handleLawyer_review=this.handleLawyer_review.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     
@@ -59,6 +63,8 @@ class CreatingSSCForm extends Component {
         this.state ={
           SSC:[],
             Company_name:"",
+            Company_nameinenglish:"",
+
             Governorate:"",
             City: "",
             Company_Address:"",
@@ -81,7 +87,6 @@ class CreatingSSCForm extends Component {
             BOD_BirthDate: "",
             BOD_Address:"", 
             PositionInBOD: "",
-            Lawyer_review:""
 
         }
     
@@ -89,9 +94,46 @@ class CreatingSSCForm extends Component {
     handleChange(event) {
         this.setState({value: event.target.value});
       }
+
+
+
+      Download_As_txt = () =>{
+
+        var saver = require('file-saver');
+        var blob = new Blob(['Company_name is: ', this.state.Company_name,"\n"
+                            ,'Company_nameinenglish: ',this.state.Company_nameinenglish,"\n",
+                            'Governorate:', this.state.Governorate,"\n",
+                            'City:',this.state.City,"\n",
+                            'Company_Address:',this.state.Company_Address,"\n",
+                            'Company_Phone_Number:',this.state.Company_Phone_Number,"\n",
+                            'Fax:',this.state.Fax,this.state.Fax,"\n",
+                            'Capital_Currency:',this.state.Capital_Currency,"\n",
+                            'TypeOf_IdentityProof:',this.state.TypeOf_IdentityProof,"\n",
+                            'investor_nationalid:',this.state.investor_nationalid,"\n",
+                            'BirthDate:',this.state.BirthDate,"\n",
+                            'Address:',this.state.Address,"\n",
+                            'Phone_Number:',this.state. Phone_Number,"\n",
+                            'email:',this.state.email,"\n",
+                            'BOD_Name:',this.state.BOD_Name,"\n",
+                            'BOD_Investor_Type:',this.state. BOD_Investor_Type,"\n",
+                            'BOD_Gender:',this. BOD_Gender,"\n",
+                            'BOD_Nationality:',"\n",this.state.BOD_Nationality,"\n",
+                            'BOD_TypeOfIdentityProof',this.state.BOD_TypeOfIdentityProof,"\n",
+                            'BOD_NationalID:',this.BOD_NationalID, "\n",
+                            'BOD_BirthDate:',this.BOD_BirthDate, "\n",
+                            'BOD_Address:',this.BOD_Address,"\n", 
+                             'PositionInBOD:',this.PositionInBOD,"\n",
+                            'BOD_BirthDate:',this.BOD_BirthDate,"\n",
+                             'BOD_Address:' ,this.BOD_Address,"\n", 
+                            'PositionInBOD:', this.PositionInBOD, "\n" ],{type:'text/plain',endings:'native'});
+        saver.saveAs(blob,"SSC Form" + ".txt");
+      }
       handleCompany_name(e){
         this.setState({Company_name: e.target.value })
     }
+    handleCompany_nameinenglish(e){
+      this.setState({Company_nameinenglish: e.target.value })
+  }
     handleGovernorate(e){
         this.setState({Governorate: e.target.value })
     }
@@ -181,15 +223,17 @@ class CreatingSSCForm extends Component {
         this.setState({PositionInBOD: e.target.value })
 
     }
-    handleLawyer_review(e){
-        this.setState({Lawyer_review: e.target.value })
+    // handleLawyer_review(e){
+    //     this.setState({Lawyer_review: e.target.value })
 
-    }
+    // }
 
     handleSubmit(e){
         e.preventDefault();
         let databody = {
           "Company_name":this.state.Company_name,
+          "Company_nameinenglish":this.state.Company_nameinenglish,
+
                     "Governorate":this.state.Governorate, 
                     "City": this.state.City,
                     "Company_Address":this.state.Company_Address,
@@ -216,7 +260,7 @@ class CreatingSSCForm extends Component {
                     "BOD_BirthDate": this.state.BirthDate,
                     "BOD_Address":this.state.BOD_Address, 
                     "PositionInBOD": this.state.PositionInBOD,
-                    "Lawyer_review": this.state.Lawyer_review
+                    //"Lawyer_review": this.state.Lawyer_review
           
         };
            return fetch('/api/SSC/', {
@@ -235,7 +279,7 @@ class CreatingSSCForm extends Component {
   
   
       return (
-        <div style={{ marginTop: 10 }}>
+        <div className="form-group" style={{ marginTop: 10 }}>
             <h3 align="center">New SSC Company</h3>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
@@ -245,6 +289,15 @@ class CreatingSSCForm extends Component {
                       className="form-control" 
                       value={this.state.Company_name}
                       onChange={this.handleCompany_name}
+                      />
+                      </div>
+                      <div className="form-group">
+                    <label>Company Name In English:  </label>
+                    <input 
+                      type="text" 
+                      className="form-control" 
+                      value={this.state.Company_nameinenglish}
+                      onChange={this.handleCompany_nameinenglish}
                       />
                       </div>
                       <div className="form-group">
@@ -1167,24 +1220,25 @@ onChange={this.handleBOD_Nationality}
                  value={this.state.PositionInBOD}
                  onChange={this.handlePositionInBOD}
                  />
-           </div>
-           <div className="form-group">
-               <label>Lawyer_review:  </label>
-               <input 
-                 type="text" 
-                 className="form-control" 
-                 value={this.state.Lawyer_review}
-                 onChange={this.handleLawyer_review}
-                 />
-           </div>
-                     
-                <div className="form-group">
-                    <input type="submit" 
-                      value="Submit" 
-                      className="btn btn-primary"/>
-                </div>
+           </div>   
+           <Button variant="contained" color="primary" type="submit"  onClick={this.handleClick}>
+              Submit
+            </Button>
+
+
+           
+           <Button variant="contained" color="primary" type="button"  onClick={this.Download_As_txt}>
+              Download_As_txt
+            </Button>
+               
             </form>
-        </div>
+            <form action="/uploadfile" enctype="multipart/form-data"  method="POST"> 
+            <label>
+            <input type="file" name="myFile" />
+               <Button variant="contained" color="primary" type="submit" >  Upload A File
+            </Button>
+            </label>
+               </form>        </div>
     )
   }
 }

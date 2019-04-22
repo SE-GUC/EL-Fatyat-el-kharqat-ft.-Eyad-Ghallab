@@ -42,14 +42,22 @@ const styles = theme => ({
 
   
 class SPCHomePage extends Component {
+  state = {
+    value: 0,
+  };
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
   render() {
+    const { value } = this.state;
     return (
       <Router>
       <NoSsr>
         <div >
        
           <AppBar position="static">
-            <Tabs  
+            <Tabs  value={value} onChange={this.handleChange}
             
            >
             <ul className="logo">
@@ -83,7 +91,7 @@ class SPCHomePage extends Component {
                 </ul>
                 <ul className="nav-item">
             <li >
-                  <Link to={'/Workspace'} className="nav-link">Workspace</Link>
+                  <Link to={'/Workspace'} className="nav-link">My Companies</Link>
                 </li>
                 <li>|</li>
                 </ul>

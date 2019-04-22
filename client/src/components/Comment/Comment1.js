@@ -37,7 +37,7 @@ class Comment extends Component {
       delete(id){
         return fetch('/api/Comment/'+id, {
           method: 'DELETE',
-         // body: JSON.stringify(databody),
+         
           headers: {
               'Content-Type': 'application/json'
           },

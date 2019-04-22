@@ -11,16 +11,7 @@ class DeleteSSC extends Component {
       sscs: []
     }
     }
-    //       delete(Company_Name){
-//         return fetch('/api/SSC/'+Company_Name, {
-//           method: 'DELETE',
-//           headers: {
-//               'Content-Type': 'application/json'
-//           },
-//       })
-//       .then(res => res.json())
-//       .then(data => console.log(data));
-//       }
+           
 
    delete(id){
         return fetch('/api/SSC/'+id, {

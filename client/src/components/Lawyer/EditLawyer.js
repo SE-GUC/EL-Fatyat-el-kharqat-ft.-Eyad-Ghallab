@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Lawyer from './Lawyer';
 
 
 class EditLawyer extends Component {
@@ -34,7 +33,7 @@ class EditLawyer extends Component {
         }
     }
     componentDidMount(){
-        fetch('/api/Lawyer/')
+        fetch('/api/Lawyer/' + localStorage.getItem("userid"))
         .then(res => res.json())
         .then(Lawyer => this.setState({lawyers: Lawyer.data},
              () => console.log('Lawyer fetched',this.state.lawyers)));
@@ -80,22 +79,9 @@ class EditLawyer extends Component {
       }
       handleSubmit(e){ 
         e.preventDefault();
-    
-        
-        let databody = {
-     "username":this.state.username,	
-    "password":this.state.password,	
-    "fullname":this.state.fullname,	
-    "birthdate":this.state.birthdate,	
-    "email":this.state.email,	
-    "phonenumber":this.state.phonenumber,	
-    "legaltype":this.state.legaltype,	
-    "gender":this.state.gender,	
-    "noOfPreviousCases":this.state.noOfPreviousCases,	
-        
-        }}
+  }
 
-        update(id){
+        update(){
             console.log(this.state.fullname)
              let databody 
           if (this.state.username !== ""){
@@ -118,7 +104,7 @@ class EditLawyer extends Component {
                        databody = {"noOfPreviousCases":this.state.noOfPreviousCases}}
                        
                            console.log(this.state.username)
-             return fetch('/api/Lawyer/'+id, {
+             return fetch('/api/Lawyer/'+ localStorage.getItem("userid"), {
                  method: 'PUT',
                  body: JSON.stringify(databody),
                  headers: {
@@ -140,7 +126,7 @@ class EditLawyer extends Component {
                       <input 
                         type="text" 
                         className="form-control" 
-                        value={this.state. username}
+                        value={this.state.username}
                         onChange={this.handleusername}
                         />
                         </div>
@@ -212,14 +198,14 @@ class EditLawyer extends Component {
                         />
                         </div>
                  
-                        <ul>
-    {this.state.lawyers.map(lawyer =>
-      <li key = {lawyer._id}
-      >  {lawyer.username}
-       <br/><button onClick = {() => {this.update(lawyer._id)}}> Update</button> 
-      </li>
-      )}
-  </ul>
+                        <button
+            onClick={() => {
+              this.update();
+            }}
+          >
+            {" "}
+            Update
+          </button>
             </form>
             </div>
         )
