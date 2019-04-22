@@ -18,30 +18,14 @@ class myssc extends Component {
           console.log("My SSC Comapnies", this.state.SSC)
         )
       );
-    if (this.state.SSC != []) {
-      this.setState({ isSSC: true });
-    }
+    // if (this.state.SSC != []) {
+    //   this.setState({ isSSC: true });
+    // }
 
-    console.log(this.state.isSSC);
+    //  console.log(this.state.isSSC);
   }
 
-  Approve(e) {
-    e.preventDefault();
-    console.log("why the hell");
-    var databody = { Lawyer_review: "accepted" };
-    console.log(databody);
-
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
-
+ 
   sms(num) {
     // e.preventDefault();
     // e.stopImmediatePropagation();
@@ -60,19 +44,7 @@ class myssc extends Component {
       .then(data => console.log(data));
   }
 
-  Reject(e) {
-    e.preventDefault();
-    var databody = { Lawyer_review: "rejected" };
-    return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }
+ 
   Approvessc() {
     // e.preventDefault();
     // e.stopImmediatePropagation();

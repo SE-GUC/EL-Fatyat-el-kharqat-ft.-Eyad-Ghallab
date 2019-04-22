@@ -18,13 +18,12 @@ router.get("/:investor_nationalid/SPC", async (req, res) => {
     Status: "accepted"
   });
   res.json({ data: national });
-}); 
+});
 router.get("/:investor_nationalid/status", async (req, res) => {
   const nationalid = req.params.investor_nationalid;
 
   const national = await SpcForm.find({
-    investor_nationalid: nationalid,
-   
+    investor_nationalid: nationalid
   });
   res.json({ data: national });
 });
@@ -114,7 +113,6 @@ router.get("/name/:id", async (req, res) => {
   res.json({ data: spcforms.Facility_name });
 });
 
-
 // router.get("/gov/:id", async (req, res) => {
 //   const spcforms = await SpcForm.findById(req.params.id);
 //   res.json({ data: spcforms.Governorate });
@@ -127,8 +125,6 @@ router.get("/name/:id", async (req, res) => {
 //   const spcforms = await SpcForm.findById(req.params.id);
 //   res.json({ data: spcforms.Corporate_address });
 // });
-
-
 
 // router.get("/:investor_nationalid", async (req, res) => {
 //   const investor = req.params.investor_nationalid;
@@ -224,4 +220,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.delete("/", async (req, res) => {
+  try {
+    //const id = req.params.id;
+    const deletedinvestor = await SpcForm.findOneAndDelete();
+    res.json({
+      msg: "investor was deleted successfully",
+      data: deletedinvestor
+    });
+  } catch (error) {
+    // We will be handling the error later
+    console.log(error);
+  }
+});
 module.exports = router;

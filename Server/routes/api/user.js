@@ -46,4 +46,18 @@ router.post("/login", async (req, res) => {
   } catch (e) {}
 });
 
+router.delete("/", async (req, res) => {
+  try {
+    //const id = req.params.id;
+    const deletedinvestor = await us.findOneAndDelete();
+    res.json({
+      msg: "investor was deleted successfully",
+      data: deletedinvestor
+    });
+  } catch (error) {
+    // We will be handling the error later
+    console.log(error);
+  }
+});
+
 module.exports = router;

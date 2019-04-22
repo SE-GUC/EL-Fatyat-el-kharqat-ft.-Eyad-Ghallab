@@ -17,7 +17,7 @@ class mycompSSC extends Component {
           console.log("My SSC Companies", this.state.SSC)
         )
       );
-    if (this.state.SSC != []) {
+    if (this.state.SSC != "") {
       this.setState({ isSSC: true });
     }
   }

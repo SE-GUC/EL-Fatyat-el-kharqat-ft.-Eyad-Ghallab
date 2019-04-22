@@ -305,4 +305,18 @@ router.get("/find/spcform", (req, res) => {
     });
 });
 
+router.delete("/", async (req, res) => {
+  try {
+    //const id = req.params.id;
+    const deletedinvestor = await Rev.findOneAndDelete();
+    res.json({
+      msg: "investor was deleted successfully",
+      data: deletedinvestor
+    });
+  } catch (error) {
+    // We will be handling the error later
+    console.log(error);
+  }
+});
+
 module.exports = router;

@@ -113,22 +113,33 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-   
     const admin = await Admin.findById(req.params.id);
-    if (!admin)
-      return res.status(404).send({ error: "admin does not exist" });
+    if (!admin) return res.status(404).send({ error: "admin does not exist" });
     const isValidated = validator.updateValidation(req.body);
     if (isValidated.error)
       return res
         .status(400)
         .send({ error: isValidated.error.details[0].message });
     const updatedadmin = await admin.updateOne(req.body);
-    res.json({ msg: "Admin updated successfully", data: updatedadmin});
+    res.json({ msg: "Admin updated successfully", data: updatedadmin });
   } catch (error) {
     console.log(error);
   }
 });
 
+router.delete("/", async (req, res) => {
+  try {
+    //const id = req.params.id;
+    const deletedinvestor = await Admin.findOneAndDelete();
+    res.json({
+      msg: "investor was deleted successfully",
+      data: deletedinvestor
+    });
+  } catch (error) {
+    // We will be handling the error later
+    console.log(error);
+  }
+});
 
 router.get("/", (req, res) => res.json({ data: Admins }));
 

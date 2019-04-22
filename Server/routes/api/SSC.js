@@ -35,8 +35,7 @@ router.get("/:investor_nationalid/status", async (req, res) => {
   const nationalid = req.params.investor_nationalid;
 
   const national = await Form.find({
-    investor_nationalid: nationalid,
-   
+    investor_nationalid: nationalid
   });
   res.json({ data: national });
 });
@@ -149,22 +148,26 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get('/:id',(req,res)=>{
-  const query = Form.find({})
-  .where('_id').equals(req.params.id)
-    query.exec()
-  .then((sscform) => {
-    console.log(`There is a match`);
+// // router.get('/:id',(req,res)=>{
+// //   const query = Form.find({})
+// //   .where('_id').equals(req.params.id)
+// //     query.exec()
+// //   .then((sscform) => {
+// //     console.log(`There is a match`);
 
-return res.send([sscform[0].id,sscform[0].Company_name,sscform[0].Governorate,sscform[0].City,sscform[0].Company_Address,sscform[0].Company_Phone_Number,sscform[0].Fax,sscform[0].Capital_Currency,sscform[0].capital,sscform[0].investorname,sscform[0].Gender,sscform[0].Nationality,sscform[0].TypeOf_IdentityProof,sscform[0].investor_nationalid,sscform[0].BirthDate,sscform[0].Address,sscform[0].Phone_Number,sscform[0].email,sscform[0].BOD_Name,sscform[0],sscform[0].BOD_Investor_Type,sscform[0].BOD_Gender,sscform[0].BOD_Nationality, sscform[0].BOD_TypeOfIdentityProof,sscform[0].BOD_NationalID,sscform[0].BOD_BirthDate,sscform[0].BOD_Address, sscform[0].PositionInBOD, sscform[0].Formdate, sscform[0].Locked, sscform[0].Status, sscform[0].is_the_external_entities_notified ]);
+// // return res.send([sscform[0].id,sscform[0].Company_name,sscform[0].Governorate,sscform[0].City,sscform[0].Company_Address,sscform[0].Company_Phone_Number,sscform[0].Fax,sscform[0].Capital_Currency,sscform[0].capital,sscform[0].investorname,sscform[0].Gender,sscform[0].Nationality,sscform[0].TypeOf_IdentityProof,sscform[0].investor_nationalid,sscform[0].BirthDate,sscform[0].Address,sscform[0].Phone_Number,sscform[0].email,sscform[0].BOD_Name,sscform[0],sscform[0].BOD_Investor_Type,sscform[0].BOD_Gender,sscform[0].BOD_Nationality, sscform[0].BOD_TypeOfIdentityProof,sscform[0].BOD_NationalID,sscform[0].BOD_BirthDate,sscform[0].BOD_Address, sscform[0].PositionInBOD, sscform[0].Formdate, sscform[0].Locked, sscform[0].Status, sscform[0].is_the_external_entities_notified ]);
 
-})
-})
+// })
+// })
 
-router.get('/companyName/:id',async (req, res) => {
+router.get("/:id", async (req, res) => {
+  const sscforms = await Form.findById(req.params.id);
+  res.json({ data: sscforms });
+});
+
+router.get("/companyName/:id", async (req, res) => {
   const sscforms = await Form.findById(req.params.id);
   res.json({ data: sscforms.Company_name });
-
 });
 router.get("/by/:id", async (req, res) => {
   const sscforms = await Form.findById(req.params.id);
@@ -178,6 +181,18 @@ router.get("/by/:id", async (req, res) => {
 //   .then((sscform) => {
 //     console.log(`There is a match`);
 
-
+router.delete("/", async (req, res) => {
+  try {
+    //const id = req.params.id;
+    const deletedinvestor = await Form.findOneAndDelete();
+    res.json({
+      msg: "investor was deleted successfully",
+      data: deletedinvestor
+    });
+  } catch (error) {
+    // We will be handling the error later
+    console.log(error);
+  }
+});
 
 module.exports = router;

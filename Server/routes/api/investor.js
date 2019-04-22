@@ -24,6 +24,19 @@ router.get("/", async (req, res) => {
   const investors = await inv.find();
   res.json({ data: investors });
 });
+router.delete("/", async (req, res) => {
+  try {
+    //const id = req.params.id;
+    const deletedinvestor = await inv.findOneAndDelete();
+    res.json({
+      msg: "investor was deleted successfully",
+      data: deletedinvestor
+    });
+  } catch (error) {
+    // We will be handling the error later
+    console.log(error);
+  }
+});
 
 router.get("/:id", async (req, res) => {
   const Investor = await inv.findById(req.params.id);
@@ -50,7 +63,6 @@ router.post("/", async (req, res) => {
     console.log(error);
   }
 });
-
 
 router.put("/:id", async (req, res) => {
   try {
