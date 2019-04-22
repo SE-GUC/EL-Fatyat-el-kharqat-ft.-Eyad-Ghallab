@@ -19,6 +19,14 @@ router.get("/:investor_nationalid/SPC", async (req, res) => {
   });
   res.json({ data: national });
 });
+router.get("/:investor_nationalid/update", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
+
+  const national = await SpcForm.find({
+    investor_nationalid: nationalid,
+  });
+  res.json({ data: national });
+});
 router.get("/:investor_nationalid/status", async (req, res) => {
   const nationalid = req.params.investor_nationalid;
 
@@ -28,33 +36,6 @@ router.get("/:investor_nationalid/status", async (req, res) => {
   res.json({ data: national });
 });
 
-// router.put("/:investor_nationalid/update", async (req, res) => {
-//   const nationalid = req.params.investor_nationalid;
-
-//   const national = await SpcForm.find({
-//     investor_nationalid: nationalid,
-   
-//   });
-//     const isValidated = validator.updateValidation(req.body);
-//     const updatedlawyer = await national.updateOne(req.body);
-//     console.log("Hana")
-//     if (isValidated.error) {
-//       return res
-//         .status(400)
-//         .send({ error: isValidated.error.details[0].message });
-        
-//     }
-//     res.status(500).json({
-//       message: "Lawyer is updated the form  successfully",
-//       data: updatedlawyer
-//     });
-//     console.log("nnn")
-
-//     res.status(500).json({
-//       message: "error"
-//     });
-  
-// });
 
 router.put("/:investor_nationalid/update", async (req, res) => {
   console.log("hiiii");

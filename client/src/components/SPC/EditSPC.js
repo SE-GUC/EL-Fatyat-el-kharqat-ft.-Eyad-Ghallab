@@ -67,7 +67,7 @@ class EditSPC extends Component {
   }
 
   componentDidMount() {
-    fetch("/api/SPC/all")
+    fetch("/api/SPC/"+ localStorage.getItem("nationalid") + "/update")
       .then(res => res.json())
       .then(SPC =>
         this.setState({ spcs: SPC.data }, () =>
@@ -243,7 +243,7 @@ class EditSPC extends Component {
     console.log(this.state.Facility_name);
      
     return fetch(
-      "/api/SPC/" + localStorage.getItem("nationalid") + "/update",
+      "/api/SPC/"+id,
       {
         method: "PUT",
         body: JSON.stringify(databody),
@@ -1150,14 +1150,13 @@ render() {
             />
           </div>
           <br />
-          <button
-            onClick={() => {
-              this.update();
-            }}
-          >
-            {" "}
-            Update
-          </button>
+          <ul>
+          {this.state.spcs.map(spc =>
+            <li key = {spc._id}
+            > {spc.Facility_name} <br/><button onClick = {() => {this.update(spc._id)}}> Update</button> 
+            </li>
+            )}
+        </ul>
         </form>
       </div>
     );

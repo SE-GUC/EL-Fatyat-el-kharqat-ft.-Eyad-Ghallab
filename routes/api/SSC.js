@@ -16,6 +16,14 @@ router.get("/:investor_nationalid/SSC", async (req, res) => {
   });
   res.json({ data: user });
 });
+router.get("/:investor_nationalid/update", async (req, res) => {
+  const nationalid = req.params.investor_nationalid;
+
+  const national = await Form.find({
+    investor_nationalid: nationalid,
+  });
+  res.json({ data: national });
+});
 router.get("/:investor_nationalid/status", async (req, res) => {
   const nationalid = req.params.investor_nationalid;
 

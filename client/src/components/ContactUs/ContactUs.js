@@ -30,22 +30,18 @@ class ContactUs extends Component {
       <label>Fax:
        16035</label>
        <br/>
-       <form action="https://www.Facebook.com/">
-       <Button variant="contained" href="#contained-buttons" >
+       <label>Share On</label>
+       <form action="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.gafi.gov.eg%2FEnglish%2FPages%2Fcontact-us.aspx&t=Contact%20Us/">
+       <Button type =" submit" variant="contained" >
        Facebook
       </Button>
             </form> 
 
+            
+           
             <br/>
-            <form action="https://www.Instagram.com/">
-            <Button variant="contained" href="#contained-buttons" >
-        Instagram
-      </Button>
-            </form>
-
-            <br/>
-            <form action="https://www.Twitter.com/">
-            <Button variant="contained" href="#contained-buttons" >
+            <form action="https://twitter.com/intent/tweet?original_referer=http://www.gafi.gov.eg/English/Pages/contact-us.aspx&text=Contact%20Us&url=http://www.gafi.gov.eg/English/Pages/contact-us.aspx">
+            <Button type =" submit" variant="contained"  >
         Twitter
       </Button>
             </form>
