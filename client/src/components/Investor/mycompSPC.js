@@ -29,8 +29,7 @@ class mycompSPC extends Component {
    
     return (
       <div>
-      
-   {this.state.isSPC ? (
+        {this.state.isSPC ? (
           <form>
             <h2>The Company</h2>
             Facility name: {this.state.SPC.Facility_name}
@@ -75,12 +74,10 @@ class mycompSPC extends Component {
             <br />
             Lawyer_review: {this.state.SPC.Lawyer_review}
             <br />
-           
           </form>
         ) : (
           <h1> You dont have any companies yet</h1>
         )}
-        
       </div>
     );
   }
