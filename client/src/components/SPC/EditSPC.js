@@ -241,14 +241,17 @@ class EditSPC extends Component {
     }
     
     console.log(this.state.Facility_name);
-
-    return fetch("/api/SPC/" + id, {
-      method: "PUT",
-      body: JSON.stringify(databody),
-      headers: {
-        "Content-Type": "application/json"
+     
+    return fetch(
+      "/api/SPC/" + localStorage.getItem("nationalid") + "/update",
+      {
+        method: "PUT",
+        body: JSON.stringify(databody),
+        headers: {
+          "Content-Type": "application/json"
+        }
       }
-    })
+    )
       .then(res => res.json())
       .then(data => console.log(data));
   }
@@ -1147,24 +1150,14 @@ render() {
             />
           </div>
           <br />
-          <div className="form-group">
-            <ul>
-              {this.state.spcs.map(spc => (
-                <li key={spc._id}>
-                  {" "}
-                  {spc.Facility_name} <br />
-                  <button
-                    onClick={() => {
-                      this.update(spc._id);
-                    }}
-                  >
-                    {" "}
-                    Update
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <button
+            onClick={() => {
+              this.update();
+            }}
+          >
+            {" "}
+            Update
+          </button>
         </form>
       </div>
     );

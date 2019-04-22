@@ -250,16 +250,19 @@ class EditSSC extends Component {
                                                                                                
     console.log(this.state.Company_name)
    
-       return fetch('/api/SSC/'+id, {
-         method: 'PUT',
-         body: JSON.stringify(databody),
-         headers: {
-             'Content-Type': 'application/json'
-         },
-     })
-     .then(res => res.json())
-     .then(data => console.log(data)); 
- }
+    return fetch(
+        "/api/SSC/" + localStorage.getItem("nationalid") + "/update",
+        {
+          method: "PUT",
+          body: JSON.stringify(databody),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+        .then(res => res.json())
+        .then(data => console.log(data));
+    }
 
 
 
@@ -529,14 +532,14 @@ render() {
            </div>
 
            
-           <ul>
-         {this.state.sscs.map(ssc =>
-           <li key = {ssc._id}
-           > {ssc.Company_name} 
-           <br/><button onClick = {() => {this.update(ssc._id)}}> Update</button> 
-           </li>
-           )}
-       </ul>
+           <button
+            onClick={() => {
+              this.update();
+            }}
+          >
+            {" "}
+            Update
+          </button>
        </form>
    </div>
 )
