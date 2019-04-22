@@ -4,7 +4,6 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const us = require("../../models/user");
-//const SpcForm = require("../../models/SPC");
 const tokenKey = require("../../config/keys").secretOrKey;
 
 router.get("/:email", async (req, res) => {
@@ -16,7 +15,6 @@ router.get("/:email", async (req, res) => {
   } else {
     console.log("did not find it");
   }
-  // const user = await us.findOne(req.params.email);
   const type = user.type;
   console.log(user);
   console.log(type);

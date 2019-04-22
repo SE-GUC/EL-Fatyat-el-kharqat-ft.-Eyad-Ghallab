@@ -11,8 +11,7 @@ class spcstatus extends Component {
   }
   local(id) {
     localStorage.setItem("payment", id);
-    //this.paymenet(localStorage.getItem("payment"));
-    // this.setState({ id: true });
+    
   }
   componentDidMount() {
     fetch("/api/SPC/" + localStorage.getItem("nationalid") + "/status")
@@ -30,7 +29,7 @@ class spcstatus extends Component {
   }
 
   paymenet(id) {
-    //e.preventDefault();
+    
     if (this.state.payment !== "") {
       this.setState({ payment: "" });
     }
@@ -41,8 +40,7 @@ class spcstatus extends Component {
           console.log("you should pay", this.state.payment)
         )
       );
-    // this.state.paymenet
-    // printString(this.state.paymenet)
+  
   }
 
   render() {
@@ -70,13 +68,7 @@ class spcstatus extends Component {
           ))}
         </ul>
 
-        {/* <button
-          onClick={() => {
-            this.paymenet();
-          }}
-        >
-          Fees
-        </button> */}
+       
         <h1>You Should pay: {this.state.payment}</h1>
       </div>
     );

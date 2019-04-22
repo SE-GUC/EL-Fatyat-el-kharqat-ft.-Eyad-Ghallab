@@ -4,22 +4,7 @@ const mongoose = require("mongoose");
 const Form = require("../../models/SSC");
 const validator = require("../../validations/SSCvalid");
 
-// const Nexmo = require('nexmo');
-// const nexmo = new Nexmo({
-//   apiKey: '5f5fb4ce',
-//   apiSecret: '48bJxSynuSXO0Xnj'
-// });
-
-// nexmo.message.sendSms(
-//     "NEXMO", '201149733633', 'update your form ',
-//       (err, responseData) => {
-//         if (err) {
-//           console.log(err);
-//         } else {
-//           console.dir(responseData);
-//         }
-//       }
-//    );
+;
 
 //get all the  forms
 
@@ -96,7 +81,6 @@ router.delete("/:id", async (req, res) => {
     const deletedForm = await SSC.findByIdAndRemove(id);
     res.json({ msg: "Book was deleted successfully", data: deletedForm });
   } catch (error) {
-    // We will be handling the error later
     console.log(error);
   }
 });
@@ -109,7 +93,6 @@ router.get("/:id/find", async (req, res) => {
   var price = estimatedprice / 1000;
   var price2 = 0.0025 * estimatedprice;
   var finalprice = 0;
-  // console.log(estimatedprice)
   if (price < 100) {
     finalprice += 100;
   }
@@ -174,12 +157,6 @@ router.get("/by/:id", async (req, res) => {
   res.json({ data: sscforms });
 });
 
-// router.get('/:id',(req,res)=>{
-//   const query = Form.find({})
-//   .where('_id').equals(req.params.id)
-//     query.exec()
-//   .then((sscform) => {
-//     console.log(`There is a match`);
 
 router.delete("/", async (req, res) => {
   try {

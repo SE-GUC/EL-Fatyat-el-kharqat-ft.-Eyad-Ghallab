@@ -11,8 +11,7 @@ class sscstatus extends Component {
   }
   local(id) {
     localStorage.setItem("payment", id);
-    //this.paymenet(localStorage.getItem("payment"));
-    // this.setState({ id: true });
+   
   }
   componentDidMount() {
     fetch("/api/SSC/" + localStorage.getItem("nationalid") + "/status")
@@ -41,8 +40,7 @@ class sscstatus extends Component {
           console.log("you should pay", this.state.payment)
         )
       );
-    // this.state.paymenet
-    // printString(this.state.paymenet)
+    
   }
 
   render() {

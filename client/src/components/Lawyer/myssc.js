@@ -10,7 +10,7 @@ class myssc extends Component {
   }
 
   componentDidMount() {
-    // e.preventDefault();
+   
     fetch("/api/SSC/" + localStorage.getItem("sscid"))
       .then(res => res.json())
       .then(ssc =>
@@ -27,8 +27,7 @@ class myssc extends Component {
 
  
   sms(num) {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
+    
     let databody = {
       number: num
     };
@@ -46,8 +45,7 @@ class myssc extends Component {
 
  
   Approvessc() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
+    
     console.log("why the hell");
     var databody = { Lawyer_review: "accepted" };
     console.log(databody);
@@ -63,8 +61,7 @@ class myssc extends Component {
       .then(data => console.log(data));
   }
   Rejectssc() {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
+    
     var databody = { Lawyer_review: "rejected" };
     return fetch("/api/SSC/" + localStorage.getItem("sscid"), {
       method: "PUT",
@@ -78,8 +75,7 @@ class myssc extends Component {
   }
 
   render() {
-    // const pro = this.getpro();
-    //console.log(this.state.investors);
+    
     return (
       <div>
         <h2>The Company</h2>

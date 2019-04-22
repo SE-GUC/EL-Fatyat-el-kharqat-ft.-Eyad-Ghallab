@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import superagent from "superagent";
 import "./Login.css";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
 
 class Login extends Component {
@@ -44,7 +42,7 @@ class Login extends Component {
         }
         console.log("res.body:", res.body);
         localStorage.setItem("token", res.body.token);
-        //this.setState();
+        
         this.forceUpdate();
       });
   }
@@ -86,7 +84,7 @@ class Login extends Component {
   }
   render() {
     console.log(this.state);
-    //{this.renderRedirect()}
+    
     const isAlreadyAuthenticated = this.isAuthenticated();
     return (
       <body>

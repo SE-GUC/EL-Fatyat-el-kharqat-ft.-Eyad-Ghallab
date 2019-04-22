@@ -7,7 +7,6 @@ const validator = require('../../validations/Notificationvalid')
 
 const SpcForm = require('../../models/SPC')
 const Form = require('../../models/SSC')
-//const funcs = require('../Functions/Funcs');
 const Validator = require('../../validations/SSCvalid')
 
 
@@ -44,15 +43,11 @@ router.post('/', async (req,res) => {
 router.put('/:id', async (req,res) => {
     try {
      const id = req.params.id
-     //const notification = await notification.findOne({id})
-     //if(!notification) return res.status(404).send({error: 'notification does not exist'})
-     //const isValidated = validator.updateValidation(req.body)
-     //if (isValidated.error) return res.status(400).send({ error: isValidated.error.details[0].message })
+     
      const updatednotification = await notification.updateOne(req.body)
      res.json({msg: 'notification updated successfully'})
     }
     catch(error) {
-        // We will be handling the error later
         console.log(error)
     }  
  })
@@ -64,7 +59,6 @@ router.put('/:id', async (req,res) => {
      res.json({msg:'notification was deleted successfully', data: deletednotification})
     }
     catch(error) {
-        // We will be handling the error later
         console.log(error)
     }  
  })

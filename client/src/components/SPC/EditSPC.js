@@ -239,8 +239,7 @@ class EditSPC extends Component {
     if (this.state.Investor_Address !== "") {
       databody = { Investor_Address: this.state.Investor_Address };
     }
-    /*if(this.state.Lawyer_review !== ""){
-                                      databody = {"Lawyer_review":this.state.Lawyer_review}}*/
+    
     console.log(this.state.Facility_name);
 
     return fetch("/api/SPC/" + id, {

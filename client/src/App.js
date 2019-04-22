@@ -10,14 +10,18 @@ import Admin from "./components/Admin/AdminHomePage";
 import Investor from "./components/Investor/InvHomePage";
 import LawyerHomePage from "./components/Lawyer/LawyerHomePage";
 import ReviewerHomePage from "./components/Reviewer/ReviewerHomePage";
-import SPC from "./components/SPC/CreatingSPCForm";
-import SSC from "./components/SSC/CreatingSSCForm";
+import Button from "@material-ui/core/Button";
 import NoSsr from "@material-ui/core/NoSsr";
 import AppBar from "@material-ui/core/AppBar";
-
 import "./App.css";
-import Reviewer from "./components/Reviewer/Reviewer";
+import { Redirect } from "react-router-dom";
+
 class App extends Component {
+  type() {
+
+    localStorage.removeItem("token");
+  }
+  
   render() {
     return (
       <header>
@@ -45,15 +49,23 @@ class App extends Component {
                     </Link>
                   </li>
                   <li>
+                    <Link to={"/SignUp"} className="nav-link">
+                      Sign Up
+                    </Link>
+                  </li>
+                  <li>
                     <Link to={"/SignIn"} className="nav-link">
                       Sign In
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/SignUp"} className="nav-link">
-                      Sign Up
-                    </Link>
+                  <Link to ={"/"}   type="submit"  onClick={() => {
+      this.type(); 
+    }}  >
+              Sign Out
+            </Link>
                   </li>
+                  
                 </ul>
               </AppBar>
               <Switch>
@@ -63,6 +75,7 @@ class App extends Component {
                 <Route exact path="/SignUp" component={Register} />
                 <Route exact path="/AdminHomePage" component={Admin} />
                 <Route exact path="/InvHomePage" component={Investor} />
+
                 <Route
                   exact
                   path="/ReviewerHomePage"
@@ -82,4 +95,6 @@ class App extends Component {
     );
   }
 }
-export default App;
+
+
+export default App; 

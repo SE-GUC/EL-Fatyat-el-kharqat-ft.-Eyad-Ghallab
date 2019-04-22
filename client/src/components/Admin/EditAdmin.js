@@ -84,7 +84,7 @@ class EditAdmin extends Component {
     
 } 
 update(id){
-    // e.preventDefault();
+    
     console.log(this.state.username)
      let databody 
  if (this.state.name !== ""){

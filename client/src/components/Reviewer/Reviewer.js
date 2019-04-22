@@ -19,13 +19,7 @@ class Reviewer extends Component {
     }
 
     
-    // componentDidMount(){
-  
-    //     fetch('/api/Reviewer/')
-    //     .then(res => res.json())
-    //     .then(Reviewer => this.setState({reviewers: Reviewer.data},()=> console.log('the Reviewer',this.state.reviewers)));
-      
-    // }
+    
 
     componentDidMount() {
     
@@ -40,17 +34,7 @@ class Reviewer extends Component {
 
     render(){
       return (
-        // <div>
-        //   <h2>All Reviewers</h2>
-        //   <ul>
-        //     {this.state.reviewers.map(reviewer =>
-        //       <li key = {reviewer._id}
-        //       > {reviewer.Username}  
-              
-        //       </li>
-        //       )}
-        //   </ul> 
-        // </div>
+        
 
         <div>
     <h2>My Profile</h2>

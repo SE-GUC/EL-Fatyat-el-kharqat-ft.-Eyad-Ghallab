@@ -39,7 +39,6 @@ const ExternalEntities = require("./routes/api/ExternalEntities");
 dotenv.config();
 
 var url = process.env.MONGOLAB_URI;
-// const db = require('./config/keys').mongoURI
 mongoose
   .connect(url, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected..."))
@@ -103,18 +102,7 @@ app.post("/uploadfile", upload.single("myFile"), (req, res, next) => {
   }
   res.send(file);
 });
-/*
-app.post("/uploadfile", upload.single("myFile"), (req, res) => {
-  const file = req.file;
-  url.collection("fs.files").insertOne(file, (err, result) => {
-    console.log(result);
 
-    if (err) return console.log(err);
-
-    console.log("saved to database");
-    res.redirect("/");
-  });
- */
 
 app.get("/myFile/:id", (req, res) => {
   var file = req.body;
@@ -123,19 +111,9 @@ app.get("/myFile/:id", (req, res) => {
     .url.collection("fs.files")
     .then(file.data);
 
-  // url.collection("fs.files").findOne(
-  //   { _id: ObjectId(file) },
-  //   (err, result) => {
-  //     if (err) return console.log(err);
-
+  
   res.contentType("file");
 });
-//});
-
-//app.use((req,res) => res.status(404).send(`<h1>Can not find what you're looking for</h1>`))
-
-//const port = process.env.PORT || 3000
-//app.listen(port, () => console.log(`Server on ${port}`))
 
 app.use((req, res) =>
   res.status(404).send(`<h1>Can not find what you're looking for</h1>`)

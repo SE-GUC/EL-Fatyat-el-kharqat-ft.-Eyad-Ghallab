@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-//const uuid = require('uuid')
 
 // Create the schema
 const LawyerSchema = new Schema({

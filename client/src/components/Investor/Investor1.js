@@ -151,7 +151,7 @@ mobilenumber:""
                      if(this.state.mobilenumber !== ""){
                        databody = {"mobilenumber":this.state.mobilenumber}}
                        console.log(this.state.username)
-         return fetch('http://localhost:5000/api/Investors/'+id, {
+         return fetch('/api/Investors/'+id, {
              method: 'PUT',
              body: JSON.stringify(databody),
              headers: {
@@ -166,12 +166,10 @@ mobilenumber:""
         fetch('/api/investors/')
         .then(res => res.json())
         .then(investors => this.setState({Investors: investors.data},()=> console.log('the investors',this.state.Investors)));
-      //   var int = this.state.investors[1];
-      // console.log (int)
-    //  // res.json({data: this.state.investors})
+      
     }
   render() {
- //  var {Investors} =  this.state;
+ 
     return (
       <div>
         

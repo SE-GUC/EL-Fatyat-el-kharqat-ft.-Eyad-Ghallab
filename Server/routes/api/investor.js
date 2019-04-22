@@ -9,8 +9,6 @@ const upload = multer({
   dest: "./uploads" // this saves your file into a directory called "uploads"
 });
 
-// const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken')
 
 const mongoose = require("mongoose");
 

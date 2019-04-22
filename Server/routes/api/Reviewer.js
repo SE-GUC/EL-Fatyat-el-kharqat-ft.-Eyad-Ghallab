@@ -35,56 +35,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.post("/register", async (req, res) => {
-//   console.log("ana da5alt");
-//   try {
-//     // const isValidated = validator.registerValidation(req.body);
-//     // console.log("malak?");
-//     // if (isValidated.error)
-//     //   return res
-//     //     .status(400)
-//     //     .send({ error: isValidated.error.details[0].message });
-//     console.log("ana da5alt hena");
-//     const {
-//       Name,
-//       Email,
-//       Password,
-//       YearsOfExperience,
-//       Username,
-//       Gender
-//     } = req.body;
-//     const reviewer = await Rev.findOne({ Email });
-//     console.log("ana gayaaaa");
-//     if (reviewer)
-//       return res.status(400).json({ email: "Email already exists" });
-//     console.log("we hena");
-//     const salt = bcrypt.genSaltSync(10);
-//     const hashedPassword = bcrypt.hashSync(Password, salt);
-//     const newUser = new Rev({
-//       Name,
-//       Email,
-//       Password: hashedPassword,
-//       YearsOfExperience,
-//       Username,
-//       Gender
-//     });
-//     console.log("ana da5alt hena kaman");
-//     await Rev.create(newUser);
-//     console.log("ana hena");
-//     //const user = await us.create(req.body);
-//     const type = new us({
-//       type: "reviewer",
-//       email,
-//       password: hashedPassword,
-//       id: newUser.id
-//     });
-//     console.log("what the hell ");
-//     const user = await us.create(type);
-//     res.json({ msg: "User created successfully", data: newUser });
-//   } catch (error) {
-//     res.status(422).send({ error: "Can not create user" });
-//   }
-// });
+
 
 router.post("/register", async (req, res) => {
   console.log("ana da5alt");
@@ -129,24 +80,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-//update a reviewer
-// router.put("/:id", async (req, res) => {
-//   try {
-//     const id = req.params.id;
-//     const Reviewer = await Rev.findOne({ id });
-//     if (!Rev) return res.status(404).send({ error: "reviewer does not exist" });
-//     const isValidated = validator.updateValidation(req.body);
-//     if (isValidated.error)
-//       return res
-//         .status(400)
-//         .send({ error: isValidated.error.details[0].message });
-//     const updatedreviewer = await Rev.updateOne(req.body);
-//     res.json({ msg: "reviewer updated successfully", data: updatedreviewer });
-//   } catch (error) {
-//     // We will be handling the error later
-//     console.log(error);
-//   }
-// });
 
 //delete a reviewer
 router.delete("/:id", async (req, res) => {
@@ -225,7 +158,6 @@ router.put("/spcform/:id", async (req, res) => {
   try {
     //   const id = req.params.id
     const Rev = await SpcForm.findById(req.params.id);
-    //if(!Lawyer) return res.status(404).send({error: 'form does not exist'})
     const isValidated = validator.updateValidation(req.body);
     const updatedform = await Rev.updateOne(req.body);
     if (isValidated.error) {
@@ -248,9 +180,7 @@ router.put("/spcform/:id", async (req, res) => {
 //update Status of SSC form
 router.put("/sscform/:id", async (req, res) => {
   try {
-    //   const id = req.params.id
     const Rev = await SSC.findById(req.params.id);
-    //if(!Lawyer) return res.status(404).send({error: 'form does not exist'})
     const isValidated = validator.updateValidation(req.body);
     const updatedForm = await Rev.updateOne(req.body);
     if (isValidated.error) {
@@ -265,7 +195,6 @@ router.put("/sscform/:id", async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: "error"
-      //console.log(error)
     });
   }
 });

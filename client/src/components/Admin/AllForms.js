@@ -10,7 +10,7 @@ class AllForms extends Component {
   }
 
   getspc() {
-    fetch("http://localhost:5000/api/Reviewer/find/SPC")
+    fetch("/api/Reviewer/find/SPC")
       .then(res => res.json())
       .then(spc =>
         this.setState({ SPC: spc.data }, () =>
@@ -20,7 +20,7 @@ class AllForms extends Component {
   }
 
   getssc() {
-    fetch("http://localhost:5000/api/Reviewer/find/SSC")
+    fetch("/api/Reviewer/find/SSC")
       .then(res => res.json())
       .then(ssc =>
         this.setState({ SSC: ssc.data }, () =>

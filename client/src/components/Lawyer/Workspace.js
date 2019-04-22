@@ -122,26 +122,9 @@ class Workspace extends Component {
         </ul>
         {this.state.idssc ? <Redirect to={{ pathname: "/myssc" }} /> : <h1 />}
 
-        {/* <button onClick={()=>{this.getssc()}}>get untlocked SSC forms </button> 
-            <ul>
-      {
-     this.state.SSC.map(ssc => 
-        <li key = {ssc._id}>
-           Name: {ssc.Facility_name} 
-         investor name:{ssc.investorname}NP
-    Company_name: {ssc.Company_name}<br/> ,Governorate: {ssc.Governorate}<br/> , City:{ssc.City}<br/>
-  , Company_Address:{ssc.Company_Address}<br/> , Company_Phone_Number:{ssc.Company_Phone_Number}<br/>
-   , Fax:{ssc.Fax}<br/> , Capital_Currency:{ssc.Capital_Currency}<br/> ,capital:{ssc.capital}<br/>
-    ,investorname:{ssc.investorname}<br/> ,Gender:{ssc.Gender}<br/> ,Nationality:{ssc.Nationality}<br/> ,
-    TypeOf_IdentityProof: {ssc.TypeOf_IdentityProof}<br/> ,investor_nationalid:{ssc.investor_nationalid}<br/> 
-    ,BirthDate:{ssc.BirthDate}<br/> ,
-    Phone_Number:{ssc.Phone_Number}<br/> ,Investor_Fax:{ssc.Investor_Fax}<br/> ,email:{ssc.email}<br/> 
-    <button onClick= {() => {this.Approve(ssc._id)}}> Approve </button> <button onClick= {() => {this.Reject(ssc._id)}}>
-     Reject </button> 
-               */}
+        
 
-        {/* </li>)} */}
-        {/* </ul>  */}
+        
       </div>
     );
   }
