@@ -31,8 +31,7 @@ class Lawyer extends Component {
     <h2>My Profile</h2>
     username: {this.state.lawyers.username}
     <br />
-    password: {this.state.lawyers.password}
-    <br />
+   
     fullname: {this.state.lawyers.fullname}
     <br />
     email: {this.state.lawyers.email}

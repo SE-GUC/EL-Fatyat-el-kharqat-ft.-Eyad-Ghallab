@@ -57,7 +57,7 @@ export default class ReviewerHomePage extends Component {
             </div>
           </nav>{" "}
           <br />
-          <h2>Welcome to GAFI</h2> <br />
+         
           <Switch>
             
             <Route exact path="/edit" component={EditReviewer} />
